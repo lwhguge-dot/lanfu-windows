@@ -42,7 +42,10 @@ public class SystemCapability : NodeCapabilityBase
         _includeRunCommands ? _commandsWithRun : _commandsWithoutRun;
 
     public override IReadOnlyList<string> ProtocolCapabilities =>
-        _includeRunCommands ? [SystemRunExecutionContext.Capability] : [];
+        GetProtocolCapabilities(_includeRunCommands);
+
+    internal static IReadOnlyList<string> GetProtocolCapabilities(bool includeRunCommands) =>
+        includeRunCommands ? [SystemRunExecutionContext.Capability] : [];
 
     // Event to let UI handle the actual notification display
     public event EventHandler<SystemNotifyArgs>? NotifyRequested;

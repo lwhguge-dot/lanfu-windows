@@ -40,6 +40,9 @@ overrides remain rejected.
 `senderId?`, `chatId?`, and `subagent?: true`. Routing metadata is validated at
 the capability boundary and kept separate from approval identity, session/turn
 authority, and the approved argv. MCP and Gateway calls use the same capability.
+The setup pairing stub uses the runtime's protocol-feature declaration, so a
+freshly approved node does not immediately request an additional capability
+approval when the tray replaces the stub.
 
 Presence means a complete projection, including `{}`. The companion calls
 `CreateEnvironmentBlock` with `bInherit=FALSE`, removes both fixed marker names
