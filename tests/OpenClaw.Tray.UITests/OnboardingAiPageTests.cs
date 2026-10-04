@@ -530,7 +530,7 @@ public sealed class OnboardingAiPageTests(UIThreadFixture ui, ITestOutputHelper 
             {
                 Assert.ThrowsAny<Xunit.Sdk.XunitException>(() =>
                     TestSupport.InvokeSettingsCardAction(page, cards[0], "ChoiceAction_Click"));
-                Assert.Throws<InvalidOperationException>(() => { _ = InvokeCardAsync(cards[0]); });
+                await Assert.ThrowsAsync<InvalidOperationException>(() => InvokeCardAsync(cards[0]));
             }
             finally { cards[0].Name = "ChoiceActionCard"; }
             Assert.Equal(["openclaw.setup.detect"], transport.MethodCalls);
