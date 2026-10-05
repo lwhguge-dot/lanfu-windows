@@ -7,7 +7,7 @@
   "components": [
     {
       "name": "Button",
-      "note": "Primary action. One per view — it's where the eye should land. Padding mirrors WinUI's default ButtonPadding (11,5,11,6), snapped to spacing tokens 3 (12≈11) and 1 (4≈5/6). In-app MinWidth 100px keeps short labels (OK / Connect) from cramping and gives side-by-side buttons a consistent footprint; that minimum has no spacing-token equivalent, so it stays a port note and the preview hugs its label.",
+      "note": "Basic control. Primary action — one per view, where the eye should land. Previewed as `variant:primary`, the WinUI AccentButtonStyle: `accent` fill (AccentFillColorDefaultBrush) with `accentInk` text (TextOnAccentFillColorPrimaryBrush), `sm` radius (ControlCornerRadius). Hover = AccentFillColorSecondary (token `accentSubtle`); pressed = AccentFillColorTertiary (no exact token, previewed with `accentSubtle`, documented here); disabled = AccentFillColorDisabled with TextOnAccentFillColorDisabled (previewed as `control`/`muted`). The `variant:standard` Button swaps to the default ButtonStyle: `control` fill (ControlFillColorDefault), `controlLine` border (ControlStrokeColorDefault), `ink` text; hover ControlFillColorSecondary, pressed ControlFillColorTertiary, disabled ControlFillColorDisabled. Subtle/icon buttons are the separate SubtleButton block. Padding mirrors WinUI ButtonPadding (11,5,11,6), snapped to spacing tokens 3 (12≈11) and 1 (4≈5/6). In-app MinWidth 100px keeps short labels (OK / Connect) from cramping and gives side-by-side buttons a consistent footprint; that minimum has no spacing-token equivalent, so it stays a port note and the preview hugs its label.",
       "props": {
         "children": "Save changes",
         "variant": "primary"
@@ -16,6 +16,9 @@
         "id": "button-root",
         "el": "button",
         "class": "ds-btn ds-btn-{variant}",
+        "attrs": {
+          "type": "button"
+        },
         "layout": {
           "mode": "horizontal",
           "padding": {
@@ -26,6 +29,22 @@
           "justify": "center",
           "width": "hug"
         },
+        "appearance": {
+          "fontFamily": "body",
+          "textStyle": "body",
+          "color": "accentInk",
+          "background": "accent",
+          "radius": "sm"
+        },
+        "control": {
+          "focus": { "kind": "outline", "color": "accent" }
+        },
+        "states": {
+          "hover": { "background": "accentSubtle" },
+          "pressed": { "background": "accentSubtle" },
+          "hoverPressed": { "background": "accentSubtle" },
+          "disabled": { "color": "muted", "background": "control" }
+        },
         "children": [
           "{children}"
         ]
@@ -33,7 +52,7 @@
     },
     {
       "name": "Field",
-      "note": "Text input with a quiet label above it — the field is the subject. Input padding mirrors WinUI TextControlThemePadding (10,5,6,6), snapped to tokens 2 (8≈10/6 horizontal) and 1 (4≈5/6 vertical). In-app MinHeight 32px lines a field up with a Button on the same row; that minimum stays a port note.",
+      "note": "Basic control. Text input with a quiet label above it — the field is the subject. The input ships as the default WinUI TextBox: `control` fill (ControlFillColorDefault), `controlLine` hairline border (ControlStrokeColorDefault), `ink` text, `sm` radius. Hover = ControlFillColorSecondary (no exact token; previewed with `control`, documented here). Focus draws the Fluent accent underline, previewed as a `accent` bottom border via `states.focus`. Disabled = ControlFillColorDisabled with `muted` text. Input padding mirrors WinUI TextControlThemePadding (10,5,6,6), snapped to tokens 2 (8≈10/6 horizontal) and 1 (4≈5/6 vertical). In-app MinHeight 32px lines a field up with a Button on the same row; that minimum stays a port note. Focus draws the Fluent accent underline, supplied here by `control.focus` (accent rectangle); the OFF-grid hover tint (ControlFillColorSecondary) has no exact token and previews with `control`.",
       "props": {
         "label": "Gateway address",
         "placeholder": "127.0.0.1:18789"
@@ -69,6 +88,21 @@
                 "y": "1"
               },
               "width": "fill"
+            },
+            "appearance": {
+              "fontFamily": "body",
+              "textStyle": "body",
+              "color": "ink",
+              "background": "control",
+              "borderColor": "controlLine",
+              "radius": "sm"
+            },
+            "control": {
+              "focus": { "kind": "outline", "color": "accent" }
+            },
+            "states": {
+              "hover": { "background": "control" },
+              "disabled": { "color": "muted", "background": "control" }
             }
           }
         ]
@@ -130,7 +164,7 @@
     },
     {
       "name": "Badge",
-      "note": "Status pill. Uses semantic color tokens, never a raw hex. Padding tokens 3/1 give the pill a compact footprint; the `pill` radius and tone color come from the ds-badge class.",
+      "note": "Basic control. Status pill — a read-only, non-interactive label, so it carries no hover/pressed states. Uses semantic color tokens, never a raw hex: `positive` (SystemFillColorSuccess), `warning` (SystemFillColorCaution), `critical` (SystemFillColorCritical), or `muted` for neutral. Padding tokens 3/1 give the pill a compact footprint; the `pill` radius and tone color come from the ds-badge class. Two production relatives: the WorkspaceShell count badge is a Fluent InfoBadge (default pill geometry, framework fill), and the notification recurrence badge is a 10px-radius `warning` subtle-background chip with 7,1 padding — both non-interactive, documented on their host components.",
       "props": {
         "children": "Connected",
         "tone": "positive"
@@ -150,6 +184,284 @@
         },
         "children": [
           "{children}"
+        ]
+      }
+    },
+    {
+      "name": "SubtleButton",
+      "note": "Basic control. The quiet icon button used across the workspace chrome and flyouts (WinUI SubtleButtonStyle): Back/Forward, New session, pane toggle, notification bell, and the flyout dismiss button. Transparent rest (SubtleFillColorTransparent, `$none`) with a glyph in `ink`; hover = SubtleFillColorSecondary (`subtleHover`), pressed = SubtleFillColorTertiary (`subtlePressed`), disabled = ControlFillColorDisabled with `muted` glyph. `sm` radius (ControlCornerRadius). Previewed at the workspace command size 40x40 with a 16px glyph (WorkspaceWindow.xaml uses Width/Height 40, FontSize 16); the notification dismiss variant is 30x30 with an 11px glyph and 6px padding. `control.chrome:none` removes the web button border so the transparent Windows rest state shows, and `control.focus` draws the accent focus rectangle. Glyph shown is New session (Segoe Fluent Add, U+E710).",
+      "props": {
+        "label": "New session"
+      },
+      "root": {
+        "id": "subtle-button-root",
+        "el": "button",
+        "attrs": {
+          "type": "button",
+          "aria-label": "{label}"
+        },
+        "layout": {
+          "mode": "horizontal",
+          "align": "center",
+          "justify": "center",
+          "width": 40,
+          "height": 40
+        },
+        "appearance": {
+          "color": "ink",
+          "background": "$none",
+          "radius": "sm"
+        },
+        "control": {
+          "chrome": "none",
+          "focus": { "kind": "outline", "color": "accent" }
+        },
+        "states": {
+          "hover": { "background": "subtleHover" },
+          "pressed": { "background": "subtlePressed" },
+          "hoverPressed": { "background": "subtlePressed" },
+          "disabled": { "color": "muted", "background": "$none" }
+        },
+        "children": [
+          {
+            "id": "subtle-button-glyph",
+            "el": "span",
+            "attrs": {
+              "aria-hidden": "true",
+              "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:16px"
+            },
+            "children": [
+              "\uE710"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "HyperlinkButton",
+      "note": "Basic control. WinUI HyperlinkButton used for inline navigation and quiet actions (Reconnect, Approve, Open Connection, Clear all, Open notifications). Accent link text (system accent hyperlink brush, token `accent`) with no border or fill at rest; hover shows the subtle wash (SubtleFillColorSecondary, `subtleHover`) and pressed deepens to SubtleFillColorTertiary (`subtlePressed`); disabled drops to `muted`. Horizontal padding mirrors the production `Padding=4,0` (token `1` left/right, no vertical pad); `sm` radius. Text uses the `body` scale. `control.chrome:none` strips the web button chrome; `control.focus` supplies the accent focus rectangle.",
+      "props": {
+        "children": "Open Connection"
+      },
+      "root": {
+        "id": "hyperlink-button-root",
+        "el": "button",
+        "attrs": {
+          "type": "button"
+        },
+        "layout": {
+          "mode": "horizontal",
+          "align": "center",
+          "padding": {
+            "left": "1",
+            "right": "1"
+          },
+          "width": "hug"
+        },
+        "appearance": {
+          "fontFamily": "body",
+          "textStyle": "body",
+          "color": "accent",
+          "background": "$none",
+          "radius": "sm"
+        },
+        "control": {
+          "chrome": "none",
+          "focus": { "kind": "outline", "color": "accent" }
+        },
+        "states": {
+          "hover": { "background": "subtleHover" },
+          "pressed": { "background": "subtlePressed" },
+          "hoverPressed": { "background": "subtlePressed" },
+          "disabled": { "color": "muted", "background": "$none" }
+        },
+        "children": [
+          "{children}"
+        ]
+      }
+    },
+    {
+      "name": "ToggleSwitch",
+      "note": "Basic control. The stock WinUI ToggleSwitch used on settings and permission rows. Previewed in the ON state: track fills `accent` (AccentFillColorDefault / ToggleSwitchFillOn) with an `accentInk` (TextOnAccentFillColorPrimary) thumb pushed right. OFF state (documented as a port note): track is `control` (ControlFillColorDefault) with a `controlLine` border and a `muted`/ControlStrongFill thumb at left. Hover = AccentFillColorSecondary on (ControlFillColorSecondary off); pressed = AccentFillColorTertiary on (ControlFillColorTertiary off); disabled uses the Fluent disabled track. Track previewed at 40x20 with a `pill` radius and a 14px circular thumb; the thumb/track visuals are WinUI template parts and are a port note. Toggle-state brushes are stock Fluent resources, not locally remapped.",
+      "props": {
+        "label": "Launch at startup"
+      },
+      "root": {
+        "id": "toggle-switch-root",
+        "el": "button",
+        "attrs": {
+          "type": "button",
+          "role": "switch",
+          "aria-checked": "true",
+          "aria-label": "{label}"
+        },
+        "layout": {
+          "mode": "horizontal",
+          "align": "center",
+          "justify": "end",
+          "padding": { "x": "1" },
+          "width": 40,
+          "height": 20
+        },
+        "appearance": {
+          "background": "accent",
+          "radius": "pill"
+        },
+        "control": {
+          "chrome": "none",
+          "focus": { "kind": "outline", "color": "accent" }
+        },
+        "states": {
+          "hover": { "background": "accentSubtle" },
+          "pressed": { "background": "accentSubtle" },
+          "hoverPressed": { "background": "accentSubtle" },
+          "disabled": { "background": "control" }
+        },
+        "children": [
+          {
+            "id": "toggle-switch-thumb",
+            "el": "span",
+            "attrs": { "aria-hidden": "true" },
+            "layout": { "width": 14, "height": 14 },
+            "appearance": { "background": "accentInk", "radius": "pill" }
+          }
+        ]
+      }
+    },
+    {
+      "name": "StatusDot",
+      "note": "Basic control. The 10x10 connection/status indicator reused in the gateway flyout (Ellipse), the workspace Owner footer (10px FontIcon), and the identity badges. Non-interactive, so no hover/pressed states. Fill is a semantic token; previewed `positive` (SystemFillColorSuccess) for connected, and the variants are `warning` (SystemFillColorCaution) attention, `critical` (SystemFillColorCritical) error, and `muted`/neutral unknown. 10px sits between spacing tokens (nearest `2`=8); previewed at a literal 10x10 with a `pill` radius.",
+      "props": {
+        "tone": "positive"
+      },
+      "root": {
+        "id": "status-dot-root",
+        "el": "span",
+        "attrs": {
+          "role": "img",
+          "aria-label": "Connected"
+        },
+        "layout": {
+          "width": 10,
+          "height": 10
+        },
+        "appearance": {
+          "background": "positive",
+          "radius": "pill"
+        }
+      }
+    },
+    {
+      "name": "Avatar",
+      "note": "Basic control. WinUI PersonPicture circular avatar. Non-interactive. The agent avatar is 32x32 (AgentIdentityBadge), the workspace Owner avatar is 24x24; both render a circular initials/photo tile. Previewed at 32x32 with a `pill` radius and a `muted` placeholder fill plus `ink`-on-muted initials; real photo/initials and the circular clip are WinUI template behavior and a port note.",
+      "props": {
+        "initials": "AU"
+      },
+      "root": {
+        "id": "avatar-root",
+        "el": "span",
+        "attrs": {
+          "role": "img"
+        },
+        "layout": {
+          "mode": "horizontal",
+          "align": "center",
+          "justify": "center",
+          "width": 32,
+          "height": 32
+        },
+        "appearance": {
+          "fontFamily": "body",
+          "textStyle": "small",
+          "color": "ink",
+          "background": "muted",
+          "radius": "pill"
+        },
+        "children": [
+          "{initials}"
+        ]
+      }
+    },
+    {
+      "name": "InfoBar",
+      "note": "Basic control. The Fluent InfoBar severity banner used for workspace operation errors and app notifications (WorkspaceWindow OperationInfo, HubWindow AppNotificationInfoBar, ChatPage). Previewed at Error severity: a `surface` sheet with a `line` hairline, `md` radius, and 16px padding, led by a `critical` status glyph (Segoe Fluent Error, U+EA39), a `ink` BodyStrong title, a `muted` caption message, and a trailing SubtleButton close (U+E711). Severity recolors the leading glyph only: `critical` Error, `warning` Warning, `positive` Success, `accent` Informational. The banner body is non-interactive; the close button carries the shared subtle hover/pressed states.",
+      "props": {
+        "title": "Couldn't reach the gateway",
+        "message": "Check that the gateway is running, then retry."
+      },
+      "root": {
+        "id": "info-bar-root",
+        "el": "div",
+        "attrs": { "role": "status" },
+        "layout": {
+          "mode": "horizontal",
+          "gap": "3",
+          "padding": "4",
+          "align": "start",
+          "width": "fill"
+        },
+        "appearance": {
+          "background": "surface",
+          "borderColor": "line",
+          "radius": "md"
+        },
+        "children": [
+          {
+            "id": "info-bar-icon",
+            "el": "span",
+            "attrs": {
+              "aria-hidden": "true",
+              "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:16px"
+            },
+            "appearance": { "color": "critical" },
+            "children": [ "\uEA39" ]
+          },
+          {
+            "id": "info-bar-text",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "1", "grow": true, "width": "fill" },
+            "children": [
+              {
+                "id": "info-bar-title",
+                "el": "span",
+                "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" },
+                "children": [ "{title}" ]
+              },
+              {
+                "id": "info-bar-message",
+                "el": "span",
+                "appearance": { "fontFamily": "body", "textStyle": "caption", "color": "muted" },
+                "children": [ "{message}" ]
+              }
+            ]
+          },
+          {
+            "id": "info-bar-close",
+            "el": "button",
+            "attrs": { "type": "button", "aria-label": "Close" },
+            "layout": { "mode": "horizontal", "align": "center", "justify": "center", "width": 30, "height": 30 },
+            "appearance": { "color": "muted", "background": "$none", "radius": "sm" },
+            "control": {
+              "chrome": "none",
+              "focus": { "kind": "outline", "color": "accent" }
+            },
+            "states": {
+              "hover": { "background": "subtleHover" },
+              "pressed": { "background": "subtlePressed" },
+              "hoverPressed": { "background": "subtlePressed" }
+            },
+            "children": [
+              {
+                "id": "info-bar-close-glyph",
+                "el": "span",
+                "attrs": {
+                  "aria-hidden": "true",
+                  "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:11px"
+                },
+                "children": [ "\uE711" ]
+              }
+            ]
+          }
         ]
       }
     },
@@ -521,7 +833,7 @@
     },
     {
       "name": "ChatComposer",
-      "note": "Chat input. A rounded `control` panel (`composer` radius, 20px) with a hairline `controlLine` border wrapping a borderless, transparent, auto-growing textarea over a toolbar. In-app it binds `ChatComposerBrush` (card fill) over the transparent chat canvas and `ChatStrokeBrush` for the hairline; Send is the Fluent ChatSubmit up glyph (U+E74A) that swaps to Stop (U+E71A) during an active turn, and Add uses ChatAttach (U+E710) (#1459). Left cluster = Add, session picker, model picker, reasoning-effort picker; right cluster = Dictate (mic), Speaker, Settings, and the primary Send. Only Send spends the accent (it swaps to a subtle Stop while a turn is active, and reads disabled/greyed until the textarea has content); every other control ships as a WinUI subtle transparent Button (SubtleFillColorTransparent rest, SubtleFillColorSecondary hover, SubtleFillColorTertiary press, ControlCornerRadius) with a `muted` (TextFillColorSecondary) glyph, so the toolbar reads as quiet chrome. Each picker (see ComposerPicker) is a subtle borderless dropdown with muted value text; a picker with nothing to choose (for example the session picker when only one session exists) renders disabled, so its label reads a shade lighter than its enabled neighbours, as with `Main session` in the preview. Textarea min 56 / max 200px growth and the 12px outer margin are Reactor port notes; the app tightens top padding to 2px below token 1. The subtle icon controls are real `button`s whose browser chrome is removed via `control.chrome:none`, so the transparent WinUI rest state (SubtleFillColorTransparent, `$none`) shows with no web button border; each carries `states` for hover (`subtleHover`) and press (`subtlePressed`) and a `control.focus` accent focus rectangle, and only the filled Send spends the accent. The message input renders as a borderless, typeable `contenteditable` `role=textbox` showing the muted placeholder; `control.chrome:none` removes the browser field chrome and its `:focus` ring, and `control.focus` (kind underline, color accent) substitutes the Windows bottom accent underline a real WinUI TextBox shows. The hairline `controlLine` border belongs to the outer `control` panel only. (Preview shows the rest state with the placeholder visible; click to type.)",
+      "note": "Chat input. A rounded `control` panel (`composer` radius, 20px) with a hairline `controlLine` border wrapping a borderless, transparent, auto-growing textarea over a toolbar. In-app it binds `ChatComposerBrush` (card fill) over the transparent chat canvas and `ChatStrokeBrush` for the hairline; Send is the Fluent ChatSubmit up glyph (U+E74A) that swaps to Stop (U+E71A) during an active turn, and Add uses ChatAttach (U+E710) (#1459). Left cluster = Add, session picker, model picker, reasoning-effort picker; right cluster = Voice (mic) and the primary Send/Stop. Production exposes only Voice and Send/Stop on the right (no separate Speaker or Settings composer buttons; read-aloud and chat preferences live in Settings, per docs/CHAT_VISUAL_DESIGN.md). Only Send spends the accent (it swaps to a subtle Stop while a turn is active, and reads disabled/greyed until the textarea has content); every other control ships as a WinUI subtle transparent Button (SubtleFillColorTransparent rest, SubtleFillColorSecondary hover, SubtleFillColorTertiary press, ControlCornerRadius) with a `muted` (TextFillColorSecondary) glyph, so the toolbar reads as quiet chrome. Each picker (see ComposerPicker) is a subtle borderless dropdown with muted value text; a picker with nothing to choose (for example the session picker when only one session exists) renders disabled, so its label reads a shade lighter than its enabled neighbours, as with `Main session` in the preview. Textarea min 56 / max 200px growth and the 12px outer margin are Reactor port notes; the app tightens top padding to 2px below token 1. The subtle icon controls are real `button`s whose browser chrome is removed via `control.chrome:none`, so the transparent WinUI rest state (SubtleFillColorTransparent, `$none`) shows with no web button border; each carries `states` for hover (`subtleHover`) and press (`subtlePressed`) and a `control.focus` accent focus rectangle, and only the filled Send spends the accent. The message input renders as a borderless, typeable `contenteditable` `role=textbox` showing the muted placeholder; `control.chrome:none` removes the browser field chrome and its `:focus` ring, and `control.focus` (kind underline, color accent) substitutes the Windows bottom accent underline a real WinUI TextBox shows. The hairline `controlLine` border belongs to the outer `control` panel only. (Preview shows the rest state with the placeholder visible; click to type.)",
       "props": {
         "placeholder": "Message Assistant (Enter to send)",
         "session": "Main session",
@@ -684,8 +996,8 @@
                     "el": "button",
                     "attrs": {
                       "type": "button",
-                      "title": "Dictate",
-                      "aria-label": "Dictate"
+                      "title": "Voice",
+                      "aria-label": "Voice"
                     },
                     "layout": {
                       "mode": "horizontal",
@@ -740,134 +1052,6 @@
                             "el": "path",
                             "attrs": {
                               "d": "M5 11a7 7 0 0 0 14 0M12 18v3"
-                            }
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "id": "chat-composer-speaker",
-                    "el": "button",
-                    "attrs": {
-                      "type": "button",
-                      "title": "Read responses aloud",
-                      "aria-label": "Read responses aloud"
-                    },
-                    "layout": {
-                      "mode": "horizontal",
-                      "align": "center",
-                      "justify": "center",
-                      "width": 32,
-                      "height": 32
-                    },
-                    "appearance": {
-                      "color": "muted",
-                      "background": "$none",
-                      "radius": "sm"
-                    },
-                    "control": {
-                      "chrome": "none",
-                      "focus": { "kind": "outline", "color": "accent" }
-                    },
-                    "states": {
-                      "hover": { "background": "subtleHover" },
-                      "pressed": { "background": "subtlePressed" },
-                      "hoverPressed": { "background": "subtlePressed" }
-                    },
-                    "children": [
-                      {
-                        "id": "chat-composer-speaker-glyph",
-                        "el": "svg",
-                        "attrs": {
-                          "width": "18",
-                          "height": "18",
-                          "viewBox": "0 0 24 24",
-                          "fill": "none",
-                          "aria-hidden": "true",
-                          "stroke": "currentColor",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
-                        },
-                        "children": [
-                          {
-                            "id": "chat-composer-speaker-poly",
-                            "el": "polygon",
-                            "attrs": {
-                              "points": "11 5 6 9 2 9 2 15 6 15 11 19 11 5"
-                            }
-                          },
-                          {
-                            "id": "chat-composer-speaker-path",
-                            "el": "path",
-                            "attrs": {
-                              "d": "M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"
-                            }
-                          }
-                        ]
-                      }
-                    ]
-                  },
-                  {
-                    "id": "chat-composer-settings",
-                    "el": "button",
-                    "attrs": {
-                      "type": "button",
-                      "title": "Chat settings",
-                      "aria-label": "Chat settings"
-                    },
-                    "layout": {
-                      "mode": "horizontal",
-                      "align": "center",
-                      "justify": "center",
-                      "width": 32,
-                      "height": 32
-                    },
-                    "appearance": {
-                      "color": "muted",
-                      "background": "$none",
-                      "radius": "sm"
-                    },
-                    "control": {
-                      "chrome": "none",
-                      "focus": { "kind": "outline", "color": "accent" }
-                    },
-                    "states": {
-                      "hover": { "background": "subtleHover" },
-                      "pressed": { "background": "subtlePressed" },
-                      "hoverPressed": { "background": "subtlePressed" }
-                    },
-                    "children": [
-                      {
-                        "id": "chat-composer-settings-glyph",
-                        "el": "svg",
-                        "attrs": {
-                          "width": "18",
-                          "height": "18",
-                          "viewBox": "0 0 24 24",
-                          "fill": "none",
-                          "aria-hidden": "true",
-                          "stroke": "currentColor",
-                          "stroke-width": "2",
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round"
-                        },
-                        "children": [
-                          {
-                            "id": "chat-composer-settings-circle",
-                            "el": "circle",
-                            "attrs": {
-                              "cx": "12",
-                              "cy": "12",
-                              "r": "3"
-                            }
-                          },
-                          {
-                            "id": "chat-composer-settings-path",
-                            "el": "path",
-                            "attrs": {
-                              "d": "M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
                             }
                           }
                         ]
@@ -1079,6 +1263,52 @@
           {
             "id": "chat-thread-composer",
             "component": "ChatComposer"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChatCopyButton",
+      "note": "Chat control. The quiet copy affordance on assistant messages and code blocks (ChatCopyButton). A 32x32 subtle button (token `8` square target) with 4px (`1`) padding and `sm` radius, sharing the composer toolbar's subtle state set: transparent rest (SubtleFillColorTransparent), hover SubtleFillColorSecondary (`subtleHover`), pressed SubtleFillColorTertiary (`subtlePressed`). Idle glyph is Segoe Fluent Copy (U+E8C8) in `ChatSecondaryTextBrush` (`muted`). On copy it flips to the CheckMark (U+E73E) in `ChatCopySuccessBrush` (`positive`), announces \"Copied\" through a polite live region, and resets after 2 seconds; a failure shows SystemFillColorCritical (`critical`). Previewed in the idle state.",
+      "root": {
+        "id": "chat-copy-root",
+        "el": "button",
+        "attrs": {
+          "type": "button",
+          "title": "Copy",
+          "aria-label": "Copy"
+        },
+        "layout": {
+          "mode": "horizontal",
+          "align": "center",
+          "justify": "center",
+          "padding": "1",
+          "width": 32,
+          "height": 32
+        },
+        "appearance": {
+          "color": "muted",
+          "background": "$none",
+          "radius": "sm"
+        },
+        "control": {
+          "chrome": "none",
+          "focus": { "kind": "outline", "color": "accent" }
+        },
+        "states": {
+          "hover": { "background": "subtleHover" },
+          "pressed": { "background": "subtlePressed" },
+          "hoverPressed": { "background": "subtlePressed" }
+        },
+        "children": [
+          {
+            "id": "chat-copy-glyph",
+            "el": "span",
+            "attrs": {
+              "aria-hidden": "true",
+              "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:16px"
+            },
+            "children": [ "\uE8C8" ]
           }
         ]
       }
@@ -2545,6 +2775,464 @@
                   }
                 ]
               }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetupProgressIndicator",
+      "note": "Setup control. The wizard step dots (SetupProgressIndicator.cs). Non-interactive, non-focusable, accessibility-hidden, so no hover/pressed states. The active step is a 20x8 pill in `accent` (SetupIndicatorAccentBrush = SystemAccentColorLight2 dark / Dark1 light); inactive steps are 8x8 dots in `muted` (SetupInactiveDotBrush = ControlStrongFill). Dot spacing is token `2` (8px); every dot uses the `sm` radius (4px).",
+      "root": {
+        "id": "setup-progress-root",
+        "el": "div",
+        "attrs": { "role": "img", "aria-label": "Step 2 of 4" },
+        "layout": { "mode": "horizontal", "gap": "2", "align": "center" },
+        "children": [
+          { "id": "setup-progress-d1", "el": "span", "layout": { "width": 8, "height": 8 }, "appearance": { "background": "muted", "radius": "sm" } },
+          { "id": "setup-progress-d2", "el": "span", "layout": { "width": 20, "height": 8 }, "appearance": { "background": "accent", "radius": "sm" } },
+          { "id": "setup-progress-d3", "el": "span", "layout": { "width": 8, "height": 8 }, "appearance": { "background": "muted", "radius": "sm" } },
+          { "id": "setup-progress-d4", "el": "span", "layout": { "width": 8, "height": 8 }, "appearance": { "background": "muted", "radius": "sm" } }
+        ]
+      }
+    },
+    {
+      "name": "RecommendedBadge",
+      "note": "Setup control. The small outlined \"Recommended\" tag beside a capability profile (Controls/RecommendedBadge.xaml). Non-interactive. An outline-only badge: 1px `accent` border (AccentTextFillColorPrimaryBrush), `accent` caption text, no fill, `sm` radius (4px), padding token `2` horizontal and `1` vertical (8,4). Disabled recolors border and text to `muted` (TextFillColorDisabled). This is a small `sm` badge, not the 999px `pill` Badge.",
+      "props": {
+        "children": "Recommended"
+      },
+      "root": {
+        "id": "recommended-badge-root",
+        "el": "span",
+        "layout": {
+          "mode": "horizontal",
+          "align": "center",
+          "padding": { "x": "2", "y": "1" },
+          "width": "hug"
+        },
+        "appearance": {
+          "fontFamily": "body",
+          "textStyle": "caption",
+          "color": "accent",
+          "background": "$none",
+          "borderColor": "accent",
+          "radius": "sm"
+        },
+        "children": [ "{children}" ]
+      }
+    },
+    {
+      "name": "ProviderArtwork",
+      "note": "Setup control. The square icon tile for an AI provider (Controls/ProviderArtwork.xaml). Non-interactive. A 40x40 tile: `surface` (SolidBackgroundFillColorBase) fill, 1px `line` (CardStrokeColorDefault) border, `sm` radius (ControlCornerRadius), token `2` (8px) padding around a 24x24 glyph or image. Previewed with a representative Segoe Fluent glyph.",
+      "root": {
+        "id": "provider-artwork-root",
+        "el": "span",
+        "layout": {
+          "mode": "horizontal",
+          "align": "center",
+          "justify": "center",
+          "padding": "2",
+          "width": 40,
+          "height": 40
+        },
+        "appearance": {
+          "background": "surface",
+          "borderColor": "line",
+          "radius": "sm"
+        },
+        "children": [
+          {
+            "id": "provider-artwork-glyph",
+            "el": "span",
+            "attrs": {
+              "aria-hidden": "true",
+              "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:24px"
+            },
+            "appearance": { "color": "ink" },
+            "children": [ "\uE99A" ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetupOptionCard",
+      "note": "Setup composite. A clickable provider/mode choice row (AiSetupPage.xaml compact SettingsCard, IsClickEnabled). Built from the ProviderArtwork tile, a title + detail stack, and a trailing action/chevron. The row itself is transparent with a 1px `line` bottom divider (previewed here via a bottom-biased `line` border; the real card draws only the bottom edge), MinHeight 64px, and `md` radius on the enclosing group. Because it is clickable it carries the SettingsCard subtle states: hover = SubtleFillColorSecondary (`subtleHover`), pressed = SubtleFillColorTertiary (`subtlePressed`); disabled drops text to `muted`. Title is `body` BodyStrong, detail is `caption` in `muted`; the 32px artwork column and 12px gap map to tokens `6`/`3`. There is no XAML-defined selected indicator; selection is tracked by the parent ListView and is a port note.",
+      "props": {
+        "title": "Sign in with GitHub",
+        "detail": "Use your Copilot subscription. No API key needed."
+      },
+      "root": {
+        "id": "setup-option-root",
+        "el": "button",
+        "attrs": { "type": "button" },
+        "layout": {
+          "mode": "horizontal",
+          "gap": "3",
+          "padding": { "x": "4", "y": "3" },
+          "align": "center",
+          "width": "fill"
+        },
+        "appearance": {
+          "background": "$none",
+          "borderColor": "line"
+        },
+        "control": {
+          "chrome": "none",
+          "focus": { "kind": "outline", "color": "accent" }
+        },
+        "states": {
+          "hover": { "background": "subtleHover" },
+          "pressed": { "background": "subtlePressed" },
+          "hoverPressed": { "background": "subtlePressed" },
+          "disabled": { "color": "muted", "background": "$none" }
+        },
+        "children": [
+          { "id": "setup-option-art", "component": "ProviderArtwork" },
+          {
+            "id": "setup-option-text",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "1", "grow": true, "width": "fill" },
+            "children": [
+              { "id": "setup-option-title", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" }, "children": [ "{title}" ] },
+              { "id": "setup-option-detail", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "caption", "color": "muted" }, "children": [ "{detail}" ] }
+            ]
+          },
+          {
+            "id": "setup-option-chevron",
+            "el": "span",
+            "attrs": {
+              "aria-hidden": "true",
+              "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:12px"
+            },
+            "appearance": { "color": "muted" },
+            "children": [ "\uE76C" ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "CapabilityOptionRow",
+      "note": "Setup composite. A single capability-profile choice (CapabilitiesPage.xaml ListViewItem). Rows live inside a `surface` group with a 1px `line` border and `md` radius; each row is padded token `4` horizontal and `3` vertical (16,12) with a title (`body` BodyStrong) over a wrapping `caption` description in `muted`, and the recommended profile carries the RecommendedBadge. Single-selection follows focus; because it is selectable it shows the Fluent ListViewItem states: hover = SubtleFillColorSecondary (`subtleHover`), pressed = SubtleFillColorTertiary (`subtlePressed`); the selected row's accent pill/left bar is a WinUI ListViewItem template part and is a port note (no custom setter in setup XAML).",
+      "props": {
+        "title": "Balanced",
+        "detail": "Recommended defaults for most Windows nodes."
+      },
+      "root": {
+        "id": "capability-row-root",
+        "el": "button",
+        "attrs": { "type": "button", "role": "option" },
+        "layout": {
+          "mode": "horizontal",
+          "gap": "2",
+          "padding": { "x": "4", "y": "3" },
+          "align": "center",
+          "width": "fill"
+        },
+        "appearance": {
+          "background": "$none",
+          "radius": "sm"
+        },
+        "control": {
+          "chrome": "none",
+          "focus": { "kind": "outline", "color": "accent" }
+        },
+        "states": {
+          "hover": { "background": "subtleHover" },
+          "pressed": { "background": "subtlePressed" },
+          "hoverPressed": { "background": "subtlePressed" }
+        },
+        "children": [
+          {
+            "id": "capability-row-text",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "1", "grow": true, "width": "fill" },
+            "children": [
+              { "id": "capability-row-title", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" }, "children": [ "{title}" ] },
+              { "id": "capability-row-detail", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "caption", "color": "muted" }, "children": [ "{detail}" ] }
+            ]
+          },
+          { "id": "capability-row-badge", "component": "RecommendedBadge" }
+        ]
+      }
+    },
+    {
+      "name": "SetupPhaseStatus",
+      "note": "Setup control. The inline phase result row (Controls/SetupPhaseStatus.xaml). Non-interactive. A horizontal row, token `2` (8px) gap, pairing a status indicator with `caption` text (max width 160px) in `muted`. Running shows a 20x20 ProgressRing; Complete shows the Segoe Fluent StatusOk check (U+E73E) in `positive` (SystemFillColorSuccess); Failed shows StatusErr (U+EA39) in `critical` (SystemFillColorCritical); Cancelled shows Exit (U+E711) in `muted`. Previewed in the Complete state.",
+      "props": {
+        "children": "Gateway connected"
+      },
+      "root": {
+        "id": "setup-phase-root",
+        "el": "div",
+        "attrs": { "role": "status" },
+        "layout": { "mode": "horizontal", "gap": "2", "align": "center" },
+        "children": [
+          {
+            "id": "setup-phase-glyph",
+            "el": "span",
+            "attrs": {
+              "aria-hidden": "true",
+              "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:16px"
+            },
+            "appearance": { "color": "positive" },
+            "children": [ "\uE73E" ]
+          },
+          {
+            "id": "setup-phase-text",
+            "el": "span",
+            "appearance": { "fontFamily": "body", "textStyle": "caption", "color": "muted" },
+            "children": [ "{children}" ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "SetupWizardShell",
+      "note": "Setup composite. The onboarding wizard frame (Pages/WizardPage.xaml). A vertical page: a header (mascot + `title` TitleTextBlockStyle headline + `caption` status in `muted`), the active step surface, and a footer. Page padding is 40,4,40,24 (previewed with token `6` horizontal and `1`/`5` vertical; the 40px horizontals are off-grid port notes). The step card is a `surface` sheet with a 1px `line` border, `md` radius, and token `5` (24px) padding; its MinHeight (180/140/200/260) is a runtime port note. The footer places a standard (secondary) Button and the accent (primary) Button on the ends with the SetupProgressIndicator centered; footer column gap is token `2`. Composes Button and SetupProgressIndicator.",
+      "root": {
+        "id": "setup-wizard-root",
+        "el": "section",
+        "layout": {
+          "mode": "vertical",
+          "gap": "5",
+          "padding": { "left": "6", "right": "6", "top": "1", "bottom": "5" },
+          "width": "fill"
+        },
+        "appearance": { "background": "paper" },
+        "children": [
+          {
+            "id": "setup-wizard-header",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "1", "align": "center" },
+            "children": [
+              { "id": "setup-wizard-title", "el": "h1", "appearance": { "fontFamily": "display", "textStyle": "title", "color": "ink", "textAlign": "center" }, "children": [ "Set up your Windows node" ] },
+              { "id": "setup-wizard-status", "el": "p", "appearance": { "fontFamily": "body", "textStyle": "caption", "color": "muted", "textAlign": "center" }, "children": [ "Step 2 of 4 · Choose capabilities" ] }
+            ]
+          },
+          {
+            "id": "setup-wizard-card",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "4", "padding": "5", "width": "fill" },
+            "appearance": { "background": "surface", "borderColor": "line", "radius": "md" },
+            "children": [
+              { "id": "setup-wizard-card-title", "el": "h2", "appearance": { "fontFamily": "display", "textStyle": "heading", "color": "ink" }, "children": [ "Choose what this node can do" ] },
+              { "id": "setup-wizard-opt-1", "component": "CapabilityOptionRow" },
+              {
+                "id": "setup-wizard-opt-2",
+                "component": "CapabilityOptionRow",
+                "props": { "title": "Full access", "detail": "Expose every capability over MCP." }
+              }
+            ]
+          },
+          {
+            "id": "setup-wizard-footer",
+            "el": "div",
+            "layout": { "mode": "horizontal", "gap": "2", "align": "center", "justify": "space-between", "width": "fill" },
+            "children": [
+              { "id": "setup-wizard-back", "component": "Button", "props": { "children": "Back", "variant": "standard" } },
+              { "id": "setup-wizard-progress", "component": "SetupProgressIndicator" },
+              { "id": "setup-wizard-next", "component": "Button", "props": { "children": "Continue", "variant": "primary" } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "SettingsSectionHeader",
+      "note": "Settings control. The group label above a stack of settings cards (used across SettingsPage / PermissionsPage / SandboxPage). Non-interactive. `body` BodyStrongTextBlockStyle in `ink`, with margin 4,18,4,4 (previewed as token `1` sides, `4` top, `1` bottom; the 18px top is off-grid and a port note).",
+      "props": { "children": "Permissions" },
+      "root": {
+        "id": "settings-section-header-root",
+        "el": "h2",
+        "margin": { "top": "4", "right": "1", "bottom": "1", "left": "1" },
+        "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" },
+        "children": [ "{children}" ]
+      }
+    },
+    {
+      "name": "SettingsCard",
+      "note": "Settings composite. The canonical settings row (hand-rolled Border, not the toolkit SettingsCard). STATIC: the card itself has no hover/pressed; the trailing control owns interaction. A `surface`-less `paper` Border with a 1px `line` (CardStrokeColorDefault) stroke, `md` radius (8px), and token `4` (16px) padding (some cards use 16,14; the 14 is off-grid). Layout is an optional 36px leading icon column, a growing content column (title `body` BodyStrong in `ink` over a wrapping `caption` description in `muted`), and a trailing Auto control column. Cards stack with token `2` (8px) spacing.",
+      "props": {
+        "title": "Startup",
+        "detail": "Launch OpenClaw when you sign in to Windows."
+      },
+      "root": {
+        "id": "settings-card-root",
+        "el": "div",
+        "layout": { "mode": "horizontal", "gap": "3", "padding": "4", "align": "center", "width": "fill" },
+        "appearance": { "background": "paper", "borderColor": "line", "radius": "md" },
+        "children": [
+          {
+            "id": "settings-card-icon",
+            "el": "span",
+            "attrs": {
+              "aria-hidden": "true",
+              "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:16px"
+            },
+            "layout": { "mode": "horizontal", "align": "center", "justify": "center", "width": 36 },
+            "appearance": { "color": "ink" },
+            "children": [ "\uE7E8" ]
+          },
+          {
+            "id": "settings-card-text",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "1", "grow": true, "width": "fill" },
+            "children": [
+              { "id": "settings-card-title", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" }, "children": [ "{title}" ] },
+              { "id": "settings-card-detail", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "caption", "color": "muted" }, "children": [ "{detail}" ] }
+            ]
+          },
+          { "id": "settings-card-action", "component": "Button", "props": { "children": "Change", "variant": "standard" } }
+        ]
+      }
+    },
+    {
+      "name": "SettingsToggleRow",
+      "note": "Settings composite. A SettingsCard whose trailing control is the Fluent ToggleSwitch (the most common settings row). Same static `paper` card: 1px `line` stroke, `md` radius, token `4` padding, token `1` title/detail stack. The ToggleSwitch owns the hover/pressed states (see ToggleSwitch); the card is static. Composes ToggleSwitch.",
+      "props": {
+        "title": "Run at startup",
+        "detail": "Start the OpenClaw tray automatically."
+      },
+      "root": {
+        "id": "settings-toggle-root",
+        "el": "div",
+        "layout": { "mode": "horizontal", "gap": "3", "padding": "4", "align": "center", "width": "fill" },
+        "appearance": { "background": "paper", "borderColor": "line", "radius": "md" },
+        "children": [
+          {
+            "id": "settings-toggle-text",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "1", "grow": true, "width": "fill" },
+            "children": [
+              { "id": "settings-toggle-title", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" }, "children": [ "{title}" ] },
+              { "id": "settings-toggle-detail", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "caption", "color": "muted" }, "children": [ "{detail}" ] }
+            ]
+          },
+          { "id": "settings-toggle-switch", "component": "ToggleSwitch" }
+        ]
+      }
+    },
+    {
+      "name": "SettingsExpanderRow",
+      "note": "Settings composite. An expandable settings group built on the stock WinUI Expander (SandboxPage.xaml), not the toolkit SettingsExpander. The header is an interactive row (ColumnSpacing 14, previewed token `3`; header padding 0,4) with an optional leading icon, a growing title (`body` BodyStrong) over `caption` description, and a trailing chevron (U+E70D) that rotates when open. The header carries stock Expander subtle states: hover = SubtleFillColorSecondary (`subtleHover`), pressed = SubtleFillColorTertiary (`subtlePressed`). The expanded content is a StackPanel, token `3` (12px) spacing, padding 0,4. Previewed expanded.",
+      "props": {
+        "title": "Advanced sandbox",
+        "detail": "Fine-tune the command execution sandbox."
+      },
+      "root": {
+        "id": "settings-expander-root",
+        "el": "div",
+        "layout": { "mode": "vertical", "width": "fill" },
+        "appearance": { "background": "paper", "borderColor": "line", "radius": "md" },
+        "children": [
+          {
+            "id": "settings-expander-header",
+            "el": "button",
+            "attrs": { "type": "button", "aria-expanded": "true" },
+            "layout": { "mode": "horizontal", "gap": "3", "padding": { "x": "4", "y": "3" }, "align": "center", "width": "fill" },
+            "appearance": { "background": "$none", "radius": "md" },
+            "control": {
+              "chrome": "none",
+              "focus": { "kind": "outline", "color": "accent" }
+            },
+            "states": {
+              "hover": { "background": "subtleHover" },
+              "pressed": { "background": "subtlePressed" },
+              "hoverPressed": { "background": "subtlePressed" }
+            },
+            "children": [
+              {
+                "id": "settings-expander-text",
+                "el": "div",
+                "layout": { "mode": "vertical", "gap": "1", "grow": true, "width": "fill" },
+                "children": [
+                  { "id": "settings-expander-title", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" }, "children": [ "{title}" ] },
+                  { "id": "settings-expander-detail", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "caption", "color": "muted" }, "children": [ "{detail}" ] }
+                ]
+              },
+              {
+                "id": "settings-expander-chevron",
+                "el": "span",
+                "attrs": {
+                  "aria-hidden": "true",
+                  "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:12px"
+                },
+                "appearance": { "color": "muted" },
+                "children": [ "\uE70D" ]
+              }
+            ]
+          },
+          {
+            "id": "settings-expander-content",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "3", "padding": { "x": "4", "y": "3" }, "width": "fill" },
+            "children": [
+              { "id": "settings-expander-child", "component": "SettingsToggleRow", "props": { "title": "Allow network access", "detail": "Let sandboxed commands reach the network." } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "SettingsWindowShell",
+      "note": "Settings composite. The Settings host window frame (Windows/HubWindow.xaml). MinWidth 1000, Mica backdrop, title bar captioned \"OpenClaw Settings\". A left NavigationView rail (pane toggle and the stock settings item hidden) sits beside a scrolling content column padded token `5` (24px) with a MaxWidth of 900px (port note). The bottom of the window hosts a 40px status pill and a 40x40 toolbar button cluster. Composes SettingsSectionHeader and SettingsToggleRow; the nav items reuse the subtle-button interaction model.",
+      "root": {
+        "id": "settings-window-root",
+        "el": "section",
+        "layout": { "mode": "horizontal", "width": "fill" },
+        "appearance": { "background": "paper" },
+        "children": [
+          {
+            "id": "settings-window-nav",
+            "el": "nav",
+            "layout": { "mode": "vertical", "gap": "1", "padding": "2", "width": 240 },
+            "appearance": { "background": "surface", "borderColor": "line" },
+            "children": [
+              {
+                "id": "settings-window-nav-general",
+                "el": "button",
+                "attrs": { "type": "button", "aria-current": "page" },
+                "layout": { "mode": "horizontal", "gap": "2", "padding": { "x": "2", "y": "2" }, "align": "center", "width": "fill" },
+                "appearance": { "background": "subtleHover", "radius": "sm", "color": "ink" },
+                "control": { "chrome": "none", "focus": { "kind": "outline", "color": "accent" } },
+                "states": {
+                  "hover": { "background": "subtleHover" },
+                  "pressed": { "background": "subtlePressed" },
+                  "hoverPressed": { "background": "subtlePressed" }
+                },
+                "children": [
+                  { "id": "settings-window-nav-general-glyph", "el": "span", "attrs": { "aria-hidden": "true", "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:16px" }, "appearance": { "color": "ink" }, "children": [ "\uE713" ] },
+                  { "id": "settings-window-nav-general-label", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" }, "children": [ "General" ] }
+                ]
+              },
+              {
+                "id": "settings-window-nav-perms",
+                "el": "button",
+                "attrs": { "type": "button" },
+                "layout": { "mode": "horizontal", "gap": "2", "padding": { "x": "2", "y": "2" }, "align": "center", "width": "fill" },
+                "appearance": { "background": "$none", "radius": "sm", "color": "ink" },
+                "control": { "chrome": "none", "focus": { "kind": "outline", "color": "accent" } },
+                "states": {
+                  "hover": { "background": "subtleHover" },
+                  "pressed": { "background": "subtlePressed" },
+                  "hoverPressed": { "background": "subtlePressed" }
+                },
+                "children": [
+                  { "id": "settings-window-nav-perms-glyph", "el": "span", "attrs": { "aria-hidden": "true", "style": "font-family:'Segoe Fluent Icons','Segoe MDL2 Assets',sans-serif;font-size:16px" }, "appearance": { "color": "ink" }, "children": [ "\uE72E" ] },
+                  { "id": "settings-window-nav-perms-label", "el": "span", "appearance": { "fontFamily": "body", "textStyle": "body", "color": "ink" }, "children": [ "Permissions" ] }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "settings-window-content",
+            "el": "div",
+            "layout": { "mode": "vertical", "gap": "2", "padding": "5", "grow": true, "width": "fill" },
+            "children": [
+              { "id": "settings-window-section", "component": "SettingsSectionHeader", "props": { "children": "General" } },
+              { "id": "settings-window-row-1", "component": "SettingsToggleRow" },
+              { "id": "settings-window-row-2", "component": "SettingsExpanderRow" }
             ]
           }
         ]

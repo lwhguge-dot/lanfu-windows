@@ -349,6 +349,13 @@ The landing window is the native Home and Sessions workspace (`Windows/Workspace
 Reuse [component patterns](.agents/design/components.jsonc); these describe design intent, not shipping code.
 Optional click-through flows live in `.agents/design/prototypes.jsonc`.
 
+The catalog is organized into four families. Every interactive control documents its hover and pressed states; static controls say so. States bind Fluent resources (`SubtleFillColorSecondary` for hover, `SubtleFillColorTertiary` for pressed, accent variants for primary actions), never raw hex.
+
+- **Basic controls.** Button (primary/standard/subtle), SubtleButton (square icon), HyperlinkButton, Field, Badge, ToggleSwitch, StatusDot, Avatar, InfoBar, and Card. The building blocks every other family composes.
+- **Setup.** SetupProgressIndicator, RecommendedBadge, ProviderArtwork, SetupOptionCard, CapabilityOptionRow, SetupPhaseStatus, and the SetupWizardShell frame, ported from `OpenClaw.SetupEngine.UI`.
+- **Chat.** ChatBubble, ChatComposer, ChatThread, ComposerPicker, and ChatCopyButton, plus the Reactor chat identity surfaces (AgentIdentityBadge, UserIdentityBadge). See the Chat surface section.
+- **Settings.** SettingsSectionHeader, SettingsCard, SettingsToggleRow, SettingsExpanderRow, and the SettingsWindowShell host frame, ported from `OpenClaw.Tray.WinUI` pages and `HubWindow`.
+
 ## Do's and Don'ts
 
 Do:
