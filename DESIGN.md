@@ -70,6 +70,46 @@ x-colophon:
   version: 1
   tokens:
     $schema: https://agents.design/schema/v1
+    pages:
+      - id: setup
+        name: Setup
+        description: Onboarding controls and wizard compositions.
+        content: Production reference from OpenClaw.SetupEngine.UI. Basic controls remain in Components; these previews compose those shared definitions.
+        components:
+          - SetupProgressIndicator
+          - RecommendedBadge
+          - ProviderArtwork
+          - SetupOptionCard
+          - CapabilityOptionRow
+          - SetupPhaseStatus
+          - SetupWizardShell
+      - id: chat
+        name: Chat
+        description: Chat controls, identity badges, and the main workspace.
+        content: Production reference for Reactor chat and the native Home and Sessions workspace. Includes the workspace connection and notification flyouts. Shared building blocks remain in Components.
+        components:
+          - ComposerPicker
+          - ComposerPickerOptions
+          - ChatBubble
+          - ChatComposer
+          - ChatThread
+          - ChatCopyButton
+          - AgentIdentityBadge
+          - UserIdentityBadge
+          - ConnectionStatusFlyout
+          - NotificationFlyout
+          - WorkspaceShell
+          - ExampleScreen
+      - id: settings
+        name: Settings
+        description: Settings controls, rows, expanders, and window composition.
+        content: Production reference from OpenClaw.Tray.WinUI settings pages and HubWindow. The trailing control owns interaction on static settings cards. Shared building blocks remain in Components.
+        components:
+          - SettingsSectionHeader
+          - SettingsCard
+          - SettingsToggleRow
+          - SettingsExpanderRow
+          - SettingsWindowShell
     meta:
       version: 1
       updatedBy: xaml+manual
@@ -327,7 +367,7 @@ Use the `rounded` tokens for corner radii: `sm` for buttons and inputs, `md` for
 
 ## Chat surface
 
-The chat transcript and composer ship via Reactor and follow the native chat visual system in [`docs/CHAT_VISUAL_DESIGN.md`](../../docs/CHAT_VISUAL_DESIGN.md). They align to the reading rhythm of the released web chat without replacing Windows chrome, native input, or gateway contracts.
+The chat transcript and composer ship via Reactor and follow the native chat visual system in [`docs/CHAT_VISUAL_DESIGN.md`](docs/CHAT_VISUAL_DESIGN.md). They align to the reading rhythm of the released web chat without replacing Windows chrome, native input, or gateway contracts.
 
 - **Semantic brushes.** Chat binds the chat-local resources in `Themes/ChatResources.xaml` (Default/Light/HighContrast), not raw palette hex: `ChatCanvasBrush` (transparent; system window in HC), `ChatComposerBrush` and `ChatCardBrush` (`CardBackgroundFillColorDefault`), `ChatStrokeBrush` (`ControlStrokeColorDefault`), `ChatTextBrush` (`TextFillColorPrimary`), `ChatSecondaryTextBrush` (`TextFillColorSecondary`, used for code text), `ChatUserBrush` (accent at low opacity for the user bubble), `ChatUserTextBrush` (`TextFillColorPrimary`), `ChatPickerAccentBrush` (accent variants for picker triggers), and `ChatCopySuccessBrush` (`SystemFillColorSuccess`).
 - **Surface layering.** The Hub title bar and expanded navigation pane reveal Mica; `NavigationViewContentBackground` supplies one content layer (`LayerFillColorDefaultBrush`; system window in HC). The chat canvas is transparent so it neither hides nor doubles that layer, and the composer and code cards use the card fill above it. The standalone chat window uses the same Mica plus one content layer.
@@ -349,11 +389,13 @@ The landing window is the native Home and Sessions workspace (`Windows/Workspace
 Reuse [component patterns](.agents/design/components.jsonc); these describe design intent, not shipping code.
 Optional click-through flows live in `.agents/design/prototypes.jsonc`.
 
-The catalog is organized into four families. Every interactive control documents its hover and pressed states; static controls say so. States bind Fluent resources (`SubtleFillColorSecondary` for hover, `SubtleFillColorTertiary` for pressed, accent variants for primary actions), never raw hex.
+The catalog is organized into four families. Colophon's left navigation includes dedicated Setup, Chat, and Settings pages, defined by `x-colophon.tokens.pages` above. Each page selects existing component definitions without copying them, so shared component references continue to resolve. Basic controls live under Components. The installed Colophon version also shows the full catalog on that built-in page; it does not support filtering Components down to basic controls.
+
+Every interactive control documents its hover and pressed states; static controls say so. States bind Fluent resources (`SubtleFillColorSecondary` for hover, `SubtleFillColorTertiary` for pressed, accent variants for primary actions), never raw hex.
 
 - **Basic controls.** Button (primary/standard/subtle), SubtleButton (square icon), HyperlinkButton, Field, Badge, ToggleSwitch, StatusDot, Avatar, InfoBar, and Card. The building blocks every other family composes.
 - **Setup.** SetupProgressIndicator, RecommendedBadge, ProviderArtwork, SetupOptionCard, CapabilityOptionRow, SetupPhaseStatus, and the SetupWizardShell frame, ported from `OpenClaw.SetupEngine.UI`.
-- **Chat.** ChatBubble, ChatComposer, ChatThread, ComposerPicker, and ChatCopyButton, plus the Reactor chat identity surfaces (AgentIdentityBadge, UserIdentityBadge). See the Chat surface section.
+- **Chat.** ChatBubble, ChatComposer, ChatThread, ComposerPicker, ComposerPickerOptions, and ChatCopyButton, plus the native workspace identity controls (AgentIdentityBadge, UserIdentityBadge), ConnectionStatusFlyout, NotificationFlyout, WorkspaceShell, and ExampleScreen. See the Chat surface and Workspace shell sections.
 - **Settings.** SettingsSectionHeader, SettingsCard, SettingsToggleRow, SettingsExpanderRow, and the SettingsWindowShell host frame, ported from `OpenClaw.Tray.WinUI` pages and `HubWindow`.
 
 ## Do's and Don'ts
