@@ -1,10 +1,12 @@
 using OpenClaw.Chat;
 using OpenClaw.Shared;
 using OpenClaw.Shared.Telemetry;
+using OpenClaw.TestSupport.Gateway;
 using OpenClawTray.Chat;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
+using System.Security.Cryptography;
 using System.Text.Json;
 
 namespace OpenClaw.Tray.Tests;
@@ -7026,6 +7028,10 @@ public class OpenClawChatDataProviderTests
         });
         for (var i = 0; i < 20 && bridge.SentMessages.Count < 2; i++)
             await Task.Delay(10);
+        await WaitForConditionAsync(() =>
+            GetQueuedMessages(snapshots[^1], "main").Count == 0 &&
+            snapshots[^1].Timelines["main"].Entries.Any(e =>
+                e.Kind == ChatTimelineItemKind.User && e.Text == "second"));
 
         Assert.Equal(new[] { "first", "second" }, bridge.SentMessages);
         Assert.Empty(GetQueuedMessages(snapshots[^1], "main"));
@@ -10972,6 +10978,50 @@ public class OpenClawChatDataProviderTests
     }
 
     [Fact]
+    public async Task ThinkingProfiles_ProjectClearAndInvalidateCapabilitiesAcrossConnections()
+    {
+        var session = MainSession();
+        session.Model = "m";
+        session.Provider = "p";
+        session.ThinkingLevel = "off";
+        var context = new ThinkingContext(new("p", "m", "r"), new([new("off", "Off")], "off"));
+        session.ThinkingContext = context;
+        session.ThinkingDefaults = context;
+        var (bridge, provider, snapshots, _) = CreateProvider([session]);
+        await using (provider)
+        {
+            await provider.LoadAsync();
+            bridge.RaiseStatus(ConnectionStatus.Connected);
+            bridge.RaiseModels(new ModelsListInfo
+            {
+                Models = [new ModelInfo { Id = "m", Provider = "p", ThinkingContext = context }],
+            });
+            var before = snapshots[^1];
+            var thread = Assert.Single(before.Threads);
+            Assert.Equal("off", thread.ThinkingLevel);
+            Assert.Same(context, thread.ThinkingContext);
+            var cleared = session.Clone();
+            cleared.ThinkingLevel = null;
+            bridge.RaiseSessions([cleared]);
+            Assert.Null(Assert.Single(snapshots[^1].Threads).ThinkingLevel);
+            Assert.Equal("off", thread.ThinkingLevel);
+            Assert.Same(context.Profile, ChatThinkingProfile.Resolve(
+                Assert.Single(snapshots[^1].Threads), snapshots[^1].ModelChoices));
+            await provider.SetModelAsync("main", "p/new");
+            Assert.Empty(bridge.PatchedThinkingLevels);
+            Assert.Empty(bridge.ClearedThinkingLevelKeys);
+            bridge.RaiseStatus(ConnectionStatus.Disconnected);
+            bridge.RaiseStatus(ConnectionStatus.Connected);
+            var reconnected = snapshots[^1];
+            Assert.Null(Assert.Single(reconnected.Threads).ThinkingContext);
+            Assert.Null(Assert.Single(reconnected.Threads).ThinkingDefaults);
+            Assert.Null(Assert.Single(reconnected.ModelChoices!).ThinkingContext);
+            Assert.Null(ChatThinkingProfile.Resolve(Assert.Single(reconnected.Threads), reconnected.ModelChoices));
+            Assert.Same(context, thread.ThinkingContext);
+        }
+    }
+
+    [Fact]
     public async Task SetThinkingLevelAsync_ForwardsConcreteLevelToBridge()
     {
         var (bridge, provider, _, _) = CreateProvider(new[] { MainSession() });
@@ -14068,6 +14118,35 @@ public class OpenClawChatDataProviderTests
     }
 
     [Fact]
+    public async Task RespondToPermissionAsync_UnreviewableCommandBlocksDirectAllowButPermitsDeny()
+    {
+        var (bridge, provider, snapshots, _) = CreateProvider(new[] { MainSession() });
+        await provider.LoadAsync();
+        bridge.RaiseAgent(MakeAgentEvent("approval", JsonSerializer.Serialize(new
+        {
+            phase = "requested",
+            approvalId = "appr-unsafe-1",
+            command = new string('x', 20 * 1024),
+        })));
+
+        var pending = snapshots[^1].Timelines["main"].PendingPermission;
+        Assert.NotNull(pending);
+        Assert.Equal([ChatPermissionActionKeys.Deny], pending.Actions);
+
+        await provider.RespondToPermissionAsync("main", "appr-unsafe-1", allow: true);
+        await provider.RespondToPermissionAsync("main", "appr-unsafe-1", ChatPermissionActionKeys.AllowAlways);
+
+        Assert.Empty(bridge.ResolvedApprovals);
+        Assert.Equal("appr-unsafe-1", snapshots[^1].Timelines["main"].PendingPermission?.RequestId);
+
+        await provider.RespondToPermissionAsync("main", "appr-unsafe-1", allow: false);
+
+        Assert.Single(bridge.ResolvedApprovals);
+        Assert.Equal(ChatPermissionActionKeys.Deny, bridge.ResolvedApprovals[0].Decision);
+        Assert.Null(snapshots[^1].Timelines["main"].PendingPermission);
+    }
+
+    [Fact]
     public async Task RespondToPermissionAsync_RpcThrows_BannerPreservedForRetry()
     {
         // Critical contract: if ResolveExecApprovalAsync throws (e.g. gateway
@@ -14346,6 +14425,97 @@ public class OpenClawChatDataProviderTests
             Assert.Equal(0, snapshot.TimelineGenerations!.GetValueOrDefault("main"));
             Assert.Empty(GetQueuedMessages(snapshot, "main"));
         }
+    }
+
+    [Fact]
+    public async Task RespondToPermissionAsync_SupersededRequestBlocksStaleAllow()
+    {
+        var (bridge, provider, snapshots, _) = CreateProvider(new[] { MainSession() });
+        await provider.LoadAsync();
+        bridge.RaiseAgent(MakeApprovalRequestedEvent("appr-stale-1"));
+        bridge.RaiseAgent(MakeApprovalRequestedEvent("appr-current-2"));
+
+        await provider.RespondToPermissionAsync("main", "appr-stale-1", allow: true);
+
+        Assert.Empty(bridge.ResolvedApprovals);
+        Assert.Equal("appr-current-2", snapshots[^1].Timelines["main"].PendingPermission?.RequestId);
+
+        await provider.RespondToPermissionAsync("main", "appr-current-2", allow: true);
+
+        var resolved = Assert.Single(bridge.ResolvedApprovals);
+        Assert.Equal("appr-current-2", resolved.Id);
+        Assert.Equal(ChatPermissionActionKeys.AllowOnce, resolved.Decision);
+        Assert.Null(snapshots[^1].Timelines["main"].PendingPermission);
+    }
+
+    [Fact]
+    public async Task RespondToPermissionAsync_StaleAllowStopsBeforeProductionWebSocketIo()
+    {
+        var token = Convert.ToHexString(RandomNumberGenerator.GetBytes(32));
+        await using var server = await FixtureGatewayServer.StartAsync(GatewayScenario.CreateBrowse(), token);
+        using var identity = new OpenClaw.TestSupport.TempDirectory();
+        using var client = new OpenClawGatewayClient(
+            server.Endpoint.AbsoluteUri,
+            token,
+            NullLogger.Instance,
+            identityPath: identity.Path,
+            ignoreStoredDeviceToken: true,
+            persistHandshakeDeviceTokens: false);
+        var handshake = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        client.HandshakeSucceeded += (_, _) => handshake.TrySetResult();
+        await client.ConnectAsync();
+        await handshake.Task.WaitAsync(TimeSpan.FromSeconds(10));
+
+        using var bridge = new GatewayClientChatBridge(client);
+        var snapshots = new List<ChatDataSnapshot>();
+        await using var provider = new OpenClawChatDataProvider(bridge);
+        provider.Changed += (_, args) => snapshots.Add(args.Snapshot);
+        await provider.LoadAsync();
+        string? PendingPermissionId() =>
+            snapshots.LastOrDefault() is { } snapshot
+            && snapshot.Timelines.TryGetValue(GatewayScenario.MainSessionKey, out var timeline)
+                ? timeline.PendingPermission?.RequestId
+                : null;
+
+        await server.PublishAgentEventAsync(GatewayScenario.MainSessionKey, new
+        {
+            phase = "requested",
+            approvalId = "fixture-stale-provider",
+            command = "echo stale",
+        });
+        await WaitForConditionAsync(() => PendingPermissionId() == "fixture-stale-provider");
+        await server.PublishAgentEventAsync(GatewayScenario.MainSessionKey, new
+        {
+            phase = "requested",
+            approvalId = "fixture-current-provider",
+            command = "echo current",
+        });
+        await WaitForConditionAsync(() => PendingPermissionId() == "fixture-current-provider");
+
+        await provider.RespondToPermissionAsync(
+            GatewayScenario.MainSessionKey,
+            "fixture-stale-provider",
+            allow: true);
+        await Task.Delay(100);
+
+        Assert.DoesNotContain(
+            server.Requests,
+            request => request.Method == "exec.approval.resolve"
+                && request.ApprovalId == "fixture-stale-provider");
+        Assert.Equal(
+            "fixture-current-provider",
+            PendingPermissionId());
+
+        await provider.RespondToPermissionAsync(
+            GatewayScenario.MainSessionKey,
+            "fixture-current-provider",
+            allow: true);
+        var resolved = await server.WaitForCompletedRequestAsync("exec.approval.resolve");
+
+        Assert.Equal("fixture-current-provider", resolved.ApprovalId);
+        Assert.Equal("allow-once", resolved.Decision);
+        Assert.Equal("ok", resolved.Outcome);
+        await client.DisconnectAsync();
     }
 
     [Fact]

@@ -32,6 +32,8 @@ public interface IOperatorGatewayClient
     event EventHandler<DevicePairingListInfo>? DevicePairListUpdated;
     event EventHandler<ModelsListInfo>? ModelsListUpdated;
     event EventHandler<PresenceEntry[]>? PresenceUpdated;
+    /// <summary>The authenticated profile changed; consumers should reload users.self.</summary>
+    event EventHandler? SelfProfileChanged { add { } remove { } }
     event EventHandler<JsonElement>? AgentsListUpdated;
     event EventHandler<JsonElement>? AgentFilesListUpdated;
     event EventHandler<JsonElement>? AgentFileContentUpdated;
@@ -39,6 +41,7 @@ public interface IOperatorGatewayClient
 
     // ─── Query ───
     string? OperatorDeviceId { get; }
+    string? AuthenticatedSigningDeviceId => null;
     IReadOnlyList<string> GrantedOperatorScopes { get; }
     bool IsConnectedToGateway { get; }
     /// <summary>Canonical main session key resolved from hello-ok; <c>null</c> until handshake.</summary>
@@ -138,6 +141,12 @@ public interface IOperatorGatewayClient
     Task<bool> StopChannelAsync(string channelName);
     /// <summary>Fetch the rich channels.status snapshot from the gateway. Mac/web canonical wire method.</summary>
     Task<ChannelsStatusSnapshot?> GetChannelsStatusAsync(bool probe = false, int timeoutMs = 12000);
+    /// <summary>
+    /// Fetches the Gateway's effective update track (<c>update.status</c>).
+    /// Older Gateway client implementations return no status.
+    /// </summary>
+    Task<GatewayUpdateStatus?> GetUpdateStatusAsync(int timeoutMs = 5000) =>
+        Task.FromResult<GatewayUpdateStatus?>(null);
     /// <summary>Log out / unlink a channel (whatsapp, telegram). Sends channels.logout { channel }.</summary>
     Task<bool> LogoutChannelAsync(string channelName, int timeoutMs = 12000);
     /// <summary>Begin a QR linking flow (whatsapp, signal). Sends web.login.start { force, timeoutMs }.</summary>

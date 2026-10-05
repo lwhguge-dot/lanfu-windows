@@ -60,12 +60,30 @@ public sealed class InstallerIssAssertionTests
             @"Name: ""{group}\OpenClaw Chat""; Filename: ""{app}\{#MyAppExeName}""; Parameters: ""{#MyProtocol}://chat""; IconFilename: ""{app}\{#MyAppExeName}""; AppUserModelID: ""{#MyAppAumid}""",
             @"Name: ""{group}\Check for Updates""; Filename: ""{app}\{#MyAppExeName}""; Parameters: ""{#MyProtocol}://check-updates""; IconFilename: ""{app}\{#MyAppExeName}""; AppUserModelID: ""{#MyAppAumid}""",
             @"Name: ""{autodesktop}\{#MyAppName}""; Filename: ""{app}\{#MyAppExeName}""; Tasks: desktopicon; AppUserModelID: ""{#MyAppAumid}""",
-            @"Name: ""{userstartup}\{#MyAppName}""; Filename: ""{app}\{#MyAppExeName}""; Tasks: startupicon; AppUserModelID: ""{#MyAppAumid}"""
+            @"Name: ""{userstartup}\{#MyAppName}""; Filename: ""{app}\{#MyAppExeName}""; Parameters: ""--background""; Tasks: startupicon; AppUserModelID: ""{#MyAppAumid}"""
         })
         {
             Assert.Contains(iconEntry, iss);
         }
         Assert.DoesNotContain("AppUserModelID: \"OpenClaw.Tray.WinUI\"", iss);
+    }
+
+    [Fact]
+    public void Installer_MigratesOnlyOwnedArgumentFreeAutostartWithoutEnablingTasks()
+    {
+        var iss = File.ReadAllText(Path.Combine(TestRepositoryPaths.GetRepositoryRoot(), "installer.iss"));
+        var start = iss.IndexOf("procedure MigrateLegacyBackgroundLaunch;", StringComparison.Ordinal);
+        var end = iss.IndexOf("procedure EnsureLocalGatewayCleanupChoice;", start, StringComparison.Ordinal);
+        var migration = iss[start..end];
+        Assert.Contains("CompareText(RemoveQuotes(RunCommand), ExecutablePath) = 0", migration);
+        Assert.Contains("Task.Definition.Actions.Count <> 1", migration);
+        Assert.Contains("CompareText(RemoveQuotes(ActionPath), ExecutablePath) <> 0", migration);
+        Assert.Contains("(Trim(ActionArguments) <> '')", migration);
+        Assert.Contains("'/Change /TN '", migration);
+        Assert.Contains("--background", migration);
+        Assert.DoesNotContain("/Create", migration);
+        Assert.DoesNotContain("/ENABLE", migration);
+        Assert.Contains("CurStep = ssPostInstall", migration);
     }
 
     [Fact]
@@ -79,7 +97,7 @@ public sealed class InstallerIssAssertionTests
         Assert.Contains("UninstallSilent()", iss);
         Assert.Contains("LocalGatewayCleanupRequested := True", iss);
         Assert.Contains("{#MyDistroName} WSL distro", iss);
-        Assert.Contains("MB_YESNO", iss);
+        Assert.Contains("MB_YESNO or MB_DEFBUTTON2", iss);
         Assert.Contains("ExpandConstant('{sys}\\WindowsPowerShell\\v1.0\\powershell.exe')", iss);
         Assert.Contains("ewWaitUntilTerminated", iss);
         Assert.Contains("MB_RETRYCANCEL", iss);
@@ -361,9 +379,9 @@ public sealed class InstallerIssAssertionTests
         Assert.Contains(@"<AppxManifest Remove=""@(AppxManifest)"" />", project);
         Assert.DoesNotContain("PatchDevAppxManifestIdentity", project);
         Assert.Contains("Version=\"0.0.0.0\"", manifest);
-        Assert.Contains("Name=\"OpenClaw.Companion\"", manifest);
+        Assert.Contains("Name=\"OpenClawFoundation.OpenClaw\"", manifest);
         Assert.Contains("<uap:Protocol Name=\"openclaw\">", manifest);
-        Assert.DoesNotContain("OpenClaw.Companion.Dev", manifest);
+        Assert.DoesNotContain("OpenClawFoundation.OpenClaw.Dev", manifest);
     }
 
     [Fact]

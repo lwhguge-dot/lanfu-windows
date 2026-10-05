@@ -46,11 +46,28 @@ public sealed partial class CompletePage : Page
                 LocalAiSummaryCard.Visibility = review.LocalAiEnabled ? Visibility.Visible : Visibility.Collapsed;
                 if (review.LocalAiEnabled)
                 {
-                    LocalAiSummaryTitle.Text = review.LocalAiTitle ?? "Local AI verified";
+                    LocalAiSummaryTitle.Text = review.LocalAiTitle ?? "Local AI installed";
                     LocalAiSummaryDescription.Text = review.LocalAiDescription ??
                         "The native llama-server router is ready. The model loads on the first request.";
                     SubtitleText.Text = "OpenClaw and Local AI are ready";
                     LaunchButton.Content = "Open chat";
+                }
+                if (args.NativeGatewayUrl is { } nativeUrl)
+                {
+                    // The normal connection manager starts the runtime and pairs the node
+                    // after this handoff. Completed setup is not a live node connection.
+                    GatewaySummaryTitle.Text = SetupLocalization.GetString("Onboarding_Native_ConfiguredTitle");
+                    GatewaySummaryText.Text = nativeUrl;
+                    DevicePairedSummaryCard.Visibility = Visibility.Collapsed;
+                    LocalAiSummaryCard.Visibility = Visibility.Collapsed;
+                    CapabilitySummaryText.Text = SetupLocalization.Format(
+                        "Onboarding_Native_CapabilitySummary", args.NativeCapabilitySummary);
+                    NativeFeaturesNote.Visibility = Visibility.Visible;
+                    NodeModeBanner.Visibility = Visibility.Collapsed;
+                    SubtitleText.Text = SetupLocalization.Format("Onboarding_Native_Configured", nativeUrl);
+                    SubtitleText.TextWrapping = TextWrapping.Wrap;
+                    SubtitleText.TextAlignment = TextAlignment.Center;
+                    LaunchButton.Content = SetupLocalization.GetString("Onboarding_Native_Open.Content");
                 }
             }
             else
@@ -75,7 +92,6 @@ public sealed partial class CompletePage : Page
                     HelpLink.Visibility = Visibility.Collapsed;
                     FallbackButton.Visibility = Visibility.Collapsed;
                     LaunchButton.Visibility = Visibility.Collapsed;
-                    StepIndicator.Visibility = Visibility.Collapsed;
                     RestartLaterButton.Visibility = Visibility.Visible;
                     RestartNowButton.Visibility = Visibility.Visible;
                     return;

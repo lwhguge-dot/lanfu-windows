@@ -124,12 +124,17 @@ internal sealed partial class ChatComposerController : IDisposable
     /// <summary>Handles a session-picker selection. Reuses the same handoff delegate
     /// the lifecycle "/new" flow uses to select a freshly created session. No-ops
     /// after disposal.</summary>
-    public void SelectChannel(string threadId)
-    {
-        if (_disposed)
-            return;
+    public void SelectChannel(string threadId) => TrySelectChannel(threadId);
 
-        _selectedSessionHandoff?.Invoke(threadId);
+    /// <summary>Returns false until the root is ready, or after disposal, so an
+    /// external host can retain its initial-selection handoff instead.</summary>
+    internal bool TrySelectChannel(string threadId)
+    {
+        if (_disposed || _selectedSessionHandoff is null)
+            return false;
+
+        _selectedSessionHandoff(threadId);
+        return true;
     }
 
     /// <summary>Full composer send workflow: local admission first, snapshot of draft
@@ -290,9 +295,7 @@ internal sealed partial class ChatComposerController : IDisposable
 
     public void SetModel(string model)
     {
-        if (_disposed)
-            return;
-        if (_vm.Inputs?.CurrentThread.Id is not { } threadId)
+        if (!TryGetSessionOptionThread(out var threadId))
             return;
 
         FireAndForget(_ => _port.SetModelAsync(threadId, model, _lifetimeToken));
@@ -300,9 +303,7 @@ internal sealed partial class ChatComposerController : IDisposable
 
     public void ClearModel()
     {
-        if (_disposed)
-            return;
-        if (_vm.Inputs?.CurrentThread.Id is not { } threadId)
+        if (!TryGetSessionOptionThread(out var threadId))
             return;
 
         FireAndForget(_ => _port.ClearModelAsync(threadId, _lifetimeToken));
@@ -310,22 +311,37 @@ internal sealed partial class ChatComposerController : IDisposable
 
     public void SetThinkingLevel(string level)
     {
-        if (_disposed)
+        if (!TryGetSessionOptionThread(out var threadId))
             return;
-        if (_vm.Inputs?.CurrentThread.Id is not { } threadId)
+        if (_vm.Inputs?.ThinkingProfile?.Levels?.Any(option => option.Id == level) != true)
+        {
+            System.Diagnostics.Trace.WriteLine("[chat] Thinking change ignored because the current profile does not advertise that choice.");
             return;
+        }
 
         FireAndForget(_ => _port.SetThinkingLevelAsync(threadId, level, _lifetimeToken));
     }
 
     public void ClearThinkingLevel()
     {
-        if (_disposed)
-            return;
-        if (_vm.Inputs?.CurrentThread.Id is not { } threadId)
+        if (!TryGetSessionOptionThread(out var threadId))
             return;
 
         FireAndForget(_ => _port.ClearThinkingLevelAsync(threadId, _lifetimeToken));
+    }
+
+    private bool TryGetSessionOptionThread(out string threadId)
+    {
+        threadId = string.Empty;
+        if (_disposed || _vm.Inputs is not { } inputs)
+            return false;
+        if (!inputs.CanChangeSessionOptions)
+        {
+            System.Diagnostics.Trace.WriteLine("[chat] Session option change ignored while disconnected or message options are disabled.");
+            return false;
+        }
+        threadId = inputs.CurrentThread.Id;
+        return true;
     }
 
     /// <summary>Requests a command-catalog refresh. Assigns a monotonic operation ID

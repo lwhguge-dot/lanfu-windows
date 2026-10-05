@@ -28,7 +28,9 @@ public sealed record OpenClawReactorChatRootProps(
     Func<string, Task>? OnReadAloud = null,
     Action? OnStopSpeaking = null,
     Action<string>? OnOpenCheckpoints = null,
-    bool IsCompact = false);
+    bool IsCompact = false,
+    Func<string, bool>? TryCopyText = null,
+    bool ShowSessionPicker = true);
 
 /// <summary>
 /// Production Reactor root for the native chat surface. It owns the provider
@@ -299,7 +301,8 @@ public sealed class OpenClawReactorChatRoot : Component<OpenClawReactorChatRootP
             onSuggestionPicked,
             firstSendInFlight,
             OnOpenCheckpoints: props.OnOpenCheckpoints,
-            HistoryRevision: historyRevision));
+            HistoryRevision: historyRevision,
+            TryCopyText: props.TryCopyText));
 
         Element composerElement;
         if (effectiveThread is null)
@@ -324,7 +327,8 @@ public sealed class OpenClawReactorChatRoot : Component<OpenClawReactorChatRootP
                 composerInputs,
                 snapshot,
                 () => setScrollToBottomToken(scrollToBottomToken + 1),
-                props.IsCompact));
+                props.IsCompact,
+                props.ShowSessionPicker));
         }
 
         return Grid(
@@ -332,6 +336,7 @@ public sealed class OpenClawReactorChatRoot : Component<OpenClawReactorChatRootP
             [GridSize.Star(), GridSize.Auto],
             timelineElement.Grid(row: 0),
             composerElement.Grid(row: 1))
+            .Background(Theme.Ref("ChatCanvasBrush"))
             .HAlign(HorizontalAlignment.Stretch)
             .VAlign(VerticalAlignment.Stretch);
     }

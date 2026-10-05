@@ -182,260 +182,57 @@ public class LocalInferenceQualificationTests
             LocalInferenceEligibility.Evaluate(Probe(reader)).SelectionFailureCode);
     }
 
-    [Fact]
-    public void CudaProbe_CapsReportedCapacityAtDedicatedDeviceMemory()
+    [Theory]
+    [InlineData(RuntimeArchitecture.X64)]
+    [InlineData(RuntimeArchitecture.Arm64)]
+    public void CudaProbe_Qualifies48GbRtxSparkWithoutCappingAtIts16GbCarveout(
+        RuntimeArchitecture architecture)
     {
-        // The recorded DGX Spark case: CUDA advertises about 46 GiB because it
-        // surfaces the WDDM shared host pool, while only about 15.9 GiB of real
-        // device memory backs llama-server allocations.
-        GpuInfo gpu = Assert.Single(Probe(DgxSparkReader(), DgxSparkAdapter(12_000L * MiB)).Gpus);
+        var reader = new StubCudaDeviceReader
+        {
+            Name = "NVIDIA RTX Spark N1X",
+            Memory = (46_114L * MiB, 46_332L * MiB),
+        };
+        HostHardwareInfo hardware = Probe(reader) with { CpuArchitecture = architecture };
 
-        Assert.Equal(16_320L * MiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(12_000L * MiB, gpu.FreeGpuVisibleMemoryBytes);
+        GpuInfo gpu = Assert.Single(hardware.Gpus);
+        Assert.Equal(46_332L * MiB, gpu.GpuVisibleMemoryBytes);
+        Assert.Equal(46_114L * MiB, gpu.FreeGpuVisibleMemoryBytes);
+        Assert.Null(gpu.SharedGpuMemoryBytes);
+
+        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(hardware);
+        Assert.Equal(LocalInferenceEligibilityStatus.Eligible, result.Status);
+        Assert.Equal(46_332L * MiB, result.DetectedTotalMemoryBytes);
+        Assert.Equal(46_114L * MiB, result.AvailableFreeMemoryBytes);
+    }
+
+    [Theory]
+    [InlineData(15_061L, 16_375L)]
+    [InlineData(0L, 46_332L)]
+    [InlineData(30_720L, 49_152L)]
+    public void CudaProbe_UsesCudaTotalAndFreeMemoryWithoutOtherMemorySources(long freeMiB, long totalMiB)
+    {
+        var reader = new StubCudaDeviceReader { Memory = (freeMiB * MiB, totalMiB * MiB) };
+
+        GpuInfo gpu = Assert.Single(Probe(reader).Gpus);
+
+        Assert.Equal(totalMiB * MiB, gpu.GpuVisibleMemoryBytes);
+        Assert.Equal(freeMiB * MiB, gpu.FreeGpuVisibleMemoryBytes);
         Assert.Null(gpu.SharedGpuMemoryBytes);
     }
 
     [Fact]
-    public void Evaluate_DoesNotQualifyAnyModelOnTheRecordedDgxSparkCapacity()
+    public void CudaProbe_MissingCudaMemoryKeepsIdentifiedDeviceRetryable()
     {
-        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
-            Probe(DgxSparkReader(), DgxSparkAdapter(12_000L * MiB)));
-
-        Assert.Equal(LocalInferenceEligibilityStatus.Unsupported, result.Status);
-        Assert.Equal(LocalInferenceEligibilityFailureCode.InsufficientGpuMemory, result.FailureCode);
-    }
-
-    [Fact]
-    public void CudaProbe_PrefersTheAdapterBudgetOverCudaFreeMemory()
-    {
-        // CUDA reports 46,114 MiB free while the adapter's local budget says only
-        // 4,000 MiB remains. Trusting the CUDA figure would claim the whole
-        // dedicated segment is free and launch straight into an out-of-memory.
-        GpuInfo gpu = Assert.Single(Probe(DgxSparkReader(), DgxSparkAdapter(4_000L * MiB)).Gpus);
-
-        Assert.Equal(4_000L * MiB, gpu.FreeGpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_FallsBackToCudaFreeMemoryWhenNoAdapterBudgetIsAvailable()
-    {
-        HostHardwareInfo hardware = Probe(DgxSparkReader(), DgxSparkAdapter(availableLocalBytes: null));
+        HostHardwareInfo hardware = Probe(new StubCudaDeviceReader { Memory = null });
 
         GpuInfo gpu = Assert.Single(hardware.Gpus);
-        Assert.Equal(16_320L * MiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(16_320L * MiB, gpu.FreeGpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_KeepsCapacityWhenCudaTotalSlightlyExceedsTheDedicatedBound()
-    {
-        // A discrete adapter normally reports a slightly larger CUDA total than
-        // DXGI dedicated. That small gap must not blank out capacity.
-        var reader = new StubCudaDeviceReader { DeviceCount = 1, Memory = (15_061L * MiB, 16_375L * MiB) };
-        var adapter = new StubDedicatedMemoryProbe(
-            StubCudaDeviceReader.StubLuid,
-            new GpuAdapterMemory(16_045L * MiB, 15_000L * MiB));
-
-        GpuInfo gpu = Assert.Single(Probe(reader, adapter).Gpus);
-
-        Assert.Equal(16_045L * MiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(15_000L * MiB, gpu.FreeGpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_NeverRaisesCapacityAboveTheCudaReportedTotal()
-    {
-        var reader = new StubCudaDeviceReader { DeviceCount = 1, Memory = (8 * GiB, 12 * GiB) };
-        var adapter = new StubDedicatedMemoryProbe(
-            StubCudaDeviceReader.StubLuid,
-            new GpuAdapterMemory(24 * GiB, 8 * GiB));
-
-        GpuInfo gpu = Assert.Single(Probe(reader, adapter).Gpus);
-
-        Assert.Equal(12 * GiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(8 * GiB, gpu.FreeGpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_LeavesCapacityUnknownWhenNoDedicatedBoundIsAvailable()
-    {
-        var reader = new StubCudaDeviceReader { DeviceCount = 1, Memory = (46 * GiB, 46 * GiB) };
-
-        HostHardwareInfo hardware = Probe(reader, new StubDedicatedMemoryProbe(), new StubNvmlMemoryProbe());
-
-        GpuInfo gpu = Assert.Single(hardware.Gpus);
+        Assert.Equal("GPU-stub", gpu.StableId);
         Assert.Null(gpu.GpuVisibleMemoryBytes);
+        Assert.Null(gpu.FreeGpuVisibleMemoryBytes);
         Assert.Equal(
             LocalInferenceEligibilityFailureCode.HardwareFactsIncomplete,
             LocalInferenceEligibility.Evaluate(hardware).FailureCode);
-    }
-
-    [Fact]
-    public void CudaProbe_FallsBackToNvmlWhenNoDxgiAdapterDescribesTheDevice()
-    {
-        // The DGX Spark shape: CUDA advertises about 46 GiB, DXGI supplies no
-        // usable adapter, and NVML reports the 16,320 MiB that actually backs
-        // device allocations.
-        HostHardwareInfo hardware = Probe(
-            DgxSparkReader(),
-            new StubDedicatedMemoryProbe(),
-            NvmlSpark(15_000L * MiB));
-
-        GpuInfo gpu = Assert.Single(hardware.Gpus);
-        Assert.Equal(16_320L * MiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(15_000L * MiB, gpu.FreeGpuVisibleMemoryBytes);
-        Assert.Equal(
-            LocalInferenceEligibilityFailureCode.InsufficientGpuMemory,
-            LocalInferenceEligibility.Evaluate(hardware).FailureCode);
-    }
-
-    [Fact]
-    public void CudaProbe_FallsBackToNvmlWhenTheAdapterLuidCannotBeRead()
-    {
-        // A TCC or headless CUDA device has no DXGI adapter LUID at all, and
-        // must stay supported rather than becoming permanently incomplete.
-        var reader = new StubCudaDeviceReader
-        {
-            DeviceCount = 1,
-            Luid = null,
-            Memory = (30 * GiB, 48 * GiB),
-        };
-        var nvml = new StubNvmlMemoryProbe("GPU-stub", new GpuAdapterMemory(48 * GiB, 30 * GiB));
-
-        GpuInfo gpu = Assert.Single(Probe(reader, new StubDedicatedMemoryProbe(), nvml).Gpus);
-
-        Assert.Equal(48 * GiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(30 * GiB, gpu.FreeGpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_FallsBackToNvmlWhenTheAdapterReportsZeroDedicatedMemory()
-    {
-        // A true UMA adapter can report no dedicated video memory through DXGI.
-        var reader = new StubCudaDeviceReader { DeviceCount = 1, Memory = (40 * GiB, 46 * GiB) };
-        var dxgi = new StubDedicatedMemoryProbe(
-            StubCudaDeviceReader.StubLuid,
-            new GpuAdapterMemory(DedicatedVideoMemoryBytes: 0, AvailableLocalBytes: 0));
-        var nvml = new StubNvmlMemoryProbe("GPU-stub", new GpuAdapterMemory(20 * GiB, 18 * GiB));
-
-        GpuInfo gpu = Assert.Single(Probe(reader, dxgi, nvml).Gpus);
-
-        Assert.Equal(20 * GiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(18 * GiB, gpu.FreeGpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_PrefersTheDxgiBoundOverNvmlWhenBothDescribeTheDevice()
-    {
-        // Two sources answer different questions, so the conservative value wins
-        // and the decision cannot depend on which source resolved.
-        var reader = new StubCudaDeviceReader { DeviceCount = 1, Memory = (15_061L * MiB, 16_375L * MiB) };
-        var dxgi = new StubDedicatedMemoryProbe(
-            StubCudaDeviceReader.StubLuid,
-            new GpuAdapterMemory(16_045L * MiB, 15_277L * MiB));
-        var nvml = new StubNvmlMemoryProbe("GPU-stub", new GpuAdapterMemory(16_376L * MiB, 8_889L * MiB));
-
-        GpuInfo gpu = Assert.Single(Probe(reader, dxgi, nvml).Gpus);
-
-        Assert.Equal(16_045L * MiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(8_889L * MiB, gpu.FreeGpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_TakesTheSmallerDedicatedBoundWhenSourcesDisagree()
-    {
-        var reader = new StubCudaDeviceReader { DeviceCount = 1, Memory = (40 * GiB, 46 * GiB) };
-        var dxgi = new StubDedicatedMemoryProbe(
-            StubCudaDeviceReader.StubLuid,
-            new GpuAdapterMemory(24 * GiB, 20 * GiB));
-        var nvml = new StubNvmlMemoryProbe("GPU-stub", new GpuAdapterMemory(16 * GiB, 14 * GiB));
-
-        GpuInfo gpu = Assert.Single(Probe(reader, dxgi, nvml).Gpus);
-
-        Assert.Equal(16 * GiB, gpu.GpuVisibleMemoryBytes);
-        Assert.Equal(14 * GiB, gpu.FreeGpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_JoinsTheNvmlBoundCaseInsensitivelyAcrossMultipleDevices()
-    {
-        var reader = new StubCudaDeviceReader
-        {
-            DeviceCount = 2,
-            UuidByDevice = device => device == 0 ? "GPU-AAAA" : "GPU-BBBB",
-            Memory = (40 * GiB, 46 * GiB),
-            Luid = null,
-        };
-        var nvml = new StubNvmlMemoryProbe(
-            ("gpu-bbbb", new GpuAdapterMemory(20 * GiB, 18 * GiB)),
-            ("gpu-aaaa", new GpuAdapterMemory(12 * GiB, 10 * GiB)));
-
-        HostHardwareInfo hardware = Probe(reader, new StubDedicatedMemoryProbe(), nvml);
-
-        Assert.Equal(12 * GiB, hardware.Gpus[0].GpuVisibleMemoryBytes);
-        Assert.Equal(20 * GiB, hardware.Gpus[1].GpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_NvmlBoundIsJoinedByDeviceIdentityNotOrdinal()
-    {
-        var reader = new StubCudaDeviceReader
-        {
-            DeviceCount = 1,
-            Uuid = "GPU-actual",
-            Memory = (40 * GiB, 46 * GiB),
-        };
-        var nvml = new StubNvmlMemoryProbe("GPU-different", new GpuAdapterMemory(20 * GiB, 18 * GiB));
-
-        GpuInfo gpu = Assert.Single(Probe(reader, new StubDedicatedMemoryProbe(), nvml).Gpus);
-
-        Assert.Null(gpu.GpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void CudaProbe_LeavesCapacityUnknownWhenTheNvmlProbeAlsoThrows()
-    {
-        var reader = new StubCudaDeviceReader { DeviceCount = 1 };
-
-        GpuInfo gpu = Assert.Single(
-            Probe(reader, new ThrowingDedicatedMemoryProbe(), new ThrowingNvmlMemoryProbe()).Gpus);
-
-        Assert.Equal(GpuVendor.Nvidia, gpu.Vendor);
-        Assert.Null(gpu.GpuVisibleMemoryBytes);
-    }
-
-    [Fact]
-    public void NvmlProbe_LoadsOnlyFullyQualifiedDriverOwnedLibraries()
-    {
-        string[] allowedRoots =
-        [
-            Path.Combine(Environment.SystemDirectory, "nvml.dll"),
-            Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
-                "NVIDIA Corporation",
-                "NVSMI",
-                "nvml.dll"),
-        ];
-
-        IReadOnlyList<string> candidates = NvmlDedicatedMemoryProbe.GetNvmlLibraryCandidates();
-
-        Assert.NotEmpty(candidates);
-        Assert.All(candidates, candidate =>
-        {
-            Assert.True(Path.IsPathFullyQualified(candidate));
-            Assert.Contains(candidate, allowedRoots, StringComparer.OrdinalIgnoreCase);
-        });
-    }
-
-    [Fact]
-    public void CudaProbe_LeavesCapacityUnknownWhenTheDedicatedMemoryProbeThrows()
-    {
-        var reader = new StubCudaDeviceReader { DeviceCount = 1 };
-
-        GpuInfo gpu = Assert.Single(Probe(reader, new ThrowingDedicatedMemoryProbe()).Gpus);
-
-        Assert.Equal(GpuVendor.Nvidia, gpu.Vendor);
-        Assert.Null(gpu.GpuVisibleMemoryBytes);
     }
 
     [Fact]
@@ -468,52 +265,16 @@ public class LocalInferenceQualificationTests
         Assert.Equal("GPU-capable", result.SelectedGpu?.StableId);
     }
 
-    [Theory]
-    [InlineData(0x00018980u, 0, "8089010000000000")]
-    [InlineData(0x00018980u, 0x0000007F, "808901007F000000")]
-    [InlineData(0xFFFFFFFFu, -1, "FFFFFFFFFFFFFFFF")]
-    [InlineData(0x00000000u, int.MinValue, "0000000000000080")]
-    public void DxgiLuid_MatchesTheSignedCudaAdapterLuidEncoding(
-        uint lowPart,
-        int highPart,
-        string cudaLuidHex)
-    {
-        Assert.Equal(
-            BitConverter.ToInt64(Convert.FromHexString(cudaLuidHex)),
-            DxgiDedicatedMemoryProbe.ToLuid(lowPart, highPart));
-    }
-
-    private static StubCudaDeviceReader DgxSparkReader() =>
-        new() { DeviceCount = 1, Memory = (46_114L * MiB, 46_332L * MiB) };
-
-    private static StubDedicatedMemoryProbe DgxSparkAdapter(long? availableLocalBytes) =>
-        new(StubCudaDeviceReader.StubLuid, new GpuAdapterMemory(16_320L * MiB, availableLocalBytes));
-
-    private static StubNvmlMemoryProbe NvmlSpark(long? freeBytes) =>
-        new("GPU-stub", new GpuAdapterMemory(16_320L * MiB, freeBytes));
-
-    private static HostHardwareInfo Probe(
-        ICudaDeviceReader reader,
-        IGpuDedicatedMemoryProbe? dedicatedMemoryProbe = null,
-        INvmlDedicatedMemoryProbe? nvmlMemoryProbe = null) =>
-        new CudaHostHardwareProbe(
-            reader,
-            dedicatedMemoryProbe ?? new StubDedicatedMemoryProbe(
-                StubCudaDeviceReader.StubLuid,
-                new GpuAdapterMemory(32 * GiB, 32 * GiB)),
-            nvmlMemoryProbe ?? new StubNvmlMemoryProbe())
-            .Probe();
+    private static HostHardwareInfo Probe(ICudaDeviceReader reader) =>
+        new CudaHostHardwareProbe(reader).Probe();
 
     private sealed class StubCudaDeviceReader : ICudaDeviceReader
     {
-        internal const long StubLuid = 0x18980;
-
         public CudaDriverAvailability Availability { get; init; } = CudaDriverAvailability.Ready;
         public int? DeviceCount { get; init; } = 1;
         public int? DeviceHandle { get; init; } = 0;
         public string? Name { get; init; } = "NVIDIA GeForce RTX 5090";
         public string? Uuid { get; init; } = "GPU-stub";
-        public long? Luid { get; init; } = StubLuid;
         public (long FreeBytes, long TotalBytes)? Memory { get; init; } = (32 * GiB, 32 * GiB);
         public Func<int, string?>? UuidByDevice { get; init; }
         public Func<Exception>? UuidFailure { get; init; }
@@ -533,60 +294,11 @@ public class LocalInferenceQualificationTests
                 ? throw UuidFailure()
                 : UuidByDevice is not null ? UuidByDevice(device) : Uuid;
 
-        public long? TryReadDeviceLuid(int device) => Luid;
-
         public (long FreeBytes, long TotalBytes)? TryReadMemoryInfo(int device) => Memory;
     }
 
-    private sealed class StubDedicatedMemoryProbe : IGpuDedicatedMemoryProbe
-    {
-        private readonly Dictionary<long, GpuAdapterMemory> _memoryByLuid = [];
-
-        public StubDedicatedMemoryProbe()
-        {
-        }
-
-        public StubDedicatedMemoryProbe(long luid, GpuAdapterMemory memory) =>
-            _memoryByLuid[luid] = memory;
-
-        public IReadOnlyDictionary<long, GpuAdapterMemory> CaptureAdapterMemoryByLuid() => _memoryByLuid;
-    }
-
-    private sealed class ThrowingDedicatedMemoryProbe : IGpuDedicatedMemoryProbe
-    {
-        public IReadOnlyDictionary<long, GpuAdapterMemory> CaptureAdapterMemoryByLuid() =>
-            throw new InvalidOperationException("DXGI faulted.");
-    }
-
-    private sealed class StubNvmlMemoryProbe : INvmlDedicatedMemoryProbe
-    {
-        private readonly Dictionary<string, GpuAdapterMemory> _memoryByUuid =
-            new(StringComparer.OrdinalIgnoreCase);
-
-        public StubNvmlMemoryProbe()
-        {
-        }
-
-        public StubNvmlMemoryProbe(string uuid, GpuAdapterMemory memory) =>
-            _memoryByUuid[uuid] = memory;
-
-        public StubNvmlMemoryProbe(params (string Uuid, GpuAdapterMemory Memory)[] entries)
-        {
-            foreach ((string uuid, GpuAdapterMemory memory) in entries)
-                _memoryByUuid[uuid] = memory;
-        }
-
-        public IReadOnlyDictionary<string, GpuAdapterMemory> CaptureAdapterMemoryByUuid() => _memoryByUuid;
-    }
-
-    private sealed class ThrowingNvmlMemoryProbe : INvmlDedicatedMemoryProbe
-    {
-        public IReadOnlyDictionary<string, GpuAdapterMemory> CaptureAdapterMemoryByUuid() =>
-            throw new InvalidOperationException("NVML faulted.");
-    }
-
     [Theory]
-    [InlineData(RuntimeArchitecture.X64, "NVIDIA RTX Spark N1X", LlamaRuntimeCatalog.X64RuntimeId)]
+    [InlineData(RuntimeArchitecture.X64, "NVIDIA GeForce RTX 5080", LlamaRuntimeCatalog.X64RuntimeId)]
     [InlineData(RuntimeArchitecture.Arm64, "NVIDIA GeForce RTX 5090", LlamaRuntimeCatalog.Arm64RuntimeId)]
     public void Evaluate_RoutesRuntimeByArchitectureWithoutGpuSkuPairing(
         RuntimeArchitecture architecture,
@@ -601,6 +313,265 @@ public class LocalInferenceQualificationTests
         Assert.Equal(LocalModelCatalog.Qwen38_27BModelId, result.Plan?.Model.Id);
         Assert.Equal(LocalModelCatalog.IntermediateContextTokens, result.Plan?.Profile.ContextTokens);
         Assert.Equal(KvCachePrecision.Q8_0, result.Plan?.Profile.KeyCachePrecision);
+    }
+
+    // Boundaries verified against real hardware: a real 48GB-SKU RTX Spark
+    // reads ~45.25 GiB (48,585,498,624 bytes) via cuMemGetInfo, matching the
+    // "Gb48" case below almost exactly.
+    [Theory]
+    [InlineData(30, null)] // 32GB SKU: no local AI recommended
+    [InlineData(45, LocalModelCatalog.Qwen35B_IQ4XSModelId)] // 48GB SKU -> 24GB recipe
+    [InlineData(62, LocalModelCatalog.Qwen38_27BModelId)] // 64GB SKU -> 28GB recipe
+    [InlineData(120, LocalModelCatalog.Qwen38_27B_DFlashModelId)] // 128GB SKU -> 48GB recipe (default)
+    public void Evaluate_RoutesRtxSparkByFixedSkuTable(long totalGiB, string? expectedModelId)
+    {
+        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
+            Hardware(RuntimeArchitecture.Arm64, Gpu("NVIDIA RTX Spark N1X", "GPU-spark", totalGiB, totalGiB)));
+
+        if (expectedModelId is null)
+        {
+            Assert.Equal(LocalInferenceEligibilityStatus.Unsupported, result.Status);
+            Assert.Equal(LocalInferenceEligibilityFailureCode.CatalogSelectionFailed, result.FailureCode);
+            Assert.Equal(LocalInferenceSelectionFailureCode.NotRecommendedForSku, result.SelectionFailureCode);
+            Assert.Null(result.Plan);
+        }
+        else
+        {
+            Assert.Equal(LocalInferenceEligibilityStatus.Eligible, result.Status);
+            Assert.Equal(expectedModelId, result.Plan?.Model.Id);
+        }
+    }
+
+    [Fact]
+    public void Evaluate_Rtx5090WithSparkSizedMemoryIgnoresSkuTable()
+    {
+        // A non-Spark GPU that happens to have Spark-sized memory must still
+        // take the generic priority/fit-test path -- SKU routing is keyed
+        // strictly off the RTX Spark name, not memory size.
+        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
+            Hardware(RuntimeArchitecture.X64, Gpu("NVIDIA GeForce RTX 5090", "GPU-5090", totalGiB: 45, freeGiB: 45)));
+
+        Assert.Equal(LocalInferenceEligibilityStatus.Eligible, result.Status);
+        Assert.Equal(LocalModelCatalog.Qwen38_27BModelId, result.Plan?.Model.Id);
+    }
+
+    [Fact]
+    public void Evaluate_SparkRecipeIsBoundToTheSparkGpuOnMixedHosts()
+    {
+        // The SKU table answers "what should THIS Spark run", so the recipe and the
+        // GPU that runs it must be the same adapter. A discrete GPU with more free
+        // memory must not win the eligibility ranking and end up running a recipe
+        // that was chosen for the Spark.
+        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
+            Hardware(
+                RuntimeArchitecture.Arm64,
+                Gpu("NVIDIA RTX Spark N1X", "GPU-spark", totalGiB: 45, freeGiB: 45),
+                Gpu("NVIDIA GeForce RTX 5090", "GPU-5090", totalGiB: 80, freeGiB: 80)));
+
+        Assert.Equal(LocalInferenceEligibilityStatus.Eligible, result.Status);
+        Assert.Equal(LocalModelCatalog.Qwen35B_IQ4XSModelId, result.Plan?.Model.Id);
+        Assert.Equal("GPU-spark", result.SelectedGpu?.StableId);
+        Assert.Equal("GPU-spark", result.Plan?.BoundGpuStableId);
+    }
+
+    [Fact]
+    public void Evaluate_UnrecommendedSparkSkuStillQualifiesADiscreteGpuOnTheSameHost()
+    {
+        // A 32 GB Spark has no recommended model, but that is a statement about the
+        // Spark, not about the host. An eligible discrete GPU beside it must still
+        // qualify through the generic path instead of the whole host being rejected.
+        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
+            Hardware(
+                RuntimeArchitecture.X64,
+                Gpu("NVIDIA RTX Spark N1X", "GPU-spark32", totalGiB: 30, freeGiB: 30),
+                Gpu("NVIDIA GeForce RTX 5090", "GPU-5090", totalGiB: 32, freeGiB: 32)));
+
+        Assert.Equal(LocalInferenceEligibilityStatus.Eligible, result.Status);
+        Assert.Equal(LocalModelCatalog.Qwen38_27BModelId, result.Plan?.Model.Id);
+        Assert.Equal("GPU-5090", result.SelectedGpu?.StableId);
+        Assert.Null(result.Plan?.BoundGpuStableId);
+    }
+
+    [Fact]
+    public void Evaluate_UnrecommendedSparkSkuAloneStillReportsNotRecommended()
+    {
+        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
+            Hardware(RuntimeArchitecture.Arm64, Gpu("NVIDIA RTX Spark N1X", "GPU-spark32", 30, 30)));
+
+        Assert.Equal(LocalInferenceEligibilityStatus.Unsupported, result.Status);
+        Assert.Equal(
+            LocalInferenceSelectionFailureCode.NotRecommendedForSku,
+            result.SelectionFailureCode);
+    }
+
+    [Theory]
+    [InlineData(45)]
+    [InlineData(62)]
+    [InlineData(120)]
+    public void Evaluate_SparkRecommendationRoundTrippedBySetupKeepsItsSkuProfile(long totalGiB)
+    {
+        // Normal setup persists the recommended model id and passes it back as an
+        // explicit request, so the recommendation must resolve identically both ways.
+        // Otherwise the SKU's pinned profile (the 64 GB tier's reduced context is not
+        // the largest that merely fits) is silently replaced by the generic fit-test.
+        HostHardwareInfo hardware = Hardware(
+            RuntimeArchitecture.Arm64,
+            Gpu("NVIDIA RTX Spark N1X", "GPU-spark", totalGiB, totalGiB));
+
+        LocalInferenceEligibilityResult recommended = LocalInferenceEligibility.Evaluate(hardware);
+        LocalInferenceEligibilityResult roundTripped = LocalInferenceEligibility.Evaluate(
+            hardware,
+            recommended.Plan!.Model.Id);
+
+        Assert.Equal(recommended.Plan!.Model.Id, roundTripped.Plan?.Model.Id);
+        Assert.Equal(recommended.Plan!.Profile.Id, roundTripped.Plan?.Profile.Id);
+        Assert.Equal("GPU-spark", roundTripped.Plan?.BoundGpuStableId);
+        Assert.Equal(recommended.SelectedGpu?.StableId, roundTripped.SelectedGpu?.StableId);
+    }
+
+    [Fact]
+    public void Evaluate_ExplicitNonRecommendedModelOnSparkStillUsesTheGenericFitTest()
+    {
+        // A real user override must not be forced onto the SKU recipe.
+        HostHardwareInfo hardware = Hardware(
+            RuntimeArchitecture.Arm64,
+            Gpu("NVIDIA RTX Spark N1X", "GPU-spark", 62, 62));
+
+        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
+            hardware,
+            LocalModelCatalog.Qwen27BModelId);
+
+        Assert.Equal(LocalModelCatalog.Qwen27BModelId, result.Plan?.Model.Id);
+        Assert.Null(result.Plan?.BoundGpuStableId);
+    }
+
+    [Fact]
+    public void EvaluateForConfiguredAvailability_KeepsAValidSavedModelOn32GbSpark()
+    {
+        // A 32 GB Spark has no recommended default, but it still runs a model that was
+        // already configured. Rerunning setup must not switch Local AI off on that machine.
+        HostHardwareInfo hardware = Hardware(
+            RuntimeArchitecture.Arm64, Gpu("NVIDIA RTX Spark N1X", "GPU-spark32", 30, 30));
+
+        LocalInferenceEligibilityResult result =
+            LocalInferenceEligibility.EvaluateForConfiguredAvailability(
+                hardware,
+                LocalModelCatalog.Qwen38_27BModelId);
+
+        Assert.True(result.CanInstall);
+        Assert.Equal(LocalModelCatalog.Qwen38_27BModelId, result.Plan?.Model.Id);
+        Assert.NotNull(result.SelectedGpu);
+    }
+
+    [Fact]
+    public void EvaluateForConfiguredAvailability_PreservesTheRecoveryPinnedModelAndProfileOn32GbSpark()
+    {
+        // Recovery pins the configured model and reuses its resolved plan. On a SKU with no
+        // recommended default that selection must survive the availability gate with the same
+        // model and the same profile the explicit path resolves, so a recovery rerun does not
+        // silently move an existing install to a different context or KV precision.
+        HostHardwareInfo hardware = Hardware(
+            RuntimeArchitecture.Arm64, Gpu("NVIDIA RTX Spark N1X", "GPU-spark32", 30, 30));
+        const string pinnedModelId = LocalModelCatalog.Qwen38_27BModelId;
+
+        LocalInferenceEligibilityResult availability =
+            LocalInferenceEligibility.EvaluateForConfiguredAvailability(hardware, pinnedModelId);
+        LocalInferenceEligibilityResult pinned =
+            LocalInferenceEligibility.Evaluate(hardware, pinnedModelId);
+
+        Assert.True(availability.CanInstall);
+        Assert.Equal(pinnedModelId, availability.Plan?.Model.Id);
+        Assert.Equal(pinned.Plan?.Profile.Id, availability.Plan?.Profile.Id);
+        Assert.Equal(pinned.Plan?.Profile.ContextTokens, availability.Plan?.Profile.ContextTokens);
+        Assert.Equal(pinned.Plan?.Profile.KeyCachePrecision, availability.Plan?.Profile.KeyCachePrecision);
+        Assert.Equal(pinned.SelectedGpu?.StableId, availability.SelectedGpu?.StableId);
+    }
+
+    [Fact]
+    public void EvaluateForConfiguredAvailability_WithNoSavedModelStillReportsNotRecommended()
+    {
+        HostHardwareInfo hardware = Hardware(
+            RuntimeArchitecture.Arm64, Gpu("NVIDIA RTX Spark N1X", "GPU-spark32", 30, 30));
+
+        LocalInferenceEligibilityResult result =
+            LocalInferenceEligibility.EvaluateForConfiguredAvailability(hardware, configuredModelId: null);
+
+        Assert.False(result.CanInstall);
+        Assert.Equal(
+            LocalInferenceSelectionFailureCode.NotRecommendedForSku,
+            result.SelectionFailureCode);
+    }
+
+    [Fact]
+    public void EvaluateForConfiguredAvailability_UnknownSavedModelReportsThatModelsFailure()
+    {
+        // The reason must name what is wrong with the saved selection, not fall back to the
+        // SKU's generic no-recommendation message, or setup offers no path to recovery.
+        HostHardwareInfo hardware = Hardware(
+            RuntimeArchitecture.Arm64, Gpu("NVIDIA RTX Spark N1X", "GPU-spark32", 30, 30));
+
+        LocalInferenceEligibilityResult result =
+            LocalInferenceEligibility.EvaluateForConfiguredAvailability(hardware, "no-such-model-id");
+
+        Assert.False(result.CanInstall);
+        Assert.Equal(LocalInferenceSelectionFailureCode.UnknownModel, result.SelectionFailureCode);
+        Assert.Equal(
+            LocalInferenceUnavailableReasonKind.UnknownModel,
+            LocalInferenceEligibilityDiagnostics.GetUnavailableReason(result).Kind);
+    }
+
+    [Fact]
+    public void EvaluateForConfiguredAvailability_OversizedSavedModelReportsCapacityNotSkuPolicy()
+    {
+        // A saved model that no longer fits must report the capacity shortfall, including the
+        // model name and the required and detected memory the setup page renders.
+        HostHardwareInfo hardware = Hardware(
+            RuntimeArchitecture.Arm64, Gpu("NVIDIA RTX Spark N1X", "GPU-sparkSmall", 12, 12));
+
+        LocalInferenceEligibilityResult result =
+            LocalInferenceEligibility.EvaluateForConfiguredAvailability(
+                hardware,
+                LocalModelCatalog.Qwen38_27BModelId);
+
+        Assert.False(result.CanInstall);
+        Assert.Equal(
+            LocalInferenceEligibilityFailureCode.InsufficientGpuMemory,
+            result.FailureCode);
+        LocalInferenceUnavailableReason reason =
+            LocalInferenceEligibilityDiagnostics.GetUnavailableReason(result);
+        Assert.Equal(LocalInferenceUnavailableReasonKind.InsufficientGpuMemory, reason.Kind);
+        Assert.False(string.IsNullOrWhiteSpace(reason.ModelDisplayName));
+    }
+
+    [Fact]
+    public void EvaluateForConfiguredAvailability_LeavesNonSparkDevicesUnchanged()
+    {
+        HostHardwareInfo hardware = Hardware(
+            RuntimeArchitecture.X64, Gpu("NVIDIA GeForce RTX 5090", "GPU-5090", 32, 32));
+
+        LocalInferenceEligibilityResult withSaved =
+            LocalInferenceEligibility.EvaluateForConfiguredAvailability(
+                hardware, LocalModelCatalog.Qwen27BModelId);
+        LocalInferenceEligibilityResult device = LocalInferenceEligibility.Evaluate(hardware);
+
+        Assert.True(withSaved.CanInstall);
+        Assert.Equal(device.Plan?.Model.Id, withSaved.Plan?.Model.Id);
+    }
+
+    [Fact]
+    public void Evaluate_HugeNonSparkGpuStillDefaultsToTheRecommendedModel()
+    {
+        // A priority-0, IsExplicitAlternative model must never win the generic
+        // default/fallback pick regardless of available memory. The guard in
+        // SelectDefaultModelAndProfile keeps that true as the catalog grows.
+        LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
+            Hardware(RuntimeArchitecture.X64, Gpu("NVIDIA arbitrary huge adapter", "GPU-huge", totalGiB: 200, freeGiB: 200)));
+
+        Assert.Equal(LocalInferenceEligibilityStatus.Eligible, result.Status);
+        Assert.Equal(LocalModelCatalog.Qwen38_27BModelId, result.Plan?.Model.Id);
+        Assert.DoesNotContain(
+            LocalModelCatalog.Models,
+            m => m.RecommendationPriority == 0 && m.IsExplicitAlternative && m.Id == result.Plan!.Model.Id);
     }
 
     [Fact]
@@ -762,9 +733,8 @@ public class LocalInferenceQualificationTests
         LocalInferenceEligibilityResult result = LocalInferenceEligibility.Evaluate(
             Hardware(RuntimeArchitecture.Arm64, gpu));
 
-        // #1253 owns the memory semantics: shared/unified memory is ignored, so only the
-        // 8 GiB dedicated device memory admits. #1281 owns the catalog: Qwen3.5 9B is
-        // retired, so the unsupported-fallback plan is now the smallest offered model.
+        // Separate shared-memory estimates are not added to CUDA-visible memory.
+        // Qwen3.5 9B is retired, so the fallback is the smallest offered model.
         Assert.Equal(LocalInferenceEligibilityStatus.Unsupported, result.Status);
         Assert.Equal(LocalModelCatalog.Qwen38_27BModelId, result.Plan?.Model.Id);
         Assert.Equal(8 * GiB, result.DetectedTotalMemoryBytes);
@@ -854,4 +824,63 @@ public class LocalInferenceQualificationTests
             CudaMajorVersion: 13,
             StableId: stableId);
 
+    [Theory]
+    [InlineData("b10655-cuda13-x64", "b10655")]
+    [InlineData("b10655-cuda13-arm64", "b10655")]
+    public void FindInstalled_ResolvesRetiredRuntimeSoExistingInstallsStayLaunchable(
+        string runtimeId,
+        string expectedReleaseTag)
+    {
+        // An installation recorded before the runtime bump must keep resolving its own
+        // receipt, otherwise updating the app strands it until setup repairs it.
+        LlamaRuntimeVariant? installed = LlamaRuntimeCatalog.FindInstalled(runtimeId);
+
+        Assert.NotNull(installed);
+        Assert.Equal(runtimeId, installed.Id);
+        Assert.Equal(expectedReleaseTag, installed.ReleaseTag);
+        Assert.False(string.Equals(LlamaRuntimeCatalog.ReleaseTag, installed.ReleaseTag, StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void RetiredRuntimeIsNeverOfferedForNewInstalls()
+    {
+        Assert.DoesNotContain(
+            LlamaRuntimeCatalog.Variants,
+            variant => variant.ReleaseTag != LlamaRuntimeCatalog.ReleaseTag);
+        Assert.All(
+            LlamaRuntimeCatalog.Variants,
+            variant => Assert.Equal(LlamaRuntimeCatalog.ReleaseTag, variant.ReleaseTag));
+    }
+
+    [Fact]
+    public void CurrentRuntimesPinEveryRequiredFileBySizeAndDigest()
+    {
+        foreach (LlamaRuntimeVariant runtime in LlamaRuntimeCatalog.Variants)
+        {
+            Assert.NotEmpty(runtime.RequiredFiles);
+            Assert.Equal(
+                runtime.RequiredFiles.Count,
+                runtime.RequiredFiles.Select(file => file.FileName).Distinct(StringComparer.Ordinal).Count());
+            Assert.Contains(
+                runtime.RequiredFiles,
+                file => file.FileName == LlamaRuntimeCatalog.ServerImplementationLibraryName);
+            Assert.Contains(
+                runtime.RequiredFiles,
+                file => file.FileName == (runtime.Architecture == RuntimeArchitecture.X64
+                    ? "ggml-cpu-x64.dll"
+                    : "ggml-cpu.dll"));
+            Assert.All(runtime.RequiredFiles, file =>
+            {
+                Assert.True(file.SizeBytes > 0);
+                Assert.Equal(64, file.Sha256.Value.Length);
+            });
+        }
+    }
+
+    [Fact]
+    public void FindInstalled_RejectsUnknownRuntimeId()
+    {
+        Assert.Null(LlamaRuntimeCatalog.FindInstalled("b00000-cuda13-x64"));
+        Assert.Null(LlamaRuntimeCatalog.FindInstalled(null));
+    }
 }
