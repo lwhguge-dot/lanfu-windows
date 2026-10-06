@@ -43,7 +43,9 @@ public static class ReactorChatHostExtensions
         Action? onSettingsClick,
         Action<bool>? onSpeakerMuteChanged,
         bool initialMuted,
-        Action onSandboxSettingsClick)
+        Action onSandboxSettingsClick,
+        Action? onSessionNavigationStarting = null,
+        Action<string>? onSessionSelected = null)
     {
         ArgumentNullException.ThrowIfNull(target);
         ArgumentNullException.ThrowIfNull(composerFactory);
@@ -82,6 +84,8 @@ public static class ReactorChatHostExtensions
             onVoiceRequest,
             onSettingsClick,
             onSpeakerMuteChanged,
+            onSessionNavigationStarting,
+            onSessionSelected,
             onSandboxSettingsClick);
         return composerFactory.Create(provider, hostActions, initialMuted);
     }
@@ -159,6 +163,8 @@ public sealed class MountedReactorChat(
     private int _disposed;
 
     internal bool TrySelectSession(string sessionKey) => session.Controller.TrySelectChannel(sessionKey);
+
+    internal void CancelVoiceRecording() => session.Controller.CancelVoiceRecording();
 
     public void AttachFile(ChatAttachment attachment) => AttachFiles(new[] { attachment });
 
