@@ -13,7 +13,7 @@ public sealed record ChatTimelinePresentationContext(
     Action? OnLoadMoreHistory,
     IReadOnlyDictionary<string, ChatEntryMetadata>? EntryMetadata = null,
     long TimelineGeneration = 0,
-    string UserSenderLabel = "OpenClaw Windows Tray",
+    string UserSenderLabel = "LanFu",
     string AssistantSenderLabel = "Field",
     string? DefaultModel = null,
     string? DefaultUsageSummary = null,

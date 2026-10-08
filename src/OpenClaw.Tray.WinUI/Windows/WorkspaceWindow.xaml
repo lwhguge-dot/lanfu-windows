@@ -33,7 +33,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TitleBar x:Name="WorkspaceTitleBar" Title="OpenClaw" AutomationProperties.AutomationId="WorkspaceTitleBar"/>
+        <TitleBar x:Name="WorkspaceTitleBar" Title="LanFu" AutomationProperties.AutomationId="WorkspaceTitleBar"/>
         <Grid x:Name="NavigationSection" Grid.Row="1">
         <NavigationView x:Name="NavView"
                         AutomationProperties.AutomationId="WorkspaceNavigation"

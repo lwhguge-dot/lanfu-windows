@@ -115,9 +115,9 @@
                                   Toggled="Ollama_Toggled" />
                 </tk:SettingsCard>
                 <tk:SettingsCard x:Name="StartupPreferenceRow" x:Uid="Onboarding_V2_StartupCard"
-                                 Header="Launch OpenClaw at sign-in" Visibility="Collapsed">
+                                 Header="登录时启动 LanFu" Visibility="Collapsed">
                     <ToggleSwitch x:Name="StartupPreferenceToggle" x:Uid="Onboarding_Flow_AutoStartToggle"
-                                  AutomationProperties.Name="Launch OpenClaw at sign-in"
+                                  AutomationProperties.Name="登录时启动 LanFu"
                                   OnContent="" OffContent="" MinWidth="0" Toggled="Startup_Toggled" />
                 </tk:SettingsCard>
             </StackPanel>

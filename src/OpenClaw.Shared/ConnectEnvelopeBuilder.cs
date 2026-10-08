@@ -340,7 +340,7 @@ internal static class ConnectEnvelopeBuilder
 {
     private const string OperatorClientId = "cli";
     private const string OperatorClientMode = "cli";
-    private const string OperatorDisplayName = "OpenClaw Windows Tray";
+    private const string OperatorDisplayName = "LanFu";
     private const string NodeClientId = "node-host";
     private const string NodeClientMode = "node";
     private const string NodeRole = "node";

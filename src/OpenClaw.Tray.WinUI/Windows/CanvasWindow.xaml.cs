@@ -240,7 +240,7 @@ public sealed partial class CanvasWindow : WindowEx
     public CanvasWindow()
     {
         this.InitializeComponent();
-        Title = AppIdentity.DecorateWindowTitle("OpenClaw Canvas");
+        Title = AppIdentity.DecorateWindowTitle("LanFu Canvas");
         AutomationProperties.SetName(
             CanvasTitlebarReloadButton,
             LocalizationHelper.GetString("CanvasReloadButton_AutomationName"));

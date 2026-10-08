@@ -96,7 +96,7 @@ public sealed partial class SessionsPage : Page
                     IsMain = true,
                     Status = "active",
                     HasActiveRun = true,
-                    DisplayName = "OpenClaw Windows Tray",
+                    DisplayName = "LanFu",
                     UpdatedAt = DateTime.UtcNow,
                 },
                 new SessionInfo
@@ -104,7 +104,7 @@ public sealed partial class SessionsPage : Page
                     Key = "agent:main:fork",
                     Status = "running",
                     HasActiveRun = false,
-                    DisplayName = "OpenClaw Windows Tray",
+                    DisplayName = "LanFu",
                     UpdatedAt = DateTime.UtcNow.AddSeconds(-1),
                 },
                 new SessionInfo

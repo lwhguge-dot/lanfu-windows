@@ -20,7 +20,7 @@
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                     <StackPanel Spacing="0">
                         <tk:SettingsCard x:Name="DistroCard" Background="Transparent" BorderThickness="0" CornerRadius="0" />
-                        <tk:SettingsCard x:Name="CliCard" x:Uid="Onboarding_V2_CliCard" Header="OpenClaw CLI"
+                        <tk:SettingsCard x:Name="CliCard" x:Uid="Onboarding_V2_CliCard" Header="LanFu 命令行"
                                          Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0" />
                         <tk:SettingsCard x:Name="GatewayCard" x:Uid="Onboarding_V2_GatewayCard" Header="Local Gateway service"
                                          Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0" />
@@ -41,9 +41,9 @@
                 <tk:SettingsCard x:Name="LocalAiCard" x:Uid="Onboarding_V2_LocalAiReview" Header="Local AI"
                                  IsClickEnabled="True" Click="LocalAi_Click" />
                 <controls:TailscaleSetupControl x:Name="TailscaleOptions" />
-                <tk:SettingsCard x:Name="StartupPreferenceRow" x:Uid="Onboarding_V2_StartupCard" Header="Launch OpenClaw at sign-in">
+                <tk:SettingsCard x:Name="StartupPreferenceRow" x:Uid="Onboarding_V2_StartupCard" Header="登录时启动 LanFu">
                     <ToggleSwitch x:Name="StartupPreferenceToggle" x:Uid="Onboarding_Flow_AutoStartToggle"
-                                  AutomationProperties.Name="Launch OpenClaw at sign-in"
+                                  AutomationProperties.Name="登录时启动 LanFu"
                                   OnContent="" OffContent="" MinWidth="0" Toggled="Startup_Toggled" />
                 </tk:SettingsCard>
                 <tk:SettingsExpander x:Uid="Onboarding_V2_ExactCommands" Header="Exact commands and files">

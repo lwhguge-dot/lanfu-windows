@@ -12,7 +12,7 @@
         <StackPanel x:Name="InstallHeader" Grid.Row="0" Padding="40,4,40,0" Spacing="4">
             <controls:OnboardingMascot x:Name="ProgressMascot" Mood="Working"
                                       HorizontalAlignment="Center" />
-            <TextBlock x:Name="TitleText" Text="Setting up OpenClaw"
+            <TextBlock x:Name="TitleText" Text="正在设置 LanFu"
                        Style="{StaticResource TitleTextBlockStyle}"
                        HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
             <TextBlock x:Name="SubtitleText"
@@ -115,7 +115,7 @@
                            Style="{StaticResource TitleTextBlockStyle}"
                            HorizontalAlignment="Center" TextAlignment="Center"
                            AutomationProperties.LiveSetting="Assertive" />
-                <TextBlock Text="Your private OpenClaw gateway is up and running on this PC."
+                <TextBlock Text="LanFu 本机网关已在此电脑上运行。"
                            Style="{StaticResource BodyTextBlockStyle}"
                            Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                            HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
@@ -132,7 +132,7 @@
                     <FontIcon Grid.Column="0" Glyph="&#xE72A;" FontSize="18" IsTextScaleFactorEnabled="False"
                               Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" VerticalAlignment="Center" />
                     <StackPanel Grid.Column="1" Spacing="2">
-                        <TextBlock Text="Up next: OpenClaw onboard" Style="{StaticResource BodyStrongTextBlockStyle}" />
+                        <TextBlock Text="下一步：LanFu 引导" Style="{StaticResource BodyStrongTextBlockStyle}" />
                         <TextBlock Text="A few quick questions. Choose your AI provider, model, and key to connect your agent."
                                    Style="{StaticResource CaptionTextBlockStyle}"
                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
@@ -144,7 +144,7 @@
         <Grid Grid.Row="2" ColumnDefinitions="*,Auto" Margin="0,12,0,16">
             <controls:SetupProgressIndicator x:Name="FlowProgress" Grid.ColumnSpan="2"
                                             HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Button x:Name="OnboardButton" Grid.Column="1" Content="Start OpenClaw onboard"
+            <Button x:Name="OnboardButton" Grid.Column="1" Content="开始 LanFu 引导"
                     Visibility="Collapsed" MinWidth="100" HorizontalAlignment="Right"
                     Margin="48,0" Style="{StaticResource AccentButtonStyle}"
                     Click="Onboard_Click" />
