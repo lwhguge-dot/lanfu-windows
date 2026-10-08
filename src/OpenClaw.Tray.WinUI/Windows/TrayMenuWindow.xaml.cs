@@ -186,7 +186,7 @@ public sealed partial class TrayMenuWindow : WindowEx
         _ownerMenu = ownerMenu;
 
         InitializeComponent();
-        Title = AppIdentity.DecorateWindowTitle("OpenClaw Menu");
+        Title = AppIdentity.DecorateWindowTitle("LanFu");
 
         // Configure as popup-style window
         this.IsMaximizable = false;
