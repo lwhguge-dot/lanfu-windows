@@ -8,10 +8,10 @@ internal static class AppIdentity
 {
 #if DEV_BUILD
     /// <summary>Human-visible app name shown in tray tooltips, window titles, and notifications.</summary>
-    public const string DisplayName = "OpenClaw Companion (Dev)";
+    public const string DisplayName = "LanFu (Dev)";
 
     /// <summary>Short name used in tray tooltip prefix.</summary>
-    public const string TrayName = "OpenClaw Tray (Dev)";
+    public const string TrayName = "LanFu (Dev)";
 
     /// <summary>
     /// Win32 AppUserModelID used for notifications and shell grouping. This applies to
@@ -27,7 +27,7 @@ internal static class AppIdentity
     public const string AutoStartRegistryName = "OpenClawTray-Dev";
 
     /// <summary>Windows scheduled task name (must differ so both can auto-start).</summary>
-    public const string StartupTaskName = "OpenClaw Companion (Dev)";
+    public const string StartupTaskName = "LanFu (Dev)";
 
     /// <summary>MSIX manifest startup task identifier.</summary>
     public const string PackageStartupTaskId = "OpenClawStartup";
@@ -54,10 +54,10 @@ internal static class AppIdentity
     public static bool IsDev => true;
 #else
     /// <summary>Human-visible app name shown in tray tooltips, window titles, and notifications.</summary>
-    public const string DisplayName = "OpenClaw Companion";
+    public const string DisplayName = "LanFu";
 
     /// <summary>Short name used in tray tooltip prefix.</summary>
-    public const string TrayName = "OpenClaw Tray";
+    public const string TrayName = "LanFu";
 
     /// <summary>
     /// Win32 AppUserModelID used for notifications and shell grouping. This applies to
@@ -67,25 +67,25 @@ internal static class AppIdentity
     /// to the MSIX identity would orphan the AUMID already written into existing users'
     /// Start menu shortcuts and break their notifications.
     /// </summary>
-    public const string AppUserModelId = "OpenClaw.Companion";
+    public const string AppUserModelId = "LanFu.Desktop";
 
     /// <summary>Windows Registry auto-start value name.</summary>
-    public const string AutoStartRegistryName = "OpenClawTray";
+    public const string AutoStartRegistryName = "LanFu";
 
     /// <summary>Windows scheduled task name.</summary>
-    public const string StartupTaskName = "OpenClaw Companion";
+    public const string StartupTaskName = "LanFu";
 
     /// <summary>MSIX manifest startup task identifier.</summary>
     public const string PackageStartupTaskId = "OpenClawStartup";
 
     /// <summary>Leaf directory for local and roaming app-owned data.</summary>
-    public const string DataDirectoryName = "OpenClawTray";
+    public const string DataDirectoryName = "LanFu";
 
     /// <summary>Single-instance mutex base name.</summary>
-    public const string MutexBaseName = "OpenClawTray";
+    public const string MutexBaseName = "LanFu";
 
     /// <summary>Protocol scheme for deep links.</summary>
-    public const string ProtocolScheme = "openclaw";
+    public const string ProtocolScheme = "lanfu";
 
     /// <summary>App-owned WSL distro used by embedded setup.</summary>
     public const string SetupDistroName = "OpenClawGateway";

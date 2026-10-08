@@ -43,10 +43,10 @@ namespace OpenClawTray;
 
 public partial class App : Application, OpenClawTray.Services.IAppCommands, IPermissionsPageRuntimeHost
 {
-    internal static readonly UpdatumManager AppUpdater = new("openclaw", "openclaw-windows-node")
+    internal static readonly UpdatumManager AppUpdater = new("lwhguge-dot", "lanfu-windows")
     {
         FetchOnlyLatestRelease = true,
-        InstallUpdateSingleFileExecutableName = "OpenClaw.Tray.WinUI",
+        InstallUpdateSingleFileExecutableName = "LanFu",
     };
 
     private ITrayController? _trayController;
@@ -3832,7 +3832,7 @@ public partial class App : Application, OpenClawTray.Services.IAppCommands, IPer
         if (string.IsNullOrWhiteSpace(exePath) || !File.Exists(exePath))
         {
             if (nativeCompletion is not null) throw new InvalidOperationException("The tray executable is unavailable.");
-            await ShowSetupRestartErrorAsync("OpenClaw setup finished, but the tray executable could not be found for restart.");
+            await ShowSetupRestartErrorAsync("LanFu setup finished, but the tray executable could not be found for restart.");
             return;
         }
 
@@ -3890,7 +3890,7 @@ public partial class App : Application, OpenClawTray.Services.IAppCommands, IPer
         {
             if (nativeCompletion is not null) throw;
             Logger.Error($"Failed to restart tray after setup: {ex}");
-            await ShowSetupRestartErrorAsync("OpenClaw setup finished, but restarting the tray failed. The current tray will keep running; please exit and reopen OpenClaw.");
+            await ShowSetupRestartErrorAsync("LanFu setup finished, but restarting the tray failed. The current tray will keep running; please exit and reopen LanFu.");
         }
     }
 

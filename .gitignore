@@ -368,3 +368,9 @@ visual-test-output/
 msix-validation-evidence/
 packaging-test-output/
 uninstall-validation-output/
+
+# LanFu local build output and scratch files
+publish-lanfu/
+publish-x64/
+Output/
+*.png.tmp
