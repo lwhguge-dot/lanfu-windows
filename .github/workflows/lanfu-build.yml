@@ -1,8 +1,11 @@
-# LanFu Windows Hub build (Phase 0: prove the installer builds in CI).
+# LanFu Windows Hub build.
 #
 # Mirrors the recipe upstream uses in ci.yml: dotnet publish with the win-x64 RID and
 # a self-contained Windows App SDK payload, then Inno Setup with /Dpublish, /DvcRedist,
 # /DMyAppVersion and /DMyAppArch.
+#
+# fetch-depth: 0 is required: GitVersion.MsBuild runs during the build and refuses to
+# work in a shallow clone.
 name: LanFu Windows Build
 
 on:
@@ -33,6 +36,8 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-dotnet@v4
         with:
@@ -55,6 +60,7 @@ jobs:
           dotnet publish src/OpenClaw.Tray.WinUI -c Release -r win-x64 --self-contained --no-restore `
             -o publish-x64 -p:Version=$env:APP_VERSION -p:InformationalVersion=$env:APP_VERSION
           if (-not (Test-Path "publish-x64\OpenClaw.Tray.WinUI.exe")) { throw "publish output missing" }
+          Write-Output "publish-x64 size: $([math]::Round((Get-ChildItem publish-x64 -Recurse -File | Measure-Object Length -Sum).Sum / 1MB)) MB"
 
       - name: Download the VC++ redistributable
         shell: pwsh
