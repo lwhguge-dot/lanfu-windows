@@ -6,34 +6,34 @@
     <Grid Padding="40,4,40,24" RowDefinitions="Auto,*,Auto">
         <StackPanel Spacing="4" HorizontalAlignment="Stretch">
             <controls:OnboardingMascot x:Name="MascotHero" Mood="Curious" HorizontalAlignment="Center" />
-            <TextBlock x:Uid="Onboarding_V2_AlternativesTitle" Text="Choose another setup route" Style="{StaticResource TitleTextBlockStyle}"
+            <TextBlock x:Uid="Onboarding_V2_AlternativesTitle" Text="选择其他安装方式" Style="{StaticResource TitleTextBlockStyle}"
                        TextWrapping="Wrap" TextAlignment="Center" />
         </StackPanel>
         <ScrollViewer Grid.Row="1" Margin="0,24,0,16" MaxWidth="600" HorizontalContentAlignment="Stretch">
             <StackPanel Spacing="8">
-                <tk:SettingsCard x:Uid="Onboarding_V2_ExistingRoute" Header="Existing Gateway"
-                                 Description="Use a saved or existing connection. No WSL installation."
+                <tk:SettingsCard x:Uid="Onboarding_V2_ExistingRoute" Header="已有网关"
+                                 Description="使用已保存或现有的连接，不安装 WSL。"
                                  IsClickEnabled="True" Click="Existing_Click" />
-                <tk:SettingsCard x:Uid="Onboarding_V2_RemoteRoute" Header="Remote Gateway"
-                                 Description="Use the native address, setup code or SSH connection editor."
+                <tk:SettingsCard x:Uid="Onboarding_V2_RemoteRoute" Header="远程网关"
+                                 Description="使用原始地址、安装码或 SSH 连接编辑器。"
                                  IsClickEnabled="True" Click="Remote_Click" />
-                <tk:SettingsCard x:Uid="Onboarding_V2_McpRoute" Header="Local MCP only"
-                                 Description="Enable local MCP without a Gateway. Review PC capabilities next."
+                <tk:SettingsCard x:Uid="Onboarding_V2_McpRoute" Header="仅本地 MCP"
+                                 Description="无需网关即可启用本地 MCP。下一步检查本机能力。"
                                  IsClickEnabled="True" Click="Mcp_Click" />
-                <tk:SettingsCard x:Uid="Onboarding_V2_DeferredRoute" Header="Set up a Gateway later"
-                                 Description="Review your choices without installing WSL or changing saved Gateways."
+                <tk:SettingsCard x:Uid="Onboarding_V2_DeferredRoute" Header="稍后再设置网关"
+                                 Description="仅查看你的选择，不安装 WSL，也不改动已保存的网关。"
                                  IsClickEnabled="True" Click="Deferred_Click" />
                 <InfoBar x:Name="HostUnavailable" x:Uid="Onboarding_V2_HostUnavailable"
                          IsOpen="False" IsClosable="False" Severity="Informational"
-                         Title="Connection editor is unavailable in this setup host"
-                         Message="Open setup from the Companion app to use its native connection editor." />
+                         Title="当前安装环境无法使用连接编辑器"
+                         Message="请从 LanFu 桌面端打开安装向导，以使用其内置的连接编辑器。" />
                 <HyperlinkButton x:Name="ClassicSettingsLink" x:Uid="Onboarding_V2_ClassicSettings"
-                                 Content="Open classic Connection settings" Click="ClassicSettings_Click" />
+                                 Content="打开经典连接设置" Click="ClassicSettings_Click" />
             </StackPanel>
         </ScrollViewer>
         <Grid Grid.Row="2">
             <controls:SetupProgressIndicator x:Name="FlowProgress" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Button x:Uid="Onboarding_V2_Back" Content="Back" MinWidth="100" HorizontalAlignment="Left" Click="Back_Click" />
+            <Button x:Uid="Onboarding_V2_Back" Content="返回" MinWidth="100" HorizontalAlignment="Left" Click="Back_Click" />
         </Grid>
     </Grid>
 </Page>

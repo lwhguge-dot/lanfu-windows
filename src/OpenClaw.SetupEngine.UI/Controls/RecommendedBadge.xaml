@@ -15,7 +15,7 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        <TextBlock x:Name="Label" x:Uid="Onboarding_Copy_Recommended" Text="Recommended"
+        <TextBlock x:Name="Label" x:Uid="Onboarding_Copy_Recommended" Text="推荐"
                    Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap"
                    Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" />
     </Border>

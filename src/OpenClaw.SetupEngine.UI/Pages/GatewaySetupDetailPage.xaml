@@ -19,19 +19,19 @@
                 <controls:TailscaleSetupControl x:Name="TailscaleOptions" Visibility="Collapsed" />
                 <StackPanel x:Name="NetworkingOptions" Spacing="16" Visibility="Collapsed">
                     <TextBlock x:Uid="Onboarding_V2_NetworkExplanation" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}"
-                               Text="Local AI needs mirrored WSL networking. Installation will update the global .wslconfig and stop all running WSL distributions once. No distributions are deleted. Save your WSL work first." />
+                               Text="本地 AI 需要 WSL 镜像网络。安装过程会更新全局 .wslconfig，并一次性停止所有正在运行的 WSL 发行版（不会删除任何发行版）。请先保存 WSL 中的工作。" />
                     <CheckBox x:Name="LocalAiNetworkingConsentCheckBox" x:Uid="Onboarding_V2_NetworkConsent"
                               ContentTemplate="{StaticResource WrappedChoiceTemplate}"
                               AutomationProperties.AutomationId="LocalAiNetworkingConsentCheckBox"
-                              Content="I allow this global networking change and one-time WSL shutdown."
+                              Content="我允许进行此项全局网络更改并一次性关闭 WSL。"
                               Checked="NetworkConsent_Changed" Unchecked="NetworkConsent_Changed" />
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>
         <Grid Grid.Row="2" ColumnDefinitions="*,Auto">
             <controls:SetupProgressIndicator x:Name="FlowProgress" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Button x:Uid="Onboarding_V2_Back" Content="Back" MinWidth="100" HorizontalAlignment="Left" Click="Back_Click" />
-            <Button x:Name="PrimaryButton" Grid.Column="1" x:Uid="Onboarding_V2_ReturnToReview" Content="Return to review" MinWidth="100"
+            <Button x:Uid="Onboarding_V2_Back" Content="返回" MinWidth="100" HorizontalAlignment="Left" Click="Back_Click" />
+            <Button x:Name="PrimaryButton" Grid.Column="1" x:Uid="Onboarding_V2_ReturnToReview" Content="返回检查" MinWidth="100"
                     Click="Primary_Click" Style="{StaticResource AccentButtonStyle}" />
         </Grid>
     </Grid>

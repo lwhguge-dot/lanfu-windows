@@ -357,7 +357,7 @@ public sealed partial class SetupWindow : Window
 
         if (!SetupRunLock.TryAcquire(_dataDir, out _setupLock, out var lockMessage))
         {
-            NavigateTo(typeof(CompletePage), new CompletePageArgs(false, TimeSpan.Zero, null, lockMessage ?? "Another setup run is active."));
+            NavigateTo(typeof(CompletePage), new CompletePageArgs(false, TimeSpan.Zero, null, lockMessage ?? "另一个安装流程正在运行。"));
             return;
         }
 

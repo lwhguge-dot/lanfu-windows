@@ -6,9 +6,9 @@
     <Grid Padding="40,4,40,24" RowDefinitions="Auto,*,Auto">
         <StackPanel Spacing="4" HorizontalAlignment="Stretch">
             <controls:OnboardingMascot x:Name="MascotHero" Mood="Curious" HorizontalAlignment="Center" />
-            <TextBlock x:Uid="Onboarding_V2_CapabilitiesTitle" Text="PC capabilities" Style="{StaticResource TitleTextBlockStyle}"
+            <TextBlock x:Uid="Onboarding_V2_CapabilitiesTitle" Text="本机能力" Style="{StaticResource TitleTextBlockStyle}"
                        TextAlignment="Center" TextWrapping="Wrap" />
-            <TextBlock x:Uid="Onboarding_V3_ProfileHelp" Text="Choose a preset. Open Fine-tune to inspect or change individual capabilities."
+            <TextBlock x:Uid="Onboarding_V3_ProfileHelp" Text="选择一个预设。展开“精细调整”可查看或修改单项能力。"
                        TextAlignment="Center" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
         </StackPanel>
@@ -17,53 +17,53 @@
             <StackPanel Spacing="12">
                 <TextBlock x:Name="NativeInstallConsent" x:Uid="Onboarding_Native_Review"
                            Visibility="Collapsed" TextWrapping="Wrap" Style="{StaticResource BodyTextBlockStyle}"
-                           Text="By selecting Set up gateway, you authorize WinGet to install the missing Gateway package from Microsoft Store and accept the package and Store source agreements. If WinGet is not ready, setup may repair App Installer before retrying. Companion then verifies the package, prepares a dedicated profile, and opens Gateway setup. Provider sign-in stays interactive. This path does not install WSL, Local AI, or Tailscale." />
+                           Text="选择“设置网关”即表示你授权 WinGet 从 Microsoft Store 安装缺失的网关包，并接受相关包与来源协议。若 WinGet 尚未就绪，安装程序可能会先修复“应用安装程序”再重试。随后 LanFu 会校验该包、准备专用配置并打开网关安装。服务商登录始终需要你手动完成。此方式不会安装 WSL、本地 AI 或 Tailscale。" />
                 <InfoBar x:Name="TransportRequired" x:Uid="Onboarding_V3_TransportRequired" IsOpen="True"
-                         IsClosable="False" Severity="Informational" Title="Capabilities are unavailable"
-                         Message="Turn on Node mode or Local MCP Server to use these capabilities. Your choices are kept." />
+                         IsClosable="False" Severity="Informational" Title="能力不可用"
+                         Message="请开启节点模式或本地 MCP 服务后再使用这些能力。你的选择会被保留。" />
                 <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                 <StackPanel x:Name="CapabilityControls" Spacing="0">
                     <ListView x:Name="ProfileSelector" x:Uid="Onboarding_V2_ProfileSelector"
-                              AutomationProperties.Name="Capability profile"
+                              AutomationProperties.Name="能力配置"
                               SelectionMode="Single" SingleSelectionFollowsFocus="True"
                               HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                               ScrollViewer.VerticalScrollMode="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"
                               ScrollViewer.HorizontalScrollMode="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                               SelectionChanged="Profile_Changed">
                         <ListViewItem x:Name="ReadOnlyChoice" x:Uid="Onboarding_V2_ProfileReadOnly"
-                                      AutomationProperties.Name="Strict: Canvas and screen capture. Command execution is off."
+                                      AutomationProperties.Name="严格：画布与屏幕捕获，命令执行已关闭。"
                                       HorizontalContentAlignment="Stretch" Padding="16,12">
                             <StackPanel Spacing="4">
-                                <TextBlock x:Uid="Onboarding_V2_ProfileReadOnlyTitle" Text="Strict"
+                                <TextBlock x:Uid="Onboarding_V2_ProfileReadOnlyTitle" Text="严格"
                                            TextWrapping="Wrap" Style="{StaticResource BodyStrongTextBlockStyle}" />
-                                <TextBlock x:Uid="Onboarding_V2_ProfileReadOnlyDescription" Text="Canvas and screen capture. Command execution is off."
+                                <TextBlock x:Uid="Onboarding_V2_ProfileReadOnlyDescription" Text="画布与屏幕捕获，命令执行已关闭。"
                                            TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}"
                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="StandardChoice" x:Uid="Onboarding_V2_ProfileStandard"
-                                      AutomationProperties.Name="Balanced (Recommended): commands, Canvas, screen capture and voice."
+                                      AutomationProperties.Name="均衡（推荐）：命令、画布、屏幕捕获与语音。"
                                       HorizontalContentAlignment="Stretch" Padding="16,12">
                             <StackPanel Spacing="4">
                                 <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8" HorizontalAlignment="Left">
-                                    <TextBlock x:Uid="Onboarding_V2_ProfileStandardTitle" Text="Balanced"
+                                    <TextBlock x:Uid="Onboarding_V2_ProfileStandardTitle" Text="均衡"
                                                TextWrapping="Wrap" Style="{StaticResource BodyStrongTextBlockStyle}"
                                                VerticalAlignment="Center" />
                                     <controls:RecommendedBadge Grid.Column="1" />
                                 </Grid>
-                                <TextBlock x:Uid="Onboarding_V2_ProfileStandardDescription" Text="Commands, Canvas, screen capture and voice."
+                                <TextBlock x:Uid="Onboarding_V2_ProfileStandardDescription" Text="命令、画布、屏幕捕获与语音。"
                                            TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}"
                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem x:Name="FullChoice" x:Uid="Onboarding_V2_ProfileFull"
-                                      AutomationProperties.Name="Open: all eight capabilities, including Camera, Location and Browser control."
+                                      AutomationProperties.Name="开放：全部八项能力，包括摄像头、位置与浏览器控制。"
                                       HorizontalContentAlignment="Stretch" Padding="16,12">
                             <StackPanel Spacing="4">
-                                <TextBlock x:Uid="Onboarding_V2_ProfileFullTitle" Text="Open"
+                                <TextBlock x:Uid="Onboarding_V2_ProfileFullTitle" Text="开放"
                                            TextWrapping="Wrap" Style="{StaticResource BodyStrongTextBlockStyle}" />
-                                <TextBlock x:Uid="Onboarding_V2_ProfileFullDescription" Text="All eight capabilities, including Camera, Location and Browser control."
+                                <TextBlock x:Uid="Onboarding_V2_ProfileFullDescription" Text="全部八项能力，包括摄像头、位置与浏览器控制。"
                                            TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}"
                                            Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                             </StackPanel>
@@ -74,9 +74,9 @@
                                          Expanded="FineTune_Changed" Collapsed="FineTune_Changed">
                         <tk:SettingsExpander.Header>
                             <StackPanel Spacing="4">
-                                <TextBlock x:Uid="Onboarding_V3_FineTune" Text="Fine-tune"
+                                <TextBlock x:Uid="Onboarding_V3_FineTune" Text="精细调整"
                                            Style="{StaticResource BodyStrongTextBlockStyle}" />
-                                <TextBlock x:Name="CustomProfileText" x:Uid="Onboarding_V2_Custom" Text="Custom capabilities"
+                                <TextBlock x:Name="CustomProfileText" x:Uid="Onboarding_V2_Custom" Text="自定义能力"
                                            Visibility="Collapsed" Style="{StaticResource CaptionTextBlockStyle}" />
                             </StackPanel>
                         </tk:SettingsExpander.Header>
@@ -87,31 +87,31 @@
                         <tk:SettingsExpander.ItemsFooter>
                             <StackPanel Spacing="8" Padding="16,12">
                                 <TextBlock x:Uid="Onboarding_V2_DeviceFixed" TextWrapping="Wrap"
-                                           Text="Basic device information and status remain available while a node service is running. They are not a profile toggle."
+                                           Text="节点服务运行期间，基础设备信息与状态始终可用，它们不受配置档开关影响。"
                                            Style="{StaticResource CaptionTextBlockStyle}" />
                                 <TextBlock x:Uid="Onboarding_V2_NativeSettings" TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}"
-                                           Text="Execution approvals, sandbox grants, remembered capture consent, MCP tokens and voice configuration stay in Companion Settings." />
+                                           Text="命令批准、沙盒授权、已记住的捕获许可、MCP 令牌与语音配置仍保存在桌面端设置中。" />
                             </StackPanel>
                         </tk:SettingsExpander.ItemsFooter>
                     </tk:SettingsExpander>
                 </StackPanel>
                 </Border>
-                <TextBlock x:Uid="Onboarding_V4_ConnectionOptions" Text="Connection options" Margin="0,12,0,0"
+                <TextBlock x:Uid="Onboarding_V4_ConnectionOptions" Text="连接选项" Margin="0,12,0,0"
                            Style="{StaticResource BodyStrongTextBlockStyle}" TextWrapping="Wrap" />
                 <StackPanel Spacing="4">
-                <tk:SettingsCard x:Uid="Onboarding_V2_NodeMode" Header="Node mode" Description="Offer this PC's capabilities through a connected Gateway.">
-                    <ToggleSwitch x:Name="NodeModeToggle" x:Uid="Onboarding_V2_NodeModeToggle" AutomationProperties.Name="Node mode"
+                <tk:SettingsCard x:Uid="Onboarding_V2_NodeMode" Header="节点模式" Description="通过已连接的网关提供这台电脑的能力。">
+                    <ToggleSwitch x:Name="NodeModeToggle" x:Uid="Onboarding_V2_NodeModeToggle" AutomationProperties.Name="节点模式"
                                   OnContent="" OffContent="" MinWidth="0" Toggled="Transport_Toggled" />
                 </tk:SettingsCard>
-                <tk:SettingsCard x:Uid="Onboarding_V2_Mcp" Header="Local MCP Server" Description="Use local MCP clients without requiring a Gateway.">
-                    <ToggleSwitch x:Name="McpToggle" x:Uid="Onboarding_V2_McpToggle" AutomationProperties.Name="Local MCP Server"
+                <tk:SettingsCard x:Uid="Onboarding_V2_Mcp" Header="本地 MCP 服务" Description="无需网关即可使用本地 MCP 客户端。">
+                    <ToggleSwitch x:Name="McpToggle" x:Uid="Onboarding_V2_McpToggle" AutomationProperties.Name="本地 MCP 服务"
                                   OnContent="" OffContent="" MinWidth="0" Toggled="Transport_Toggled" />
                 </tk:SettingsCard>
                 </StackPanel>
-                <tk:SettingsCard x:Uid="Onboarding_V2_Ollama" Header="Ollama sharing"
-                                 Description="Share an existing Windows Ollama service. This does not install Local AI or change your capability profile.">
+                <tk:SettingsCard x:Uid="Onboarding_V2_Ollama" Header="Ollama 共享"
+                                 Description="共享 Windows 上已有的 Ollama 服务。这不会安装本地 AI，也不会改变你的能力配置。">
                     <ToggleSwitch x:Name="OllamaToggle" x:Uid="Onboarding_V2_OllamaToggle"
-                                  AutomationProperties.Name="Ollama sharing" OnContent="" OffContent="" MinWidth="0"
+                                  AutomationProperties.Name="Ollama 共享" OnContent="" OffContent="" MinWidth="0"
                                   Toggled="Ollama_Toggled" />
                 </tk:SettingsCard>
                 <tk:SettingsCard x:Name="StartupPreferenceRow" x:Uid="Onboarding_V2_StartupCard"
@@ -124,8 +124,8 @@
         </ScrollViewer>
         <Grid Grid.Row="2" ColumnDefinitions="*,Auto">
             <controls:SetupProgressIndicator x:Name="FlowProgress" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Button x:Uid="Onboarding_V2_Back" Content="Back" MinWidth="100" Click="Back_Click" HorizontalAlignment="Left" />
-            <Button x:Name="ContinueButton" Grid.Column="1" x:Uid="Onboarding_V2_Next" Content="Next" MinWidth="100" Click="Next_Click" Style="{StaticResource AccentButtonStyle}" />
+            <Button x:Uid="Onboarding_V2_Back" Content="返回" MinWidth="100" Click="Back_Click" HorizontalAlignment="Left" />
+            <Button x:Name="ContinueButton" Grid.Column="1" x:Uid="Onboarding_V2_Next" Content="下一步" MinWidth="100" Click="Next_Click" Style="{StaticResource AccentButtonStyle}" />
         </Grid>
     </Grid>
 </Page>

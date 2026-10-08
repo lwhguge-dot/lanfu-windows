@@ -7,6 +7,15 @@ namespace OpenClawTray.Helpers;
 
 public static class LocalizationHelper
 {
+    /// <summary>
+    /// Language every UI lookup uses when nothing overrides it. LanFu is a
+    /// Simplified-Chinese product, so this is a product constant rather than the
+    /// Windows display language: the shell must render Chinese on any OS locale.
+    /// <c>OPENCLAW_LANGUAGE</c> still wins (see <see cref="App"/>), which keeps the
+    /// localization tests able to pin another locale.
+    /// </summary>
+    public const string DefaultUiLanguage = "zh-CN";
+
     private static ResourceManager? _resourceManager;
     private static ResourceContext? _overrideContext;
     private static string? _languageOverride;
@@ -25,18 +34,50 @@ public static class LocalizationHelper
         _overrideContext = null;
     }
 
+    /// <summary>
+    /// Applies the process-wide UI language. Must run before the first page is loaded.
+    /// <para>
+    /// XAML <c>x:Uid</c> lookups never call into this class: the XAML framework resolves
+    /// them with its own resource context, whose language comes from the Windows App SDK
+    /// <c>ApplicationLanguages</c> list. On a zh-CN machine that list still resolved to the
+    /// PRI's default language, so the shell rendered the English resources. Setting
+    /// <c>PrimaryLanguageOverride</c> is what makes the XAML path agree with the code path
+    /// <em>and</em> with <c>OPENCLAW_LANGUAGE</c>.
+    /// </para>
+    /// </summary>
+    public static void ApplyUiLanguage(string languageTag)
+    {
+        try
+        {
+            Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = languageTag;
+        }
+        catch (Exception ex)
+        {
+            Logger.Warn($"LocalizationHelper: PrimaryLanguageOverride('{languageTag}') failed: {ex.Message}");
+        }
+
+        SetLanguageOverride(languageTag);
+    }
+
     private static ResourceManager Manager => _resourceManager ??= new ResourceManager();
+
+    /// <summary>
+    /// The process-wide resource manager, shared with the XAML framework through
+    /// <c>Application.ResourceManagerRequested</c> (see <see cref="App"/>): the framework
+    /// resolves <c>x:Uid</c> strings through the manager it is handed there, not through
+    /// this class.
+    /// </summary>
+    internal static ResourceManager SharedResourceManager => Manager;
 
     private static ResourceContext GetContext()
     {
         if (_overrideContext != null) return _overrideContext;
-        if (_languageOverride != null)
-        {
-            _overrideContext = Manager.CreateResourceContext();
-            _overrideContext.QualifierValues["Language"] = _languageOverride;
-            return _overrideContext;
-        }
-        return Manager.CreateResourceContext();
+
+        // Always pin the language qualifier: an unpinned context follows the process
+        // language list, which is what let the shell fall back to English.
+        _overrideContext = Manager.CreateResourceContext();
+        _overrideContext.QualifierValues["Language"] = _languageOverride ?? DefaultUiLanguage;
+        return _overrideContext;
     }
 
     public static string GetString(string resourceKey)

@@ -12,7 +12,7 @@
         <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Spacing="4">
             <controls:OnboardingMascot x:Name="MascotHero" Mood="Idle"
                                       HorizontalAlignment="Center" />
-            <TextBlock x:Uid="Onboarding_V2_WelcomeTitle" Text="Welcome to OpenClaw"
+            <TextBlock x:Uid="Onboarding_V2_WelcomeTitle" Text="欢迎使用 LanFu"
                        Style="{StaticResource TitleTextBlockStyle}"
                        HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
             <TextBlock x:Name="WelcomeDescription" x:Uid="Onboarding_Flow_WelcomeDescription"
@@ -20,7 +20,7 @@
                        Style="{StaticResource BodyTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                        HorizontalAlignment="Center"
-                       Text="OpenClaw is your AI assistant for getting things done on your PC." />
+                       Text="LanFu 是帮你在电脑上完成任务的 AI 助手。" />
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" Margin="0,24,0,16" MaxWidth="640" HorizontalContentAlignment="Stretch">
@@ -30,21 +30,21 @@
                 <StackPanel Spacing="0">
                 <tk:SettingsCard x:Name="PcFeature" x:Uid="Onboarding_V2_WelcomePc"
                                  Background="Transparent" BorderThickness="0" CornerRadius="0"
-                                 Header="Let agents help on this PC" Description="Choose which PC capabilities to enable. Windows permissions and execution approvals remain separate." />
+                                 Header="让智能体在这台电脑上帮忙" Description="选择要启用哪些本机能力。Windows 权限与命令批准是独立设置的。" />
                 <tk:SettingsCard x:Name="GatewayFeature" x:Uid="Onboarding_V2_WelcomeGateway"
                                  Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0"
-                                 Header="Keep your Gateway under your control" Description="Run a private WSL Gateway here or connect to an existing one." />
+                                 Header="网关始终由你掌控" Description="在这里运行一个私有 WSL 网关，或连接已有的网关。" />
                 <tk:SettingsCard x:Name="ChatFeature" x:Uid="Onboarding_V2_WelcomeChat"
                                  Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0"
-                                 Header="Chat with your AI" Description="Use native Chat with an AI provider you choose." />
+                                 Header="与你的 AI 对话" Description="使用原生对话界面，配合你自己选择的 AI 服务商。" />
                 </StackPanel>
                 </Border>
                 <InfoBar x:Uid="Onboarding_V2_WelcomeTrust" Margin="0,8,0,0"
                          IsOpen="True" IsClosable="False" Severity="Warning"
-                         Title="Before you get started"
-                         Message="AI agents are powerful and giving them access to your PC carries risks. They can make mistakes, change or delete files, or expose private information.&#x0a;&#x0a;You can control and limit OpenClaw’s access to your PC.">
+                         Title="开始之前"
+                         Message="AI 智能体能力很强，让它访问你的电脑存在风险：它可能出错、修改或删除文件，也可能泄露隐私信息。&#x0a;&#x0a;你可以控制并限制 LanFu 对这台电脑的访问。">
                     <InfoBar.ActionButton>
-                        <HyperlinkButton x:Uid="Onboarding_Copy_SafetyLink" Content="Learn more about risks and safety"
+                        <HyperlinkButton x:Uid="Onboarding_Copy_SafetyLink" Content="了解风险与安全说明"
                                          NavigateUri="https://trust.openclaw.ai">
                             <HyperlinkButton.ContentTemplate>
                                 <DataTemplate>
@@ -60,7 +60,7 @@
         <Grid Grid.Row="2" ColumnDefinitions="*,Auto" Margin="0,12,0,0">
             <controls:SetupProgressIndicator x:Name="FlowProgress" Grid.ColumnSpan="2"
                                             HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Button Grid.Column="1" x:Name="ContinueButton" x:Uid="Onboarding_V2_Continue" Content="Continue"
+            <Button Grid.Column="1" x:Name="ContinueButton" x:Uid="Onboarding_V2_Continue" Content="继续"
                     MinWidth="100" HorizontalAlignment="Right"
                     Style="{StaticResource AccentButtonStyle}"
                     Click="Continue_Click" />

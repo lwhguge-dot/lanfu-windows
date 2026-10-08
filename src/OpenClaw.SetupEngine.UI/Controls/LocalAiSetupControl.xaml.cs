@@ -84,7 +84,7 @@ public sealed partial class LocalAiSetupControl : UserControl
             if (deviceEligibility.FailureCode == LocalInferenceEligibilityFailureCode.HardwareFactsIncomplete)
             {
                 // Incomplete facts (a partial/transient CUDA read) are inconclusive, not a
-                // definitive "this device cannot run Local AI". Report it the same way as a
+                // definitive "此设备无法运行本地 AI". Report it the same way as a
                 // thrown probe failure so recheck stays available instead of the option being
                 // permanently disabled.
                 if (_localAiAvailability.TryApplyProbeFailure(

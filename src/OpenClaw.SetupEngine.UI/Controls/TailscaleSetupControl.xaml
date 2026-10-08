@@ -10,31 +10,31 @@
     </UserControl.Resources>
     <StackPanel Spacing="12">
         <tk:SettingsCard x:Uid="Onboarding_V2_TailscaleCard" Header="Tailscale Serve"
-                         Description="Private tailnet access, not public Funnel access. Optional and off by default.">
+                         Description="仅限 tailnet 内网访问，不开放公网 Funnel。可选，默认关闭。">
             <ToggleSwitch x:Name="TailscaleToggle" x:Uid="Onboarding_V2_TailscaleToggle"
-                          AutomationProperties.Name="Set up Tailscale Serve"
+                          AutomationProperties.Name="设置 Tailscale Serve"
                           OnContent="" OffContent="" MinWidth="0" Toggled="TailscaleToggle_Toggled" />
         </tk:SettingsCard>
         <StackPanel x:Name="TailscaleOptions" Spacing="12" Visibility="Collapsed">
             <TextBlock x:Uid="Onboarding_V2_TailscalePrerequisite" TextWrapping="Wrap"
                        Style="{StaticResource BodyTextBlockStyle}"
-                       Text="First install and sign in to Tailscale on Windows with MagicDNS enabled. The WSL Gateway signs in separately." />
+                       Text="请先在 Windows 上安装并登录 Tailscale，并启用 MagicDNS。WSL 网关需要单独登录。" />
             <TextBlock x:Name="TailscaleStatusText" TextWrapping="Wrap"
                        AutomationProperties.LiveSetting="Polite" Style="{StaticResource CaptionTextBlockStyle}" />
-            <Button x:Uid="Onboarding_LocalAi_RecheckAvailabilityButton" Content="Recheck" Click="Recheck_Click" />
+            <Button x:Uid="Onboarding_LocalAi_RecheckAvailabilityButton" Content="重新检测" Click="Recheck_Click" />
             <RadioButtons x:Name="TailscaleAuthModeSelector" x:Uid="Onboarding_V2_TailscaleAuthMode"
-                          Header="Sign in to the WSL Gateway" MaxColumns="1" SelectionChanged="TailscaleAuthMode_SelectionChanged">
-                <RadioButton x:Uid="Onboarding_V2_TailscaleBrowser" ContentTemplate="{StaticResource WrappedChoiceTemplate}" Content="Sign in with a browser during installation" />
-                <RadioButton x:Uid="Onboarding_V2_TailscaleKey" ContentTemplate="{StaticResource WrappedChoiceTemplate}" Content="Use a one-off auth key" />
+                          Header="登录 WSL 网关" MaxColumns="1" SelectionChanged="TailscaleAuthMode_SelectionChanged">
+                <RadioButton x:Uid="Onboarding_V2_TailscaleBrowser" ContentTemplate="{StaticResource WrappedChoiceTemplate}" Content="安装过程中用浏览器登录" />
+                <RadioButton x:Uid="Onboarding_V2_TailscaleKey" ContentTemplate="{StaticResource WrappedChoiceTemplate}" Content="使用一次性授权密钥" />
             </RadioButtons>
             <PasswordBox x:Name="TailscaleAuthKeyBox" x:Uid="Onboarding_V2_TailscaleKeyInput"
-                         Header="Tailscale auth key" Visibility="Collapsed"
-                         PlaceholderText="Kept only for this setup session" PasswordChanged="AuthKey_Changed" />
+                         Header="Tailscale 授权密钥" Visibility="Collapsed"
+                         PlaceholderText="仅在本次安装会话中保留" PasswordChanged="AuthKey_Changed" />
             <tk:SettingsCard x:Uid="Onboarding_V2_TailscaleTrust"
-                             Header="Trust Tailscale identities for Gateway authentication"
-                             Description="Off by default. Enable only if your tailnet ACLs should participate in Gateway access control.">
+                             Header="信任 Tailscale 身份用于网关认证"
+                             Description="默认关闭。仅当你的 tailnet ACL 需要参与网关访问控制时才启用。">
                 <ToggleSwitch x:Name="TailscaleTrustAuthToggle" x:Uid="Onboarding_V2_TailscaleTrustToggle"
-                              AutomationProperties.Name="Trust Tailscale identities"
+                              AutomationProperties.Name="信任 Tailscale 身份"
                               OnContent="" OffContent="" MinWidth="0" Toggled="TailscaleTrustAuthToggle_Toggled" />
             </tk:SettingsCard>
         </StackPanel>

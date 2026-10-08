@@ -6,9 +6,9 @@
     <Grid Padding="40,4,40,24" RowDefinitions="Auto,*,Auto">
         <StackPanel Spacing="4" HorizontalAlignment="Stretch">
             <controls:OnboardingMascot x:Name="MascotHero" Mood="Curious" HorizontalAlignment="Center" />
-            <TextBlock x:Uid="Onboarding_V2_ReviewTitle" Text="WSL Gateway setup" Style="{StaticResource TitleTextBlockStyle}"
+            <TextBlock x:Uid="Onboarding_V2_ReviewTitle" Text="WSL 网关安装" Style="{StaticResource TitleTextBlockStyle}"
                        TextAlignment="Center" TextWrapping="Wrap" />
-            <TextBlock x:Uid="Onboarding_V2_ReviewIntro" Text="Review what will change before installation starts."
+            <TextBlock x:Uid="Onboarding_V2_ReviewIntro" Text="开始安装前，请确认将要发生的更改。"
                        Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" TextAlignment="Center"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
         </StackPanel>
@@ -22,13 +22,13 @@
                         <tk:SettingsCard x:Name="DistroCard" Background="Transparent" BorderThickness="0" CornerRadius="0" />
                         <tk:SettingsCard x:Name="CliCard" x:Uid="Onboarding_V2_CliCard" Header="LanFu 命令行"
                                          Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0" />
-                        <tk:SettingsCard x:Name="GatewayCard" x:Uid="Onboarding_V2_GatewayCard" Header="Local Gateway service"
+                        <tk:SettingsCard x:Name="GatewayCard" x:Uid="Onboarding_V2_GatewayCard" Header="本地网关服务"
                                          Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0" />
                     </StackPanel>
                 </Border>
                 <StackPanel x:Name="ReplacementOptions" Spacing="12" Visibility="Collapsed">
                     <InfoBar x:Name="ReplacementWarning" x:Uid="Onboarding_V2_ReplacementWarning" IsOpen="True" IsClosable="False" Severity="Warning"
-                             Title="This replacement can permanently delete WSL data"
+                             Title="此替换操作可能永久删除 WSL 数据"
                              AutomationProperties.LiveSetting="Polite" />
                     <CheckBox x:Name="ReplacementConsent" Checked="ReplacementConsent_Changed" Unchecked="ReplacementConsent_Changed">
                         <CheckBox.ContentTemplate>
@@ -38,7 +38,7 @@
                         </CheckBox.ContentTemplate>
                     </CheckBox>
                 </StackPanel>
-                <tk:SettingsCard x:Name="LocalAiCard" x:Uid="Onboarding_V2_LocalAiReview" Header="Local AI"
+                <tk:SettingsCard x:Name="LocalAiCard" x:Uid="Onboarding_V2_LocalAiReview" Header="本地 AI"
                                  IsClickEnabled="True" Click="LocalAi_Click" />
                 <controls:TailscaleSetupControl x:Name="TailscaleOptions" />
                 <tk:SettingsCard x:Name="StartupPreferenceRow" x:Uid="Onboarding_V2_StartupCard" Header="登录时启动 LanFu">
@@ -46,7 +46,7 @@
                                   AutomationProperties.Name="登录时启动 LanFu"
                                   OnContent="" OffContent="" MinWidth="0" Toggled="Startup_Toggled" />
                 </tk:SettingsCard>
-                <tk:SettingsExpander x:Uid="Onboarding_V2_ExactCommands" Header="Exact commands and files">
+                <tk:SettingsExpander x:Uid="Onboarding_V2_ExactCommands" Header="具体命令与文件">
                     <tk:SettingsExpander.Items>
                         <tk:SettingsCard>
                             <tk:SettingsCard.Header>
@@ -60,8 +60,8 @@
         </ScrollViewer>
         <Grid Grid.Row="2" ColumnDefinitions="*,Auto">
             <controls:SetupProgressIndicator x:Name="FlowProgress" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
-            <Button x:Uid="Onboarding_V2_Back" Content="Back" MinWidth="100" HorizontalAlignment="Left" Click="Back_Click" />
-            <Button Grid.Column="1" x:Name="PrimaryButton" Content="Install"
+            <Button x:Uid="Onboarding_V2_Back" Content="返回" MinWidth="100" HorizontalAlignment="Left" Click="Back_Click" />
+            <Button Grid.Column="1" x:Name="PrimaryButton" Content="安装"
                     MinWidth="100" Click="Install_Click" Style="{StaticResource AccentButtonStyle}" />
         </Grid>
     </Grid>

@@ -15,10 +15,10 @@
         <StackPanel Spacing="4" HorizontalAlignment="Stretch">
             <controls:OnboardingMascot x:Name="ProgressMascot" Mood="Working"
                                       HorizontalAlignment="Center" />
-            <TextBlock x:Uid="Onboarding_Native_Title" Text="Install a local native gateway"
+            <TextBlock x:Uid="Onboarding_Native_Title" Text="安装本地原生网关"
                        Style="{StaticResource TitleTextBlockStyle}" TextWrapping="Wrap" TextAlignment="Center" />
             <TextBlock x:Uid="Onboarding_Native_ProgressSubtitle"
-                       Text="Companion will prepare your Gateway, then help you connect your AI."
+                       Text="LanFu 桌面端会先准备好网关，再帮你接入 AI。"
                        Style="{StaticResource BodyTextBlockStyle}" TextWrapping="Wrap" TextAlignment="Center"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
         </StackPanel>
@@ -36,13 +36,13 @@
               ColumnDefinitions="*,*" ColumnSpacing="8" RowSpacing="12">
             <controls:SetupProgressIndicator x:Name="FlowProgress" Grid.ColumnSpan="2"
                                             HorizontalAlignment="Center" />
-            <Button x:Name="BackButton" Grid.Row="1" x:Uid="Onboarding_Native_Back" Content="Back"
+            <Button x:Name="BackButton" Grid.Row="1" x:Uid="Onboarding_Native_Back" Content="返回"
                     Click="Back_Click" MinWidth="100" HorizontalAlignment="Left"
                     ContentTemplate="{StaticResource WrappedFooterAction}" />
-            <Button x:Name="CancelButton" Grid.Row="1" Grid.Column="1" x:Uid="Onboarding_Native_Cancel" Content="Cancel setup"
+            <Button x:Name="CancelButton" Grid.Row="1" Grid.Column="1" x:Uid="Onboarding_Native_Cancel" Content="取消安装"
                     MinWidth="100" HorizontalAlignment="Right" ContentTemplate="{StaticResource WrappedFooterAction}"
                     Visibility="Collapsed" Click="Cancel_Click" />
-            <Button x:Name="RetryButton" Grid.Row="1" Grid.Column="1" x:Uid="Onboarding_Native_Retry" Content="Retry setup"
+            <Button x:Name="RetryButton" Grid.Row="1" Grid.Column="1" x:Uid="Onboarding_Native_Retry" Content="重试安装"
                     MinWidth="100" HorizontalAlignment="Right" ContentTemplate="{StaticResource WrappedFooterAction}"
                     Style="{StaticResource AccentButtonStyle}" Visibility="Collapsed" Click="Retry_Click" />
         </Grid>

@@ -16,7 +16,12 @@
     <Product>LanFu</Product>
     <AssemblyTitle>LanFu</AssemblyTitle>
     <Company>LanFu Edu</Company>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <!-- LanFu is a Simplified-Chinese product: zh-CN is the PRI's default (neutral)
+         language, so every resource lookup that has no language-specific match - and
+         every lookup from an unpackaged process whose Windows App SDK language list
+         is empty - resolves to the Chinese resources instead of the English ones.
+         Strings\zh-cn\Resources.resw is the required default-language folder. -->
+    <DefaultLanguage>zh-CN</DefaultLanguage>
     <Platforms>x64;ARM64</Platforms>
     <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
     <!-- app.manifest declares PerMonitorV2 DPI awareness and must be embedded in every

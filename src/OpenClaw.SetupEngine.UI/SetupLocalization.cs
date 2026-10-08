@@ -15,9 +15,52 @@ namespace OpenClaw.SetupEngine.UI;
 /// </summary>
 internal static class SetupLocalization
 {
+    /// <summary>
+    /// Language used when nothing pinned one explicitly. Mirrors
+    /// <c>LocalizationHelper.DefaultUiLanguage</c> in the Tray app (this project cannot
+    /// reference it): LanFu is a Simplified-Chinese product, so the setup wizard must not
+    /// follow the Windows display language.
+    /// </summary>
+    private const string DefaultUiLanguage = "zh-CN";
+
     private static ResourceManager? s_resourceManager;
 
     private static ResourceManager Manager => s_resourceManager ??= new ResourceManager();
+
+    /// <summary>
+    /// Resolves the language for a lookup. The Tray app sets the Windows App SDK
+    /// primary-language override before the first page loads (including the
+    /// <c>OPENCLAW_LANGUAGE</c> development override), so reading it back keeps the setup
+    /// wizard on the same language as the rest of the shell without a cross-project
+    /// reference to the Tray localization helper.
+    /// </summary>
+    private static string PinnedLanguage
+    {
+        get
+        {
+            try
+            {
+                string pinned = Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
+                if (!string.IsNullOrWhiteSpace(pinned))
+                    return pinned;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning($"SetupLocalization: primary language override unavailable: {ex.Message}");
+            }
+
+            return DefaultUiLanguage;
+        }
+    }
+
+    private static ResourceContext GetContext()
+    {
+        // Pin the language qualifier: an unpinned context follows the process language
+        // list and can resolve the English fallback resources.
+        ResourceContext context = Manager.CreateResourceContext();
+        context.QualifierValues["Language"] = PinnedLanguage;
+        return context;
+    }
 
     public static string GetString(string resourceKey)
     {
@@ -49,7 +92,7 @@ internal static class SetupLocalization
         {
             ResourceCandidate? candidate = Manager.MainResourceMap.GetValue(
                 $"Resources/{resourceKey}",
-                Manager.CreateResourceContext());
+                GetContext());
             return candidate?.ValueAsString;
         }
         catch (Exception ex)

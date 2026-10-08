@@ -26,14 +26,14 @@
         <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" Spacing="4">
             <controls:OnboardingMascot x:Name="MascotHero" Mood="Curious"
                                       HorizontalAlignment="Center" />
-            <TextBlock x:Uid="Onboarding_Copy_GatewayTitle" Text="Set up OpenClaw"
+            <TextBlock x:Uid="Onboarding_Copy_GatewayTitle" Text="设置 LanFu"
                        Style="{StaticResource TitleTextBlockStyle}"
                        HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
             <TextBlock x:Uid="Onboarding_Copy_GatewayIntro" TextWrapping="Wrap" TextAlignment="Center" MaxWidth="560"
                        Style="{StaticResource BodyTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                        HorizontalAlignment="Center"
-                       Text="The Gateway connects your AI assistant to your apps and tools. Choose where it runs. You can change this later." />
+                       Text="网关把你的 AI 助手连接到你的应用和工具。请选择它的运行位置，之后可以更改。" />
         </StackPanel>
 
         <ScrollViewer Grid.Row="1" Margin="0,24,0,0"
@@ -45,8 +45,8 @@
                       HorizontalScrollBarVisibility="Disabled">
           <StackPanel Spacing="12">
             <ListView x:Name="GatewayChoiceSelector" x:Uid="Onboarding_Copy_GatewaySelector"
-                      AutomationProperties.Name="Gateway setup method"
-                      AutomationProperties.HelpText="Choose one gateway setup method."
+                      AutomationProperties.Name="网关安装方式"
+                      AutomationProperties.HelpText="请选择一种网关安装方式。"
                       HorizontalAlignment="Stretch"
                       HorizontalContentAlignment="Stretch"
                       SelectionMode="Single"
@@ -55,7 +55,7 @@
                       SelectionChanged="GatewayChoice_SelectionChanged">
                 <ListViewItem x:Name="InstallChoice" x:Uid="Onboarding_Copy_GatewayLocalChoice"
                               AutomationProperties.AutomationId="WelcomeInstallLocalGatewayChoice"
-                              AutomationProperties.Name="Install a local Gateway (WSL), recommended"
+                              AutomationProperties.Name="安装本地网关（WSL，推荐）"
                               AutomationProperties.LiveSetting="Polite"
                               HorizontalContentAlignment="Stretch"
                               VerticalContentAlignment="Center"
@@ -69,12 +69,12 @@
                         <StackPanel Grid.Column="1" Spacing="3">
                             <StackPanel Orientation="Horizontal" Spacing="8">
                                 <TextBlock x:Name="InstallTitle" x:Uid="Onboarding_Copy_GatewayLocalTitle"
-                                           Text="Install a local Gateway (WSL)" TextWrapping="Wrap"
+                                           Text="安装本地网关（WSL）" TextWrapping="Wrap"
                                            Style="{StaticResource BodyStrongTextBlockStyle}"
                                            VerticalAlignment="Center" />
                                 <ProgressRing x:Name="InstallCheckProgress"
                                               AutomationProperties.AutomationId="WelcomeInstallCheckProgress"
-                                              AutomationProperties.Name="Checking WSL readiness and existing setup"
+                                              AutomationProperties.Name="正在检查 WSL 环境与已有安装"
                                               Width="16" Height="16"
                                               IsActive="False" Visibility="Collapsed" />
                                 <controls:RecommendedBadge x:Name="WslRecommendedBadge" />
@@ -82,14 +82,14 @@
                             <TextBlock x:Uid="Onboarding_Copy_GatewayLocalDescription" TextWrapping="Wrap"
                                        Style="{StaticResource CaptionTextBlockStyle}"
                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                       Text="Install a private OpenClaw Gateway in WSL." />
+                                       Text="在 WSL 中安装一个私有 LanFu 网关。" />
                         </StackPanel>
                     </Grid>
                 </ListViewItem>
 
                 <ListViewItem x:Name="ConnectChoice" x:Uid="Onboarding_Copy_GatewayExistingChoice"
                               AutomationProperties.AutomationId="WelcomeConnectExistingGatewayChoice"
-                              AutomationProperties.Name="Connect to an existing Gateway"
+                              AutomationProperties.Name="连接已有网关"
                               HorizontalContentAlignment="Stretch"
                               VerticalContentAlignment="Center"
                               Padding="16,12">
@@ -100,18 +100,18 @@
                                       Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
                         </Border>
                         <StackPanel Grid.Column="1" Spacing="3">
-                            <TextBlock x:Uid="Onboarding_Copy_GatewayExistingTitle" Text="Connect to an existing Gateway" TextWrapping="Wrap"
+                            <TextBlock x:Uid="Onboarding_Copy_GatewayExistingTitle" Text="连接已有网关" TextWrapping="Wrap"
                                        Style="{StaticResource BodyStrongTextBlockStyle}" />
                             <TextBlock x:Uid="Onboarding_Copy_GatewayExistingDescription" TextWrapping="Wrap"
                                        Style="{StaticResource CaptionTextBlockStyle}"
                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
-                                       Text="Connect without installing a Gateway or Local AI on this PC." />
+                                       Text="连接时不在本机安装网关或本地 AI。" />
                         </StackPanel>
                     </Grid>
                 </ListViewItem>
                 <ListViewItem x:Name="NativeChoice"
                               AutomationProperties.AutomationId="WelcomeNativeGatewayChoice"
-                              AutomationProperties.Name="Install a local native gateway, recommended"
+                              AutomationProperties.Name="安装本地原生网关（推荐）"
                               HorizontalContentAlignment="Stretch" IsEnabled="False" Padding="16,12">
                     <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
                         <Border x:Name="NativeIconBackground" Width="44" Height="44" CornerRadius="6"
@@ -120,12 +120,12 @@
                         </Border>
                         <StackPanel Grid.Column="1" Spacing="3">
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <TextBlock x:Uid="Onboarding_Native_Title" Text="Install a local native gateway"
+                                <TextBlock x:Uid="Onboarding_Native_Title" Text="安装本地原生网关"
                                            Style="{StaticResource BodyStrongTextBlockStyle}" />
                                 <controls:RecommendedBadge x:Name="NativeRecommendedBadge" />
                             </StackPanel>
                             <TextBlock x:Uid="Onboarding_Native_Description"
-                                       Text="Install and set up an OpenClaw gateway on this device"
+                                       Text="在此设备上安装并配置 LanFu 网关"
                                        TextWrapping="Wrap" Style="{StaticResource CaptionTextBlockStyle}" />
                         </StackPanel>
                     </Grid>
@@ -138,14 +138,14 @@
                 <StackPanel Spacing="8">
                     <StackPanel x:Name="NativeSupportStatusPanel" Orientation="Horizontal" Spacing="8">
                         <ProgressRing x:Name="NativeCheckProgress" Width="16" Height="16"
-                                      IsActive="True" AutomationProperties.Name="Checking native gateway support" />
+                                      IsActive="True" AutomationProperties.Name="正在检查原生网关支持" />
                         <TextBlock x:Name="NativeSupportStatus" TextWrapping="Wrap" MaxWidth="460"
                                    AutomationProperties.AutomationId="WelcomeNativeSupportStatus"
                                    AutomationProperties.LiveSetting="Polite"
                                    Style="{StaticResource CaptionTextBlockStyle}" />
                     </StackPanel>
                     <Button x:Name="WindowsUpdateButton" x:Uid="Onboarding_Native_WindowsUpdate"
-                            Content="Open Windows Update" Visibility="Collapsed"
+                            Content="打开 Windows 更新" Visibility="Collapsed"
                             AutomationProperties.AutomationId="WelcomeWindowsUpdate"
                             Style="{StaticResource AccentButtonStyle}" Click="WindowsUpdate_Click" />
                 </StackPanel>
@@ -160,7 +160,7 @@
                 </tk:SettingsCard.HeaderIcon>
                 <tk:SettingsCard.Header>
                     <TextBlock x:Uid="Onboarding_Welcome_LocalAiAvailableBadge"
-                               Text="Your PC supports Local AI" TextWrapping="Wrap"
+                               Text="你的电脑支持本地 AI" TextWrapping="Wrap"
                                Style="{StaticResource BodyTextBlockStyle}" />
                 </tk:SettingsCard.Header>
                 <tk:SettingsCard.Description>
@@ -171,10 +171,10 @@
             </tk:SettingsCard>
             <InfoBar x:Name="ReadinessError" IsOpen="False" IsClosable="False" Severity="Error">
                 <InfoBar.ActionButton>
-                    <Button x:Uid="Onboarding_V2_Retry" Content="Try again" Click="Next_Click" />
+                    <Button x:Uid="Onboarding_V2_Retry" Content="重试" Click="Next_Click" />
                 </InfoBar.ActionButton>
             </InfoBar>
-            <HyperlinkButton x:Uid="Onboarding_V2_AlternativeRoutes" Content="Remote, local MCP or set up later"
+            <HyperlinkButton x:Uid="Onboarding_V2_AlternativeRoutes" Content="远程、本地 MCP 或稍后设置"
                              Click="Alternatives_Click" />
           </StackPanel>
         </ScrollViewer>
@@ -183,11 +183,11 @@
             <controls:SetupProgressIndicator x:Name="FlowProgress" Grid.ColumnSpan="2"
                                             HorizontalAlignment="Center" VerticalAlignment="Center" />
             <Button x:Name="BackButton" x:Uid="Onboarding_V2_Back" AutomationProperties.AutomationId="WelcomeBackButton"
-                    Grid.Column="0" Content="Back"
+                    Grid.Column="0" Content="返回"
                     MinWidth="100" HorizontalAlignment="Left"
                     Click="Back_Click" />
             <Button x:Name="NextButton" x:Uid="Onboarding_V2_Next" AutomationProperties.AutomationId="WelcomeNextButton"
-                    Grid.Column="1" Content="Next"
+                    Grid.Column="1" Content="下一步"
                     MinWidth="100" HorizontalAlignment="Right"
                     Style="{StaticResource AccentButtonStyle}"
                     Click="Next_Click" />

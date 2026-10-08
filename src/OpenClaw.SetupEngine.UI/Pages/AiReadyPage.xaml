@@ -11,9 +11,9 @@
     <Grid Padding="40,4,40,24" RowDefinitions="Auto,*,Auto">
         <StackPanel Spacing="4">
             <controls:OnboardingMascot x:Name="MascotHero" Mood="Celebrating" HorizontalAlignment="Center" />
-            <TextBlock x:Uid="Onboarding_Ready_Heading" Text="Your AI is ready"
+            <TextBlock x:Uid="Onboarding_Ready_Heading" Text="你的 AI 已就绪"
                        Style="{StaticResource TitleTextBlockStyle}" TextAlignment="Center" TextWrapping="Wrap" />
-            <TextBlock x:Uid="Onboarding_Ready_Prompt" Text="What would you like to do first?"
+            <TextBlock x:Uid="Onboarding_Ready_Prompt" Text="想先做点什么？"
                        Style="{StaticResource BodyTextBlockStyle}" TextAlignment="Center" TextWrapping="Wrap" />
             <TextBlock x:Name="ModelSummary" Style="{StaticResource CaptionTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextAlignment="Center" TextWrapping="Wrap" />
@@ -22,20 +22,20 @@
             <StackPanel Spacing="8">
                 <InfoBar x:Name="ErrorBar" IsOpen="False" IsClosable="False" Severity="Error">
                     <InfoBar.ActionButton>
-                        <Button x:Name="RecoveryButton" x:Uid="Onboarding_Ready_Return" Content="Back to AI setup"
+                        <Button x:Name="RecoveryButton" x:Uid="Onboarding_Ready_Return" Content="返回 AI 设置"
                                 Click="Return_Click" ContentTemplate="{StaticResource WrappedAction}" />
                     </InfoBar.ActionButton>
                 </InfoBar>
                 <StackPanel x:Name="Choices" Spacing="8">
-                    <tk:SettingsCard x:Name="ChatChoice" x:Uid="Onboarding_Ready_Chat" Header="Talk to my agent"
-                                     Description="Open Chat with your agent." Tag="Chat" IsClickEnabled="True" Click="Choose_Click"
-                                     AutomationProperties.Name="Talk to my agent, recommended">
+                    <tk:SettingsCard x:Name="ChatChoice" x:Uid="Onboarding_Ready_Chat" Header="和我的智能体对话"
+                                     Description="打开对话，与你的智能体聊天。" Tag="Chat" IsClickEnabled="True" Click="Choose_Click"
+                                     AutomationProperties.Name="和我的智能体对话（推荐）">
                         <controls:RecommendedBadge x:Name="RecommendedBadge" />
                     </tk:SettingsCard>
-                    <tk:SettingsCard x:Name="ChannelsChoice" x:Uid="Onboarding_Ready_Channels" Header="Connect channels"
-                                     Description="WhatsApp, Telegram, and more. You choose when to sign in." Tag="Channels" IsClickEnabled="True" Click="Choose_Click" />
-                    <tk:SettingsCard x:Name="SkillsChoice" x:Uid="Onboarding_Ready_Skills" Header="Explore skills"
-                                     Description="Browse skills for your agent. Nothing is installed automatically." Tag="Skills" IsClickEnabled="True" Click="Choose_Click" />
+                    <tk:SettingsCard x:Name="ChannelsChoice" x:Uid="Onboarding_Ready_Channels" Header="接入频道"
+                                     Description="WhatsApp、Telegram 等。何时登录由你决定。" Tag="Channels" IsClickEnabled="True" Click="Choose_Click" />
+                    <tk:SettingsCard x:Name="SkillsChoice" x:Uid="Onboarding_Ready_Skills" Header="浏览技能"
+                                     Description="浏览智能体可用的技能。不会自动安装任何内容。" Tag="Skills" IsClickEnabled="True" Click="Choose_Click" />
                 </StackPanel>
                 <ProgressBar x:Name="BusyProgress" IsIndeterminate="True" Visibility="Collapsed" />
                 <TextBlock x:Name="StatusText" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap"

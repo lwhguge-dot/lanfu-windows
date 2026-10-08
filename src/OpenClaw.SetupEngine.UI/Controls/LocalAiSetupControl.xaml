@@ -8,13 +8,13 @@
                  AutomationProperties.AutomationId="LocalAiUnavailablePanel"
                  AutomationProperties.LiveSetting="Polite"
                  IsOpen="True" IsClosable="False" Severity="Informational" Visibility="Collapsed"
-                 Title="Local AI is not available"
-                 Message="This PC does not meet one or more Local AI requirements.">
+                 Title="本地 AI 不可用"
+                 Message="这台电脑不满足本地 AI 的一项或多项要求。">
             <InfoBar.ActionButton>
                 <HyperlinkButton x:Name="LocalAiUnavailableDetailsButton"
                                  x:Uid="Onboarding_LocalAi_UnavailableDetailsButton"
                                  AutomationProperties.AutomationId="LocalAiUnavailableDetailsButton"
-                                 Content="See why" Click="LocalAiUnavailableDetails_Click" />
+                                 Content="查看原因" Click="LocalAiUnavailableDetails_Click" />
             </InfoBar.ActionButton>
         </InfoBar>
         <TextBlock x:Name="LocalAiUnavailableReasonText" Visibility="Collapsed" TextWrapping="Wrap"
@@ -25,15 +25,15 @@
             <HyperlinkButton x:Name="LocalAiRecheckAvailabilityButton"
                              x:Uid="Onboarding_LocalAi_RecheckAvailabilityButton"
                              AutomationProperties.AutomationId="LocalAiRecheckAvailabilityButton"
-                             Content="Recheck" Click="LocalAiRecheckAvailability_Click" />
+                             Content="重新检测" Click="LocalAiRecheckAvailability_Click" />
         </StackPanel>
         <StackPanel x:Name="LocalAiOptionContent" Spacing="12">
             <tk:SettingsCard x:Name="LocalAiInstallReviewCard" x:Uid="Onboarding_V2_LocalAiCard"
                              AutomationProperties.AutomationId="LocalAiInstallReviewCard"
-                             Header="Local AI" Description="Optional managed llama-server for Windows. This is separate from Ollama sharing.">
+                             Header="本地 AI" Description="可选的 Windows 托管 llama-server，与 Ollama 共享相互独立。">
                 <ToggleSwitch x:Name="LocalAiToggle" x:Uid="Onboarding_V2_LocalAiToggle"
                               AutomationProperties.AutomationId="LocalAiSetupToggle"
-                              AutomationProperties.Name="Set up Local AI"
+                              AutomationProperties.Name="设置本地 AI"
                               OnContent="" OffContent="" MinWidth="0" Toggled="LocalAiToggle_Toggled" />
             </tk:SettingsCard>
             <StackPanel x:Name="LocalAiDetailsPanel" Spacing="12" Visibility="Collapsed">
@@ -42,9 +42,9 @@
                            AutomationProperties.LiveSetting="Polite"
                            Style="{StaticResource CaptionTextBlockStyle}" />
                 <ComboBox x:Name="LocalAiModelSelector" x:Uid="Onboarding_V2_LocalAiModel"
-                          Header="Model" HorizontalAlignment="Stretch"
+                          Header="模型" HorizontalAlignment="Stretch"
                           AutomationProperties.AutomationId="LocalAiModelSelector"
-                          AutomationProperties.Name="Local AI model"
+                          AutomationProperties.Name="本地 AI 模型"
                           SelectionChanged="LocalAiModelSelector_SelectionChanged" />
                 <TextBlock x:Name="LocalAiEngineDetailText" TextWrapping="Wrap"
                            Style="{StaticResource CaptionTextBlockStyle}" />
@@ -53,7 +53,7 @@
                 <InfoBar x:Name="LocalAiNetworkingConsentPanel" x:Uid="Onboarding_V2_NetworkRequired"
                          AutomationProperties.AutomationId="LocalAiNetworkingConsentPanel"
                          IsOpen="True" IsClosable="False" Severity="Warning" Visibility="Collapsed"
-                         Title="WSL networking change required">
+                         Title="需要更改 WSL 网络设置">
                     <HyperlinkButton x:Name="NetworkingButton" Click="Networking_Click" />
                 </InfoBar>
                 <InfoBar x:Name="LocalAiNetworkingInspectionError"

@@ -29,15 +29,15 @@
                         BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                     <StackPanel Spacing="0">
                         <tk:SettingsCard x:Name="PreparePhase" x:Uid="Onboarding_V4_PhasePrepare"
-                                         Header="Prepare your PC" Background="Transparent" BorderThickness="0" CornerRadius="0">
+                                         Header="准备你的电脑" Background="Transparent" BorderThickness="0" CornerRadius="0">
                             <controls:SetupPhaseStatus x:Name="PrepareStatus" />
                         </tk:SettingsCard>
                         <tk:SettingsCard x:Name="InstallPhase" x:Uid="Onboarding_V4_PhaseInstall"
-                                         Header="Install the Gateway" Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0">
+                                         Header="安装网关" Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0">
                             <controls:SetupPhaseStatus x:Name="InstallStatus" />
                         </tk:SettingsCard>
                         <tk:SettingsCard x:Name="ConnectPhase" x:Uid="Onboarding_V4_PhaseConnect"
-                                         Header="Start and check connection" Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0">
+                                         Header="启动并检查连接" Background="Transparent" BorderThickness="0,1,0,0" CornerRadius="0">
                             <controls:SetupPhaseStatus x:Name="ConnectStatus" />
                         </tk:SettingsCard>
                     </StackPanel>
@@ -53,17 +53,17 @@
                 </StackPanel>
 
                 <InfoBar x:Name="TailscaleAuthorizationPanel" Visibility="Collapsed" IsOpen="True" IsClosable="False"
-                         Severity="Informational" Title="Authorize Tailscale">
+                         Severity="Informational" Title="授权 Tailscale">
                     <StackPanel Spacing="4">
                         <TextBlock x:Name="TailscaleAuthorizationText" TextWrapping="Wrap" />
-                        <HyperlinkButton x:Name="TailscaleAuthorizationLink" Content="Open Tailscale authorization"
+                        <HyperlinkButton x:Name="TailscaleAuthorizationLink" Content="打开 Tailscale 授权"
                                          HorizontalAlignment="Left" Click="TailscaleAuthorization_Click" />
                     </StackPanel>
                 </InfoBar>
 
                 <Expander x:Name="DetailedActivity" x:Uid="Onboarding_V4_DetailedActivity" IsExpanded="False"
                           HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" MinHeight="48"
-                          Header="Detailed activity">
+                          Header="详细过程">
                     <Expander.HeaderTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding}" Style="{StaticResource CaptionTextBlockStyle}" TextWrapping="Wrap" />
@@ -85,7 +85,7 @@
                             </ScrollViewer>
                         </Border>
                         <HyperlinkButton x:Name="OpenLogButton" Grid.Row="1"
-                                Content="Open log file"
+                                Content="打开日志文件"
                                 HorizontalAlignment="Right" Margin="0,4,0,0"
                                 Click="OpenLog_Click" Padding="8,4" />
                     </Grid>
@@ -111,7 +111,7 @@
                 </Border>
             </Grid>
             <StackPanel Spacing="6">
-                <TextBlock Text="Gateway installed"
+                <TextBlock Text="网关已安装"
                            Style="{StaticResource TitleTextBlockStyle}"
                            HorizontalAlignment="Center" TextAlignment="Center"
                            AutomationProperties.LiveSetting="Assertive" />
@@ -133,7 +133,7 @@
                               Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}" VerticalAlignment="Center" />
                     <StackPanel Grid.Column="1" Spacing="2">
                         <TextBlock Text="下一步：LanFu 引导" Style="{StaticResource BodyStrongTextBlockStyle}" />
-                        <TextBlock Text="A few quick questions. Choose your AI provider, model, and key to connect your agent."
+                        <TextBlock Text="几个简单问题。选择 AI 服务商、模型和密钥，即可接入你的智能体。"
                                    Style="{StaticResource CaptionTextBlockStyle}"
                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}" TextWrapping="Wrap" />
                     </StackPanel>

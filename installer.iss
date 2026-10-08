@@ -79,7 +79,10 @@ ArchitecturesAllowed=x64
 #endif
 
 [Languages]
-Name: "english"; MessagesFile: "compiler:Default.isl"
+; Employees are Chinese-speaking: the uninstall wizard and every task description
+; render in Simplified Chinese. ChineseSimplified.isl is vendored next to this script
+; because Inno Setup does not bundle it.
+Name: "chinesesimplified"; MessagesFile: "ChineseSimplified.isl"
 
 ; publish folder should be passed via /Dpublish=publish-x64 or /Dpublish=publish-arm64
 #ifndef publish
@@ -102,7 +105,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "startupicon"; Description: "Start {#MyAppName} when Windows starts"; GroupDescription: "Startup:"; Flags: unchecked
+Name: "startupicon"; Description: "开机时自动启动 {#MyAppName}"; GroupDescription: "启动："; Flags: unchecked
 
 [Files]
 ; WinUI Tray app - include all files (WinUI needs DLLs, not single-file)
@@ -119,7 +122,7 @@ Source: "{#vcRedist}"; DestDir: "{tmp}"; DestName: "vc_redist.exe"; Flags: delet
 #endif
 
 [Registry]
-Root: HKCU; Subkey: "Software\Classes\{#MyProtocol}"; ValueType: string; ValueName: ""; ValueData: "URL:LanFu Protocol"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\{#MyProtocol}"; ValueType: string; ValueName: ""; ValueData: "URL:LanFu 协议"; Flags: uninsdeletekey
 Root: HKCU; Subkey: "Software\Classes\{#MyProtocol}"; ValueType: string; ValueName: "URL Protocol"; ValueData: ""
 Root: HKCU; Subkey: "Software\Classes\{#MyProtocol}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"",0"
 Root: HKCU; Subkey: "Software\Classes\{#MyProtocol}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
@@ -248,7 +251,7 @@ begin
         Result := False;
         Log('Migration state is locked by an in-progress migration. Uninstall stopped before changing the installation.');
         if not UninstallSilent() then
-          MsgBox('OpenClaw migration is currently running. Close the Store migration preview, then retry uninstall.', mbError, MB_OK);
+          MsgBox('OpenClaw 迁移正在运行。请先关闭商店版迁移预览，然后重试卸载。', mbError, MB_OK);
       end;
     end;
   end;
@@ -382,11 +385,10 @@ begin
   Log('Store app registration found without a migration receipt: preserving the local WSL gateway.');
   if not UninstallSilent() then
     MsgBox(
-      'OpenClaw from the Microsoft Store is installed on this PC and is using the local WSL gateway.' + #13#10#13#10 +
-      'The gateway and its generated state were left in place, so the Store app keeps working.' + #13#10#13#10 +
-      'Do not run "wsl --unregister {#MyDistroName}". That would delete the gateway the Store app is ' +
-      'still using. If you want to remove it later, open OpenClaw and choose ' +
-      'Settings > Local Gateway > Remove Local Gateway.',
+      '本机已安装 Microsoft Store 版 OpenClaw，并且正在使用本地 WSL 网关。' + #13#10#13#10 +
+      '网关及其生成的状态已原样保留，商店版应用可继续正常使用。' + #13#10#13#10 +
+      '请不要执行 "wsl --unregister {#MyDistroName}"，否则会删除商店版应用仍在使用的网关。' +
+      '如果之后确实要移除，请打开 OpenClaw，依次选择「设置」>「本地网关」>「移除本地网关」。',
       mbInformation, MB_OK);
 end;
 
@@ -398,10 +400,10 @@ begin
       ' were left in place.');
   if not UninstallSilent() then
     MsgBox(
-      'Setup could not check whether OpenClaw from the Microsoft Store is installed on this PC.' + #13#10#13#10 +
-      'The local WSL gateway and its generated state were left in place, so nothing is lost.' + #13#10#13#10 +
-      'Do not remove the gateway by hand until you know the Store app is not using it. To remove it ' +
-      'safely, open OpenClaw and choose Settings > Local Gateway > Remove Local Gateway.',
+      '安装程序无法确认本机是否安装了 Microsoft Store 版 OpenClaw。' + #13#10#13#10 +
+      '本地 WSL 网关及其生成的状态已原样保留，不会丢失任何数据。' + #13#10#13#10 +
+      '在确认商店版应用没有使用它之前，请不要手动删除该网关。如需安全移除，' +
+      '请打开 OpenClaw，依次选择「设置」>「本地网关」>「移除本地网关」。',
       mbInformation, MB_OK);
 end;
 
@@ -435,10 +437,10 @@ begin
       ' were left in place.');
   if not UninstallSilent() then
     MsgBox(
-      'Setup could not confirm whether your OpenClaw data was migrated to the Store app.' + #13#10#13#10 +
-      'The local WSL gateway and its generated state were left in place so nothing is lost.' + #13#10#13#10 +
-      'If you want to remove them, open OpenClaw and choose Settings > Local Gateway > ' +
-      'Remove Local Gateway before uninstalling. If OpenClaw is already removed, run:' + #13#10#13#10 +
+      '安装程序无法确认你的 OpenClaw 数据是否已迁移到商店版应用。' + #13#10#13#10 +
+      '本地 WSL 网关及其生成的状态已原样保留，不会丢失任何数据。' + #13#10#13#10 +
+      '如需移除，请先打开 OpenClaw，依次选择「设置」>「本地网关」>「移除本地网关」，' +
+      '然后再卸载。如果 OpenClaw 已经卸载，请执行：' + #13#10#13#10 +
       'wsl --unregister {#MyDistroName}',
       mbInformation, MB_OK);
 end;
@@ -548,9 +550,9 @@ begin
     // moving to the Store package) must not lose their gateway by pressing Enter.
     LocalGatewayCleanupRequested :=
       MsgBox(
-        'Do you also want to remove the OpenClaw local WSL gateway?' + #13#10#13#10 +
-        'Choose Yes to unregister the {#MyDistroName} WSL distro and remove generated local gateway state.' + #13#10 +
-        'Choose No to leave the local gateway and generated local state on this computer.',
+        '是否同时移除 OpenClaw 的本地 WSL 网关？' + #13#10#13#10 +
+        '选择「是」：注销 {#MyDistroName} WSL 发行版，并删除网关生成的本地状态。' + #13#10 +
+        '选择「否」：在本机保留本地网关及其生成的状态。',
         mbConfirmation,
         MB_YESNO or MB_DEFBUTTON2) = IDYES;
 
@@ -666,9 +668,9 @@ begin
 
     Retry :=
       MsgBox(
-        'OpenClaw could not remove the local WSL gateway.' + #13#10#13#10 +
-        'Exit code: ' + IntToStr(ResultCode) + #13#10#13#10 +
-        'Select Retry to try again, or Cancel to continue uninstalling OpenClaw and leave local gateway state on disk.',
+        'OpenClaw 无法移除本地 WSL 网关。' + #13#10#13#10 +
+        '退出代码：' + IntToStr(ResultCode) + #13#10#13#10 +
+        '选择「重试」可再次尝试；选择「取消」将继续卸载 OpenClaw，并在磁盘上保留本地网关状态。',
         mbError,
         MB_RETRYCANCEL) = IDRETRY;
   until not Retry;

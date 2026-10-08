@@ -374,3 +374,5 @@ publish-lanfu/
 publish-x64/
 Output/
 *.png.tmp
+vc_redist.x64.exe
+*.png

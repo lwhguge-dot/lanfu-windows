@@ -15,9 +15,9 @@
         <StackPanel Grid.Row="0" Spacing="4" HorizontalAlignment="Stretch">
             <controls:OnboardingMascot x:Name="MascotHero" Mood="Thinking"
                                       HorizontalAlignment="Center" />
-            <TextBlock Text="OpenClaw onboard"
+            <TextBlock Text="LanFu 引导"
                        Style="{StaticResource TitleTextBlockStyle}" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
-            <TextBlock x:Name="StatusText" Text="Connecting to gateway..."
+            <TextBlock x:Name="StatusText" Text="正在连接网关…"
                        Style="{StaticResource CaptionTextBlockStyle}"
                        Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                        HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" />
@@ -47,7 +47,7 @@
                             BorderThickness="1"
                             BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}">
                         <StackPanel Spacing="6">
-                            <TextBlock Text="Live gateway output"
+                            <TextBlock Text="网关实时输出"
                                        Style="{StaticResource CaptionTextBlockStyle}"
                                        Foreground="{ThemeResource TextFillColorSecondaryBrush}" />
                             <RichTextBlock x:Name="ConsoleBannerBlock"
@@ -61,14 +61,14 @@
                         <TextBlock x:Name="ConsoleIssueText" TextWrapping="Wrap"
                                    IsTextSelectionEnabled="True"
                                    Foreground="{ThemeResource SystemFillColorCautionBrush}" />
-                        <Button x:Name="ConsoleRecoveryTerminalButton" Content="Open terminal" HorizontalAlignment="Left"
+                        <Button x:Name="ConsoleRecoveryTerminalButton" Content="打开终端" HorizontalAlignment="Left"
                                 AutomationProperties.AutomationId="WizardConsoleRecoveryTerminal"
                                 Click="OpenGatewayTerminal_Click" />
                     </StackPanel>
                     <ListView x:Name="SelectOptions" Visibility="Collapsed" SelectionMode="Single" />
                     <StackPanel x:Name="MultiOptions" Visibility="Collapsed" Spacing="8" />
-                    <TextBox x:Name="TextInput" Visibility="Collapsed" PlaceholderText="Enter value" />
-                    <PasswordBox x:Name="SecretInput" Visibility="Collapsed" PlaceholderText="Enter value" />
+                    <TextBox x:Name="TextInput" Visibility="Collapsed" PlaceholderText="请输入" />
+                    <PasswordBox x:Name="SecretInput" Visibility="Collapsed" PlaceholderText="请输入" />
                     <TextBlock x:Name="ErrorText"
                                Visibility="Collapsed"
                                Foreground="{ThemeResource SystemFillColorCriticalBrush}"
@@ -79,11 +79,11 @@
                                 Orientation="Horizontal"
                                 Spacing="12">
                         <Button x:Name="OpenGatewayTerminalButton"
-                                Content="Open terminal"
+                                Content="打开终端"
                                 MinWidth="100"
                                 Click="OpenGatewayTerminal_Click" />
                         <Button x:Name="RestartGatewayButton"
-                                Content="Restart gateway"
+                                Content="重启网关"
                                 MinWidth="100"
                                 Click="RestartGateway_Click" />
                     </StackPanel>
@@ -98,21 +98,21 @@
             <controls:SetupProgressIndicator x:Name="FlowProgress" Grid.ColumnSpan="3"
                                             HorizontalAlignment="Center" VerticalAlignment="Center" />
             <DropDownButton x:Name="MoreOptionsButton" Grid.Row="1"
-                            Content="More options"
+                            Content="更多选项"
                             MinWidth="0" HorizontalAlignment="Stretch"
                             ContentTemplate="{StaticResource WrappedFooterAction}"
                             Background="Transparent"
                             BorderBrush="Transparent"
                             Visibility="Collapsed"
-                            AutomationProperties.Name="More onboarding options">
+                            AutomationProperties.Name="更多安装选项">
                 <DropDownButton.Flyout>
                     <MenuFlyout Placement="Top">
-                        <MenuFlyoutItem Text="Restart onboard" Click="StartOver_Click">
+                        <MenuFlyoutItem Text="重新开始引导" Click="StartOver_Click">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE72C;" IsTextScaleFactorEnabled="False" />
                             </MenuFlyoutItem.Icon>
                         </MenuFlyoutItem>
-                        <MenuFlyoutItem x:Name="SkipWizardMenuItem" Text="Skip &amp; exit" Click="SkipWizard_Click">
+                        <MenuFlyoutItem x:Name="SkipWizardMenuItem" Text="跳过并退出" Click="SkipWizard_Click">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon Glyph="&#xE72A;" IsTextScaleFactorEnabled="False" />
                             </MenuFlyoutItem.Icon>
@@ -120,11 +120,11 @@
                     </MenuFlyout>
                 </DropDownButton.Flyout>
             </DropDownButton>
-            <Button x:Name="SecondaryButton" Grid.Row="1" Grid.Column="1" Content="Skip"
+            <Button x:Name="SecondaryButton" Grid.Row="1" Grid.Column="1" Content="跳过"
                     MinWidth="0" HorizontalAlignment="Stretch"
                     ContentTemplate="{StaticResource WrappedFooterAction}"
                     Click="Secondary_Click" IsEnabled="False" />
-            <Button x:Name="PrimaryButton" Grid.Row="1" Grid.Column="2" Content="Continue"
+            <Button x:Name="PrimaryButton" Grid.Row="1" Grid.Column="2" Content="继续"
                     MinWidth="0" HorizontalAlignment="Stretch"
                     ContentTemplate="{StaticResource WrappedFooterAction}"
                     Style="{StaticResource AccentButtonStyle}"

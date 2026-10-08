@@ -25,15 +25,15 @@ internal sealed class NativeGatewaySetupHost(
             ["config", "set", ConfigureGatewayStep.NodeCommandsAllowKey,
                 System.Text.Json.JsonSerializer.Serialize(commandIds), "--strict-json"],
             new Dictionary<string, string>(), TimeSpan.FromMinutes(2),
-            "Applying Windows node capabilities inside the isolated Gateway...", cancellationToken);
+            "正在隔离网关中应用 Windows 节点能力…", cancellationToken);
 
     public void ReportProgress(NativeGatewaySetupStage stage)
     {
         stageProgress?.Invoke(stage);
         progress?.Invoke(stage switch
         {
-            NativeGatewaySetupStage.StartingGateway => "Starting the packaged Gateway and verifying its listener...",
-            NativeGatewaySetupStage.VerifyingEndpoint => "Verifying the Gateway endpoint before connecting...",
+            NativeGatewaySetupStage.StartingGateway => "正在启动打包网关并验证其监听…",
+            NativeGatewaySetupStage.VerifyingEndpoint => "正在连接前验证网关端点…",
             _ => throw new ArgumentOutOfRangeException(nameof(stage)),
         });
     }
@@ -49,7 +49,7 @@ internal sealed class NativeGatewaySetupHost(
             };
             terminal.ArgumentList.Add("pwsh");
             return new RecoveryTerminal(Process.Start(terminal)
-                ?? throw new InvalidOperationException("The isolated Gateway terminal could not be opened."));
+                ?? throw new InvalidOperationException("无法打开隔离网关终端。"));
         }
         var start = new ProcessStartInfo
         {
@@ -66,7 +66,7 @@ internal sealed class NativeGatewaySetupHost(
         start.Environment["PATH"] = Path.GetDirectoryName(package.OpenClawAliasPath) +
             Path.PathSeparator + start.Environment["PATH"];
         return new RecoveryTerminal(Process.Start(start)
-            ?? throw new InvalidOperationException("The native profile terminal could not be opened."));
+            ?? throw new InvalidOperationException("无法打开原生配置终端。"));
     }
 
     private sealed class RecoveryTerminal(Process process) : IDisposable
@@ -89,11 +89,11 @@ internal sealed class NativeGatewaySetupHost(
     {
         if (package.Contract == NativeGatewayContract.IsolatedSessionV1)
         {
-            progress?.Invoke("Preparing the isolated Gateway session...");
+            progress?.Invoke("正在准备隔离网关会话…");
             return _packageClient.SetupAsync(package, cancellationToken);
         }
         return RunAsync(package.ClawCtlAliasPath, ["setup"], environment,
-            TimeSpan.FromMinutes(3), "Preparing the packaged Gateway runtime...", cancellationToken);
+            TimeSpan.FromMinutes(3), "正在准备打包网关运行时…", cancellationToken);
     }
 
     public Task ValidateConfigurationAsync(
@@ -101,14 +101,14 @@ internal sealed class NativeGatewaySetupHost(
         IReadOnlyDictionary<string, string> environment,
         CancellationToken cancellationToken) =>
         RunAsync(package.OpenClawAliasPath, ["config", "validate", "--json"], environment,
-            TimeSpan.FromMinutes(2), "Validating native Gateway configuration...", cancellationToken);
+            TimeSpan.FromMinutes(2), "正在校验原生网关配置…", cancellationToken);
 
     public Task VerifyHealthAsync(
         NativeGatewayPackage package,
         IReadOnlyDictionary<string, string> environment,
         CancellationToken cancellationToken) =>
         RunAsync(package.OpenClawAliasPath, ["gateway", "health", "--json"], environment,
-            TimeSpan.FromMinutes(2), "Checking native Gateway health...", cancellationToken);
+            TimeSpan.FromMinutes(2), "正在检查原生网关健康状态…", cancellationToken);
 
     public Task<IsolatedGatewayConfiguration> CheckIsolatedPairingConfigurationAsync(
         NativeGatewayPackage package, CancellationToken cancellationToken) =>
@@ -120,9 +120,9 @@ internal sealed class NativeGatewaySetupHost(
         package.Contract == NativeGatewayContract.IsolatedSessionV1
             ? RunAsync(package.OpenClawAliasPath, ["devices", "list", "--json"],
                 new Dictionary<string, string>(), PairingCommandTimeout,
-                "Verifying this Companion's pairing request...", cancellationToken)
+                "正在验证本桌面端的配对请求…", cancellationToken)
             : RunAsync(package.OpenClawAliasPath, ["devices", "list", "--json"],
-                environment, PairingCommandTimeout, "Verifying this Companion's pairing request...", cancellationToken);
+                environment, PairingCommandTimeout, "正在验证本桌面端的配对请求…", cancellationToken);
 
     public Task<string> ApproveDevicePairingAsync(
         NativeGatewayPackage package, string requestId,
@@ -130,9 +130,9 @@ internal sealed class NativeGatewaySetupHost(
         package.Contract == NativeGatewayContract.IsolatedSessionV1
             ? RunAsync(package.OpenClawAliasPath, ["devices", "approve", requestId, "--json"],
                 new Dictionary<string, string>(), PairingCommandTimeout,
-                "Pairing this Companion with its setup Gateway...", cancellationToken)
+                "正在把本桌面端与安装用网关配对…", cancellationToken)
             : RunAsync(package.OpenClawAliasPath, ["devices", "approve", requestId, "--json"],
-                environment, PairingCommandTimeout, "Pairing this Companion with its setup Gateway...", cancellationToken);
+                environment, PairingCommandTimeout, "正在把本桌面端与安装用网关配对…", cancellationToken);
 
     private async Task<string> RunAsync(
         string executable, string[] arguments,

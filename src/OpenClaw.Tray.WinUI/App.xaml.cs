@@ -303,17 +303,33 @@ public partial class App : Application, OpenClawTray.Services.IAppCommands, IPer
         WaitForRestartSourceIfRequested(Environment.GetCommandLineArgs());
         StartupInputConfigurator.Configure();
 
-        // Language override for localization testing (e.g., OPENCLAW_LANGUAGE=zh-CN)
+        // UI language. LanFu is a Simplified-Chinese product, so zh-CN is the product
+        // default instead of the Windows display language. Both lookup paths must be
+        // pinned before the first page loads: XAML x:Uid strings resolve through the
+        // framework's own resource context, code-behind strings through
+        // LocalizationHelper/SetupLocalization. OPENCLAW_LANGUAGE remains a development
+        // override for localization testing (e.g., OPENCLAW_LANGUAGE=en-us).
+        string uiLanguage = LocalizationHelper.DefaultUiLanguage;
         var langOverride = Environment.GetEnvironmentVariable("OPENCLAW_LANGUAGE");
         if (!string.IsNullOrEmpty(langOverride))
         {
             // SECURITY: Whitelist known locale codes to prevent locale injection
             string[] allowedLocales = ["en-us", "fr-fr", "nl-nl", "zh-cn", "zh-tw", "pt-br"];
             if (allowedLocales.Contains(langOverride.ToLowerInvariant()))
-                LocalizationHelper.SetLanguageOverride(langOverride);
+                uiLanguage = langOverride;
             else
                 Logger.Warn($"[App] Ignoring invalid OPENCLAW_LANGUAGE value: {langOverride}");
         }
+
+        LocalizationHelper.ApplyUiLanguage(uiLanguage);
+
+        // XAML x:Uid strings do not go through LocalizationHelper. Unpackaged WinUI asks for
+        // a resource manager here and, with no handler, falls back to a default manager that
+        // has no map for this app's PRI: every x:Uid lookup missed and the element kept the
+        // literal English text compiled into the XAML. Handing over the app's own manager
+        // makes the XAML path resolve the same zh-CN resources as the code path. Register
+        // before InitializeComponent() so the first page already resolves correctly.
+        ResourceManagerRequested += OnXamlResourceManagerRequested;
 
         // Wire the GatewayHostAccess localization indirection to LocalizationHelper.
         // The classifier defaults to identity (returns the resource key as-is) for unit-test
@@ -332,6 +348,19 @@ public partial class App : Application, OpenClawTray.Services.IAppCommands, IPer
         AppDomain.CurrentDomain.UnhandledException += OnDomainUnhandledException;
         TaskScheduler.UnobservedTaskException += OnUnobservedTaskException;
         AppDomain.CurrentDomain.ProcessExit += OnProcessExit;
+    }
+
+    /// <summary>
+    /// Supplies the XAML framework with this app's resource manager so <c>x:Uid</c> lookups
+    /// resolve against LanFu.pri (see the constructor for why an unpackaged process needs
+    /// this). Without it the framework's default manager cannot see the app's resources and
+    /// every <c>x:Uid</c> element silently keeps its literal, untranslated text.
+    /// </summary>
+    private static void OnXamlResourceManagerRequested(
+        object? sender,
+        Microsoft.UI.Xaml.ResourceManagerRequestedEventArgs args)
+    {
+        args.CustomResourceManager = LocalizationHelper.SharedResourceManager;
     }
 
     private static bool HasArg(string[] args, string name) =>

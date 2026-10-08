@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:schema id="root">
     <xs:element name="root" ns1:IsDataSet="true">
@@ -108,7 +108,7 @@
     <value>取消</value>
   </data>
   <data name="SettingsNodeModeDescription.Text" xml:space="preserve">
-    <value>启用后，此电脑可以接收来自代理的命令（画布、截图等）</value>
+    <value>启用后，此电脑可以接收来自智能体的命令（画布、截图等）</value>
   </data>
   <data name="StatusUsageHeader.Text" xml:space="preserve">
     <value>用量</value>
@@ -276,25 +276,25 @@
     <value>关闭</value>
   </data>
   <data name="WindowTitle_Settings" xml:space="preserve">
-    <value>设置: OpenClaw 托盘</value>
+    <value>设置: LanFu 托盘</value>
   </data>
   <data name="WindowTitle_Status" xml:space="preserve">
-    <value>状态: OpenClaw 托盘</value>
+    <value>状态: LanFu 托盘</value>
   </data>
   <data name="WindowTitle_ActivityStream" xml:space="preserve">
-    <value>活动流: OpenClaw 托盘</value>
+    <value>活动流: LanFu 托盘</value>
   </data>
   <data name="WindowTitle_NotificationHistory" xml:space="preserve">
-    <value>通知历史: OpenClaw 托盘</value>
+    <value>通知历史: LanFu 托盘</value>
   </data>
   <data name="WindowTitle_WebChat" xml:space="preserve">
-    <value>OpenClaw 聊天</value>
+    <value>LanFu 聊天</value>
   </data>
   <data name="WindowTitle_Welcome" xml:space="preserve">
-    <value>欢迎使用 OpenClaw</value>
+    <value>欢迎使用 LanFu</value>
   </data>
   <data name="WindowTitle_Update" xml:space="preserve">
-    <value>OpenClaw 更新</value>
+    <value>LanFu 更新</value>
   </data>
   <data name="Status_Testing" xml:space="preserve">
     <value>测试中...</value>
@@ -306,16 +306,16 @@
     <value>❌ 连接失败</value>
   </data>
   <data name="Welcome_Title" xml:space="preserve">
-    <value>欢迎使用 OpenClaw！</value>
+    <value>欢迎使用 LanFu！</value>
   </data>
   <data name="Welcome_Description" xml:space="preserve">
-    <value>OpenClaw 托盘是 OpenClaw 的 Windows 伴侣应用，一个 AI 驱动的个人助手。</value>
+    <value>LanFu 托盘是 LanFu 的 Windows 伴侣应用，一个 AI 驱动的个人助手。</value>
   </data>
   <data name="Welcome_GettingStarted" xml:space="preserve">
     <value>开始使用前，您需要：</value>
   </data>
   <data name="Welcome_NeedGateway" xml:space="preserve">
-    <value>• 一个正在运行的 OpenClaw 网关</value>
+    <value>• 一个正在运行的 LanFu 网关</value>
   </data>
   <data name="Welcome_NeedToken" xml:space="preserve">
     <value>• 从仪表板获取的 API 令牌</value>
@@ -509,7 +509,7 @@
     <value>测试通知</value>
   </data>
   <data name="TestNotification_Body" xml:space="preserve">
-    <value>这是来自 OpenClaw 托盘的测试通知。</value>
+    <value>这是来自 LanFu 托盘的测试通知。</value>
   </data>
   <data name="Status_LastCheckFormat" xml:space="preserve">
     <value>上次检查: {0}</value>
@@ -587,13 +587,13 @@
     <value>在浏览器中打开</value>
   </data>
   <data name="WebChat_ConnectionError" xml:space="preserve">
-    <value>无法连接到 OpenClaw 网关</value>
+    <value>无法连接到 LanFu 网关</value>
   </data>
   <data name="WebChat_ConnectionErrorDetail" xml:space="preserve">
     <value>网关 {0} 没有响应。
 
 连接方法：
-• 确保 OpenClaw 网关正在运行
+• 确保 LanFu 网关正在运行
 • 如果是远程网关，请通过 VPN 连接到您的家庭网络
 • 或使用 SSH 隧道：ssh -N -L 18789:localhost:18789 your-server</value>
   </data>
@@ -619,7 +619,7 @@
 • 或通过隧道连接到 localhost：ssh -N -L 18789:localhost:18789 &lt;服务器&gt;</value>
   </data>
   <data name="WindowTitle_TrayMenu" xml:space="preserve">
-    <value>OpenClaw 菜单</value>
+    <value>LanFu 菜单</value>
   </data>
   <data name="Toast_DeviceIdCopied" xml:space="preserve">
     <value>📋 设备 ID 已复制</value>
@@ -643,7 +643,7 @@
     <value>🔌 节点模式已激活</value>
   </data>
   <data name="Toast_NodeModeActiveDetail" xml:space="preserve">
-    <value>此电脑现在可以接收来自代理的命令（画布、截图）</value>
+    <value>此电脑现在可以接收来自智能体的命令（画布、截图）</value>
   </data>
   <data name="Toast_PairingPending" xml:space="preserve">
     <value>⏳ 等待配对批准</value>
@@ -736,7 +736,7 @@
     <value>以下命令请求运行权限：</value>
   </data>
   <data name="ExecApproval_AgentLabel" xml:space="preserve">
-    <value>代理：</value>
+    <value>智能体：</value>
   </data>
   <data name="ExecApproval_CwdLabel" xml:space="preserve">
     <value>工作目录：</value>
@@ -766,7 +766,7 @@
     <value>✅ 节点已配对！</value>
   </data>
   <data name="Toast_NodePairedDetail" xml:space="preserve">
-    <value>此电脑现在可以接收来自代理的命令</value>
+    <value>此电脑现在可以接收来自智能体的命令</value>
   </data>
   <data name="Toast_PairingRejected" xml:space="preserve">
     <value>❌ 配对被拒绝</value>
@@ -790,38 +790,38 @@
     <value>📸 正在捕获屏幕</value>
   </data>
   <data name="Toast_ScreenCapturedDetail" xml:space="preserve">
-    <value>OpenClaw 代理正在捕获您的屏幕</value>
+    <value>LanFu 智能体正在捕获您的屏幕</value>
   </data>
   <data name="Toast_CameraCaptured" xml:space="preserve">
     <value>📷 正在拍摄摄像头照片</value>
   </data>
   <data name="Toast_CameraCapturedDetail" xml:space="preserve">
-    <value>OpenClaw 代理正在使用您的摄像头拍摄照片</value>
+    <value>LanFu 智能体正在使用您的摄像头拍摄照片</value>
   </data>
   <data name="Toast_LocationRead" xml:space="preserve">
     <value>📍 正在访问位置</value>
   </data>
   <data name="Toast_LocationReadDetail" xml:space="preserve">
-    <value>OpenClaw 代理正在访问您的设备位置</value>
+    <value>LanFu 智能体正在访问您的设备位置</value>
   </data>
   <data name="Toast_CameraBlocked" xml:space="preserve">
     <value>📷 相机访问被阻止</value>
   </data>
   <data name="Toast_CameraBlockedDetail" xml:space="preserve">
-    <value>请在 Windows 隐私设置中为 OpenClaw Tray 启用相机访问</value>
+    <value>请在 Windows 隐私设置中为 LanFu Tray 启用相机访问</value>
   </data>
   <!-- ==================== Toast: Recording ==================== -->
   <data name="Toast_ScreenRecordingStarted" xml:space="preserve">
     <value>🔴 屏幕录制已开始</value>
   </data>
   <data name="Toast_ScreenRecordingStartedDetail" xml:space="preserve">
-    <value>OpenClaw 代理正在录制您的屏幕</value>
+    <value>LanFu 智能体正在录制您的屏幕</value>
   </data>
   <data name="Toast_ScreenRecordingComplete" xml:space="preserve">
     <value>✅ 屏幕录制已完成</value>
   </data>
   <data name="Toast_ScreenRecordingCompleteDetail" xml:space="preserve">
-    <value>屏幕录制已发送给代理</value>
+    <value>屏幕录制已发送给智能体</value>
   </data>
   <data name="Toast_ScreenRecordingFailed" xml:space="preserve">
     <value>❌ 屏幕录制失败</value>
@@ -833,13 +833,13 @@
     <value>🔴 摄像头录制已开始</value>
   </data>
   <data name="Toast_CameraRecordingStartedDetail" xml:space="preserve">
-    <value>OpenClaw 代理正在从您的摄像头录制</value>
+    <value>LanFu 智能体正在从您的摄像头录制</value>
   </data>
   <data name="Toast_CameraRecordingComplete" xml:space="preserve">
     <value>✅ 摄像头录制已完成</value>
   </data>
   <data name="Toast_CameraRecordingCompleteDetail" xml:space="preserve">
-    <value>摄像头录制片段已发送给代理</value>
+    <value>摄像头录制片段已发送给智能体</value>
   </data>
   <!-- ==================== Recording Consent Dialog ==================== -->
   <data name="RecordingConsent_WindowTitle" xml:space="preserve">
@@ -855,16 +855,16 @@
     <value>允许访问位置？</value>
   </data>
   <data name="RecordingConsent_ScreenDescription" xml:space="preserve">
-    <value>代理正在请求捕获您的屏幕。这可能会从您的显示器捕获图像或视频并发送给代理。您的选择将被记住用于以后的请求。</value>
+    <value>智能体正在请求捕获您的屏幕。这可能会从您的显示器捕获图像或视频并发送给智能体。您的选择将被记住用于以后的请求。</value>
   </data>
   <data name="RecordingConsent_CameraDescription" xml:space="preserve">
-    <value>代理正在请求访问您的摄像头。这可能会捕获照片或视频并发送给代理。您的选择将被记住用于以后的请求。</value>
+    <value>智能体正在请求访问您的摄像头。这可能会捕获照片或视频并发送给智能体。您的选择将被记住用于以后的请求。</value>
   </data>
   <data name="RecordingConsent_LocationDescription" xml:space="preserve">
-    <value>代理正在请求访问您的设备位置。这会将您的当前位置发送给代理。您的选择将被记住用于以后的请求。</value>
+    <value>智能体正在请求访问您的设备位置。这会将您的当前位置发送给智能体。您的选择将被记住用于以后的请求。</value>
   </data>
   <data name="RecordingConsent_Privacy" xml:space="preserve">
-    <value>仅当您信任已连接的代理和网关时才允许。</value>
+    <value>仅当您信任已连接的智能体和网关时才允许。</value>
   </data>
   <data name="RecordingConsent_Allow" xml:space="preserve">
     <value>允许</value>
@@ -877,7 +877,7 @@
     <value>隐私</value>
   </data>
   <data name="Settings_PrivacyDescription" xml:space="preserve">
-    <value>控制代理可以在此设备上使用哪些功能。</value>
+    <value>控制智能体可以在此设备上使用哪些功能。</value>
   </data>
   <data name="Settings_AllowScreenRecording" xml:space="preserve">
     <value>允许屏幕录制</value>
@@ -889,7 +889,7 @@
     <value>隐私</value>
   </data>
   <data name="SettingsPrivacyDescription.Text" xml:space="preserve">
-    <value>允许敏感捕获时无需每次询问。OpenClaw 仍会在每次访问前通知您，并在录制前显示倒计时。</value>
+    <value>允许敏感捕获时无需每次询问。LanFu 仍会在每次访问前通知您，并在录制前显示倒计时。</value>
   </data>
   <data name="ScreenRecordingToggle.Header" xml:space="preserve">
     <value>允许屏幕录制</value>
@@ -995,10 +995,10 @@
     <value>正在下载更新...</value>
   </data>
   <data name="UrlApproval_Caption" xml:space="preserve">
-    <value>OpenClaw: 批准 URL</value>
+    <value>LanFu: 批准 URL</value>
   </data>
   <data name="UrlApproval_Body" xml:space="preserve">
-    <value>代理希望在您的浏览器中打开高风险目的地。</value>
+    <value>智能体希望在您的浏览器中打开高风险目的地。</value>
   </data>
   <data name="UrlApproval_NoReasons" xml:space="preserve">
     <value>(未记录具体原因)</value>
@@ -1007,7 +1007,7 @@
     <value>区域：{0}</value>
   </data>
   <data name="UrlApproval_AgentFormat" xml:space="preserve">
-    <value>代理：{0}</value>
+    <value>智能体：{0}</value>
   </data>
   <data name="UrlApproval_HostFormat" xml:space="preserve">
     <value>主机：{0}</value>
@@ -1022,7 +1022,7 @@
     <value>否: 阻止该请求。</value>
   </data>
   <data name="Onboarding_Title" xml:space="preserve">
-    <value>OpenClaw 设置</value>
+    <value>LanFu 设置</value>
   </data>
   <data name="Onboarding_Back" xml:space="preserve">
     <value>上一步</value>
@@ -1037,13 +1037,13 @@
     <value>设置尚未完成</value>
   </data>
   <data name="Onboarding_IncompleteSetup_Body" xml:space="preserve">
-    <value>OpenClaw 仍需要完成设置，才能打开 Hub。请使用“返回”回到向导或连接步骤，修复缺失的设置，然后再次尝试“完成”。</value>
+    <value>LanFu 仍需要完成设置，才能打开 Hub。请使用“返回”回到向导或连接步骤，修复缺失的设置，然后再次尝试“完成”。</value>
   </data>
   <data name="Onboarding_IncompleteSetup_Close" xml:space="preserve">
     <value>确定</value>
   </data>
   <data name="Onboarding_Welcome_Title" xml:space="preserve">
-    <value>欢迎使用 OpenClaw</value>
+    <value>欢迎使用 LanFu</value>
   </data>
   <data name="Onboarding_Welcome_Subtitle" xml:space="preserve">
     <value>您的 AI 助手，就在系统托盘中</value>
@@ -1052,10 +1052,10 @@
     <value>安全提示</value>
   </data>
   <data name="Onboarding_Welcome_SecurityBody" xml:space="preserve">
-    <value>OpenClaw 运行一个 AI 代理，它可以代表你执行命令、读取和写入文件，并与你的系统交互。</value>
+    <value>LanFu 运行一个 AI 智能体，它可以代表你执行命令、读取和写入文件，并与你的系统交互。</value>
   </data>
   <data name="Onboarding_Welcome_TrustTitle" xml:space="preserve">
-    <value>您的代理可以：</value>
+    <value>您的智能体可以：</value>
   </data>
   <data name="Onboarding_Welcome_Trust_Commands" xml:space="preserve">
     <value>在您的计算机上运行命令</value>
@@ -1070,7 +1070,7 @@
     <value>选择网关</value>
   </data>
   <data name="Onboarding_Connection_Subtitle" xml:space="preserve">
-    <value>选择您希望如何连接到 OpenClaw 网关</value>
+    <value>选择您希望如何连接到 LanFu 网关</value>
   </data>
   <data name="Onboarding_Connection_Local" xml:space="preserve">
     <value>本机（本地）</value>
@@ -1088,7 +1088,7 @@
     <value>一切就绪！</value>
   </data>
   <data name="Onboarding_Ready_Subtitle" xml:space="preserve">
-    <value>OpenClaw 已准备就绪。可以尝试以下操作：</value>
+    <value>LanFu 已准备就绪。可以尝试以下操作：</value>
   </data>
   <data name="Onboarding_Ready_Feature_TrayMenu" xml:space="preserve">
     <value>打开菜单栏面板</value>
@@ -1106,7 +1106,7 @@
     <value>启用技能</value>
   </data>
   <data name="Onboarding_Ready_LaunchAtLogin" xml:space="preserve">
-    <value>开机时启动 OpenClaw</value>
+    <value>开机时启动 LanFu</value>
   </data>
   <data name="Onboarding_Ready_ConfigureLater" xml:space="preserve">
     <value>您可以随时从托盘菜单配置网关连接。</value>
@@ -1124,7 +1124,7 @@
     <value>网关地址</value>
   </data>
   <data name="Onboarding_Connection_Token" xml:space="preserve">
-    <value>Token</value>
+    <value>令牌</value>
   </data>
   <data name="Onboarding_Connection_TokenPlaceholder" xml:space="preserve">
     <value>粘贴引导 Token</value>
@@ -1166,7 +1166,7 @@
     <value>授予权限</value>
   </data>
   <data name="Onboarding_Permissions_Description" xml:space="preserve">
-    <value>当 OpenClaw 可以发送通知、访问摄像头和麦克风、捕获屏幕并了解你的位置时效果最佳。请在下方授予权限。</value>
+    <value>当 LanFu 可以发送通知、访问摄像头和麦克风、捕获屏幕并了解你的位置时效果最佳。请在下方授予权限。</value>
   </data>
   <data name="Onboarding_Permissions_Refresh" xml:space="preserve">
     <value>刷新状态</value>
@@ -1178,7 +1178,7 @@
     <value>正在检查权限…</value>
   </data>
   <data name="Onboarding_Chat_Title" xml:space="preserve">
-    <value>认识您的代理</value>
+    <value>认识您的智能体</value>
   </data>
   <data name="Onboarding_Chat_Loading" xml:space="preserve">
     <value>正在加载聊天…</value>
@@ -1337,7 +1337,7 @@
     <value>无法从此图像解码安装代码</value>
   </data>
   <data name="Onboarding_Connection_SshHint" xml:space="preserve">
-    <value>OpenClaw 将创建托管 SSH 隧道，把远程主机上的网关端口转发到此电脑。</value>
+    <value>LanFu 将创建托管 SSH 隧道，把远程主机上的网关端口转发到此电脑。</value>
   </data>
   <data name="Onboarding_Connection_SshUser" xml:space="preserve">
     <value>SSH 用户</value>
@@ -1367,12 +1367,12 @@
     <value>您可以稍后在“设置”中配置网关。</value>
   </data>
   <data name="Onboarding_SetupWarning_Title" xml:space="preserve">
-    <value>设置 OpenClaw</value>
+    <value>设置 LanFu</value>
   </data>
   <data name="Onboarding_SetupWarning_Body" xml:space="preserve">
-    <value>OpenClaw 允许代理在此电脑上运行命令、读写文件以及捕获屏幕截图。仅在您信任的计算机上进行设置。
+    <value>LanFu 允许智能体在此电脑上运行命令、读写文件以及捕获屏幕截图。仅在您信任的计算机上进行设置。
 
-⚠️ 本地设置将安装一个专用于 OpenClaw 的小型 WSL Linux 实例。如果您希望连接到现有或远程网关，请选择“高级设置”。</value>
+⚠️ 本地设置将安装一个专用于 LanFu 的小型 WSL Linux 实例。如果您希望连接到现有或远程网关，请选择“高级设置”。</value>
   </data>
   <data name="Onboarding_SetupWarning_SetupLocally" xml:space="preserve">
     <value>本地设置</value>
@@ -1396,7 +1396,7 @@
     <value>正在本地设置</value>
   </data>
   <data name="Onboarding_LocalSetup_SubtitleIdle" xml:space="preserve">
-    <value>正在设置您的本地 OpenClaw 网关。</value>
+    <value>正在设置您的本地 LanFu 网关。</value>
   </data>
   <data name="Onboarding_LocalSetup_SubtitleSuccess" xml:space="preserve">
     <value>本地网关已就绪。</value>
@@ -1420,7 +1420,7 @@
     <value>正在配置实例</value>
   </data>
   <data name="Onboarding_LocalSetup_Phase_InstallCli" xml:space="preserve">
-    <value>正在安装 OpenClaw</value>
+    <value>正在安装 LanFu</value>
   </data>
   <data name="Onboarding_LocalSetup_Phase_PrepareConfig" xml:space="preserve">
     <value>正在准备网关</value>
@@ -1432,19 +1432,19 @@
     <value>正在生成设置代码</value>
   </data>
   <data name="AgentEventsPage_TextBlock_18.Text" xml:space="preserve">
-    <value>代理事件</value>
+    <value>智能体事件</value>
   </data>
   <data name="AgentFilterCombo.Header" xml:space="preserve">
-    <value>代理</value>
+    <value>智能体</value>
   </data>
   <data name="AgentFilterCombo.PlaceholderText" xml:space="preserve">
-    <value>所有代理</value>
+    <value>所有智能体</value>
   </data>
   <data name="AgentEventsPage_IntroText.Text" xml:space="preserve">
-    <value>代理活动的实时流……工具调用、响应、错误和生命周期事件。</value>
+    <value>智能体活动的实时流……工具调用、响应、错误和生命周期事件。</value>
   </data>
   <data name="AgentEventsPage_ComboBoxItem_26.Content" xml:space="preserve">
-    <value>所有代理</value>
+    <value>所有智能体</value>
   </data>
   <data name="AgentEventsPage_ToggleButton_36.Text" xml:space="preserve">
     <value>工具</value>
@@ -1471,10 +1471,10 @@
     <value>补丁</value>
   </data>
   <data name="AgentEventsPage_TextBlock_96.Text" xml:space="preserve">
-    <value>还没有代理事件</value>
+    <value>还没有智能体事件</value>
   </data>
   <data name="AgentEventsPage_TextBlock_99.Text" xml:space="preserve">
-    <value>代理运行时，实时代理事件（工具调用、响应、错误）将显示在此处。</value>
+    <value>智能体运行时，实时智能体事件（工具调用、响应、错误）将显示在此处。</value>
   </data>
   <data name="ClearButton.Content" xml:space="preserve">
     <value>清除</value>
@@ -1495,7 +1495,7 @@
     <value>🖥️ 此计算机</value>
   </data>
   <data name="PermissionsPage_IntroText.Text" xml:space="preserve">
-    <value>通过网关提供给代理的设备功能。切换此计算机可以执行的操作。</value>
+    <value>通过网关提供给智能体的设备功能。切换此计算机可以执行的操作。</value>
   </data>
   <data name="PermissionsPage_McpHeader.Text" xml:space="preserve">
     <value>本地 MCP 服务器</value>
@@ -1609,16 +1609,16 @@
     <value>打开仪表板</value>
   </data>
   <data name="ConfigPage_ReconnectDialogTitle" xml:space="preserve">
-    <value>Saving configuration</value>
+    <value>正在保存配置</value>
   </data>
   <data name="ConfigPage_ReconnectDialogBody" xml:space="preserve">
-    <value>OpenClaw is applying your edits. The gateway may restart briefly and reconnect automatically.</value>
+    <value>LanFu 正在应用你的修改。网关可能会短暂重启并自动重新连接。</value>
   </data>
   <data name="ConfigPage_ReconnectDialogAccepted" xml:space="preserve">
-    <value>Gateway is restarting...</value>
+    <value>网关正在重启…</value>
   </data>
   <data name="ConfigPage_ReconnectDialogWaiting" xml:space="preserve">
-    <value>Reconnecting...</value>
+    <value>正在重新连接…</value>
   </data>
   <data name="SaveButton.Content" xml:space="preserve">
     <value>保存更改</value>
@@ -1681,7 +1681,7 @@
     <value>网关地址</value>
   </data>
   <data name="TokenTextBox.Header" xml:space="preserve">
-    <value>Token</value>
+    <value>令牌</value>
   </data>
   <data name="TestButton.Content" xml:space="preserve">
     <value>测试</value>
@@ -1693,13 +1693,13 @@
     <value>SSH 用户</value>
   </data>
   <data name="SshUserBox.PlaceholderText" xml:space="preserve">
-    <value>user</value>
+    <value>用户名</value>
   </data>
   <data name="SshHostBox.Header" xml:space="preserve">
     <value>SSH 主机</value>
   </data>
   <data name="SshHostBox.PlaceholderText" xml:space="preserve">
-    <value>machine-name</value>
+    <value>主机名</value>
   </data>
   <data name="SshRemotePortBox.Header" xml:space="preserve">
     <value>远程端口</value>
@@ -1756,7 +1756,7 @@
     <value>已启用</value>
   </data>
   <data name="StorePathText.Text" xml:space="preserve">
-    <value>Store: ~/.openclaw/cron.db</value>
+    <value>存储位置：~/.lanfu/cron.db</value>
   </data>
   <data name="NextWakeText.Text" xml:space="preserve">
     <value>下次唤醒：…</value>
@@ -1855,10 +1855,10 @@
     <value>更多选项</value>
   </data>
   <data name="NodesPage_Label_Version" xml:space="preserve">
-    <value>Version</value>
+    <value>版本</value>
   </data>
   <data name="NodesPage_Label_Hardware" xml:space="preserve">
-    <value>Hardware</value>
+    <value>硬件</value>
   </data>
   <data name="NodesPage_Label_Network" xml:space="preserve">
     <value>网络</value>
@@ -1930,7 +1930,7 @@
     <value>执行策略</value>
   </data>
   <data name="PermissionsPage_TextBlock_17.Text" xml:space="preserve">
-    <value>控制代理可在此节点上启动哪些可执行文件。可执行文件路径允许列表初始为空。</value>
+    <value>控制智能体可在此节点上启动哪些可执行文件。可执行文件路径允许列表初始为空。</value>
   </data>
   <data name="DefaultActionCombo.Header" xml:space="preserve">
     <value>默认操作</value>
@@ -2086,7 +2086,7 @@
     <value>🧩 技能</value>
   </data>
   <data name="SkillsPage_ComboBoxItem_15.Content" xml:space="preserve">
-    <value>所有代理</value>
+    <value>所有智能体</value>
   </data>
   <data name="SkillsPage_TextBlock_81.Text" xml:space="preserve">
     <value>未安装技能</value>
@@ -2143,73 +2143,73 @@
     <value>连接到网关以查看工作区文件。</value>
   </data>
   <data name="WorkspacePage_NoFilesMessage" xml:space="preserve">
-    <value>此代理未找到工作区文件。</value>
+    <value>此智能体未找到工作区文件。</value>
   </data>
   <data name="WorkspacePage_LoadingContent" xml:space="preserve">
     <value>正在加载内容…</value>
   </data>
   <data name="WorkspacePage_SearchBox.PlaceholderText" xml:space="preserve">
-    <value>Search files</value>
+    <value>搜索文件</value>
   </data>
   <data name="WorkspacePage_ParentFolderButton.Content" xml:space="preserve">
     <value>Up</value>
   </data>
   <data name="WorkspacePage_OpenConnectionSettings.Content" xml:space="preserve">
-    <value>Open Connection settings</value>
+    <value>打开“连接”设置</value>
   </data>
   <data name="WorkspacePage_NoSearchResults.Text" xml:space="preserve">
-    <value>No files match your search.</value>
+    <value>没有匹配的文件。</value>
   </data>
   <data name="WorkspacePage_NoFolderResults" xml:space="preserve">
-    <value>No files found in this folder.</value>
+    <value>此文件夹中没有文件。</value>
   </data>
   <data name="WorkspacePage_LoadErrorMessage" xml:space="preserve">
-    <value>Couldn't load workspace files. Try refreshing.</value>
+    <value>无法加载工作区文件，请尝试刷新。</value>
   </data>
   <data name="WorkspacePage_UnsupportedMessage" xml:space="preserve">
-    <value>This gateway doesn't support listing workspace files.</value>
+    <value>当前网关不支持列出工作区文件。</value>
   </data>
   <data name="WorkspacePage_Badge_Missing" xml:space="preserve">
-    <value>Missing</value>
+    <value>缺失</value>
   </data>
   <data name="WorkspacePage_Badge_Edited" xml:space="preserve">
-    <value>Edited</value>
+    <value>已编辑</value>
   </data>
   <data name="WorkspacePage_Badge_Read" xml:space="preserve">
-    <value>Read</value>
+    <value>已读取</value>
   </data>
   <data name="WorkspacePage_FolderNote" xml:space="preserve">
-    <value>This is a folder.</value>
+    <value>这是一个文件夹。</value>
   </data>
   <data name="WorkspacePage_FileUnavailable" xml:space="preserve">
-    <value>Couldn't load this file.</value>
+    <value>无法加载此文件。</value>
   </data>
   <data name="WorkspacePage_BrowserOnlyFileNote" xml:space="preserve">
-    <value>Only files read or edited in this session can be previewed.</value>
+    <value>仅可预览本次会话中读取或编辑过的文件。</value>
   </data>
   <data name="WorkspacePage_OpenFolder" xml:space="preserve">
-    <value>Open</value>
+    <value>打开</value>
   </data>
   <data name="WorkspacePage_CopyPath" xml:space="preserve">
-    <value>Copy path</value>
+    <value>复制路径</value>
   </data>
   <data name="WorkspacePage_CopyPathFailed" xml:space="preserve">
-    <value>Couldn't copy the path.</value>
+    <value>无法复制路径。</value>
   </data>
   <data name="WorkspacePage_FileType_File" xml:space="preserve">
-    <value>File</value>
+    <value>文件</value>
   </data>
   <data name="WorkspacePage_FileType_Folder" xml:space="preserve">
-    <value>Folder</value>
+    <value>文件夹</value>
   </data>
   <data name="WorkspacePage_RootFolder" xml:space="preserve">
-    <value>Root</value>
+    <value>根目录</value>
   </data>
   <data name="WorkspacePage_SearchResultsPath" xml:space="preserve">
-    <value>Search results for "{0}"</value>
+    <value>“{0}”的搜索结果</value>
   </data>
   <data name="WorkspacePage_BrowserTruncated" xml:space="preserve">
-    <value>Some results were omitted. Narrow your search or open a folder.</value>
+    <value>部分结果已省略。请缩小搜索范围，或直接打开某个文件夹。</value>
   </data>
   <data name="WorkspacePage_MissingFile" xml:space="preserve">
     <value>(磁盘上找不到文件)</value>
@@ -2224,7 +2224,7 @@
     <value>连接到网关以开始聊天</value>
   </data>
   <data name="TitleText.Text" xml:space="preserve">
-    <value>OpenClaw Windows Companion</value>
+    <value>LanFu Windows 桌面端</value>
   </data>
   <data name="NavPaneToggleButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>切换导航窗格</value>
@@ -2260,13 +2260,13 @@
     <value>对话</value>
   </data>
   <data name="HubWindow_NavigationViewItem_94.Content" xml:space="preserve">
-    <value>代理事件</value>
+    <value>智能体事件</value>
   </data>
   <data name="HubWindow_NavigationViewItem_97.Content" xml:space="preserve">
     <value>技能</value>
   </data>
   <data name="AgentsNavItem.Content" xml:space="preserve">
-    <value>代理</value>
+    <value>智能体</value>
   </data>
   <data name="DefaultAgentNavItem.Content" xml:space="preserve">
     <value>main</value>
@@ -2398,13 +2398,13 @@
     <value>路由优先级</value>
   </data>
   <data name="PriorityInfoBar.Message" xml:space="preserve">
-    <value>绑定控制哪个代理处理每个频道的消息。优先级：对等 &gt; 帐户 &gt; 频道 &gt; 默认。</value>
+    <value>绑定控制哪个智能体处理每个频道的消息。优先级：对等 &gt; 帐户 &gt; 频道 &gt; 默认。</value>
   </data>
   <data name="SingleAgentInfoBar.Title" xml:space="preserve">
-    <value>单代理模式</value>
+    <value>单智能体模式</value>
   </data>
   <data name="SingleAgentInfoBar.Message" xml:space="preserve">
-    <value>所有消息都会路由到默认代理。添加绑定以进行多代理路由。</value>
+    <value>所有消息都会路由到默认智能体。添加绑定以进行多智能体路由。</value>
   </data>
   <data name="ConfigSubtitle.Text" xml:space="preserve">
     <value>使用架构引导的表单编辑网关配置 (openclaw.json)。</value>
@@ -2416,7 +2416,7 @@
     <value>网关令牌</value>
   </data>
   <data name="TokenPromptBox.Header" xml:space="preserve">
-    <value>Token</value>
+    <value>令牌</value>
   </data>
   <data name="SetupCodeTextBox.PlaceholderText" xml:space="preserve">
     <value>在此处粘贴设置代码…</value>
@@ -2437,22 +2437,22 @@
     <value>工作区文件</value>
   </data>
   <data name="ChatWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>OpenClaw Chat</value>
+    <value>LanFu 对话</value>
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>键入命令...</value>
   </data>
   <data name="HubWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>OpenClaw 设置</value>
+    <value>LanFu 设置</value>
   </data>
   <data name="TitleSearchBox.PlaceholderText" xml:space="preserve">
     <value>搜索… (Ctrl+E)</value>
   </data>
   <data name="CanvasWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>OpenClaw Canvas</value>
+    <value>LanFu 画布</value>
   </data>
   <data name="CanvasWindow_TextBlock_31.Text" xml:space="preserve">
-    <value>OpenClaw Canvas</value>
+    <value>LanFu 画布</value>
   </data>
   <data name="CanvasWindowReloadToolTip.Content" xml:space="preserve">
     <value>重新加载</value>
@@ -2461,7 +2461,7 @@
     <value>重新加载 Canvas</value>
   </data>
   <data name="TrayMenuWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>OpenClaw Menu</value>
+    <value>LanFu</value>
   </data>
   <data name="UsagePage_TextBlock_10.Text" xml:space="preserve">
     <value>使用量和成本</value>
@@ -2845,7 +2845,7 @@
     <value>未收到音频。请检查麦克风是否已连接并在 Windows 中选作输入设备，然后重试。</value>
   </data>
   <data name="VoiceOverlayWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>Companion Voice</value>
+    <value>LanFu 语音</value>
   </data>
   <data name="VoiceOverlayWindow_BadgeReady" xml:space="preserve">
     <value>就绪</value>
@@ -2896,7 +2896,7 @@
     <value>强制使用伴侣聊天 UI</value>
   </data>
   <data name="Chat_ZeroState_WelcomeTitle" xml:space="preserve">
-    <value>欢迎使用 OpenClaw</value>
+    <value>欢迎使用 LanFu</value>
   </data>
   <data name="Chat_ZeroState_WelcomeSubtitle" xml:space="preserve">
     <value>今天我能帮你做什么？</value>
@@ -3010,7 +3010,7 @@
     <value>未连接</value>
   </data>
   <data name="Chat_Composer_Placeholder_IncompatibleGateway" xml:space="preserve">
-    <value>Gateway update required: incompatible version</value>
+    <value>需要升级网关：版本不兼容</value>
   </data>
   <data name="Chat_Composer_Tooltip_Attach" xml:space="preserve">
     <value>附加</value>
@@ -3139,7 +3139,7 @@
     <value>网关连接失败</value>
   </data>
   <data name="AppNotification_GatewayConnectionFailed_DefaultMessage" xml:space="preserve">
-    <value>OpenClaw 无法连接到活动网关。</value>
+    <value>LanFu 无法连接到活动网关。</value>
   </data>
   <data name="AppNotification_GatewayPairingRequired_Title" xml:space="preserve">
     <value>需要批准网关配对</value>
@@ -3172,7 +3172,7 @@
     <value>节点沙盒已关闭: 命令将不受限制地运行</value>
   </data>
   <data name="AppNotification_SandboxDisabled_Message" xml:space="preserve">
-    <value>在重新启用节点沙盒之前，代理启动的 Windows 命令将在没有沙盒隔离的情况下运行。</value>
+    <value>在重新启用节点沙盒之前，智能体启动的 Windows 命令将在没有沙盒隔离的情况下运行。</value>
   </data>
   <data name="AppNotification_SandboxUnavailable_Title" xml:space="preserve">
     <value>沙盒不可用: 回退到主机</value>
@@ -3209,7 +3209,7 @@
     <value>通知</value>
   </data>
   <data name="NotificationsPage_Subtitle.Text" xml:space="preserve">
-    <value>查看并清除活动的 OpenClaw 通知。</value>
+    <value>查看并清除活动的 LanFu 通知。</value>
   </data>
   <data name="NotificationsPage_ClearButton.Content" xml:space="preserve">
     <value>清除</value>
@@ -3269,7 +3269,7 @@
     <value>连接</value>
   </data>
   <data name="NotificationsPage_MetadataCron" xml:space="preserve">
-    <value>Cron</value>
+    <value>定时任务</value>
   </data>
   <data name="NotificationsPage_MetadataGateway" xml:space="preserve">
     <value>网关</value>
@@ -3350,82 +3350,82 @@
     <value>已丢弃网关时间线事件</value>
   </data>
   <data name="Chat_Notification_KeylessEventDroppedMessage" xml:space="preserve">
-    <value>网关发送了缺少会话键的聊天时间线事件，OpenClaw 已将其忽略，以避免混淆时间线。如果此情况持续，请更新或重启网关。</value>
+    <value>网关发送了缺少会话键的聊天时间线事件，LanFu 已将其忽略，以避免混淆时间线。如果此情况持续，请更新或重启网关。</value>
   </data>
   <data name="VoiceSettingsPage_TestVoiceButtonText.Text" xml:space="preserve">
     <value>测试语音输入</value>
   </data>
   <data name="PermissionsPage_FeaturesDescription_Enabled" xml:space="preserve">
-    <value>Toggle individual features that agents may request from this PC.</value>
+    <value>按需开关智能体可以向这台电脑申请的各项功能。</value>
   </data>
   <data name="PermissionsPage_FeaturesDescription_Disabled" xml:space="preserve">
-    <value>Turn on Node Mode above to enable these features.</value>
+    <value>请先在上方开启节点模式，才能启用这些功能。</value>
   </data>
   <data name="PermissionsPage_Cap_Browser_Label" xml:space="preserve">
-    <value>Browser control</value>
+    <value>浏览器控制</value>
   </data>
   <data name="PermissionsPage_Cap_Browser_Description" xml:space="preserve">
-    <value>Lets agents drive a Chromium browser on this PC: open pages, click, and read content.</value>
+    <value>允许智能体在这台电脑上驱动 Chromium 浏览器：打开页面、点击并读取内容。</value>
   </data>
   <data name="PermissionsPage_Cap_Camera_Label" xml:space="preserve">
-    <value>Camera</value>
+    <value>摄像头</value>
   </data>
   <data name="PermissionsPage_Cap_Camera_Description" xml:space="preserve">
-    <value>Lets agents capture still images and short clips from this PC's camera.</value>
+    <value>允许智能体通过这台电脑的摄像头拍摄照片和短视频。</value>
   </data>
   <data name="PermissionsPage_Cap_Canvas_Label" xml:space="preserve">
-    <value>Canvas</value>
+    <value>画布</value>
   </data>
   <data name="PermissionsPage_Cap_Canvas_Description" xml:space="preserve">
-    <value>Lets agents render and interact with a shared visual canvas hosted on this PC.</value>
+    <value>允许智能体渲染并操作托管在这台电脑上的共享可视化画布。</value>
   </data>
   <data name="PermissionsPage_Cap_Screen_Label" xml:space="preserve">
-    <value>Screen capture</value>
+    <value>屏幕捕获</value>
   </data>
   <data name="PermissionsPage_Cap_Screen_Description" xml:space="preserve">
-    <value>Lets agents take screenshots and short screen recordings of this PC.</value>
+    <value>允许智能体截取这台电脑的屏幕截图和短时录屏。</value>
   </data>
   <data name="PermissionsPage_Cap_Location_Label" xml:space="preserve">
-    <value>Location</value>
+    <value>位置</value>
   </data>
   <data name="PermissionsPage_Cap_Location_Description" xml:space="preserve">
-    <value>Lets agents read this PC's approximate location.</value>
+    <value>允许智能体读取这台电脑的大致位置。</value>
   </data>
   <data name="PermissionsPage_Cap_Tts_Label" xml:space="preserve">
-    <value>Text-to-speech</value>
+    <value>语音合成</value>
   </data>
   <data name="PermissionsPage_Cap_Tts_Description" xml:space="preserve">
-    <value>Lets agents speak text aloud through this PC's speakers.</value>
+    <value>允许智能体通过这台电脑的扬声器朗读文字。</value>
   </data>
   <data name="PermissionsPage_Cap_Stt_Label" xml:space="preserve">
-    <value>Speech-to-text</value>
+    <value>语音转文字</value>
   </data>
   <data name="PermissionsPage_Cap_Stt_Description" xml:space="preserve">
-    <value>Lets agents transcribe microphone audio locally. Download a speech model in Voice &amp; Audio settings before first use.</value>
+    <value>允许智能体在本地转写麦克风录音。首次使用前请先在“语音与音频”设置中下载语音模型。</value>
   </data>
   <data name="PermissionsPage_Cap_Ollama_Label" xml:space="preserve">
-    <value>Share Windows Ollama</value>
+    <value>共享 Windows 上的 Ollama</value>
   </data>
   <data name="PermissionsPage_Cap_Ollama_Description" xml:space="preserve">
-    <value>Let agents connected through the active local or remote gateway use Ollama models running separately on this PC. This does not change the app-managed Local AI gateway provider.</value>
+    <value>允许通过当前本地或远程网关连接的智能体使用这台电脑上单独运行的 Ollama 模型。这不会改变应用内置的本地 AI 网关服务商。</value>
   </data>
   <data name="PermissionsPage_Cap_SystemRun_Label" xml:space="preserve">
-    <value>System tools</value>
+    <value>系统工具</value>
   </data>
   <data name="PermissionsPage_Cap_SystemRun_Description" xml:space="preserve">
-    <value>Lets agents run shell commands and scripts on this PC. Turn this off to block all command execution.</value>
+    <value>允许智能体在这台电脑上执行 shell 命令和脚本。关闭后将阻止所有命令执行。</value>
   </data>
   <data name="PermissionsPage_NodeStatus_Disabled" xml:space="preserve">
-    <value>Node mode disabled</value>
+    <value>节点模式已关闭</value>
   </data>
   <data name="PermissionsPage_NodeStatus_DisabledDetails" xml:space="preserve">
-    <value>Enable Node Mode to provide device capabilities to agents.</value>
+    <value>开启节点模式后，才能向智能体提供本机能力。</value>
   </data>
   <data name="PermissionsPage_NodeStatus_Active" xml:space="preserve">
-    <value>Node active</value>
+    <value>节点已启用</value>
   </data>
   <data name="PermissionsPage_NodeStatus_ActiveDetailsFormat" xml:space="preserve">
-    <value>Providing {0} capabilities: {1}</value>
+    <value>正在提供 {0} 项能力：{1}</value>
   </data>
   <data name="PermissionsPage_NodeStatus_McpOnly" xml:space="preserve">
     <value>仅本地 MCP</value>
@@ -3440,28 +3440,28 @@
     <value>本地 MCP 服务器启动失败</value>
   </data>
   <data name="PermissionsPage_NodeStatus_NoCapabilities" xml:space="preserve">
-    <value>No capabilities enabled.</value>
+    <value>尚未启用任何能力。</value>
   </data>
   <data name="PermissionsPage_NodeStatus_NotConnected" xml:space="preserve">
-    <value>Node mode enabled, not connected</value>
+    <value>节点模式已开启，但尚未连接</value>
   </data>
   <data name="PermissionsPage_NodeStatus_NotConnectedDetails" xml:space="preserve">
-    <value>Connect to a gateway to start providing device capabilities.</value>
+    <value>连接网关后即可开始提供本机能力。</value>
   </data>
   <data name="PermissionsPage_McpStatus_TokenReady" xml:space="preserve">
-    <value>Server enabled: token ready</value>
+    <value>服务已启用：令牌已就绪</value>
   </data>
   <data name="PermissionsPage_McpStatus_TokenPending" xml:space="preserve">
-    <value>Server enabled: token will be created on next start</value>
+    <value>服务已启用：令牌将在下次启动时生成</value>
   </data>
   <data name="PermissionsPage_McpStatus_TokenCopied" xml:space="preserve">
-    <value>Token copied to clipboard</value>
+    <value>令牌已复制到剪贴板</value>
   </data>
   <data name="PermissionsPage_McpStatus_TokenNotFound" xml:space="preserve">
-    <value>Token file not found: start the MCP server first</value>
+    <value>未找到令牌文件：请先启动 MCP 服务</value>
   </data>
   <data name="PermissionsPage_McpStatus_UrlCopied" xml:space="preserve">
-    <value>URL copied to clipboard</value>
+    <value>地址已复制到剪贴板</value>
   </data>
   <data name="PermissionsPage_RulesCount_None" xml:space="preserve">
     <value>无条目</value>
@@ -3473,115 +3473,115 @@
     <value>{0} 个条目</value>
   </data>
   <data name="PermissionsPage_Allowlist_NoConfig" xml:space="preserve">
-    <value>No allowlist data available. Connect to a gateway first.</value>
+    <value>暂无允许列表数据。请先连接网关。</value>
   </data>
   <data name="PermissionsPage_Allowlist_NoCommands" xml:space="preserve">
-    <value>No allowed commands configured in gateway.</value>
+    <value>网关中未配置允许执行的命令。</value>
   </data>
   <data name="PermissionsPage_Allowlist_ParseFailed" xml:space="preserve">
-    <value>Failed to parse allowlist from config.</value>
+    <value>无法从配置中解析允许列表。</value>
   </data>
   <data name="PermissionsPage_McpStatus_TokenReadFailedFormat" xml:space="preserve">
-    <value>Failed to read token: {0}</value>
+    <value>读取令牌失败：{0}</value>
   </data>
   <data name="InstancesPage_Title.Text" xml:space="preserve">
-    <value>Instances</value>
+    <value>实例</value>
   </data>
   <data name="InstancesPage_Subtitle.Text" xml:space="preserve">
-    <value>Latest presence beacons from OpenClaw nodes.</value>
+    <value>来自 LanFu 节点的最新在线状态心跳。</value>
   </data>
   <data name="InstancesPage_ConnectionWarning.Title" xml:space="preserve">
-    <value>Not connected</value>
+    <value>未连接</value>
   </data>
   <data name="InstancesPage_ConnectionWarning.Message" xml:space="preserve">
-    <value>Connect to a gateway to see live instance data.</value>
+    <value>连接网关后即可查看实时实例数据。</value>
   </data>
   <data name="InstancesPage_EmptyTitle.Text" xml:space="preserve">
-    <value>No instances reported yet.</value>
+    <value>暂无实例上报。</value>
   </data>
   <data name="InstancesPage_ContextMenu_CopyDebug" xml:space="preserve">
-    <value>Copy debug summary</value>
+    <value>复制调试摘要</value>
   </data>
   <data name="InstancesPage_Status_Active" xml:space="preserve">
-    <value>Active</value>
+    <value>活跃</value>
   </data>
   <data name="InstancesPage_Status_Idle" xml:space="preserve">
-    <value>Idle</value>
+    <value>空闲</value>
   </data>
   <data name="InstancesPage_Status_Disconnected" xml:space="preserve">
-    <value>Disconnected</value>
+    <value>已断开</value>
   </data>
   <data name="InstancesPage_Reason_Self" xml:space="preserve">
-    <value>Self</value>
+    <value>本机</value>
   </data>
   <data name="InstancesPage_Reason_Connect" xml:space="preserve">
-    <value>Connect</value>
+    <value>连接</value>
   </data>
   <data name="InstancesPage_Reason_Disconnect" xml:space="preserve">
-    <value>Disconnect</value>
+    <value>断开连接</value>
   </data>
   <data name="InstancesPage_Reason_NodeConnect" xml:space="preserve">
-    <value>Node connect</value>
+    <value>节点连接</value>
   </data>
   <data name="InstancesPage_Reason_NodeDisconnect" xml:space="preserve">
-    <value>Node disconnect</value>
+    <value>节点断开</value>
   </data>
   <data name="InstancesPage_Reason_Launch" xml:space="preserve">
-    <value>Launch</value>
+    <value>启动</value>
   </data>
   <data name="InstancesPage_Reason_Heartbeat" xml:space="preserve">
-    <value>Heartbeat</value>
+    <value>心跳</value>
   </data>
   <data name="InstancesPage_Reason_Refresh" xml:space="preserve">
-    <value>Instances refresh</value>
+    <value>刷新实例</value>
   </data>
   <data name="InstancesPage_Reason_Resync" xml:space="preserve">
-    <value>Resync</value>
+    <value>重新同步</value>
   </data>
   <data name="ConnectionPage_NodePairing_Title.Text" xml:space="preserve">
-    <value>🔗 Pending Operator/Node Pairing</value>
+    <value>🔗 待批准的操作用户／节点配对</value>
   </data>
   <data name="ConnectionPage_NodePairing_Subtitle.Text" xml:space="preserve">
-    <value>Operators and Windows nodes waiting for approval to connect to this gateway.</value>
+    <value>正在等待批准连接到此网关的操作用户和 Windows 节点。</value>
   </data>
   <data name="InstancesPage_RefreshLabel.Text" xml:space="preserve">
-    <value>Refresh</value>
+    <value>刷新</value>
   </data>
   <data name="InstancesPage_CapabilitiesCount_Format" xml:space="preserve">
-    <value>{0} capabilities</value>
+    <value>{0} 项能力</value>
   </data>
   <data name="InstancesPage_CommandsCount_Format" xml:space="preserve">
-    <value>{0} commands</value>
+    <value>{0} 条命令</value>
   </data>
   <data name="InstancesPage_Presence_AccessibilityFormat" xml:space="preserve">
-    <value>{0} presence</value>
+    <value>{0} 在线状态</value>
   </data>
   <data name="InstancesPage_UpdateReason_Tooltip_Format" xml:space="preserve">
-    <value>Why this presence entry was last updated (debug marker). Raw: {0}</value>
+    <value>该在线状态条目的最后更新原因（调试标记）。原始值：{0}</value>
   </data>
   <data name="InstancesPage_UpdateReason_Tooltip_NoReason" xml:space="preserve">
-    <value>Why this presence entry was last updated (debug marker).</value>
+    <value>该在线状态条目的最后更新原因（调试标记）。</value>
   </data>
   <data name="InstancesPage_StatusTooltip_Disconnected" xml:space="preserve">
-    <value>Disconnected: no active presence</value>
+    <value>已断开：没有活跃的在线状态</value>
   </data>
   <data name="InstancesPage_StatusTooltip_Active_Format" xml:space="preserve">
-    <value>Active: last seen {0}</value>
+    <value>活跃：最后出现于 {0}</value>
   </data>
   <data name="InstancesPage_StatusTooltip_Idle_Format" xml:space="preserve">
-    <value>Idle: last seen {0}</value>
+    <value>空闲：最后出现于 {0}</value>
   </data>
   <data name="InstancesPage_Status_Inactive" xml:space="preserve">
-    <value>Inactive</value>
+    <value>不活跃</value>
   </data>
   <data name="InstancesPage_StatusTooltip_Inactive_Format" xml:space="preserve">
-    <value>Inactive: last seen {0}</value>
+    <value>不活跃：最后出现于 {0}</value>
   </data>
   <data name="InstancesPage_Role_AccessibilityFormat" xml:space="preserve">
-    <value>Role: {0}</value>
+    <value>角色：{0}</value>
   </data>
   <data name="InstanceManage_CopyNodeId_AccessibilityName" xml:space="preserve">
-    <value>Copy node ID</value>
+    <value>复制节点 ID</value>
   </data>
   <data name="InstancesPage_TimeAgo_Seconds_Format" xml:space="preserve">
     <value>{0}秒前</value>
@@ -3596,166 +3596,166 @@
     <value>{0}天前</value>
   </data>
   <data name="V2_Window_Title" xml:space="preserve">
-    <value>OpenClaw Setup</value>
+    <value>LanFu 安装向导</value>
   </data>
   <data name="V2_Nav_Back" xml:space="preserve">
-    <value>Back</value>
+    <value>上一步</value>
   </data>
   <data name="V2_Nav_Next" xml:space="preserve">
-    <value>Next</value>
+    <value>下一步</value>
   </data>
   <data name="V2_Nav_Finish" xml:space="preserve">
-    <value>Finish</value>
+    <value>完成</value>
   </data>
   <data name="V2_Welcome_Title" xml:space="preserve">
-    <value>Get started with OpenClaw</value>
+    <value>开始使用 LanFu</value>
   </data>
   <data name="V2_Welcome_Body" xml:space="preserve">
-    <value>OpenClaw lets agents run commands, read and write files, and capture screenshots on this PC. Only set it up on a computer you trust.</value>
+    <value>LanFu 允许智能体在这台电脑上执行命令、读写文件并截取屏幕。请只在你自己信任的电脑上安装。</value>
   </data>
   <data name="V2_Welcome_InfoCard" xml:space="preserve">
-    <value>This local setup installs a small WSL Linux instance dedicated to OpenClaw. If you'd rather connect to an existing or remote gateway, choose Advanced setup.</value>
+    <value>本地安装会创建一个专供 LanFu 使用的小型 WSL Linux 实例。如果你希望连接已有的或远程的网关，请选择“高级安装”。</value>
   </data>
   <data name="V2_Welcome_PrimaryButton" xml:space="preserve">
-    <value>Set up locally</value>
+    <value>本地安装</value>
   </data>
   <data name="V2_Welcome_PrimaryButton_InstallNewWslGateway" xml:space="preserve">
-    <value>Install new WSL Gateway</value>
+    <value>安装新的 WSL 网关</value>
   </data>
   <data name="V2_Welcome_AdvancedLink" xml:space="preserve">
-    <value>Advanced setup</value>
+    <value>高级安装</value>
   </data>
   <data name="V2_Welcome_LocalReplaceDialog_Title" xml:space="preserve">
-    <value>Install a new WSL gateway?</value>
+    <value>要安装新的 WSL 网关吗？</value>
   </data>
   <data name="V2_Welcome_LocalReplaceDialog_Body" xml:space="preserve">
-    <value>Your current OpenClaw WSL gateway and its OpenClawGateway distro will be deleted. Setup will then install and connect to a new local WSL gateway.</value>
+    <value>当前的 LanFu WSL 网关及其 OpenClawGateway 发行版将被删除，随后安装并连接到新的本地 WSL 网关。</value>
   </data>
   <data name="V2_Welcome_ExternalDialog_Title" xml:space="preserve">
-    <value>Install a local WSL gateway?</value>
+    <value>要安装本地 WSL 网关吗？</value>
   </data>
   <data name="V2_Welcome_ExternalDialog_Body" xml:space="preserve">
-    <value>Setup will install and connect to a new local WSL gateway. Your existing external gateway connection will stay available from the Connections page.</value>
+    <value>安装程序将安装并连接到一个新的本地 WSL 网关。你现有的外部网关连接仍可在“连接”页面继续使用。</value>
   </data>
   <data name="V2_Welcome_SetupWarning_Confirm" xml:space="preserve">
-    <value>Continue</value>
+    <value>继续</value>
   </data>
   <data name="V2_Welcome_SetupWarning_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="V2_Progress_Title" xml:space="preserve">
-    <value>Setting up locally</value>
+    <value>正在本地安装</value>
   </data>
   <data name="V2_Progress_Subtitle" xml:space="preserve">
-    <value>Creating OpenClaw Gateway WSL instance</value>
+    <value>正在创建 LanFu Gateway WSL 实例</value>
   </data>
   <data name="V2_Progress_Stage_RemovingExistingGateway" xml:space="preserve">
-    <value>Removing existing gateway</value>
+    <value>移除现有网关</value>
   </data>
   <data name="V2_Progress_Stage_CheckSystem" xml:space="preserve">
-    <value>Check system</value>
+    <value>检查系统</value>
   </data>
   <data name="V2_Progress_Stage_InstallingUbuntu" xml:space="preserve">
-    <value>Installing Ubuntu</value>
+    <value>安装 Ubuntu</value>
   </data>
   <data name="V2_Progress_Stage_ConfiguringInstance" xml:space="preserve">
-    <value>Configuring instance</value>
+    <value>配置实例</value>
   </data>
   <data name="V2_Progress_Stage_InstallingOpenClaw" xml:space="preserve">
-    <value>Installing OpenClaw</value>
+    <value>安装 LanFu</value>
   </data>
   <data name="V2_Progress_Stage_PreparingGateway" xml:space="preserve">
-    <value>Preparing gateway</value>
+    <value>准备网关</value>
   </data>
   <data name="V2_Progress_Stage_StartingGateway" xml:space="preserve">
-    <value>Starting gateway</value>
+    <value>启动网关</value>
   </data>
   <data name="V2_Progress_Stage_GeneratingSetupCode" xml:space="preserve">
-    <value>Generating setup code</value>
+    <value>生成安装码</value>
   </data>
   <data name="V2_Progress_TryAgain" xml:space="preserve">
-    <value>Try again</value>
+    <value>重试</value>
   </data>
   <data name="V2_Gateway_Title" xml:space="preserve">
-    <value>Configuring gateway</value>
+    <value>正在配置网关</value>
   </data>
   <data name="V2_Gateway_CardHeader" xml:space="preserve">
-    <value>Welcome to OpenClaw gateway</value>
+    <value>欢迎使用 LanFu 网关</value>
   </data>
   <data name="V2_Gateway_CardBody1" xml:space="preserve">
-    <value>Your local OpenClaw gateway is running at http://localhost:18789. Visit it to add your first AI provider and configure your agent.</value>
+    <value>你的本地 LanFu 网关正在 http://localhost:18789 运行。打开它即可添加第一个 AI 服务商并配置智能体。</value>
   </data>
   <data name="V2_Gateway_CardBody2" xml:space="preserve">
-    <value>All requests are processed on this PC. Your data stays local.</value>
+    <value>所有请求都在本机处理，你的数据留在本地。</value>
   </data>
   <data name="V2_Gateway_OpenInBrowser" xml:space="preserve">
-    <value>Open http://localhost:18789 in browser</value>
+    <value>在浏览器中打开 http://localhost:18789</value>
   </data>
   <data name="V2_Permissions_Title" xml:space="preserve">
-    <value>Grant permissions</value>
+    <value>授予权限</value>
   </data>
   <data name="V2_Permissions_Body" xml:space="preserve">
-    <value>OpenClaw works best when it can send notifications, access your camera and microphone, capture your screen, and know your location. Grant permissions below.</value>
+    <value>当 LanFu 可以发送通知、访问摄像头和麦克风、捕获屏幕并获取位置时，体验最完整。请在下方授予权限。</value>
   </data>
   <data name="V2_Permissions_Row_Notifications" xml:space="preserve">
-    <value>Notifications</value>
+    <value>通知</value>
   </data>
   <data name="V2_Permissions_Row_Camera" xml:space="preserve">
-    <value>Camera</value>
+    <value>摄像头</value>
   </data>
   <data name="V2_Permissions_Row_Microphone" xml:space="preserve">
-    <value>Microphone</value>
+    <value>麦克风</value>
   </data>
   <data name="V2_Permissions_Row_Location" xml:space="preserve">
-    <value>Location (optional)</value>
+    <value>位置（可选）</value>
   </data>
   <data name="V2_Permissions_Row_ScreenCapture" xml:space="preserve">
-    <value>Screen Capture</value>
+    <value>屏幕捕获</value>
   </data>
   <data name="V2_Permissions_OpenSettings" xml:space="preserve">
-    <value>Open Settings</value>
+    <value>打开系统设置</value>
   </data>
   <data name="V2_Permissions_Refresh" xml:space="preserve">
-    <value>Refresh status</value>
+    <value>刷新状态</value>
   </data>
   <data name="V2_Permissions_Status_Enabled" xml:space="preserve">
-    <value>Enabled</value>
+    <value>已启用</value>
   </data>
   <data name="V2_Permissions_Status_Available" xml:space="preserve">
-    <value>Available – uses picker per capture</value>
+    <value>可用 —— 每次捕获时由选择器确认</value>
   </data>
   <data name="V2_AllSet_Title" xml:space="preserve">
-    <value>All set!</value>
+    <value>全部就绪！</value>
   </data>
   <data name="V2_AllSet_Subtitle" xml:space="preserve">
-    <value>OpenClaw is ready to go</value>
+    <value>LanFu 已经可以使用</value>
   </data>
   <data name="V2_AllSet_NodeMode_Title" xml:space="preserve">
-    <value>Node Mode Active</value>
+    <value>节点模式已启用</value>
   </data>
   <data name="V2_AllSet_NodeMode_Body" xml:space="preserve">
-    <value>This PC will operate as a remote compute node. The gateway can invoke screen capture, camera, and system commands on this machine.</value>
+    <value>这台电脑将作为远程计算节点运行。网关可以在这台机器上调用屏幕捕获、摄像头和系统命令。</value>
   </data>
   <data name="V2_AllSet_StartupQuestion" xml:space="preserve">
-    <value>Launch OpenClaw at startup?</value>
+    <value>开机时自动启动 LanFu？</value>
   </data>
   <data name="V2_AllSet_On" xml:space="preserve">
     <value>On</value>
   </data>
   <data name="V2_AllSet_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>关闭</value>
   </data>
   <data name="V2_Welcome_Replace_Heading" xml:space="preserve">
-    <value>Existing setup detected</value>
+    <value>检测到已有安装</value>
   </data>
   <data name="V2_Welcome_Replace_Body" xml:space="preserve">
-    <value>Setting up locally will overwrite your existing OpenClaw configuration.</value>
+    <value>本地安装将覆盖你现有的 LanFu 配置。</value>
   </data>
   <data name="V2_Welcome_Replace_Confirm" xml:space="preserve">
-    <value>Replace my setup</value>
+    <value>替换现有配置</value>
   </data>
   <data name="V2_Welcome_Replace_Keep" xml:space="preserve">
-    <value>Keep my setup</value>
+    <value>保留现有配置</value>
   </data>
   <data name="FilterAllButton.Text" xml:space="preserve">
     <value>全部</value>
@@ -3812,37 +3812,37 @@
     <value>沙盒</value>
   </data>
   <data name="ChannelsPage_GuideBar.Title" xml:space="preserve">
-    <value>Your gateway didn't list any channels</value>
+    <value>你的网关未列出任何频道</value>
   </data>
   <data name="ChannelsPage_GuideBar.Message" xml:space="preserve">
-    <value>Channels are configured on your gateway. To add one, expand it below and fill in its credentials. The form saves directly to your gateway's config. The setup guide walks through each channel end-to-end.</value>
+    <value>频道在网关上配置。要添加频道，请展开下方条目并填写凭据——表单会直接保存到网关配置。配置向导会完整演示每个频道的接入流程。</value>
   </data>
   <data name="ChannelsPage_DocsLink.Content" xml:space="preserve">
-    <value>Read the channels guide</value>
+    <value>阅读频道指南</value>
   </data>
   <data name="ChannelsPage_NotConnected.Title" xml:space="preserve">
-    <value>Not connected</value>
+    <value>未连接</value>
   </data>
   <data name="ChannelsPage_NotConnected.Message" xml:space="preserve">
-    <value>Connect to a gateway to manage channels.</value>
+    <value>连接网关后即可管理频道。</value>
   </data>
   <data name="ChannelsPage_EmptyTitle.Text" xml:space="preserve">
-    <value>No channels available</value>
+    <value>没有可用频道</value>
   </data>
   <data name="ChannelsPage_EmptySubtitle.Text" xml:space="preserve">
-    <value>The gateway didn't report any channels. Install channel plugins on the gateway and refresh.</value>
+    <value>网关未上报任何频道。请在网关上安装频道插件后刷新。</value>
   </data>
   <data name="DiagnosticsPage_Title.Text" xml:space="preserve">
-    <value>Diagnostics</value>
+    <value>诊断</value>
   </data>
   <data name="DiagnosticsPage_Subtitle.Text" xml:space="preserve">
-    <value>Inspect, export, and troubleshoot your OpenClaw installation.</value>
+    <value>检查、导出并排查你的 LanFu 安装。</value>
   </data>
   <data name="DiagnosticsPage_ManageOnConnection.Content" xml:space="preserve">
-    <value>Manage on Connection page</value>
+    <value>在“连接”页面管理</value>
   </data>
   <data name="DiagnosticsPage_Section_Gateway.Text" xml:space="preserve">
-    <value>Gateway</value>
+    <value>网关</value>
   </data>
   <data name="DiagnosticsPage_Card_Doctor.Header" xml:space="preserve">
     <value>运行 Gateway 诊断</value>
@@ -3851,31 +3851,31 @@
     <value>打开终端并运行 openclaw doctor，以检查本地 Gateway 是否存在问题。</value>
   </data>
   <data name="DiagnosticsPage_Section_Share.Text" xml:space="preserve">
-    <value>Share diagnostics with support</value>
+    <value>将诊断信息提供给支持人员</value>
   </data>
   <data name="DiagnosticsPage_Card_Bundle.Header" xml:space="preserve">
-    <value>Create diagnostics bundle</value>
+    <value>创建诊断包</value>
   </data>
   <data name="DiagnosticsPage_Card_Bundle.Description" xml:space="preserve">
-    <value>Includes connection, gateway, ports, capabilities, log tail, and device summary. Preview before sharing.</value>
+    <value>包含连接、网关、端口、能力、日志尾部与设备摘要。分享前可先预览。</value>
   </data>
   <data name="DiagnosticsPage_Card_OpenDiagnosticsFolder.Header" xml:space="preserve">
-    <value>Open diagnostics folder</value>
+    <value>打开诊断文件夹</value>
   </data>
   <data name="DiagnosticsPage_Card_OpenDiagnosticsFolder.Description" xml:space="preserve">
-    <value>Logs and structured diagnostics (.jsonl) live here.</value>
+    <value>日志与结构化诊断文件（.jsonl）保存在这里。</value>
   </data>
   <data name="DiagnosticsPage_Expander_SpecificCopies.Header" xml:space="preserve">
-    <value>Copy specific diagnostic text</value>
+    <value>复制指定的诊断文本</value>
   </data>
   <data name="DiagnosticsPage_Expander_SpecificCopies.Description" xml:space="preserve">
-    <value>Send just one piece of context.</value>
+    <value>只发送某一项上下文。</value>
   </data>
   <data name="DiagnosticsPage_Card_CopySupport.Header" xml:space="preserve">
-    <value>Copy support context</value>
+    <value>复制支持上下文</value>
   </data>
   <data name="DiagnosticsPage_Card_CopySupport.Description" xml:space="preserve">
-    <value>Connection state, gateway URL, runtime, tunnel.</value>
+    <value>连接状态、网关地址、运行时、隧道。</value>
   </data>
   <data name="DiagnosticsPage_Card_CopyDebugBundle.Header" xml:space="preserve">
     <value>复制摘要调试包</value>
@@ -3884,82 +3884,82 @@
     <value>仅包含生成的摘要；不包含日志尾部。请使用“创建诊断包”在共享前检查日志。</value>
   </data>
   <data name="DiagnosticsPage_Card_CopyBrowserSetup.Header" xml:space="preserve">
-    <value>Copy browser setup guidance</value>
+    <value>复制浏览器配置指引</value>
   </data>
   <data name="DiagnosticsPage_Card_CopyPortDiagnostics.Header" xml:space="preserve">
-    <value>Copy port diagnostics</value>
+    <value>复制端口诊断</value>
   </data>
   <data name="DiagnosticsPage_Card_CopyCapabilityDiagnostics.Header" xml:space="preserve">
-    <value>Copy capability diagnostics</value>
+    <value>复制能力诊断</value>
   </data>
   <data name="DiagnosticsPage_Section_Inspect.Text" xml:space="preserve">
-    <value>Inspect local diagnostics</value>
+    <value>检查本地诊断</value>
   </data>
   <data name="DiagnosticsPage_Card_EventTimeline.Header" xml:space="preserve">
-    <value>Connection event timeline</value>
+    <value>连接事件时间线</value>
   </data>
   <data name="DiagnosticsPage_Card_EventTimeline.Description" xml:space="preserve">
-    <value>Live state-machine events, websocket frames, credential resolution, and pairing handshakes.</value>
+    <value>实时状态机事件、WebSocket 帧、凭据解析与配对握手。</value>
   </data>
   <data name="DiagnosticsPage_OpenEventTimelineButton.Content" xml:space="preserve">
-    <value>Open</value>
+    <value>打开</value>
   </data>
   <data name="DiagnosticsPage_Card_RecentLog.Header" xml:space="preserve">
-    <value>Recent log</value>
+    <value>最近日志</value>
   </data>
   <data name="DiagnosticsPage_Card_RecentLog.Description" xml:space="preserve">
-    <value>Last 200 lines of openclaw-tray.log, with severity coloring.</value>
+    <value>openclaw-tray.log 的最后 200 行，按级别着色。</value>
   </data>
   <data name="DiagnosticsPage_Expander_Identity.Header" xml:space="preserve">
-    <value>Device identity</value>
+    <value>设备身份</value>
   </data>
   <data name="DiagnosticsPage_Expander_Identity.Description" xml:space="preserve">
-    <value>Local cryptographic identifiers for this device.</value>
+    <value>本机的本地加密标识。</value>
   </data>
   <data name="DiagnosticsPage_Card_DeviceId.Header" xml:space="preserve">
-    <value>Device ID</value>
+    <value>设备 ID</value>
   </data>
   <data name="DiagnosticsPage_Card_PublicKey.Header" xml:space="preserve">
-    <value>Public key</value>
+    <value>公钥</value>
   </data>
   <data name="DiagnosticsPage_Section_Developer.Text" xml:space="preserve">
-    <value>Developer tools</value>
+    <value>开发者工具</value>
   </data>
   <data name="DiagnosticsPage_DeveloperWarning.Title" xml:space="preserve">
-    <value>For engineers</value>
+    <value>供工程师使用</value>
   </data>
   <data name="DiagnosticsPage_DeveloperWarning.Message" xml:space="preserve">
-    <value>These tools may change app behavior, restart the app, or open experimental UI.</value>
+    <value>这些工具可能改变应用行为、重启应用或打开实验性界面。</value>
   </data>
   <data name="DiagnosticsPage_Expander_OpenTelemetry.Header" xml:space="preserve">
-    <value>OpenTelemetry connection</value>
+    <value>OpenTelemetry 连接</value>
   </data>
   <data name="DiagnosticsPage_Expander_OpenTelemetry.Description" xml:space="preserve">
-    <value>Sends a small diagnostic probe only to the OTLP collector endpoint you configure.</value>
+    <value>仅向你配置的 OTLP 采集端点发送一个轻量诊断探测。</value>
   </data>
   <data name="DiagnosticsPage_Card_OpenTelemetryEndpoint.Header" xml:space="preserve">
-    <value>OTel endpoint</value>
+    <value>OTel 端点</value>
   </data>
   <data name="DiagnosticsPage_Card_OpenTelemetryEndpoint.Description" xml:space="preserve">
-    <value>Collector URL used by OpenClaw telemetry.</value>
+    <value>LanFu 遥测使用的采集器地址。</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetrySummary.Text" xml:space="preserve">
-    <value>Not configured</value>
+    <value>未配置</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetrySummary_NotConfigured" xml:space="preserve">
-    <value>Not configured</value>
+    <value>未配置</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetrySummary_Configured" xml:space="preserve">
-    <value>Configured</value>
+    <value>已配置</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointBox.Header" xml:space="preserve">
-    <value>Endpoint URL</value>
+    <value>端点地址</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointBox.PlaceholderText" xml:space="preserve">
     <value>http://localhost:4317</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryProtocolLabel.Text" xml:space="preserve">
-    <value>Protocol</value>
+    <value>协议</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryProtocolGrpc.Content" xml:space="preserve">
     <value>OTLP/gRPC</value>
@@ -3968,94 +3968,94 @@
     <value>OTLP/HTTP</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus.Title" xml:space="preserve">
-    <value>No telemetry endpoint</value>
+    <value>未设置遥测端点</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus.Message" xml:space="preserve">
-    <value>No endpoint configured.</value>
+    <value>未配置端点。</value>
   </data>
   <data name="DiagnosticsPage_SaveOpenTelemetryEndpointButton.Content" xml:space="preserve">
-    <value>Save connection</value>
+    <value>保存连接</value>
   </data>
   <data name="DiagnosticsPage_ResendOpenTelemetryProbeButton.Content" xml:space="preserve">
-    <value>Send probe again</value>
+    <value>重新发送探测</value>
   </data>
   <data name="DiagnosticsPage_ClearOpenTelemetryEndpointButton.Content" xml:space="preserve">
-    <value>Clear</value>
+    <value>清除</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_InvalidTitle" xml:space="preserve">
-    <value>Endpoint needs attention</value>
+    <value>端点需要处理</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_InvalidMessage" xml:space="preserve">
-    <value>Enter an absolute HTTP or HTTPS OTLP collector URL, for example http://localhost:4317.</value>
+    <value>请输入完整的 HTTP 或 HTTPS OTLP 采集器地址，例如 http://localhost:4317。</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_ClearedTitle" xml:space="preserve">
-    <value>Endpoint cleared</value>
+    <value>端点已清除</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_OffTitle" xml:space="preserve">
-    <value>No telemetry endpoint</value>
+    <value>未设置遥测端点</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_OffMessage" xml:space="preserve">
-    <value>No endpoint configured.</value>
+    <value>未配置端点。</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_SavedTitle" xml:space="preserve">
-    <value>Endpoint saved</value>
+    <value>端点已保存</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_SavedMessageFormat" xml:space="preserve">
-    <value>Telemetry endpoint: {0}</value>
+    <value>遥测端点：{0}</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_ConfiguredTitle" xml:space="preserve">
-    <value>Endpoint configured</value>
+    <value>端点已配置</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_ConfiguredMessageFormat" xml:space="preserve">
-    <value>Telemetry endpoint: {0}</value>
+    <value>遥测端点：{0}</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_UnsavedMessage" xml:space="preserve">
-    <value>Save to apply this connection.</value>
+    <value>保存后此连接才会生效。</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_ProbeFlushedMessage" xml:space="preserve">
-    <value>Probe flushed locally; collector receipt is not confirmed.</value>
+    <value>探测已在本地发出，但无法确认采集器是否收到。</value>
   </data>
   <data name="DiagnosticsPage_OpenTelemetryEndpointStatus_ProbeFailedMessage" xml:space="preserve">
-    <value>Probe did not finish for the saved endpoint. Verify the settings and try again.</value>
+    <value>已保存端点的探测未能完成。请核对设置后重试。</value>
   </data>
   <data name="DiagnosticsPage_Expander_ChatOverrides.Header" xml:space="preserve">
-    <value>Chat surface overrides</value>
+    <value>聊天界面覆盖开关</value>
   </data>
   <data name="DiagnosticsPage_Expander_ChatOverrides.Description" xml:space="preserve">
-    <value>Per-surface override of the chat UI. Resets when OpenClaw restarts.</value>
+    <value>按界面单独覆盖聊天 UI，LanFu 重启后重置。</value>
   </data>
   <data name="DiagnosticsPage_Card_HubChat.Header" xml:space="preserve">
-    <value>Hub chat tab</value>
+    <value>主窗口聊天页</value>
   </data>
   <data name="DiagnosticsPage_Card_TrayChat.Header" xml:space="preserve">
-    <value>Tray chat popup</value>
+    <value>托盘聊天弹窗</value>
   </data>
   <data name="DiagnosticsPage_DetailBack.Text" xml:space="preserve">
-    <value>Back to Diagnostics</value>
+    <value>返回诊断</value>
   </data>
   <data name="SettingsRow_AutoStart_Description.Text" xml:space="preserve">
-    <value>Launch OpenClaw automatically when you sign in.</value>
+    <value>登录 Windows 后自动启动 LanFu。</value>
   </data>
   <data name="SettingsRow_GlobalHotkey_Description.Text" xml:space="preserve">
-    <value>Enable global hotkeys (Ctrl+Alt+Shift+V for voice, Ctrl+Alt+; for settings).</value>
+    <value>启用全局快捷键（Ctrl+Alt+Shift+V 唤起语音，Ctrl+Alt+; 打开设置）。</value>
   </data>
   <data name="SettingsRow_LegacyChat_Description.Text" xml:space="preserve">
-    <value>When on, Chat hosts the gateway's web chat instead of the native Windows experience.</value>
+    <value>开启后，“对话”将承载网关的网页版聊天，而不是 Windows 原生界面。</value>
   </data>
   <data name="SettingsRow_Notifications_Description.Text" xml:space="preserve">
-    <value>Show toast notifications for events you've subscribed to below.</value>
+    <value>为下方已订阅的事件显示系统通知。</value>
   </data>
   <data name="SettingsRow_NotifSound_Description.Text" xml:space="preserve">
-    <value>Notification sound played alongside the toast.</value>
+    <value>系统通知同时播放的提示音。</value>
   </data>
   <data name="SettingsRow_ScreenRec_Description.Text" xml:space="preserve">
-    <value>Lets agents capture the screen via screen.* commands.</value>
+    <value>允许智能体通过 screen.* 命令捕获屏幕。</value>
   </data>
   <data name="SettingsRow_CamRec_Description.Text" xml:space="preserve">
-    <value>Lets agents capture the camera via camera.* commands.</value>
+    <value>允许智能体通过 camera.* 命令调用摄像头。</value>
   </data>
   <data name="SettingsRow_Location_Description.Text" xml:space="preserve">
-    <value>允许代理通过 location.* 命令读取设备位置。</value>
+    <value>允许智能体通过 location.* 命令读取设备位置。</value>
   </data>
   <data name="VoiceSettingsPage_ElevenLabsVoiceIdBox.PlaceholderText" xml:space="preserve">
     <value>e.g. 21m00Tcm4TlvDq8ikWAM</value>
@@ -4064,7 +4064,7 @@
     <value>e.g. eleven_turbo_v2</value>
   </data>
   <data name="ConnectionStatusWindow.Title" xml:space="preserve">
-    <value>Connection Status</value>
+    <value>连接状态</value>
   </data>
   <data name="BindingsPage_GatewayDisconnected.Title" xml:space="preserve">
     <value>网关已断开</value>
@@ -4106,7 +4106,7 @@
     <value>节点模式</value>
   </data>
   <data name="ConnectionPage_WhenOnThisPC.Text" xml:space="preserve">
-    <value>启用后,此电脑将注册为节点,并通过网关向代理提供下列功能。</value>
+    <value>启用后,此电脑将注册为节点,并通过网关向智能体提供下列功能。</value>
   </data>
   <data name="ConnectionPage_NodeModeDisabled.Text" xml:space="preserve">
     <value>节点模式已禁用</value>
@@ -4268,13 +4268,13 @@
     <value>SSH 用户</value>
   </data>
   <data name="ConnectionPage_SSHUser.PlaceholderText" xml:space="preserve">
-    <value>user</value>
+    <value>用户名</value>
   </data>
   <data name="ConnectionPage_SSHHost.Header" xml:space="preserve">
     <value>SSH 主机</value>
   </data>
   <data name="ConnectionPage_SSHHost.PlaceholderText" xml:space="preserve">
-    <value>machine-name</value>
+    <value>主机名</value>
   </data>
   <data name="ConnectionPage_SshServerPort.Header" xml:space="preserve">
     <value>SSH 端口</value>
@@ -4328,7 +4328,7 @@
     <value>于</value>
   </data>
   <data name="CronPage_ScheduleCronOption.Content" xml:space="preserve">
-    <value>Cron</value>
+    <value>Cron 表达式</value>
   </data>
   <data name="CronPage_QUICKPRESETS.Text" xml:space="preserve">
     <value>快速预设</value>
@@ -4412,7 +4412,7 @@
     <value>提示 / 负载</value>
   </data>
   <data name="CronPage_WhatShouldTheAgent.PlaceholderText" xml:space="preserve">
-    <value>代理应该做什么?</value>
+    <value>智能体应该做什么?</value>
   </data>
   <data name="CronPage_DELIVERY.Text" xml:space="preserve">
     <value>投递</value>
@@ -4514,13 +4514,13 @@
     <value>节点模式</value>
   </data>
   <data name="PermissionsPage_WhenOnThisPC.Text" xml:space="preserve">
-    <value>启用后,此电脑将注册为节点,并通过网关向代理提供下列功能。</value>
+    <value>启用后,此电脑将注册为节点,并通过网关向智能体提供下列功能。</value>
   </data>
   <data name="PermissionsPage_Capabilities.Text" xml:space="preserve">
     <value>功能</value>
   </data>
   <data name="PermissionsPage_ToggleIndividualFeaturesThat.Text" xml:space="preserve">
-    <value>切换代理可能从此电脑请求的各项功能。</value>
+    <value>切换智能体可能从此电脑请求的各项功能。</value>
   </data>
   <data name="PermissionsPage_Integrations.Text" xml:space="preserve">
     <value>集成</value>
@@ -4550,13 +4550,13 @@
     <value>摄像头、麦克风和屏幕访问</value>
   </data>
   <data name="PermissionsPage_SystemLevelPrivacyPermissions.Text" xml:space="preserve">
-    <value>系统级隐私权限由 Windows 管理。打开 Windows 隐私设置以授予或撤销 OpenClaw 访问权限。</value>
+    <value>系统级隐私权限由 Windows 管理。打开 Windows 隐私设置以授予或撤销 LanFu 访问权限。</value>
   </data>
   <data name="SandboxPage_NodeSandboxIsOn.Text" xml:space="preserve">
     <value>节点沙盒已开启</value>
   </data>
   <data name="SandboxPage_ProgramsTheAgentRuns.Text" xml:space="preserve">
-    <value>代理在此电脑上运行的程序受到隔离。</value>
+    <value>智能体在此电脑上运行的程序受到隔离。</value>
   </data>
   <data name="SandboxPage_WhatGetsContained.Text" xml:space="preserve">
     <value>哪些内容受隔离</value>
@@ -4565,7 +4565,7 @@
     <value>查看此页面涵盖的命令: 以及需要其他控件的命令。</value>
   </data>
   <data name="SandboxPage_CommandsTheAgentRuns.Text" xml:space="preserve">
-    <value>代理通过 Windows 节点运行的命令 (</value>
+    <value>智能体通过 Windows 节点运行的命令 (</value>
   </data>
   <data name="SandboxPage_SystemRun.Text" xml:space="preserve">
     <value>system.run</value>
@@ -4574,7 +4574,7 @@
     <value>) 受下面的设置隔离。</value>
   </data>
   <data name="SandboxPage_CommandsTheAgentRuns2.Text" xml:space="preserve">
-    <value>代理直接在网关上运行的命令不受隔离。如果网关位于此电脑的 WSL 上,它们可能会访问您的 Windows 文件、剪贴板和网络: 请使用网关的执行审批。</value>
+    <value>智能体直接在网关上运行的命令不受隔离。如果网关位于此电脑的 WSL 上,它们可能会访问您的 Windows 文件、剪贴板和网络: 请使用网关的执行审批。</value>
   </data>
   <data name="SandboxPage_SandboxUnavailable.Title" xml:space="preserve">
     <value>沙盒不可用</value>
@@ -4613,7 +4613,7 @@
     <value>📁 文件</value>
   </data>
   <data name="SandboxPage_ByDefaultTheAgent.Text" xml:space="preserve">
-    <value>默认情况下,代理只有一个可读写的临时工作区文件夹。在下方授予对用户文件夹的访问权限。SSH 密钥、浏览器配置文件和 OpenClaw 自身的设置始终被阻止。</value>
+    <value>默认情况下,智能体只有一个可读写的临时工作区文件夹。在下方授予对用户文件夹的访问权限。SSH 密钥、浏览器配置文件和 LanFu 自身的设置始终被阻止。</value>
   </data>
   <data name="SandboxPage_Documents.Text" xml:space="preserve">
     <value>文档</value>
@@ -4679,16 +4679,16 @@
     <value>📋 剪贴板</value>
   </data>
   <data name="SandboxPage_ClipboardOftenContainsPasswords.Text" xml:space="preserve">
-    <value>剪贴板通常包含密码、令牌和私人文本。读取权限可能将这些泄露给代理(若启用,也会泄露到互联网)。</value>
+    <value>剪贴板通常包含密码、令牌和私人文本。读取权限可能将这些泄露给智能体(若启用,也会泄露到互联网)。</value>
   </data>
   <data name="SandboxPage_NoneDefault.Content" xml:space="preserve">
     <value>无(默认)</value>
   </data>
   <data name="SandboxPage_ReadAgentCanSee.Content" xml:space="preserve">
-    <value>读取: 代理可以看到您复制的内容</value>
+    <value>读取: 智能体可以看到您复制的内容</value>
   </data>
   <data name="SandboxPage_WriteAgentCanReplace.Content" xml:space="preserve">
-    <value>写入: 代理可以替换您的剪贴板(无法读取)</value>
+    <value>写入: 智能体可以替换您的剪贴板(无法读取)</value>
   </data>
   <data name="SandboxPage_ReadAmpWrite5.Content" xml:space="preserve">
     <value>读取与写入</value>
@@ -4700,7 +4700,7 @@
     <value>允许互联网</value>
   </data>
   <data name="SandboxPage_IfFileOrClipboard.Text" xml:space="preserve">
-    <value>如果启用文件或剪贴板读取权限,代理可能会通过互联网发送这些数据。</value>
+    <value>如果启用文件或剪贴板读取权限,智能体可能会通过互联网发送这些数据。</value>
   </data>
   <data name="SandboxPage_LocalNetworkDevicesAnd.Text" xml:space="preserve">
     <value>本地网络设备和共享尚未包含在内。</value>
@@ -4790,7 +4790,7 @@
   <data name="SessionTitle_ThreadGeneric" xml:space="preserve"><value>话题</value></data>
   <data name="SessionTitle_Cron" xml:space="preserve"><value>计划任务</value></data>
   <data name="SessionTitle_Heartbeat" xml:space="preserve"><value>心跳</value></data>
-  <data name="SessionTitle_Subagent" xml:space="preserve"><value>子代理</value></data>
+  <data name="SessionTitle_Subagent" xml:space="preserve"><value>子智能体</value></data>
   <data name="SessionTitle_Acp" xml:space="preserve"><value>ACP 会话</value></data>
   <data name="SessionTitle_Dashboard" xml:space="preserve"><value>新会话</value></data>
   <data name="SessionTitle_Tui" xml:space="preserve"><value>终端会话</value></data>
@@ -4800,7 +4800,7 @@
   <data name="SessionTitle_Dreaming" xml:space="preserve"><value>梦境</value></data>
   <data name="SessionTitle_System" xml:space="preserve"><value>后台任务</value></data>
   <data name="SessionSubtitle_Account" xml:space="preserve"><value>账号 {0}</value></data>
-  <data name="SessionSubtitle_Agent" xml:space="preserve"><value>代理 {0}</value></data>
+  <data name="SessionSubtitle_Agent" xml:space="preserve"><value>智能体 {0}</value></data>
   <data name="SessionSubtitle_Node" xml:space="preserve"><value>节点 {0}</value></data>
   <data name="SessionsPage_GatewayDisconnected.Title" xml:space="preserve">
     <value>网关已断开</value>
@@ -4977,10 +4977,10 @@
     <value>打开设置</value>
   </data>
   <data name="SettingsPage_OnboardWizard_Header.Text" xml:space="preserve">
-    <value>OpenClaw Onboard</value>
+    <value>LanFu 安装向导</value>
   </data>
   <data name="SettingsPage_OnboardWizard_Description.Text" xml:space="preserve">
-    <value>在已安装的本地网关上打开 OpenClaw 引导。跳过 WSL 安装，直接进入配置。</value>
+    <value>在已安装的本地网关上打开 LanFu 引导。跳过 WSL 安装，直接进入配置。</value>
   </data>
   <data name="SettingsPage_OpenOnboardWizard.Content" xml:space="preserve">
     <value>打开引导</value>
@@ -4989,7 +4989,7 @@
     <value>检测到 MSIX 安装</value>
   </data>
   <data name="SettingsPage_MSIXInstallationDetected.Message" xml:space="preserve">
-    <value>通过 Windows 设置 → 应用删除 OpenClaw 不会清理本地网关(WSL 发行版、磁盘映像)。请先使用下面的“删除本地网关”,然后再卸载 OpenClaw。</value>
+    <value>通过 Windows 设置 → 应用删除 LanFu 不会清理本地网关(WSL 发行版、磁盘映像)。请先使用下面的“删除本地网关”,然后再卸载 LanFu。</value>
   </data>
   <data name="SettingsPage_RemovesTheWSLDistro.Text" xml:space="preserve">
     <value>删除 WSL 发行版 (OpenClawGateway)、其磁盘映像、自动启动项,并清除网关凭据。您的 MCP 令牌将被保留。引导将重置。</value>
@@ -5004,7 +5004,7 @@
     <value>🧩 技能</value>
   </data>
   <data name="SkillsPage_AllAgents.Content" xml:space="preserve">
-    <value>所有代理</value>
+    <value>所有智能体</value>
   </data>
   <data name="SkillsPage_Enabled.Text" xml:space="preserve">
     <value>已启用</value>
@@ -5019,7 +5019,7 @@
     <value>未安装技能</value>
   </data>
   <data name="SkillsPage_SkillsExtendYourAgent.Text" xml:space="preserve">
-    <value>技能扩展代理的能力。通过 CLI 或 ClawHub 安装技能。</value>
+    <value>技能扩展智能体的能力。通过 CLI 或 ClawHub 安装技能。</value>
   </data>
   <data name="UsagePage_GatewayDisconnected.Title" xml:space="preserve">
     <value>网关已断开</value>
@@ -5145,7 +5145,7 @@
     <value>SSH 用户</value>
   </data>
   <data name="ConnectionStatusWindow_SSHUser.PlaceholderText" xml:space="preserve">
-    <value>user</value>
+    <value>用户名</value>
   </data>
   <data name="ConnectionStatusWindow_SSHHost.Header" xml:space="preserve">
     <value>SSH 主机</value>
@@ -5217,10 +5217,10 @@
     <value>语音预览</value>
   </data>
   <data name="SandboxPage_GatewayCommandsNote.Text" xml:space="preserve">
-    <value>代理直接在网关上运行的命令不受此限制。如果网关在此电脑上，它们仍可能访问您的 Windows 文件、剪贴板和网络……请检查网关的配置。</value>
+    <value>智能体直接在网关上运行的命令不受此限制。如果网关在此电脑上，它们仍可能访问您的 Windows 文件、剪贴板和网络……请检查网关的配置。</value>
   </data>
   <data name="AgentEventsPage_AllAgents" xml:space="preserve">
-    <value>所有代理</value>
+    <value>所有智能体</value>
   </data>
   <data name="AgentEventsPage_EventsStatus" xml:space="preserve">
     <value>{0} / {1} 个事件</value>
@@ -5959,7 +5959,7 @@
     <value>iMessage 读取本地 Messages.app 数据库，该数据库仅存在于 macOS 上。</value>
   </data>
   <data name="ChannelsPage_GuideIMessageStep2" xml:space="preserve">
-    <value>若要将 iMessage 与 OpenClaw 配合使用，请在 Mac 上运行网关，而非此 Windows 主机。</value>
+    <value>若要将 iMessage 与 LanFu 配合使用，请在 Mac 上运行网关，而非此 Windows 主机。</value>
   </data>
   <data name="ChannelsPage_GuideIMessageStep3" xml:space="preserve">
     <value>此列表中的所有其他频道都可以在 Windows 托管的网关上正常使用。</value>
@@ -5974,7 +5974,7 @@
     <value>使用下方“配置”部分中的 "Open Config page" 在 channels.{0} 下添加设置。</value>
   </data>
   <data name="ChannelsPage_GuideGenericStep3" xml:space="preserve">
-    <value>保存配置；OpenClaw 将自动启动频道。</value>
+    <value>保存配置；LanFu 将自动启动频道。</value>
   </data>
   <data name="ChannelsPage_FieldBotToken" xml:space="preserve">
     <value>机器人令牌</value>
@@ -6145,55 +6145,55 @@
     <value>离线</value>
   </data>
   <data name="BindingsPage_CouldNotLoadBindings" xml:space="preserve">
-    <value>Could not load bindings</value>
+    <value>无法加载绑定</value>
   </data>
   <data name="Command_GoToAgentEvents_Subtitle" xml:space="preserve">
-    <value>Agent event log</value>
+    <value>智能体事件日志</value>
   </data>
   <data name="Command_GoToAgentEvents_Title" xml:space="preserve">
-    <value>Go to Agent Events</value>
+    <value>前往智能体事件</value>
   </data>
   <data name="Command_GoToBindings_Subtitle" xml:space="preserve">
-    <value>Gateway bindings</value>
+    <value>网关绑定</value>
   </data>
   <data name="Command_GoToBindings_Title" xml:space="preserve">
-    <value>Go to Bindings</value>
+    <value>前往绑定</value>
   </data>
   <data name="Command_GoToChannels_Subtitle" xml:space="preserve">
-    <value>Gateway channels</value>
+    <value>网关频道</value>
   </data>
   <data name="Command_GoToChannels_Title" xml:space="preserve">
-    <value>Go to Channels</value>
+    <value>前往频道</value>
   </data>
   <data name="Command_GoToChat_Subtitle" xml:space="preserve">
-    <value>Open chat</value>
+    <value>打开对话</value>
   </data>
   <data name="Command_GoToChat_Title" xml:space="preserve">
-    <value>Go to Chat</value>
+    <value>前往对话</value>
   </data>
   <data name="Command_GoToConfig_Subtitle" xml:space="preserve">
-    <value>Gateway configuration</value>
+    <value>网关配置</value>
   </data>
   <data name="Command_GoToConfig_Title" xml:space="preserve">
-    <value>Go to Config</value>
+    <value>前往配置</value>
   </data>
   <data name="Command_GoToConnection_Subtitle" xml:space="preserve">
-    <value>Gateway, node, saved gateways</value>
+    <value>网关、节点、已保存的网关</value>
   </data>
   <data name="Command_GoToConnection_Title" xml:space="preserve">
-    <value>Go to Connection</value>
+    <value>前往连接</value>
   </data>
   <data name="Command_GoToCron_Subtitle" xml:space="preserve">
-    <value>Scheduled tasks</value>
+    <value>计划任务</value>
   </data>
   <data name="Command_GoToCron_Title" xml:space="preserve">
-    <value>Go to Cron ({0})</value>
+    <value>前往定时任务（{0}）</value>
   </data>
   <data name="Command_GoToDiagnostics_Subtitle" xml:space="preserve">
-    <value>Logs, support bundle, device identity, developer tools</value>
+    <value>日志、支持包、设备身份、开发者工具</value>
   </data>
   <data name="Command_GoToDiagnostics_Title" xml:space="preserve">
-    <value>Go to Diagnostics</value>
+    <value>前往诊断</value>
   </data>
   <data name="Command_GoToNotifications_Subtitle" xml:space="preserve">
     <value>查看活动的应用通知</value>
@@ -6202,124 +6202,124 @@
     <value>转到通知</value>
   </data>
   <data name="Command_GoToInstances_Subtitle" xml:space="preserve">
-    <value>Gateway instances</value>
+    <value>网关实例</value>
   </data>
   <data name="Command_GoToInstances_Title" xml:space="preserve">
-    <value>Go to Instances</value>
+    <value>前往实例</value>
   </data>
   <data name="Command_GoToPermissions_Subtitle" xml:space="preserve">
-    <value>Capabilities, exec policy &amp; allowlists</value>
+    <value>能力、执行策略与允许列表</value>
   </data>
   <data name="Command_GoToPermissions_Title" xml:space="preserve">
-    <value>Go to Permissions</value>
+    <value>前往权限</value>
   </data>
   <data name="Command_GoToSessions_Subtitle" xml:space="preserve">
-    <value>All sessions</value>
+    <value>全部会话</value>
   </data>
   <data name="Command_GoToSessions_Title" xml:space="preserve">
-    <value>Go to Sessions</value>
+    <value>前往会话</value>
   </data>
   <data name="Command_GoToSettings_Subtitle" xml:space="preserve">
-    <value>Application settings</value>
+    <value>应用设置</value>
   </data>
   <data name="Command_GoToSettings_Title" xml:space="preserve">
-    <value>Go to Settings</value>
+    <value>前往设置</value>
   </data>
   <data name="Command_GoToSkills_Subtitle" xml:space="preserve">
-    <value>Registered skills</value>
+    <value>已注册技能</value>
   </data>
   <data name="Command_GoToSkills_Title" xml:space="preserve">
-    <value>Go to Skills</value>
+    <value>前往技能</value>
   </data>
   <data name="Command_GoToUsage_Subtitle" xml:space="preserve">
-    <value>Usage statistics</value>
+    <value>用量统计</value>
   </data>
   <data name="Command_GoToUsage_Title" xml:space="preserve">
-    <value>Go to Usage</value>
+    <value>前往用量</value>
   </data>
   <data name="Command_GoToWorkspace_Subtitle" xml:space="preserve">
-    <value>Workspace files</value>
+    <value>工作区文件</value>
   </data>
   <data name="Command_GoToWorkspace_Title" xml:space="preserve">
-    <value>Go to Workspace ({0})</value>
+    <value>前往工作区（{0}）</value>
   </data>
   <data name="Command_OpenChatWindow_Subtitle" xml:space="preserve">
-    <value>Open standalone chat</value>
+    <value>打开独立聊天窗口</value>
   </data>
   <data name="Command_OpenChatWindow_Title" xml:space="preserve">
-    <value>Open Chat Window</value>
+    <value>打开聊天窗口</value>
   </data>
   <data name="Command_OpenDashboard_Subtitle" xml:space="preserve">
-    <value>Open web dashboard</value>
+    <value>打开网页仪表板</value>
   </data>
   <data name="Command_OpenDashboard_Title" xml:space="preserve">
-    <value>Open Dashboard</value>
+    <value>打开仪表板</value>
   </data>
   <data name="Command_Subtitle_CurrentlyOff" xml:space="preserve">
-    <value>Currently OFF</value>
+    <value>当前：关闭</value>
   </data>
   <data name="Command_Subtitle_CurrentlyOn" xml:space="preserve">
-    <value>Currently ON</value>
+    <value>当前：开启</value>
   </data>
   <data name="Command_ToggleBrowserControl_Title" xml:space="preserve">
-    <value>Toggle Browser Control</value>
+    <value>切换浏览器控制</value>
   </data>
   <data name="Command_ToggleCamera_Title" xml:space="preserve">
-    <value>Toggle Camera</value>
+    <value>切换摄像头</value>
   </data>
   <data name="Command_ToggleCanvas_Title" xml:space="preserve">
-    <value>Toggle Canvas</value>
+    <value>切换画布</value>
   </data>
   <data name="Command_ToggleNodeMode_Title" xml:space="preserve">
-    <value>Toggle Node Mode</value>
+    <value>切换节点模式</value>
   </data>
   <data name="Command_ToggleScreenCapture_Title" xml:space="preserve">
-    <value>Toggle Screen Capture</value>
+    <value>切换屏幕捕获</value>
   </data>
   <data name="CommandCenter_AuthFailed" xml:space="preserve">
-    <value>Gateway authentication failed</value>
+    <value>网关身份验证失败</value>
   </data>
   <data name="CommandCenter_BrowserProxyAuthMayNeed" xml:space="preserve">
-    <value>Browser control needs a gateway shared token</value>
+    <value>浏览器控制需要网关共享令牌</value>
   </data>
   <data name="CommandCenter_BrowserProxyHostNotDetected" xml:space="preserve">
-    <value>Browser proxy host not detected</value>
+    <value>未检测到代览器代理主机</value>
   </data>
   <data name="CommandCenter_BrowserProxySshForwardNotListening" xml:space="preserve">
-    <value>Browser proxy SSH forward is not listening</value>
+    <value>代览器代理的 SSH 转发未在监听</value>
   </data>
   <data name="CommandCenter_GatewayConnectionError" xml:space="preserve">
-    <value>Gateway connection error</value>
+    <value>网关连接出错</value>
   </data>
   <data name="CommandCenter_GatewayHealthStale" xml:space="preserve">
-    <value>Gateway health is stale</value>
+    <value>网关健康状态已过期</value>
   </data>
   <data name="CommandCenter_GatewayNotConnected" xml:space="preserve">
-    <value>Gateway is not connected</value>
+    <value>网关未连接</value>
   </data>
   <data name="CommandCenter_NoChannelsReported" xml:space="preserve">
-    <value>No channels reported</value>
+    <value>未上报任何频道</value>
   </data>
   <data name="CommandCenter_NoChannelsRunning" xml:space="preserve">
-    <value>No channels are currently running</value>
+    <value>当前没有正在运行的频道</value>
   </data>
   <data name="CommandCenter_NodePendingApproval" xml:space="preserve">
-    <value>Node is waiting for approval</value>
+    <value>节点正在等待批准</value>
   </data>
   <data name="CommandCenter_NoLocalGatewayListener" xml:space="preserve">
-    <value>No local gateway listener detected</value>
+    <value>未检测到本地网关监听端口</value>
   </data>
   <data name="CommandCenter_NoNodesReported" xml:space="preserve">
-    <value>No nodes reported</value>
+    <value>未上报任何节点</value>
   </data>
   <data name="CommandCenter_SshTunnelPortNotListening" xml:space="preserve">
-    <value>SSH tunnel port is not listening</value>
+    <value>SSH 隧道端口未在监听</value>
   </data>
   <data name="CommandCenter_UsageCostsMissing" xml:space="preserve">
-    <value>Some usage costs are missing</value>
+    <value>部分用量费用缺失</value>
   </data>
   <data name="CommandCenter_WaitingForGatewayHealth" xml:space="preserve">
-    <value>Waiting for gateway health</value>
+    <value>正在等待网关健康状态</value>
   </data>
   <data name="ConfigPage_CheckingConfigPermissions" xml:space="preserve">
     <value>正在检查配置权限</value>
@@ -6523,7 +6523,7 @@
     <value>未配置网关</value>
   </data>
   <data name="DebugPage_StatusConnectedFormat" xml:space="preserve">
-    <value>OpenClaw 已连接到 {0}。</value>
+    <value>LanFu 已连接到 {0}。</value>
   </data>
   <data name="DebugPage_StatusConnectingFormat" xml:space="preserve">
     <value>正在连接到 {0}…</value>
@@ -6550,31 +6550,31 @@
     <value>节点沙盒不可用: 回退到主机</value>
   </data>
   <data name="SandboxPage_StatusUnavailableSubtext" xml:space="preserve">
-    <value>此电脑上无法使用隔离，因此代理启动的命令会在主机上运行，且没有沙盒保护。</value>
+    <value>此电脑上无法使用隔离，因此智能体启动的命令会在主机上运行，且没有沙盒保护。</value>
   </data>
   <data name="SandboxPage_StatusUnavailableBlockedTitle" xml:space="preserve">
     <value>节点沙盒不可用: 命令已阻止</value>
   </data>
   <data name="SandboxPage_StatusUnavailableBlockedSubtext" xml:space="preserve">
-    <value>此电脑上无法使用隔离，并且已启用严格回退阻止，因此代理启动的命令会被阻止。</value>
+    <value>此电脑上无法使用隔离，并且已启用严格回退阻止，因此智能体启动的命令会被阻止。</value>
   </data>
   <data name="SandboxPage_StatusUnavailableOffTitle" xml:space="preserve">
     <value>节点沙盒已关闭: 主机执行</value>
   </data>
   <data name="SandboxPage_StatusUnavailableOffSubtext" xml:space="preserve">
-    <value>隔离不可用且节点沙盒已关闭，因此代理启动的命令会在主机上运行，且没有沙盒保护。</value>
+    <value>隔离不可用且节点沙盒已关闭，因此智能体启动的命令会在主机上运行，且没有沙盒保护。</value>
   </data>
   <data name="SandboxPage_StatusOnTitle" xml:space="preserve">
     <value>节点沙盒已开启</value>
   </data>
   <data name="SandboxPage_StatusOnSubtext" xml:space="preserve">
-    <value>代理在此电脑上运行的程序会被隔离。</value>
+    <value>智能体在此电脑上运行的程序会被隔离。</value>
   </data>
   <data name="SandboxPage_StatusOffTitle" xml:space="preserve">
     <value>节点沙盒已关闭: 高风险</value>
   </data>
   <data name="SandboxPage_StatusOffSubtext" xml:space="preserve">
-    <value>代理在此电脑上运行的程序不会被隔离。</value>
+    <value>智能体在此电脑上运行的程序不会被隔离。</value>
   </data>
   <data name="SandboxPage_UnavailableDefaultReason" xml:space="preserve">
     <value>此计算机上没有可用的 MXC 沙盒基元。</value>
@@ -6676,13 +6676,13 @@
     <value>导航失败：{0}</value>
   </data>
   <data name="ConnectionPage_GatewayHostControlsDescription_Format" xml:space="preserve">
-    <value>Open a shell or manage the local gateway service in {0}.</value>
+    <value>在 {0} 中打开终端或管理本地网关服务。</value>
   </data>
   <data name="CronPage_JobCompleted" xml:space="preserve">
-    <value>Job completed</value>
+    <value>任务已完成</value>
   </data>
   <data name="CronPage_JobCompletedRanSuccessfully" xml:space="preserve">
-    <value>"{0}" ran successfully and was removed.</value>
+    <value>“{0}” 已成功运行并移除。</value>
   </data>
   <data name="CronPage_RunNotStarted" xml:space="preserve">
     <value>运行未启动</value>
@@ -6694,28 +6694,28 @@
     <value>{0} 未启动：{1}</value>
   </data>
   <data name="GatewayHostAccess_NoTerminalAccess" xml:space="preserve">
-    <value>This gateway does not have WSL or SSH terminal access.</value>
+    <value>此网关没有 WSL 或 SSH 终端可用。</value>
   </data>
   <data name="GatewayHostAccess_NoWslOrSshDisabled" xml:space="preserve">
-    <value>This gateway was not created with WSL and does not have an SSH tunnel.</value>
+    <value>此网关不是通过 WSL 创建的，也没有 SSH 隧道。</value>
   </data>
   <data name="GatewayHostAccess_OpenSshTerminalLabel" xml:space="preserve">
-    <value>Open SSH terminal</value>
+    <value>打开 SSH 终端</value>
   </data>
   <data name="GatewayHostAccess_OpenSshTerminalTooltip_Format" xml:space="preserve">
-    <value>Open an SSH terminal to {0}@{1}.</value>
+    <value>打开到 {0}@{1} 的 SSH 终端。</value>
   </data>
   <data name="GatewayHostAccess_OpenTerminalInWslTooltip_Format" xml:space="preserve">
-    <value>Open a terminal in the {0} WSL gateway.</value>
+    <value>在 {0} WSL 网关中打开终端。</value>
   </data>
   <data name="GatewayHostAccess_OpenTerminalLabel" xml:space="preserve">
-    <value>Open terminal</value>
+    <value>打开终端</value>
   </data>
   <data name="SessionsPage_OpenChatButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
-    <value>Open in chat</value>
+    <value>在对话中打开</value>
   </data>
   <data name="SessionsPage_OpenChatButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Open this session in Chat</value>
+    <value>在对话中打开此会话</value>
   </data>
   <data name="SkillsPage_BadgeDisabled" xml:space="preserve">
     <value>已禁用</value>
@@ -6733,76 +6733,76 @@
     <value>已启用 ({0})</value>
   </data>
   <data name="ConnectionPage_CopyTrustApproval.Content" xml:space="preserve">
-    <value>Copy</value>
+    <value>复制</value>
   </data>
   <data name="ConnectionPage_NodeApprovalRequired" xml:space="preserve">
-    <value>Node approval required</value>
+    <value>需要批准节点</value>
   </data>
   <data name="ConnectionPage_NodeReapprovalRequired" xml:space="preserve">
-    <value>Node reapproval required</value>
+    <value>需要重新批准节点</value>
   </data>
   <data name="ConnectionPage_NodeBodyApprovalRequired" xml:space="preserve">
-    <value>Pending declarations are not effective until this request is approved and the node reconnects.</value>
+    <value>在批准此请求并让节点重新连接之前，待批准的声明不会生效。</value>
   </data>
   <data name="ConnectionPage_NodeBodyReapprovalRequired" xml:space="preserve">
-    <value>Current approved access remains effective. Approve the pending declaration changes, then reconnect.</value>
+    <value>当前已批准的访问仍然有效。批准待变更的声明后，请重新连接。</value>
   </data>
   <data name="ConnectionPage_NodeTrustApprovalHelp" xml:space="preserve">
-    <value>Run this command on the gateway host to approve the pending declarations. The tray will not approve automatically.</value>
+    <value>请在网关主机上运行此命令以批准待处理的声明。托盘不会自动批准。</value>
   </data>
   <data name="ConnectionPage_NodeTrustDiscoveryHelp" xml:space="preserve">
-    <value>Run this command on the gateway host to list pending requests. Then approve a valid request explicitly. This command does not approve anything.</value>
+    <value>请在网关主机上运行此命令以列出待处理请求，然后明确批准其中一个有效请求。该命令本身不会批准任何内容。</value>
   </data>
   <data name="ConnectionPage_NodeReconnectAfterApproval" xml:space="preserve">
-    <value>Reconnect after approval</value>
+    <value>批准后重新连接</value>
   </data>
   <data name="ConnectionPage_NodeSurfaceNone" xml:space="preserve">
-    <value>none</value>
+    <value>无</value>
   </data>
   <data name="ConnectionPage_NodeTechnicalDetails.Text" xml:space="preserve">
-    <value>Show technical details</value>
+    <value>显示技术详情</value>
   </data>
   <data name="ConnectionPage_NodePillState_Active" xml:space="preserve">
-    <value>Sharing now</value>
+    <value>正在共享</value>
   </data>
   <data name="ConnectionPage_NodePillState_Pending" xml:space="preserve">
-    <value>Enabled, not active yet</value>
+    <value>已启用，尚未生效</value>
   </data>
   <data name="ConnectionPage_NodePillState_NeedsGatewayToken" xml:space="preserve">
-    <value>Needs gateway shared token</value>
+    <value>需要网关共享令牌</value>
   </data>
   <data name="ConnectionPage_NodePillState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>关闭</value>
   </data>
   <data name="ConnectionPage_NodeCap_Device" xml:space="preserve">
-    <value>Device info</value>
+    <value>设备信息</value>
   </data>
   <data name="ConnectionPage_NodeCap_System" xml:space="preserve">
-    <value>System access</value>
+    <value>系统访问</value>
   </data>
   <data name="ConnectionPage_NodeEffectiveCapabilities" xml:space="preserve">
-    <value>Approved/effective capabilities: {0}</value>
+    <value>已批准／生效的能力：{0}</value>
   </data>
   <data name="ConnectionPage_NodeEffectiveCommands" xml:space="preserve">
-    <value>Approved/effective commands: {0}</value>
+    <value>已批准／生效的命令：{0}</value>
   </data>
   <data name="ConnectionPage_NodeEffectivePermissions" xml:space="preserve">
-    <value>Approved/effective permissions: {0}</value>
+    <value>已批准／生效的权限：{0}</value>
   </data>
   <data name="ConnectionPage_NodePendingDeclaredCapabilities" xml:space="preserve">
-    <value>Pending declared capabilities: {0}</value>
+    <value>待批准的声明能力：{0}</value>
   </data>
   <data name="ConnectionPage_NodePendingDeclaredCommands" xml:space="preserve">
-    <value>Pending declared commands: {0}</value>
+    <value>待批准的声明命令：{0}</value>
   </data>
   <data name="ConnectionPage_NodePendingDeclaredPermissions" xml:space="preserve">
-    <value>Pending declared permissions: {0}</value>
+    <value>待批准的声明权限：{0}</value>
   </data>
   <data name="ConnectionPage_AdviceCleartextTitle" xml:space="preserve">
     <value>未加密的连接</value>
   </data>
   <data name="ConnectionPage_AdviceCleartextMessage" xml:space="preserve">
-    <value>此远程 gateway 使用 ws://。您的 token 将以明文发送。请使用 wss://（TLS）、SSH 隧道或受信任的代理 / Tailscale。</value>
+    <value>此远程 gateway 使用 ws://。您的 token 将以明文发送。请使用 wss://（TLS）、SSH 隧道或受信任的智能体 / Tailscale。</value>
   </data>
   <data name="ConnectionPage_AdviceSecureTitle" xml:space="preserve">
     <value>已加密 (TLS)</value>
@@ -6853,7 +6853,7 @@
     <value>当 gateway 仅在 localhost 上侦听时，请展开下方的“使用 SSH 隧道”。tray 会通过 SSH 转发本地端口，使流量保持加密。</value>
   </data>
   <data name="ConnectionPage_RemoteSetupHelpProxy.Text" xml:space="preserve">
-    <value>如果 Tailscale 或反向代理已加密路径，则在该专用网络上使用普通 ws:// URL 即可。</value>
+    <value>如果 Tailscale 或反向智能体已加密路径，则在该专用网络上使用普通 ws:// URL 即可。</value>
   </data>
   <data name="ConnectionPage_RemoteSetupHelpAuth.Text" xml:space="preserve">
     <value>粘贴共享 token，或将其留空并使用设置代码配对。重新配对还会升级此设备的 scope。</value>
@@ -6880,94 +6880,94 @@
     <value>SSH 隧道</value>
   </data>
   <data name="ConnectionPage_RemoteSetupHelpProxyTitle.Text" xml:space="preserve">
-    <value>受信任代理 / Tailscale</value>
+    <value>受信任智能体 / Tailscale</value>
   </data>
   <data name="ConnectionPage_RemoteSetupHelpAuthTitle.Text" xml:space="preserve">
     <value>身份验证</value>
   </data>
   <data name="HubWindow_StatusFlyout_Title.Text" xml:space="preserve">
-    <value>Connection</value>
+    <value>连接</value>
   </data>
   <data name="HubWindow_StatusFlyout_OpenConnection.Content" xml:space="preserve">
-    <value>Open Connection</value>
+    <value>打开“连接”</value>
   </data>
   <data name="HubWindow_StatusFlyout_GatewayLabel.Text" xml:space="preserve">
-    <value>Gateway</value>
+    <value>网关</value>
   </data>
   <data name="HubWindow_StatusFlyout_Reconnect.Content" xml:space="preserve">
-    <value>Reconnect</value>
+    <value>重新连接</value>
   </data>
   <data name="HubWindow_StatusFlyout_OperatorLabel.Text" xml:space="preserve">
-    <value>Operator</value>
+    <value>操作用户</value>
   </data>
   <data name="HubWindow_StatusFlyout_NodeLabel.Text" xml:space="preserve">
-    <value>Node</value>
+    <value>节点</value>
   </data>
   <data name="HubWindow_StatusFlyout_Approve.Content" xml:space="preserve">
-    <value>Approve…</value>
+    <value>批准…</value>
   </data>
   <data name="HubWindow_StatusPill_Tooltip" xml:space="preserve">
-    <value>Connection status</value>
+    <value>连接状态</value>
   </data>
   <data name="HubWindow_Bell_Tooltip" xml:space="preserve">
-    <value>Notifications</value>
+    <value>通知</value>
   </data>
   <data name="HubWindow_Pill_Ready" xml:space="preserve">
-    <value>Ready</value>
+    <value>就绪</value>
   </data>
   <data name="HubWindow_Pill_PairingRequired" xml:space="preserve">
-    <value>Pairing required</value>
+    <value>需要配对</value>
   </data>
   <data name="HubWindow_Pill_Degraded" xml:space="preserve">
-    <value>Degraded</value>
+    <value>降级运行</value>
   </data>
   <data name="HubWindow_Role_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>关闭</value>
   </data>
   <data name="HubWindow_Role_PairingRequired" xml:space="preserve">
-    <value>Pairing required</value>
+    <value>需要配对</value>
   </data>
   <data name="HubWindow_Role_PairingRejected" xml:space="preserve">
-    <value>Pairing rejected</value>
+    <value>配对被拒绝</value>
   </data>
   <data name="HubWindow_Role_RateLimited" xml:space="preserve">
-    <value>Rate limited</value>
+    <value>已限流</value>
   </data>
   <data name="HubWindow_Role_Disabled" xml:space="preserve">
-    <value>Disabled</value>
+    <value>已禁用</value>
   </data>
   <data name="NotificationsFlyout_ClearAll.Content" xml:space="preserve">
-    <value>Clear all</value>
+    <value>全部清除</value>
   </data>
   <data name="NotificationsFlyout_EmptyTitle.Text" xml:space="preserve">
-    <value>No notifications</value>
+    <value>暂无通知</value>
   </data>
   <data name="NotificationsFlyout_OpenPage.Content" xml:space="preserve">
-    <value>Open notifications</value>
+    <value>打开通知页面</value>
   </data>
   <data name="NotificationsFlyout_ActiveCountFormat" xml:space="preserve">
-    <value>{0} active</value>
+    <value>{0} 条未读</value>
   </data>
   <data name="HubWindow_Role_PermissionsIncomplete" xml:space="preserve">
-    <value>Permissions incomplete</value>
+    <value>权限不完整</value>
   </data>
   <data name="SettingsPage_About.Text" xml:space="preserve">
-    <value>About</value>
+    <value>关于</value>
   </data>
   <data name="SettingsPage_GatewayInfoExpander.Header" xml:space="preserve">
-    <value>Gateway info</value>
+    <value>网关信息</value>
   </data>
   <data name="SettingsPage_GatewayInfoLabel_Version.Text" xml:space="preserve">
-    <value>Version</value>
+    <value>版本</value>
   </data>
   <data name="SettingsPage_GatewayInfoLabel_Protocol.Text" xml:space="preserve">
-    <value>Protocol</value>
+    <value>协议</value>
   </data>
   <data name="SettingsPage_GatewayInfoLabel_AuthMode.Text" xml:space="preserve">
-    <value>Auth mode</value>
+    <value>认证方式</value>
   </data>
   <data name="SettingsPage_GatewayInfoLabel_Uptime.Text" xml:space="preserve">
-    <value>Uptime</value>
+    <value>运行时长</value>
   </data>
   <data name="SandboxPage_UnavailablePrimaryButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>沙盒操作</value>
@@ -7058,7 +7058,7 @@
   <data name="LocalAiPage_UnavailableDetailsTip.Title" xml:space="preserve"><value>本地 AI 不可用的原因</value></data>
   <data name="LocalAiPage_RecheckAvailabilityButton.Content" xml:space="preserve"><value>重新检查</value></data>
   <data name="LocalAiPage_UnavailableRequirementsMessage" xml:space="preserve"><value>此设备不满足一项或多项本地 AI 要求。</value></data>
-  <data name="LocalAiPage_UnavailableProbeMessage" xml:space="preserve"><value>OpenClaw 目前无法验证本地 AI 要求。请确认 NVIDIA 驱动可用后重试。</value></data>
+  <data name="LocalAiPage_UnavailableProbeMessage" xml:space="preserve"><value>LanFu 目前无法验证本地 AI 要求。请确认 NVIDIA 驱动可用后重试。</value></data>
   <data name="LocalAiPage_EngineHeading.Text" xml:space="preserve"><value>llama-server</value></data>
   <data name="LocalAiPage_VersionLabel.Text" xml:space="preserve"><value>版本</value></data>
   <data name="LocalAiPage_EndpointLabel.Text" xml:space="preserve"><value>终结点</value></data>
@@ -7078,7 +7078,7 @@
   <data name="LocalAiPage_Engine_Starting" xml:space="preserve"><value>正在启动</value></data>
   <data name="LocalAiPage_Engine_Stopped" xml:space="preserve"><value>已停止</value></data>
   <data name="LocalAiPage_Engine_Error" xml:space="preserve"><value>错误</value></data>
-  <data name="LocalAiPage_Engine_Managed" xml:space="preserve"><value>由 OpenClaw 管理</value></data>
+  <data name="LocalAiPage_Engine_Managed" xml:space="preserve"><value>由 LanFu 管理</value></data>
   <data name="LocalAiPage_Engine_NotInstalled" xml:space="preserve"><value>未安装</value></data>
   <data name="LocalAiPage_Model_NotInstalled" xml:space="preserve"><value>未安装</value></data>
   <data name="LocalAiPage_Model_Unknown" xml:space="preserve"><value>未知</value></data>
@@ -7096,35 +7096,35 @@
   <data name="Command_GoToLocalAi_Subtitle" xml:space="preserve"><value>查看 llama-server、模型和网关状态</value></data>
   <data name="Onboarding_LocalAi_UnavailableDetailsButton.Content" xml:space="preserve"><value>查看原因</value></data>
   <data name="Onboarding_LocalAi_CheckingTitle" xml:space="preserve"><value>正在检查本地 AI 要求</value></data>
-  <data name="Onboarding_LocalAi_CheckingMessage" xml:space="preserve"><value>OpenClaw 正在检查 NVIDIA GPU、驱动、CUDA、内存和 WSL 要求。</value></data>
-  <data name="Onboarding_LocalAi_CheckingHelpText" xml:space="preserve"><value>OpenClaw 正在检查本地 AI 要求。</value></data>
+  <data name="Onboarding_LocalAi_CheckingMessage" xml:space="preserve"><value>LanFu 正在检查 NVIDIA GPU、驱动、CUDA、内存和 WSL 要求。</value></data>
+  <data name="Onboarding_LocalAi_CheckingHelpText" xml:space="preserve"><value>LanFu 正在检查本地 AI 要求。</value></data>
   <data name="Onboarding_LocalAi_ProbeUnknownTitle" xml:space="preserve"><value>无法验证本地 AI 可用性</value></data>
-  <data name="Onboarding_LocalAi_ProbeUnknownMessage" xml:space="preserve"><value>OpenClaw 目前无法验证本地 AI 要求。请确认 NVIDIA 驱动可用后重试。</value></data>
-  <data name="Onboarding_LocalAi_ProbeUnknownHelpText" xml:space="preserve"><value>OpenClaw 无法验证本地 AI 要求。请重新检查可用性以重试。</value></data>
+  <data name="Onboarding_LocalAi_ProbeUnknownMessage" xml:space="preserve"><value>LanFu 目前无法验证本地 AI 要求。请确认 NVIDIA 驱动可用后重试。</value></data>
+  <data name="Onboarding_LocalAi_ProbeUnknownHelpText" xml:space="preserve"><value>LanFu 无法验证本地 AI 要求。请重新检查可用性以重试。</value></data>
   <data name="Onboarding_LocalAi_UnavailableTitle" xml:space="preserve"><value>本地 AI 不可用</value></data>
   <data name="Onboarding_LocalAi_UnavailableMessage" xml:space="preserve"><value>此电脑不满足一项或多项本地 AI 要求。</value></data>
   <data name="Onboarding_LocalAi_UnavailableHelpText" xml:space="preserve"><value>不可用,因为此电脑不满足本地 AI 要求。</value></data>
-  <data name="Onboarding_LocalAi_ProbeFailureReason" xml:space="preserve"><value>OpenClaw 无法读取 NVIDIA GPU、驱动、CUDA 或内存信息。请确认 NVIDIA 驱动可用,然后重新检查本地 AI 要求。</value></data>
+  <data name="Onboarding_LocalAi_ProbeFailureReason" xml:space="preserve"><value>LanFu 无法读取 NVIDIA GPU、驱动、CUDA 或内存信息。请确认 NVIDIA 驱动可用,然后重新检查本地 AI 要求。</value></data>
   <data name="Onboarding_LocalAi_UnavailableDetailsDialogTitle" xml:space="preserve"><value>本地 AI 不可用的原因</value></data>
   <data name="Onboarding_LocalAi_UnavailableDetailsDialogClose" xml:space="preserve"><value>关闭</value></data>
   <data name="LocalAi_Reason_RuntimeUnavailable" xml:space="preserve"><value>此本地 AI 版本不包含适用于检测到的 Windows 体系结构的原生 llama-server 运行时。</value></data>
   <data name="LocalAi_Reason_NoNvidiaGpu" xml:space="preserve"><value>NVIDIA 驱动未报告任何 NVIDIA GPU。请安装或修复 NVIDIA 驱动,然后重试安装。</value></data>
   <data name="LocalAi_Reason_UnknownModel" xml:space="preserve"><value>所选模型在此本地 AI 版本中不可用。</value></data>
-  <data name="LocalAi_Reason_HardwareFactsIncomplete" xml:space="preserve"><value>OpenClaw 无法读取稳定的 NVIDIA GPU 标识符、内存、驱动或 CUDA 能力。</value></data>
-  <data name="LocalAi_Reason_InsufficientGpuMemory" xml:space="preserve"><value>{0}需要 {1} 的 GPU 内存用于模型权重、KV 缓存和运行时工作区。OpenClaw 检测到 {2}。</value></data>
+  <data name="LocalAi_Reason_HardwareFactsIncomplete" xml:space="preserve"><value>LanFu 无法读取稳定的 NVIDIA GPU 标识符、内存、驱动或 CUDA 能力。</value></data>
+  <data name="LocalAi_Reason_InsufficientGpuMemory" xml:space="preserve"><value>{0}需要 {1} 的 GPU 内存用于模型权重、KV 缓存和运行时工作区。LanFu 检测到 {2}。</value></data>
   <data name="LocalAi_Reason_DriverTooOld" xml:space="preserve"><value>检测到 NVIDIA 驱动 {0}。本地 AI 需要 {1} 或更高版本。</value></data>
   <data name="LocalAi_Reason_CudaCapabilityTooLow" xml:space="preserve"><value>NVIDIA 驱动不支持 CUDA 13。无需单独的 CUDA Toolkit。</value></data>
-  <data name="LocalAi_Reason_Generic" xml:space="preserve"><value>OpenClaw 无法验证此系统上的本地 AI 要求。</value></data>
+  <data name="LocalAi_Reason_Generic" xml:space="preserve"><value>LanFu 无法验证此系统上的本地 AI 要求。</value></data>
   <data name="LocalAi_Reason_UnknownModelName" xml:space="preserve"><value>所选模型</value></data>
   <data name="LocalAi_Reason_UnknownDriverVersion" xml:space="preserve"><value>未知</value></data>
   <data name="LocalAi_Reason_UnknownMemoryAmount" xml:space="preserve"><value>未知数量</value></data>
   <data name="LocalAi_Reason_GigabytesFormat" xml:space="preserve"><value>{0:0.#} GiB</value></data>
   <data name="Onboarding_Welcome_LocalAiAvailableBadge.Text" xml:space="preserve"><value>你的电脑支持本地 AI</value></data>
   <data name="Onboarding_Welcome_LocalAiAvailabilityDetail" xml:space="preserve"><value>使用你的 {0} 在本地运行模型。</value></data>
-  <data name="Onboarding_LocalAi_WslConfigReadFailureReason" xml:space="preserve"><value>OpenClaw 无法安全读取全局 .wslconfig 文件。请检查该文件是否有效且可读,然后重试安装。</value></data>
+  <data name="Onboarding_LocalAi_WslConfigReadFailureReason" xml:space="preserve"><value>LanFu 无法安全读取全局 .wslconfig 文件。请检查该文件是否有效且可读,然后重试安装。</value></data>
   <data name="LocalAiPage_UnavailableProbeTitle" xml:space="preserve"><value>无法验证本地 AI 可用性</value></data>
   <data name="LocalAiPage_CheckingTitle" xml:space="preserve"><value>正在检查本地 AI 可用性</value></data>
-  <data name="LocalAiPage_CheckingMessage" xml:space="preserve"><value>OpenClaw 正在检查此设备是否可以运行本地 AI。这只需要片刻。</value></data>
+  <data name="LocalAiPage_CheckingMessage" xml:space="preserve"><value>LanFu 正在检查此设备是否可以运行本地 AI。这只需要片刻。</value></data>
   <data name="Chat_Code_Copy" xml:space="preserve"><value>复制代码</value></data>
   <data name="Chat_Code_Label" xml:space="preserve"><value>代码块</value></data>
   <data name="Chat_Model_Current" xml:space="preserve"><value>当前模型</value></data>
@@ -7140,17 +7140,17 @@
   <data name="Chat_Composer_Effort_Faster" xml:space="preserve"><value>更快</value></data>
   <data name="Chat_Composer_Effort_Smarter" xml:space="preserve"><value>更深入</value></data>
   <data name="Onboarding_Flow_Position" xml:space="preserve"><value>第 {0} 步，共 {1} 步</value></data>
-  <data name="Onboarding_Flow_CompletionUnavailable" xml:space="preserve"><value>设置无法打开 Chat。请关闭设置并重新打开 OpenClaw。</value></data>
+  <data name="Onboarding_Flow_CompletionUnavailable" xml:space="preserve"><value>设置无法打开 Chat。请关闭设置并重新打开 LanFu。</value></data>
   <data name="Onboarding_Flow_AiNavigationFailed" xml:space="preserve"><value>网关已安装，但无法打开 AI 设置。请重新打开设置以继续，无需重新安装。</value></data>
   <data name="Onboarding_Flow_AccessTitle" xml:space="preserve"><value>你的电脑，你的权限</value></data>
   <data name="Onboarding_Flow_InstallAction" xml:space="preserve"><value>安装并设置</value></data>
   <data name="Onboarding_Flow_Permissions.Header" xml:space="preserve"><value>Windows 权限</value></data>
   <data name="Onboarding_Flow_InstallReview.Text" xml:space="preserve"><value>将安装的内容</value></data>
-  <data name="Onboarding_Flow_AutoStart.Text" xml:space="preserve"><value>登录时启动 OpenClaw</value></data>
-  <data name="Onboarding_Flow_AutoStartToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>登录时启动 OpenClaw</value></data>
-  <data name="ChatDashboardButton.Content" xml:space="preserve"><value>Dashboard</value></data>
+  <data name="Onboarding_Flow_AutoStart.Text" xml:space="preserve"><value>登录时启动 LanFu</value></data>
+  <data name="Onboarding_Flow_AutoStartToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>登录时启动 LanFu</value></data>
+  <data name="ChatDashboardButton.Content" xml:space="preserve"><value>仪表板</value></data>
   <data name="ChatDashboardHint.Text" xml:space="preserve"><value>频道、集成和网关设置</value></data>
-  <data name="Onboarding_Flow_WelcomeDescription.Text" xml:space="preserve"><value>OpenClaw 是帮助你在电脑上完成任务的 AI 助手。</value></data>
+  <data name="Onboarding_Flow_WelcomeDescription.Text" xml:space="preserve"><value>LanFu 是帮助你在电脑上完成任务的 AI 助手。</value></data>
   <data name="Onboarding_AiSetup_Title.Text" xml:space="preserve"><value>连接你的 AI</value></data>
   <data name="Onboarding_AiSetup_CatalogOptIn" xml:space="preserve"><value>发现现有提供商对话（可选）</value></data>
   <data name="Onboarding_AiSetup_Starting" xml:space="preserve"><value>正在启动提供商设置…</value></data>
@@ -7251,10 +7251,10 @@
   <data name="Onboarding_V2_HostUnavailable.Message" xml:space="preserve"><value>从 Companion 应用打开设置以使用原生连接编辑器。</value></data>
   <data name="Onboarding_V2_Back.Content" xml:space="preserve"><value>返回</value></data>
   <data name="Onboarding_V2_CapabilitiesTitle.Text" xml:space="preserve"><value>电脑功能</value></data>
-  <data name="Onboarding_V2_CapabilitiesIntro.Text" xml:space="preserve"><value>选择代理可在此电脑上使用的功能。这些选择不会授予 Windows 隐私访问权限或执行批准。</value></data>
-  <data name="Onboarding_V2_NodeMode.Header" xml:space="preserve"><value>Node mode</value></data>
+  <data name="Onboarding_V2_CapabilitiesIntro.Text" xml:space="preserve"><value>选择智能体可在此电脑上使用的功能。这些选择不会授予 Windows 隐私访问权限或执行批准。</value></data>
+  <data name="Onboarding_V2_NodeMode.Header" xml:space="preserve"><value>节点模式</value></data>
   <data name="Onboarding_V2_NodeMode.Description" xml:space="preserve"><value>通过已连接的 Gateway 提供此电脑的功能。</value></data>
-  <data name="Onboarding_V2_NodeModeToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Node mode</value></data>
+  <data name="Onboarding_V2_NodeModeToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>节点模式</value></data>
   <data name="Onboarding_V2_Mcp.Header" xml:space="preserve"><value>本地 MCP 服务器</value></data>
   <data name="Onboarding_V2_Mcp.Description" xml:space="preserve"><value>使用本地 MCP 客户端，无需 Gateway。</value></data>
   <data name="Onboarding_V2_McpToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>本地 MCP 服务器</value></data>
@@ -7277,29 +7277,29 @@
   <data name="Onboarding_V2_ReturnToReview.Content" xml:space="preserve"><value>返回检查</value></data>
   <data name="Onboarding_V2_ReviewTitle.Text" xml:space="preserve"><value>WSL Gateway 设置</value></data>
   <data name="Onboarding_V2_ReviewIntro.Text" xml:space="preserve"><value>在安装开始前检查将发生的更改。</value></data>
-  <data name="Onboarding_V2_CliCard.Header" xml:space="preserve"><value>OpenClaw CLI</value></data>
+  <data name="Onboarding_V2_CliCard.Header" xml:space="preserve"><value>LanFu 命令行</value></data>
   <data name="Onboarding_V2_GatewayCard.Header" xml:space="preserve"><value>本地 Gateway 服务</value></data>
-  <data name="Onboarding_V2_LocalAiReview.Header" xml:space="preserve"><value>Local AI</value></data>
+  <data name="Onboarding_V2_LocalAiReview.Header" xml:space="preserve"><value>本地 AI</value></data>
   <data name="Onboarding_V2_TailscaleReview.Header" xml:space="preserve"><value>Tailscale Serve</value></data>
   <data name="Onboarding_V2_ReplacementCard.Header" xml:space="preserve"><value>检查 WSL 替换</value></data>
-  <data name="Onboarding_V2_StartupCard.Header" xml:space="preserve"><value>登录时启动 OpenClaw</value></data>
+  <data name="Onboarding_V2_StartupCard.Header" xml:space="preserve"><value>登录时启动 LanFu</value></data>
   <data name="Onboarding_V2_ExactCommands.Header" xml:space="preserve"><value>具体命令和文件</value></data>
   <data name="Onboarding_V2_ReviewRequired.Title" xml:space="preserve"><value>检查必需选项</value></data>
   <data name="Onboarding_V2_ReviewRequired.Message" xml:space="preserve"><value>安装前请检查所选 Local AI 和 Tailscale 的先决条件，并确认任何 WSL 替换。</value></data>
   <data name="Onboarding_V2_Install.Content" xml:space="preserve"><value>安装</value></data>
-  <data name="Onboarding_V2_WelcomeTitle.Text" xml:space="preserve"><value>欢迎使用 OpenClaw</value></data>
+  <data name="Onboarding_V2_WelcomeTitle.Text" xml:space="preserve"><value>欢迎使用 LanFu</value></data>
   <data name="Onboarding_V2_WelcomeChat.Header" xml:space="preserve"><value>与您的 AI 聊天</value></data>
   <data name="Onboarding_V2_WelcomeChat.Description" xml:space="preserve"><value>在原生 Chat 中使用您选择的 AI 提供商。</value></data>
-  <data name="Onboarding_V2_WelcomePc.Header" xml:space="preserve"><value>让代理在此电脑上提供帮助</value></data>
+  <data name="Onboarding_V2_WelcomePc.Header" xml:space="preserve"><value>让智能体在此电脑上提供帮助</value></data>
   <data name="Onboarding_V2_WelcomePc.Description" xml:space="preserve"><value>选择要启用的电脑能力。Windows 权限和执行审批仍然独立管理。</value></data>
   <data name="Onboarding_V2_WelcomeGateway.Header" xml:space="preserve"><value>让 Gateway 始终由您掌控</value></data>
   <data name="Onboarding_V2_WelcomeGateway.Description" xml:space="preserve"><value>在此运行私有 WSL Gateway，或连接到现有 Gateway。</value></data>
   <data name="Onboarding_V2_WelcomeTrust.Title" xml:space="preserve"><value>开始之前</value></data>
-  <data name="Onboarding_V2_WelcomeTrust.Message" xml:space="preserve"><value>AI 智能体功能强大，授予其电脑访问权限也存在风险。它们可能犯错、更改或删除文件，或泄露私人信息。&#x0a;&#x0a;你可以控制并限制 OpenClaw 对电脑的访问。</value></data>
+  <data name="Onboarding_V2_WelcomeTrust.Message" xml:space="preserve"><value>AI 智能体功能强大，授予其电脑访问权限也存在风险。它们可能犯错、更改或删除文件，或泄露私人信息。&#x0a;&#x0a;你可以控制并限制 LanFu 对电脑的访问。</value></data>
   <data name="Onboarding_V2_Continue.Content" xml:space="preserve"><value>继续</value></data>
   <data name="Onboarding_V2_Retry.Content" xml:space="preserve"><value>重试</value></data>
   <data name="Onboarding_V2_AlternativeRoutes.Content" xml:space="preserve"><value>远程、本地 MCP 或稍后设置</value></data>
-  <data name="Onboarding_V2_LocalAiCard.Header" xml:space="preserve"><value>Local AI</value></data>
+  <data name="Onboarding_V2_LocalAiCard.Header" xml:space="preserve"><value>本地 AI</value></data>
   <data name="Onboarding_V2_LocalAiCard.Description" xml:space="preserve"><value>可选的托管 Windows llama-server。与 Ollama 共享相互独立。</value></data>
   <data name="Onboarding_V2_LocalAiToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>设置 Local AI</value></data>
   <data name="Onboarding_V2_LocalAiModel.Header" xml:space="preserve"><value>模型</value></data>
@@ -7317,7 +7317,7 @@
   <data name="Onboarding_V2_TailscaleTrust.Header" xml:space="preserve"><value>信任 Tailscale 身份进行 Gateway 身份验证</value></data>
   <data name="Onboarding_V2_TailscaleTrust.Description" xml:space="preserve"><value>默认关闭。仅在 tailnet ACL 应参与 Gateway 访问控制时启用。</value></data>
   <data name="Onboarding_V2_TailscaleTrustToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>信任 Tailscale 身份</value></data>
-  <data name="Onboarding_V2_WindowTitle.Text" xml:space="preserve"><value>OpenClaw 设置</value></data>
+  <data name="Onboarding_V2_WindowTitle.Text" xml:space="preserve"><value>LanFu 设置</value></data>
   <data name="Onboarding_V2_NetworkConsentRecorded" xml:space="preserve"><value>已记录 WSL 网络同意</value></data>
   <data name="Onboarding_V2_ReviewNetworking" xml:space="preserve"><value>检查 WSL 网络更改</value></data>
   <data name="Onboarding_V2_TailscaleChecking" xml:space="preserve"><value>正在检查 Windows Tailscale...</value></data>
@@ -7327,7 +7327,7 @@
   <data name="Onboarding_V2_OptionalOff" xml:space="preserve"><value>可选。已关闭。</value></data>
   <data name="Onboarding_V2_ConsentRecorded" xml:space="preserve"><value>已记录此 WSL 安装的确认。</value></data>
   <data name="Onboarding_V2_ConsentRequired" xml:space="preserve"><value>替换前需要明确确认。</value></data>
-  <data name="Onboarding_V2_DetailLocalAi" xml:space="preserve"><value>Local AI</value></data>
+  <data name="Onboarding_V2_DetailLocalAi" xml:space="preserve"><value>本地 AI</value></data>
   <data name="Onboarding_V2_DetailTailscale" xml:space="preserve"><value>Tailscale Serve</value></data>
   <data name="Onboarding_V2_DetailNetworking" xml:space="preserve"><value>WSL 网络同意</value></data>
   <data name="Onboarding_V2_DetailReplacement" xml:space="preserve"><value>替换 WSL Gateway</value></data>
@@ -7380,7 +7380,7 @@
   <data name="Onboarding_AiSetup_ArtworkAction_SignIn" xml:space="preserve"><value>登录</value></data>
   <data name="Onboarding_AiSetup_ArtworkAction_Prepare" xml:space="preserve"><value>连接 / 设置</value></data>
   <data name="Onboarding_AiSetup_ArtworkUnavailable" xml:space="preserve"><value>提供商徽标不可用（{0}）。仍可设置提供商。</value></data>
-  <data name="Onboarding_V3_ProfileHeading.Text" xml:space="preserve"><value>您的代理可以做什么</value></data>
+  <data name="Onboarding_V3_ProfileHeading.Text" xml:space="preserve"><value>您的智能体可以做什么</value></data>
   <data name="Onboarding_V3_ProfileHelp.Text" xml:space="preserve"><value>选择预设。展开“微调”可查看或更改各项能力。</value></data>
   <data name="Onboarding_V3_FineTune.Text" xml:space="preserve"><value>微调</value></data>
   <data name="Onboarding_V3_TransportRequired.Title" xml:space="preserve"><value>能力不可用</value></data>
@@ -7473,30 +7473,30 @@
   <data name="Onboarding_Ready_ChannelUnavailable" xml:space="preserve"><value>此 Gateway 未提供所选渠道。请查看可用渠道，或更新 Gateway 后刷新。</value></data>
   <data name="Onboarding_Ready_ChannelUnconfirmed" xml:space="preserve"><value>无法确认渠道是否可用。请刷新以重试。未启动任何渠道登录或配置。</value></data>
   <data name="Onboarding_Copy_SafetyLink.Content" xml:space="preserve"><value>详细了解风险与安全</value></data>
-  <data name="Onboarding_Copy_GatewayTitle.Text" xml:space="preserve"><value>设置 OpenClaw</value></data>
+  <data name="Onboarding_Copy_GatewayTitle.Text" xml:space="preserve"><value>设置 LanFu</value></data>
   <data name="Onboarding_Copy_GatewayIntro.Text" xml:space="preserve"><value>Gateway 将你的 AI 助手连接到应用和工具。请选择其运行位置，你可以稍后更改。</value></data>
   <data name="Onboarding_Copy_GatewaySelector.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Gateway 设置方式</value></data>
   <data name="Onboarding_Copy_GatewaySelector.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.HelpText" xml:space="preserve"><value>选择一种 Gateway 设置方式。</value></data>
   <data name="Onboarding_Copy_GatewayLocalChoice.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>安装本地 Gateway (WSL)，推荐</value></data>
   <data name="Onboarding_Copy_GatewayLocalTitle.Text" xml:space="preserve"><value>安装本地 Gateway (WSL)</value></data>
-  <data name="Onboarding_Copy_GatewayLocalDescription.Text" xml:space="preserve"><value>在 WSL 中安装专用 OpenClaw Gateway。</value></data>
+  <data name="Onboarding_Copy_GatewayLocalDescription.Text" xml:space="preserve"><value>在 WSL 中安装专用 LanFu Gateway。</value></data>
   <data name="Onboarding_Copy_Recommended.Text" xml:space="preserve"><value>推荐</value></data>
   <data name="Onboarding_Copy_GatewayExistingChoice.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>连接到现有 Gateway</value></data>
   <data name="Onboarding_Copy_GatewayExistingTitle.Text" xml:space="preserve"><value>连接到现有 Gateway</value></data>
   <data name="Onboarding_Copy_GatewayExistingDescription.Text" xml:space="preserve"><value>无需在此电脑上安装 Gateway 或本地 AI 即可连接。</value></data>
   <data name="Onboarding_StartupWarning_Title" xml:space="preserve"><value>Windows 启动</value></data>
-  <data name="Onboarding_StartupWarning_Message" xml:space="preserve"><value>设置已完成，但 Windows 启动首选项未能完全应用。OpenClaw 将完成重启。您可以在 Companion Settings 中重试此首选项。</value></data>
+  <data name="Onboarding_StartupWarning_Message" xml:space="preserve"><value>设置已完成，但 Windows 启动首选项未能完全应用。LanFu 将完成重启。您可以在 Companion Settings 中重试此首选项。</value></data>
   <data name="Onboarding_RegistryRecovery_Title" xml:space="preserve"><value>Gateway 恢复需要处理</value></data>
-  <data name="Onboarding_RegistryRecovery_Message" xml:space="preserve"><value>设置无法协调已保存的 Gateway 更改。未保存的编辑未被提交。请关闭并重新打开 OpenClaw，重新加载已保存的 Gateway 后再重试。</value></data>
-  <data name="Onboarding_RestartRecovery_Title" xml:space="preserve"><value>完成打开 OpenClaw</value></data>
-  <data name="Onboarding_RestartRecovery_Waiting" xml:space="preserve"><value>另一个 OpenClaw 实例仍在完成设置。重试会等待它释放控制权。所选页面已保留。取消后可关闭另一个实例并重新打开 OpenClaw 以继续。</value></data>
-  <data name="Onboarding_RestartRecovery_Storage" xml:space="preserve"><value>OpenClaw 无法安全保留所选设置页面。请重试。取消会停止此次启动；您可能需要重新打开设置并再次选择。</value></data>
-  <data name="Onboarding_RestartRecovery_Invalid" xml:space="preserve"><value>无法读取保存的设置启动信息。OpenClaw 将正常打开。请重新打开设置以选择目标页面。</value></data>
+  <data name="Onboarding_RegistryRecovery_Message" xml:space="preserve"><value>设置无法协调已保存的 Gateway 更改。未保存的编辑未被提交。请关闭并重新打开 LanFu，重新加载已保存的 Gateway 后再重试。</value></data>
+  <data name="Onboarding_RestartRecovery_Title" xml:space="preserve"><value>完成打开 LanFu</value></data>
+  <data name="Onboarding_RestartRecovery_Waiting" xml:space="preserve"><value>另一个 LanFu 实例仍在完成设置。重试会等待它释放控制权。所选页面已保留。取消后可关闭另一个实例并重新打开 LanFu 以继续。</value></data>
+  <data name="Onboarding_RestartRecovery_Storage" xml:space="preserve"><value>LanFu 无法安全保留所选设置页面。请重试。取消会停止此次启动；您可能需要重新打开设置并再次选择。</value></data>
+  <data name="Onboarding_RestartRecovery_Invalid" xml:space="preserve"><value>无法读取保存的设置启动信息。LanFu 将正常打开。请重新打开设置以选择目标页面。</value></data>
   <data name="PermissionsPage_ExecRuleScope_Main" xml:space="preserve">
-    <value>此代理</value>
+    <value>此智能体</value>
   </data>
   <data name="PermissionsPage_ExecRuleScope_Wildcard" xml:space="preserve">
-    <value>所有代理</value>
+    <value>所有智能体</value>
   </data>
   <data name="PermissionsPage_RemoveRuleAutomationNameFormat" xml:space="preserve">
     <value>移除{0}的允许列表条目 {1}</value>
@@ -7505,13 +7505,13 @@
     <value>未启用</value>
   </data>
   <data name="Migration_InnoCompleted" xml:space="preserve">
-    <value>您的 OpenClaw 配置已迁移到 Store 版本。请关闭此消息以退出此应用，然后通过 Windows 设置 &gt; 应用 &gt; 已安装的应用卸载旧版 OpenClaw Companion，再打开 Store 版本。已迁移的配置和网关将予以保留。</value>
+    <value>您的 LanFu 配置已迁移到 Store 版本。请关闭此消息以退出此应用，然后通过 Windows 设置 &gt; 应用 &gt; 已安装的应用卸载旧版 LanFu Companion，再打开 Store 版本。已迁移的配置和网关将予以保留。</value>
   </data>
   <data name="Migration_InnoCheckFailed" xml:space="preserve">
-    <value>OpenClaw 无法检查是否已完成向 Store 版本的迁移。此副本无法安全启动。请关闭其他 OpenClaw 进程后重试。请勿删除迁移数据或运行网关清理。</value>
+    <value>LanFu 无法检查是否已完成向 Store 版本的迁移。此副本无法安全启动。请关闭其他 LanFu 进程后重试。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StorePreviewTitle" xml:space="preserve">
-    <value>OpenClaw 迁移预览</value>
+    <value>LanFu 迁移预览</value>
   </data>
   <data name="Migration_StorePreviewReady" xml:space="preserve">
     <value>已找到受支持的旧版安装。正常启动已暂停。您可以开始迁移，或选择“暂不”以继续使用旧版应用。</value>
@@ -7530,7 +7530,7 @@
     <value>暂不</value>
   </data>
   <data name="Migration_StoreCloseInno" xml:space="preserve">
-    <value>关闭旧版 OpenClaw Companion 应用，然后选择“{0}”以重试。选择“{1}”可退出此预览。请勿强制关闭旧版应用，也请暂时不要卸载。只有在此预览提示已记录迁移完成后，才可卸载旧版应用。</value>
+    <value>关闭旧版 LanFu Companion 应用，然后选择“{0}”以重试。选择“{1}”可退出此预览。请勿强制关闭旧版应用，也请暂时不要卸载。只有在此预览提示已记录迁移完成后，才可卸载旧版应用。</value>
   </data>
   <data name="Migration_StoreRetry" xml:space="preserve">
     <value>重试</value>
@@ -7539,13 +7539,13 @@
     <value>旧版应用已关闭，可以继续迁移。此测试版本尚不会采用您的配置。请关闭此预览。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StorePrepared" xml:space="preserve">
-    <value>旧版应用已关闭。OpenClaw 已验证您当前的配置并保存了受保护的迁移准备数据。此测试版本尚不会采用您的配置。请关闭此预览。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
+    <value>旧版应用已关闭。LanFu 已验证您当前的配置并保存了受保护的迁移准备数据。此测试版本尚不会采用您的配置。请关闭此预览。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreValidationFailed" xml:space="preserve">
-    <value>OpenClaw 无法安全验证旧版配置是否可迁移。未记录完成状态，旧版应用也未被更改。请关闭此预览，稍后重试。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
+    <value>LanFu 无法安全验证旧版配置是否可迁移。未记录完成状态，旧版应用也未被更改。请关闭此预览，稍后重试。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreAwaitingInnoRemoval" xml:space="preserve">
-    <value>OpenClaw 已记录迁移完成并保留了您的配置。请关闭此预览，通过 Windows 设置卸载旧版 OpenClaw Companion 应用，然后打开 Store 版本。请勿删除迁移数据或运行网关清理。</value>
+    <value>LanFu 已记录迁移完成并保留了您的配置。请关闭此预览，通过 Windows 设置卸载旧版 LanFu Companion 应用，然后打开 Store 版本。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreYes" xml:space="preserve">
     <value>是</value>
@@ -7563,10 +7563,10 @@
     <value>迁移预览无法安全检查旧版安装或迁移记录。正常启动已被阻止。请关闭此预览并查看应用日志后重试。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreFinalizationFailed" xml:space="preserve">
-    <value>OpenClaw 无法安全完成迁移。正常启动已被阻止，迁移收据已保留以供恢复。请关闭此预览，稍后重试。请勿删除迁移数据或运行网关清理。</value>
+    <value>LanFu 无法安全完成迁移。正常启动已被阻止，迁移收据已保留以供恢复。请关闭此预览，稍后重试。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreStartupRefused" xml:space="preserve">
-    <value>OpenClaw 已完成迁移，但 Windows 未允许在登录时启动 OpenClaw Companion。您的数据和设置均已迁移。若要自动启动 OpenClaw，请在 设置 > 应用 > 启动 中启用 OpenClaw Companion；如果启动由策略管理，请联系管理员。</value>
+    <value>LanFu 已完成迁移，但 Windows 未允许在登录时启动 LanFu Companion。您的数据和设置均已迁移。若要自动启动 LanFu，请在 设置 > 应用 > 启动 中启用 LanFu Companion；如果启动由策略管理，请联系管理员。</value>
   </data>
   <data name="Migration_StorePending" xml:space="preserve">
     <value>之前的迁移需要恢复或完成。此测试版本无法继续该迁移或正常启动。请关闭此预览。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
@@ -7617,7 +7617,7 @@
     <value>正在检查卸载状态并完成迁移...</value>
   </data>
   <data name="Migration2_CloseInno" xml:space="preserve">
-    <value>请通过托盘菜单关闭 OpenClaw Companion，然后选择“重试”。</value>
+    <value>请通过托盘菜单关闭 LanFu Companion，然后选择“重试”。</value>
   </data>
   <data name="Migration2_CloseInnoTitle" xml:space="preserve">
     <value>关闭旧版应用</value>
@@ -7631,7 +7631,7 @@
   <data name="Migration2_AwaitingRemoval" xml:space="preserve">
     <value>您的配置已通过验证，迁移完成状态已记录。
 
-1. 打开“已安装的应用”，仅卸载旧版 OpenClaw Companion 应用。请保留 Store 版本。
+1. 打开“已安装的应用”，仅卸载旧版 LanFu Companion 应用。请保留 Store 版本。
 
 2. 返回此处并选择“重试”以验证移除状态并完成迁移。
 
@@ -7647,7 +7647,7 @@
     <value>请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration2_ValidationFailed" xml:space="preserve">
-    <value>OpenClaw 无法安全完成迁移。请勿卸载旧版应用或运行网关清理。请查看应用日志，解决问题后重试。</value>
+    <value>LanFu 无法安全完成迁移。请勿卸载旧版应用或运行网关清理。请查看应用日志，解决问题后重试。</value>
   </data>
   <data name="Migration2_UpdateRequired" xml:space="preserve">
     <value>请先将旧版应用更新到受支持且具备迁移功能的版本。您的配置未被更改。在旧版应用仍安装的情况下，此应用将保持未激活状态。</value>
@@ -7656,13 +7656,13 @@
     <value>无法安全迁移此安装。仅支持同一 Windows 用户且体系结构匹配的默认安装。您的配置未被更改。在旧版应用仍安装的情况下，此应用将保持未激活状态。</value>
   </data>
   <data name="Migration2_InspectionFailed" xml:space="preserve">
-    <value>OpenClaw 无法安全检查安装或迁移记录。请先查看应用日志再重试。请勿删除迁移数据或运行网关清理。</value>
+    <value>LanFu 无法安全检查安装或迁移记录。请先查看应用日志再重试。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration2_Recovery" xml:space="preserve">
     <value>此迁移需要恢复。请查看应用日志。如果旧版应用仍已安装，请在“已安装的应用”中将其卸载，然后选择“重试”。请勿手动删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration2_FinalizationFailed" xml:space="preserve">
-    <value>OpenClaw 无法完成迁移。完成收据已保留以供恢复。请查看应用日志并重试。请勿删除迁移数据或运行网关清理。</value>
+    <value>LanFu 无法完成迁移。完成收据已保留以供恢复。请查看应用日志并重试。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration2_InstalledApps" xml:space="preserve">
     <value>打开“已安装的应用”</value>
@@ -7671,7 +7671,7 @@
     <value>放弃无法读取的迁移数据</value>
   </data>
   <data name="Migration2_DiscardFailed" xml:space="preserve">
-    <value>OpenClaw 无法放弃迁移数据。如果旧版 OpenClaw 应用正在运行，请关闭它并重试。详情请查看应用日志。</value>
+    <value>LanFu 无法放弃迁移数据。如果旧版 LanFu 应用正在运行，请关闭它并重试。详情请查看应用日志。</value>
   </data>
   <data name="Migration2_LaunchFailed" xml:space="preserve">
     <value>Windows 无法打开请求的页面。请重试，或在迁移完成后手动打开 Windows 设置 &gt; 应用 &gt; 已安装的应用。</value>
@@ -7683,7 +7683,7 @@
     <value>迁移到 Microsoft Store 版本</value>
   </data>
   <data name="Migration2_InnoCardDescription.Text" xml:space="preserve">
-    <value>通过 Microsoft Store 获取 OpenClaw 的后续更新。您现有的 OpenClaw 配置将会保留。</value>
+    <value>通过 Microsoft Store 获取 LanFu 的后续更新。您现有的 LanFu 配置将会保留。</value>
   </data>
   <data name="Migration2_InnoAction" xml:space="preserve">
     <value>安装 Store 版本并迁移</value>
@@ -7700,7 +7700,7 @@
     <value>已保存迁移授权。请安装并打开 Store 版本以继续。在确认迁移完成之前，请保留此应用。</value>
   </data>
   <data name="Migration2_InnoFailed" xml:space="preserve">
-    <value>OpenClaw 无法保存迁移授权或打开 Store 中的应用页面。请查看应用日志并重试。请勿卸载此应用。</value>
+    <value>LanFu 无法保存迁移授权或打开 Store 中的应用页面。请查看应用日志并重试。请勿卸载此应用。</value>
   </data>
   <data name="Migration2_Close" xml:space="preserve">
     <value>关闭</value>
@@ -7709,7 +7709,7 @@
     <value>请等待此步骤完成。</value>
   </data>
   <data name="Onboarding_Native_Title.Text" xml:space="preserve"><value>安装本地原生 Gateway</value></data>
-  <data name="Onboarding_Native_Description.Text" xml:space="preserve"><value>在此设备上安装并配置 OpenClaw Gateway</value></data>
+  <data name="Onboarding_Native_Description.Text" xml:space="preserve"><value>在此设备上安装并配置 LanFu Gateway</value></data>
   <data name="Onboarding_Wsl_Title.Text" xml:space="preserve"><value>安装本地 WSL Gateway</value></data>
   <data name="Onboarding_Native_CheckingSupport" xml:space="preserve"><value>正在检查原生 Gateway 支持情况...</value></data>
   <data name="Onboarding_Native_SupportAvailable" xml:space="preserve"><value>此设备支持原生 Gateway。</value></data>
@@ -7720,7 +7720,7 @@
   <data name="Onboarding_Native_Recommended.Text" xml:space="preserve"><value>推荐</value></data>
   <data name="Onboarding_Native_Alternatives.Header" xml:space="preserve"><value>其他 Gateway 选项</value></data>
   <data name="Onboarding_Native_UpdateLaunchFailed" xml:space="preserve"><value>无法打开 Windows 更新。请打开 Windows 设置，然后选择 Windows 更新。</value></data>
-  <data name="Onboarding_Native_Lifecycle.Text" xml:space="preserve"><value>在 Companion 中继续使用与 WSL 相同的 Gateway 设置向导。连接前将验证配置和健康状态。现有 WSL Gateway 和默认 OpenClaw 配置不会被替换。</value></data>
+  <data name="Onboarding_Native_Lifecycle.Text" xml:space="preserve"><value>在 Companion 中继续使用与 WSL 相同的 Gateway 设置向导。连接前将验证配置和健康状态。现有 WSL Gateway 和默认 LanFu 配置不会被替换。</value></data>
   <data name="Onboarding_Native_Acquisition.Text" xml:space="preserve"><value>如果尚未安装 Gateway，设置程序将使用 WinGet 从 Microsoft Store 安装，并在验证包后自动继续。</value></data>
   <data name="Onboarding_Native_InstallingPackage" xml:space="preserve"><value>正在使用 WinGet 从 Microsoft Store 安装 Gateway...</value></data>
   <data name="Onboarding_Native_VerifyingPackage" xml:space="preserve"><value>WinGet 已完成。正在验证 Gateway 注册和执行别名，然后继续...</value></data>
@@ -7753,178 +7753,178 @@
   <data name="Onboarding_Native_ReplaceDraftPrimary" xml:space="preserve"><value>丢弃并重新设置</value></data>
   <data name="Onboarding_Native_ReplaceDraftClose" xml:space="preserve"><value>保留草稿</value></data>
   <data name="Settings_PersistenceConflict_Title" xml:space="preserve"><value>无法保存设置</value></data>
-  <data name="Settings_PersistenceConflict_Message" xml:space="preserve"><value>另一个进程更改了您的设置。您最近的更改未保存。请从托盘菜单退出 OpenClaw，然后重新打开并重试您的更改。另一个进程保存的设置已保留。</value></data>
+  <data name="Settings_PersistenceConflict_Message" xml:space="preserve"><value>另一个进程更改了您的设置。您最近的更改未保存。请从托盘菜单退出 LanFu，然后重新打开并重试您的更改。另一个进程保存的设置已保留。</value></data>
 
   <!-- Workspace: English fallback until translations are reviewed. -->
-  <data name="WorkspaceShell_AutomationMissing" xml:space="preserve"><value>This automation is no longer available. Return to Automations and refresh.</value></data>
-  <data name="WorkspaceShell_Connected" xml:space="preserve"><value>Gateway connected</value></data>
-  <data name="WorkspaceShell_ThisComputer" xml:space="preserve"><value>This computer</value></data>
-  <data name="WorkspaceShell_SystemMissing" xml:space="preserve"><value>System unavailable</value></data>
-  <data name="WorkspaceShell_SelectSystemFirst" xml:space="preserve"><value>Select an available system from Systems to view its details.</value></data>
-  <data name="WorkspaceShell_GatewayInsights" xml:space="preserve"><value>View usage and activity reported by the connected gateway.</value></data>
-  <data name="WorkspaceShell_ProjectMetrics" xml:space="preserve"><value>Project metrics</value></data>
-  <data name="WorkspaceShell_Priorities" xml:space="preserve"><value>Priorities</value></data>
-  <data name="WorkspaceShell_Title" xml:space="preserve"><value>Workspace</value></data>
-  <data name="WorkspaceShell_Home" xml:space="preserve"><value>Home</value></data>
-  <data name="WorkspaceShell_Agents" xml:space="preserve"><value>Agents</value></data>
-  <data name="WorkspaceShell_AgentDetail" xml:space="preserve"><value>Agent</value></data>
-  <data name="WorkspaceShell_WriterDetail" xml:space="preserve"><value>Agent</value></data>
-  <data name="WorkspaceShell_Dashboards" xml:space="preserve"><value>Dashboards</value></data>
-  <data name="WorkspaceShell_DashboardDetail" xml:space="preserve"><value>Dashboard details</value></data>
-  <data name="WorkspaceShell_Canvas" xml:space="preserve"><value>Canvas</value></data>
-  <data name="WorkspaceShell_Systems" xml:space="preserve"><value>Systems</value></data>
-  <data name="WorkspaceShell_SystemDetail" xml:space="preserve"><value>System details</value></data>
-  <data name="WorkspaceShell_Automations" xml:space="preserve"><value>Automations</value></data>
-  <data name="WorkspaceShell_AutomationDetail" xml:space="preserve"><value>Automation details</value></data>
-  <data name="WorkspaceShell_Plugins" xml:space="preserve"><value>Plugins</value></data>
-  <data name="WorkspaceShell_Skills" xml:space="preserve"><value>Skills</value></data>
-  <data name="WorkspaceShell_Sessions" xml:space="preserve"><value>Sessions</value></data>
-  <data name="WorkspaceShell_Usage" xml:space="preserve"><value>Usage</value></data>
-  <data name="WorkspaceShell_Activity" xml:space="preserve"><value>Activity</value></data>
-  <data name="WorkspaceShell_Tasks" xml:space="preserve"><value>Tasks</value></data>
-  <data name="WorkspaceShell_Meetings" xml:space="preserve"><value>Meetings</value></data>
-  <data name="WorkspaceShell_Apps" xml:space="preserve"><value>Apps</value></data>
-  <data name="WorkspaceShell_Portals" xml:space="preserve"><value>Portals</value></data>
-  <data name="WorkspaceShell_Notifications" xml:space="preserve"><value>Notifications</value></data>
-  <data name="WorkspaceShell_More" xml:space="preserve"><value>More</value></data>
-  <data name="WorkspaceShell_Connection" xml:space="preserve"><value>Connection</value></data>
-  <data name="WorkspaceShell_Channels" xml:space="preserve"><value>Channels</value></data>
-  <data name="WorkspaceShell_Instances" xml:space="preserve"><value>Instances</value></data>
-  <data name="WorkspaceShell_Cron" xml:space="preserve"><value>Cron</value></data>
-  <data name="WorkspaceShell_AgentEvents" xml:space="preserve"><value>Agent events</value></data>
-  <data name="WorkspaceShell_Bindings" xml:space="preserve"><value>Bindings</value></data>
-  <data name="WorkspaceShell_Config" xml:space="preserve"><value>Configuration</value></data>
-  <data name="WorkspaceShell_LocalAi" xml:space="preserve"><value>Local AI</value></data>
-  <data name="WorkspaceShell_Voice" xml:space="preserve"><value>Voice</value></data>
-  <data name="WorkspaceShell_Permissions" xml:space="preserve"><value>Permissions</value></data>
-  <data name="WorkspaceShell_Sandbox" xml:space="preserve"><value>Sandbox</value></data>
-  <data name="WorkspaceShell_Debug" xml:space="preserve"><value>Diagnostics</value></data>
-  <data name="WorkspaceShell_Settings" xml:space="preserve"><value>Settings</value></data>
-  <data name="WorkspaceShell_About" xml:space="preserve"><value>About OpenClaw</value></data>
-  <data name="WorkspaceShell_AgentsDescription" xml:space="preserve"><value>Your gateway agents and their recent conversations.</value></data>
-  <data name="WorkspaceShell_AgentDetailDescription" xml:space="preserve"><value>Agent workspace and recent work.</value></data>
-  <data name="WorkspaceShell_WriterDetailDescription" xml:space="preserve"><value>Agent workspace and recent work.</value></data>
-  <data name="WorkspaceShell_DashboardsDescription" xml:space="preserve"><value>Projects, priorities, and gateway insights.</value></data>
-  <data name="WorkspaceShell_DashboardDetailDescription" xml:space="preserve"><value>Dashboard data is provided by your gateway.</value></data>
-  <data name="WorkspaceShell_CanvasDescription" xml:space="preserve"><value>Gateway-managed visual workspaces.</value></data>
-  <data name="WorkspaceShell_SystemsDescription" xml:space="preserve"><value>This computer, your gateway, and paired devices.</value></data>
-  <data name="WorkspaceShell_SystemDetailDescription" xml:space="preserve"><value>Connection and access for your systems.</value></data>
-  <data name="WorkspaceShell_PluginsDescription" xml:space="preserve"><value>Extensions and tools available to your gateway.</value></data>
-  <data name="WorkspaceShell_ActivityDescription" xml:space="preserve"><value>Live events from the current gateway connection.</value></data>
-  <data name="WorkspaceShell_MoreDescription" xml:space="preserve"><value>Explore your workspace and companion tools.</value></data>
-  <data name="WorkspaceShell_AppsDescription" xml:space="preserve"><value>Manage this companion or learn about other OpenClaw apps.</value></data>
-  <data name="WorkspaceShell_PortalsDescription" xml:space="preserve"><value>Open your configured gateway dashboard or documentation.</value></data>
-  <data name="WorkspaceShell_TasksDescription" xml:space="preserve"><value>Task workflows provided by your gateway.</value></data>
-  <data name="WorkspaceShell_MeetingsDescription" xml:space="preserve"><value>Meeting workflows provided by your gateway.</value></data>
-  <data name="WorkspaceShell_NoAgents" xml:space="preserve"><value>No agents loaded</value></data>
-  <data name="WorkspaceShell_SelectAssistant" xml:space="preserve"><value>Select assistant</value></data>
-  <data name="WorkspaceShell_NoSessions" xml:space="preserve"><value>No conversations to show.</value></data>
-  <data name="WorkspaceShell_ConnectionRequired" xml:space="preserve"><value>Connect a gateway to load agents and conversations.</value></data>
-  <data name="WorkspaceShell_ConnectionInfo.Message" xml:space="preserve"><value>Connect a gateway to load live workspace data.</value></data>
-  <data name="WorkspaceShell_SessionFailed" xml:space="preserve"><value>The gateway could not create a new session. Refresh the list before retrying.</value></data>
-  <data name="WorkspaceShell_SessionUnsupported" xml:space="preserve"><value>This gateway does not support creating sessions. Update the gateway to use this action.</value></data>
-  <data name="WorkspaceShell_TrayUnavailable" xml:space="preserve"><value>The Windows tray menu is not available.</value></data>
-  <data name="WorkspaceShell_LinkFailed" xml:space="preserve"><value>Windows could not open the link.</value></data>
-  <data name="WorkspaceShell_SessionMenu_LastActiveFormat" xml:space="preserve"><value>Last active {0}</value></data>
-  <data name="WorkspaceShell_SessionMenu_Pin" xml:space="preserve"><value>Pin session</value></data>
-  <data name="WorkspaceShell_SessionMenu_Unpin" xml:space="preserve"><value>Unpin session</value></data>
-  <data name="WorkspaceShell_SessionMenu_Rename" xml:space="preserve"><value>Rename…</value></data>
-  <data name="WorkspaceShell_SessionMenu_MarkUnread" xml:space="preserve"><value>Mark as unread</value></data>
-  <data name="WorkspaceShell_SessionMenu_MarkRead" xml:space="preserve"><value>Mark as read</value></data>
-  <data name="WorkspaceShell_SessionMenu_Archive" xml:space="preserve"><value>Archive session</value></data>
-  <data name="WorkspaceShell_SessionMenu_Unarchive" xml:space="preserve"><value>Unarchive session</value></data>
-  <data name="WorkspaceShell_SessionMenu_Fork" xml:space="preserve"><value>Fork conversation</value></data>
-  <data name="WorkspaceShell_SessionMenu_Copy" xml:space="preserve"><value>Copy</value></data>
-  <data name="WorkspaceShell_SessionMenu_CopyKey" xml:space="preserve"><value>Copy session key</value></data>
-  <data name="WorkspaceShell_SessionMenu_CopyId" xml:space="preserve"><value>Copy session ID</value></data>
-  <data name="WorkspaceShell_SessionMenu_CopyMarkdown" xml:space="preserve"><value>Copy as Markdown</value></data>
-  <data name="WorkspaceShell_SessionMenu_Reset" xml:space="preserve"><value>Reset session…</value></data>
-  <data name="WorkspaceShell_SessionMenu_Compact" xml:space="preserve"><value>Compact session…</value></data>
-  <data name="WorkspaceShell_SessionMenu_Export" xml:space="preserve"><value>Export transcript…</value></data>
-  <data name="WorkspaceShell_SessionMenu_Delete" xml:space="preserve"><value>Delete…</value></data>
-  <data name="WorkspaceShell_SessionRename_Title" xml:space="preserve"><value>Rename session</value></data>
-  <data name="WorkspaceShell_SessionRename_Body" xml:space="preserve"><value>Leave blank to use the default title.</value></data>
-  <data name="WorkspaceShell_SessionRename_Save" xml:space="preserve"><value>Save</value></data>
-  <data name="WorkspaceShell_SessionPinned" xml:space="preserve"><value>Pinned</value></data>
-  <data name="WorkspaceShell_SessionUnread" xml:space="preserve"><value>Unread</value></data>
-  <data name="WorkspaceShell_SessionWorking" xml:space="preserve"><value>Working</value></data>
+  <data name="WorkspaceShell_AutomationMissing" xml:space="preserve"><value>此自动化已不可用。请返回“自动化”并刷新。</value></data>
+  <data name="WorkspaceShell_Connected" xml:space="preserve"><value>网关已连接</value></data>
+  <data name="WorkspaceShell_ThisComputer" xml:space="preserve"><value>本机</value></data>
+  <data name="WorkspaceShell_SystemMissing" xml:space="preserve"><value>系统不可用</value></data>
+  <data name="WorkspaceShell_SelectSystemFirst" xml:space="preserve"><value>请先在“系统”中选择一个可用系统，以查看其详情。</value></data>
+  <data name="WorkspaceShell_GatewayInsights" xml:space="preserve"><value>查看已连接网关上报的用量与活动。</value></data>
+  <data name="WorkspaceShell_ProjectMetrics" xml:space="preserve"><value>项目指标</value></data>
+  <data name="WorkspaceShell_Priorities" xml:space="preserve"><value>优先事项</value></data>
+  <data name="WorkspaceShell_Title" xml:space="preserve"><value>工作区</value></data>
+  <data name="WorkspaceShell_Home" xml:space="preserve"><value>首页</value></data>
+  <data name="WorkspaceShell_Agents" xml:space="preserve"><value>智能体</value></data>
+  <data name="WorkspaceShell_AgentDetail" xml:space="preserve"><value>智能体</value></data>
+  <data name="WorkspaceShell_WriterDetail" xml:space="preserve"><value>智能体</value></data>
+  <data name="WorkspaceShell_Dashboards" xml:space="preserve"><value>仪表板</value></data>
+  <data name="WorkspaceShell_DashboardDetail" xml:space="preserve"><value>仪表板详情</value></data>
+  <data name="WorkspaceShell_Canvas" xml:space="preserve"><value>画布</value></data>
+  <data name="WorkspaceShell_Systems" xml:space="preserve"><value>系统</value></data>
+  <data name="WorkspaceShell_SystemDetail" xml:space="preserve"><value>系统详情</value></data>
+  <data name="WorkspaceShell_Automations" xml:space="preserve"><value>自动化</value></data>
+  <data name="WorkspaceShell_AutomationDetail" xml:space="preserve"><value>自动化详情</value></data>
+  <data name="WorkspaceShell_Plugins" xml:space="preserve"><value>插件</value></data>
+  <data name="WorkspaceShell_Skills" xml:space="preserve"><value>技能</value></data>
+  <data name="WorkspaceShell_Sessions" xml:space="preserve"><value>会话</value></data>
+  <data name="WorkspaceShell_Usage" xml:space="preserve"><value>用量</value></data>
+  <data name="WorkspaceShell_Activity" xml:space="preserve"><value>活动</value></data>
+  <data name="WorkspaceShell_Tasks" xml:space="preserve"><value>任务</value></data>
+  <data name="WorkspaceShell_Meetings" xml:space="preserve"><value>会议</value></data>
+  <data name="WorkspaceShell_Apps" xml:space="preserve"><value>应用</value></data>
+  <data name="WorkspaceShell_Portals" xml:space="preserve"><value>门户</value></data>
+  <data name="WorkspaceShell_Notifications" xml:space="preserve"><value>通知</value></data>
+  <data name="WorkspaceShell_More" xml:space="preserve"><value>更多</value></data>
+  <data name="WorkspaceShell_Connection" xml:space="preserve"><value>连接</value></data>
+  <data name="WorkspaceShell_Channels" xml:space="preserve"><value>频道</value></data>
+  <data name="WorkspaceShell_Instances" xml:space="preserve"><value>实例</value></data>
+  <data name="WorkspaceShell_Cron" xml:space="preserve"><value>定时任务</value></data>
+  <data name="WorkspaceShell_AgentEvents" xml:space="preserve"><value>智能体事件</value></data>
+  <data name="WorkspaceShell_Bindings" xml:space="preserve"><value>绑定</value></data>
+  <data name="WorkspaceShell_Config" xml:space="preserve"><value>配置</value></data>
+  <data name="WorkspaceShell_LocalAi" xml:space="preserve"><value>本地 AI</value></data>
+  <data name="WorkspaceShell_Voice" xml:space="preserve"><value>语音</value></data>
+  <data name="WorkspaceShell_Permissions" xml:space="preserve"><value>权限</value></data>
+  <data name="WorkspaceShell_Sandbox" xml:space="preserve"><value>沙盒</value></data>
+  <data name="WorkspaceShell_Debug" xml:space="preserve"><value>诊断</value></data>
+  <data name="WorkspaceShell_Settings" xml:space="preserve"><value>设置</value></data>
+  <data name="WorkspaceShell_About" xml:space="preserve"><value>关于 LanFu</value></data>
+  <data name="WorkspaceShell_AgentsDescription" xml:space="preserve"><value>网关上的智能体及其最近的对话。</value></data>
+  <data name="WorkspaceShell_AgentDetailDescription" xml:space="preserve"><value>智能体的工作区与最近工作。</value></data>
+  <data name="WorkspaceShell_WriterDetailDescription" xml:space="preserve"><value>智能体的工作区与最近工作。</value></data>
+  <data name="WorkspaceShell_DashboardsDescription" xml:space="preserve"><value>项目、优先事项与网关洞察。</value></data>
+  <data name="WorkspaceShell_DashboardDetailDescription" xml:space="preserve"><value>仪表板数据由你的网关提供。</value></data>
+  <data name="WorkspaceShell_CanvasDescription" xml:space="preserve"><value>由网关管理的可视化工作区。</value></data>
+  <data name="WorkspaceShell_SystemsDescription" xml:space="preserve"><value>本机、你的网关以及已配对设备。</value></data>
+  <data name="WorkspaceShell_SystemDetailDescription" xml:space="preserve"><value>各系统的连接与访问方式。</value></data>
+  <data name="WorkspaceShell_PluginsDescription" xml:space="preserve"><value>网关可用的扩展与工具。</value></data>
+  <data name="WorkspaceShell_ActivityDescription" xml:space="preserve"><value>当前网关连接产生的实时事件。</value></data>
+  <data name="WorkspaceShell_MoreDescription" xml:space="preserve"><value>浏览工作区与桌面端工具。</value></data>
+  <data name="WorkspaceShell_AppsDescription" xml:space="preserve"><value>管理本桌面端，或了解其他 LanFu 应用。</value></data>
+  <data name="WorkspaceShell_PortalsDescription" xml:space="preserve"><value>打开已配置的网关仪表板或文档。</value></data>
+  <data name="WorkspaceShell_TasksDescription" xml:space="preserve"><value>由网关提供的任务流程。</value></data>
+  <data name="WorkspaceShell_MeetingsDescription" xml:space="preserve"><value>由网关提供的会议流程。</value></data>
+  <data name="WorkspaceShell_NoAgents" xml:space="preserve"><value>未加载智能体</value></data>
+  <data name="WorkspaceShell_SelectAssistant" xml:space="preserve"><value>选择助手</value></data>
+  <data name="WorkspaceShell_NoSessions" xml:space="preserve"><value>暂无对话可显示。</value></data>
+  <data name="WorkspaceShell_ConnectionRequired" xml:space="preserve"><value>连接网关后即可加载智能体与对话。</value></data>
+  <data name="WorkspaceShell_ConnectionInfo.Message" xml:space="preserve"><value>连接网关后即可加载实时工作区数据。</value></data>
+  <data name="WorkspaceShell_SessionFailed" xml:space="preserve"><value>网关无法创建新会话。请先刷新列表再重试。</value></data>
+  <data name="WorkspaceShell_SessionUnsupported" xml:space="preserve"><value>当前网关不支持创建会话。请升级网关后再使用此操作。</value></data>
+  <data name="WorkspaceShell_TrayUnavailable" xml:space="preserve"><value>Windows 托盘菜单当前不可用。</value></data>
+  <data name="WorkspaceShell_LinkFailed" xml:space="preserve"><value>Windows 无法打开该链接。</value></data>
+  <data name="WorkspaceShell_SessionMenu_LastActiveFormat" xml:space="preserve"><value>上次活跃 {0}</value></data>
+  <data name="WorkspaceShell_SessionMenu_Pin" xml:space="preserve"><value>固定会话</value></data>
+  <data name="WorkspaceShell_SessionMenu_Unpin" xml:space="preserve"><value>取消固定</value></data>
+  <data name="WorkspaceShell_SessionMenu_Rename" xml:space="preserve"><value>重命名…</value></data>
+  <data name="WorkspaceShell_SessionMenu_MarkUnread" xml:space="preserve"><value>标记为未读</value></data>
+  <data name="WorkspaceShell_SessionMenu_MarkRead" xml:space="preserve"><value>标记为已读</value></data>
+  <data name="WorkspaceShell_SessionMenu_Archive" xml:space="preserve"><value>归档会话</value></data>
+  <data name="WorkspaceShell_SessionMenu_Unarchive" xml:space="preserve"><value>取消归档</value></data>
+  <data name="WorkspaceShell_SessionMenu_Fork" xml:space="preserve"><value>创建对话分支</value></data>
+  <data name="WorkspaceShell_SessionMenu_Copy" xml:space="preserve"><value>复制</value></data>
+  <data name="WorkspaceShell_SessionMenu_CopyKey" xml:space="preserve"><value>复制会话密钥</value></data>
+  <data name="WorkspaceShell_SessionMenu_CopyId" xml:space="preserve"><value>复制会话 ID</value></data>
+  <data name="WorkspaceShell_SessionMenu_CopyMarkdown" xml:space="preserve"><value>复制为 Markdown</value></data>
+  <data name="WorkspaceShell_SessionMenu_Reset" xml:space="preserve"><value>重置会话…</value></data>
+  <data name="WorkspaceShell_SessionMenu_Compact" xml:space="preserve"><value>压缩会话…</value></data>
+  <data name="WorkspaceShell_SessionMenu_Export" xml:space="preserve"><value>导出对话记录…</value></data>
+  <data name="WorkspaceShell_SessionMenu_Delete" xml:space="preserve"><value>删除…</value></data>
+  <data name="WorkspaceShell_SessionRename_Title" xml:space="preserve"><value>重命名会话</value></data>
+  <data name="WorkspaceShell_SessionRename_Body" xml:space="preserve"><value>留空则使用默认标题。</value></data>
+  <data name="WorkspaceShell_SessionRename_Save" xml:space="preserve"><value>保存</value></data>
+  <data name="WorkspaceShell_SessionPinned" xml:space="preserve"><value>已固定</value></data>
+  <data name="WorkspaceShell_SessionUnread" xml:space="preserve"><value>未读</value></data>
+  <data name="WorkspaceShell_SessionWorking" xml:space="preserve"><value>处理中</value></data>
   <data name="SessionsPage_Archived" xml:space="preserve"><value>已归档</value></data>
   <data name="SessionsPage_ArchivedEmpty" xml:space="preserve"><value>没有已归档的会话。</value></data>
   <data name="SessionsPage_ArchivedUnavailable" xml:space="preserve"><value>无法获取此网关的已归档会话。</value></data>
   <data name="SessionsPage_Unarchive" xml:space="preserve"><value>取消归档会话</value></data>
-  <data name="WorkspaceShell_SessionActionFailed" xml:space="preserve"><value>The gateway didn't accept the request. Try again.</value></data>
-  <data name="WorkspaceShell_SessionConnectionChanged" xml:space="preserve"><value>The Gateway connection changed. Refresh sessions to check the outcome before trying again.</value></data>
-  <data name="WorkspaceShell_SessionActionTimedOut" xml:space="preserve"><value>The Gateway did not respond in time. The outcome is unknown. Refresh the session before trying again.</value></data>
-  <data name="WorkspaceShell_SelectConversation.Text" xml:space="preserve"><value>Select a conversation or create a new one to start chatting.</value></data>
-  <data name="WorkspaceShell_ForkFailed" xml:space="preserve"><value>The gateway could not fork this conversation.</value></data>
-  <data name="WorkspaceShell_ForkUnsupported" xml:space="preserve"><value>This gateway does not support forking conversations. Update the gateway to use this action.</value></data>
-  <data name="WorkspaceShell_CopyFailed" xml:space="preserve"><value>Windows could not copy to the clipboard.</value></data>
-  <data name="WorkspaceShell_CopyEmpty" xml:space="preserve"><value>This session has no messages to copy.</value></data>
-  <data name="WorkspaceShell_HistoryUnsupported" xml:space="preserve"><value>This gateway does not support reading transcripts. Update the gateway to use this action.</value></data>
-  <data name="WorkspaceShell_ExportEmpty" xml:space="preserve"><value>This session has no transcript yet.</value></data>
-  <data name="WorkspaceShell_ExportDone" xml:space="preserve"><value>Saved {0} messages to {1}.</value></data>
-  <data name="WorkspaceShell_AgentsEmpty" xml:space="preserve"><value>Connect and refresh to load agents. Manage agent configuration in the companion.</value></data>
-  <data name="WorkspaceShell_SelectAgentFirst" xml:space="preserve"><value>Select an agent from the Agents page to view its details.</value></data>
-  <data name="WorkspaceShell_AgentSummary" xml:space="preserve"><value>{0} · {1} conversations</value></data>
-  <data name="WorkspaceShell_WorkspaceNotReported" xml:space="preserve"><value>The gateway has not reported a workspace path.</value></data>
-  <data name="WorkspaceShell_RecentWork" xml:space="preserve"><value>Recent work</value></data>
-  <data name="WorkspaceShell_Gateway" xml:space="preserve"><value>Gateway</value></data>
-  <data name="WorkspaceShell_DeviceAccess" xml:space="preserve"><value>Device access</value></data>
-  <data name="WorkspaceShell_DeviceAccessDescription" xml:space="preserve"><value>Manage permissions and pairing in the native companion.</value></data>
-  <data name="WorkspaceShell_MetricsUnavailable" xml:space="preserve"><value>CPU, memory, and storage utilization are not reported by the current node API.</value></data>
-  <data name="WorkspaceShell_DashboardsUnavailable" xml:space="preserve"><value>No native dashboard catalog</value></data>
-  <data name="WorkspaceShell_DashboardsUnavailableDescription" xml:space="preserve"><value>The current gateway client does not expose a dashboard catalog or project metrics. Open the real gateway dashboard instead.</value></data>
-  <data name="WorkspaceShell_NoDashboardSelected" xml:space="preserve"><value>No dashboard data is available. Usage and activity remain available from the gateway.</value></data>
-  <data name="WorkspaceShell_Installed" xml:space="preserve"><value>Installed</value></data>
-  <data name="WorkspaceShell_Discover" xml:space="preserve"><value>Discover</value></data>
-  <data name="WorkspaceShell_Install" xml:space="preserve"><value>Install</value></data>
-  <data name="WorkspaceShell_PluginInventoryUnavailable" xml:space="preserve"><value>Plugin inventory unavailable</value></data>
-  <data name="WorkspaceShell_PluginsUnavailableDescription" xml:space="preserve"><value>The current gateway client has no plugin inventory API. Configuration and Skills show the supported gateway workflows.</value></data>
-  <data name="WorkspaceShell_PluginCatalogUnavailable" xml:space="preserve"><value>Plugin catalog unavailable</value></data>
-  <data name="WorkspaceShell_PluginMutationsUnavailable" xml:space="preserve"><value>Plugin installation and removal are unavailable because this client has no supported plugin management API.</value></data>
-  <data name="WorkspaceShell_NotAvailable" xml:space="preserve"><value>Not available in this companion</value></data>
-  <data name="WorkspaceShell_NoNativeWorkflow" xml:space="preserve"><value>The current gateway client does not expose this workflow. Check your gateway dashboard for supported extensions.</value></data>
-  <data name="WorkspaceShell_NoActivity" xml:space="preserve"><value>No recent activity</value></data>
-  <data name="WorkspaceShell_ActivityEmpty" xml:space="preserve"><value>Agent events will appear here as the connected gateway sends them.</value></data>
-  <data name="WorkspaceShell_CompanionApp" xml:space="preserve"><value>OpenClaw Windows companion</value></data>
-  <data name="WorkspaceShell_OpenChat" xml:space="preserve"><value>Open chat</value></data>
-  <data name="WorkspaceShell_Details" xml:space="preserve"><value>View details</value></data>
-  <data name="WorkspaceShell_AgentSettings" xml:space="preserve"><value>Agent settings</value></data>
-  <data name="WorkspaceShell_AgentFiles" xml:space="preserve"><value>Workspace files</value></data>
-  <data name="WorkspaceShell_ManageConnection" xml:space="preserve"><value>Manage connection</value></data>
-  <data name="WorkspaceShell_ConnectionTimeline" xml:space="preserve"><value>Connection event timeline</value></data>
-  <data name="WorkspaceShell_PairedDevices" xml:space="preserve"><value>Paired devices</value></data>
-  <data name="WorkspaceShell_PairDevice" xml:space="preserve"><value>Pair device</value></data>
-  <data name="WorkspaceShell_OpenDashboard" xml:space="preserve"><value>Open gateway dashboard</value></data>
-  <data name="WorkspaceShell_Help" xml:space="preserve"><value>Help</value></data>
-  <data name="WorkspaceShell_Documentation" xml:space="preserve"><value>Documentation</value></data>
-  <data name="WorkspaceShell_Support" xml:space="preserve"><value>Get help</value></data>
-  <data name="WorkspaceShell_Community" xml:space="preserve"><value>Community</value></data>
-  <data name="WorkspaceShell_ReleaseNotes" xml:space="preserve"><value>Release notes</value></data>
-  <data name="WorkspaceShell_GetApps" xml:space="preserve"><value>Get apps</value></data>
-  <data name="WorkspaceShell_CommandCenter" xml:space="preserve"><value>Command center</value></data>
-  <data name="WorkspaceShell_SearchPages" xml:space="preserve"><value>Search companion pages</value></data>
-  <data name="WorkspaceShell_Tray" xml:space="preserve"><value>Windows tray menu</value></data>
-  <data name="WorkspaceShell_Setup" xml:space="preserve"><value>Setup and onboarding</value></data>
-  <data name="WorkspaceShell_Owner.Text" xml:space="preserve"><value>Owner</value></data>
-  <data name="WorkspaceShell_PersonalWorkspace.Text" xml:space="preserve"><value>Personal workspace</value></data>
-  <data name="WorkspaceShell_Pages.Text" xml:space="preserve"><value>Pages</value></data>
-  <data name="WorkspaceShell_SessionsLabel.Text" xml:space="preserve"><value>Sessions</value></data>
-  <data name="WorkspaceShell_MoreButton.Content" xml:space="preserve"><value>More</value></data>
-  <data name="WorkspaceShell_Refresh.Content" xml:space="preserve"><value>Refresh</value></data>
-  <data name="WorkspaceShell_OpenConnection.Content" xml:space="preserve"><value>Open Connection</value></data>
-  <data name="WorkspaceShell_Assistant.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Assistant</value></data>
-  <data name="WorkspaceShell_NewConversation.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>New conversation</value></data>
-  <data name="WorkspaceShell_NotificationsButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Notifications</value></data>
+  <data name="WorkspaceShell_SessionActionFailed" xml:space="preserve"><value>网关未接受该请求，请重试。</value></data>
+  <data name="WorkspaceShell_SessionConnectionChanged" xml:space="preserve"><value>网关连接已变化。请刷新会话确认结果后再试。</value></data>
+  <data name="WorkspaceShell_SessionActionTimedOut" xml:space="preserve"><value>网关未及时响应，结果未知。请先刷新该会话再重试。</value></data>
+  <data name="WorkspaceShell_SelectConversation.Text" xml:space="preserve"><value>选择或新建一个对话即可开始聊天。</value></data>
+  <data name="WorkspaceShell_ForkFailed" xml:space="preserve"><value>网关无法为此对话创建分支。</value></data>
+  <data name="WorkspaceShell_ForkUnsupported" xml:space="preserve"><value>当前网关不支持创建对话分支。请升级网关后再使用此操作。</value></data>
+  <data name="WorkspaceShell_CopyFailed" xml:space="preserve"><value>Windows 无法复制到剪贴板。</value></data>
+  <data name="WorkspaceShell_CopyEmpty" xml:space="preserve"><value>该会话没有可复制的消息。</value></data>
+  <data name="WorkspaceShell_HistoryUnsupported" xml:space="preserve"><value>当前网关不支持读取对话记录。请升级网关后再使用此操作。</value></data>
+  <data name="WorkspaceShell_ExportEmpty" xml:space="preserve"><value>该会话还没有对话记录。</value></data>
+  <data name="WorkspaceShell_ExportDone" xml:space="preserve"><value>已导出 {0} 条消息到 {1}。</value></data>
+  <data name="WorkspaceShell_AgentsEmpty" xml:space="preserve"><value>连接并刷新后可加载智能体。智能体配置请在桌面端中管理。</value></data>
+  <data name="WorkspaceShell_SelectAgentFirst" xml:space="preserve"><value>请先在“智能体”页面选择一个智能体以查看详情。</value></data>
+  <data name="WorkspaceShell_AgentSummary" xml:space="preserve"><value>{0} · {1} 个对话</value></data>
+  <data name="WorkspaceShell_WorkspaceNotReported" xml:space="preserve"><value>网关尚未上报工作区路径。</value></data>
+  <data name="WorkspaceShell_RecentWork" xml:space="preserve"><value>最近工作</value></data>
+  <data name="WorkspaceShell_Gateway" xml:space="preserve"><value>网关</value></data>
+  <data name="WorkspaceShell_DeviceAccess" xml:space="preserve"><value>设备访问</value></data>
+  <data name="WorkspaceShell_DeviceAccessDescription" xml:space="preserve"><value>在桌面端中管理权限与配对。</value></data>
+  <data name="WorkspaceShell_MetricsUnavailable" xml:space="preserve"><value>当前节点接口未上报 CPU、内存和存储占用。</value></data>
+  <data name="WorkspaceShell_DashboardsUnavailable" xml:space="preserve"><value>没有内置仪表板目录</value></data>
+  <data name="WorkspaceShell_DashboardsUnavailableDescription" xml:space="preserve"><value>当前网关客户端未提供仪表板目录或项目指标。请改为打开网关自带的仪表板。</value></data>
+  <data name="WorkspaceShell_NoDashboardSelected" xml:space="preserve"><value>暂无仪表板数据。用量与活动仍可从网关查看。</value></data>
+  <data name="WorkspaceShell_Installed" xml:space="preserve"><value>已安装</value></data>
+  <data name="WorkspaceShell_Discover" xml:space="preserve"><value>发现</value></data>
+  <data name="WorkspaceShell_Install" xml:space="preserve"><value>安装</value></data>
+  <data name="WorkspaceShell_PluginInventoryUnavailable" xml:space="preserve"><value>插件清单不可用</value></data>
+  <data name="WorkspaceShell_PluginsUnavailableDescription" xml:space="preserve"><value>当前网关客户端没有插件清单接口。可在“配置”和“技能”中查看网关支持的流程。</value></data>
+  <data name="WorkspaceShell_PluginCatalogUnavailable" xml:space="preserve"><value>插件目录不可用</value></data>
+  <data name="WorkspaceShell_PluginMutationsUnavailable" xml:space="preserve"><value>当前客户端没有受支持的插件管理接口，因此无法安装或卸载插件。</value></data>
+  <data name="WorkspaceShell_NotAvailable" xml:space="preserve"><value>此桌面端不支持</value></data>
+  <data name="WorkspaceShell_NoNativeWorkflow" xml:space="preserve"><value>当前网关客户端未提供该流程。请到网关仪表板中查看支持的扩展。</value></data>
+  <data name="WorkspaceShell_NoActivity" xml:space="preserve"><value>暂无最近活动</value></data>
+  <data name="WorkspaceShell_ActivityEmpty" xml:space="preserve"><value>网关推送智能体事件后，会显示在这里。</value></data>
+  <data name="WorkspaceShell_CompanionApp" xml:space="preserve"><value>LanFu Windows 桌面端</value></data>
+  <data name="WorkspaceShell_OpenChat" xml:space="preserve"><value>打开对话</value></data>
+  <data name="WorkspaceShell_Details" xml:space="preserve"><value>查看详情</value></data>
+  <data name="WorkspaceShell_AgentSettings" xml:space="preserve"><value>智能体设置</value></data>
+  <data name="WorkspaceShell_AgentFiles" xml:space="preserve"><value>工作区文件</value></data>
+  <data name="WorkspaceShell_ManageConnection" xml:space="preserve"><value>管理连接</value></data>
+  <data name="WorkspaceShell_ConnectionTimeline" xml:space="preserve"><value>连接事件时间线</value></data>
+  <data name="WorkspaceShell_PairedDevices" xml:space="preserve"><value>已配对设备</value></data>
+  <data name="WorkspaceShell_PairDevice" xml:space="preserve"><value>配对新设备</value></data>
+  <data name="WorkspaceShell_OpenDashboard" xml:space="preserve"><value>打开网关仪表板</value></data>
+  <data name="WorkspaceShell_Help" xml:space="preserve"><value>帮助</value></data>
+  <data name="WorkspaceShell_Documentation" xml:space="preserve"><value>文档</value></data>
+  <data name="WorkspaceShell_Support" xml:space="preserve"><value>获取帮助</value></data>
+  <data name="WorkspaceShell_Community" xml:space="preserve"><value>社区</value></data>
+  <data name="WorkspaceShell_ReleaseNotes" xml:space="preserve"><value>更新日志</value></data>
+  <data name="WorkspaceShell_GetApps" xml:space="preserve"><value>获取应用</value></data>
+  <data name="WorkspaceShell_CommandCenter" xml:space="preserve"><value>命令中心</value></data>
+  <data name="WorkspaceShell_SearchPages" xml:space="preserve"><value>搜索桌面端页面</value></data>
+  <data name="WorkspaceShell_Tray" xml:space="preserve"><value>Windows 托盘菜单</value></data>
+  <data name="WorkspaceShell_Setup" xml:space="preserve"><value>安装向导</value></data>
+  <data name="WorkspaceShell_Owner.Text" xml:space="preserve"><value>所有者</value></data>
+  <data name="WorkspaceShell_PersonalWorkspace.Text" xml:space="preserve"><value>个人工作区</value></data>
+  <data name="WorkspaceShell_Pages.Text" xml:space="preserve"><value>页面</value></data>
+  <data name="WorkspaceShell_SessionsLabel.Text" xml:space="preserve"><value>会话</value></data>
+  <data name="WorkspaceShell_MoreButton.Content" xml:space="preserve"><value>更多</value></data>
+  <data name="WorkspaceShell_Refresh.Content" xml:space="preserve"><value>刷新</value></data>
+  <data name="WorkspaceShell_OpenConnection.Content" xml:space="preserve"><value>打开“连接”</value></data>
+  <data name="WorkspaceShell_Assistant.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>助手</value></data>
+  <data name="WorkspaceShell_NewConversation.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>新建对话</value></data>
+  <data name="WorkspaceShell_NotificationsButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>通知</value></data>
   <data name="WorkspaceShell_Forward.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>前进</value></data>
   <data name="WorkspaceShell_Forward.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve"><value>前进</value></data>
-  <data name="WorkspaceShell_Back.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Back</value></data>
-  <data name="WorkspaceShell_TogglePane.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Toggle sidebar</value></data>
+  <data name="WorkspaceShell_Back.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>返回</value></data>
+  <data name="WorkspaceShell_TogglePane.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>切换侧边栏</value></data>
   <data name="WorkspaceShell_AutomationSendFailed" xml:space="preserve">
-    <value>The automation could not be sent. Your changes are still in the editor. Check the gateway connection and try again.</value>
+    <value>自动化未能发送，你的修改仍保留在编辑器中。请检查网关连接后重试。</value>
   </data>
   <data name="WorkspaceShell_AutomationSubmitted" xml:space="preserve">
-    <value>Changes sent. The list will update when the gateway confirms them.</value>
+    <value>修改已发送。网关确认后，列表会自动更新。</value>
   </data>
   <data name="AgentCreation_Title" xml:space="preserve"><value>新建智能体</value></data>
   <data name="AgentCreation_Creating" xml:space="preserve"><value>正在网关上创建智能体。请等待确认。</value></data>
@@ -7943,7 +7943,7 @@
     <value>设置期间验证的 Gateway 未连接。请检查“连接”，或在其可用时再次检查。</value>
   </data>
   <data name="ChatPage_SetupAuthorityUnconfirmed" xml:space="preserve">
-    <value>无法确认设置期间验证的 Gateway 和代理。请打开“连接”进行检查。</value>
+    <value>无法确认设置期间验证的 Gateway 和智能体。请打开“连接”进行检查。</value>
   </data>
   <data name="ChatPage_SetupRenderingFailed" xml:space="preserve">
     <value>无法显示聊天。请再次检查。如果问题仍然存在，请打开“诊断”。</value>
