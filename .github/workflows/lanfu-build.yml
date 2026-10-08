@@ -1,0 +1,90 @@
+# LanFu Windows Hub build (Phase 0: prove the installer builds in CI).
+#
+# Mirrors the recipe upstream uses in ci.yml: dotnet publish with the win-x64 RID and
+# a self-contained Windows App SDK payload, then Inno Setup with /Dpublish, /DvcRedist,
+# /DMyAppVersion and /DMyAppArch.
+name: LanFu Windows Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version stamped into the app and the installer"
+        required: true
+        default: "0.0.1"
+        type: string
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lanfu-win-build-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  APP_VERSION: ${{ inputs.version || '0.0.1' }}
+
+jobs:
+  build-x64:
+    name: Installer (x64)
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Show toolchain
+        shell: pwsh
+        run: |
+          dotnet --version
+          node --version
+          npm --version
+
+      - name: Restore
+        shell: pwsh
+        run: dotnet restore src/OpenClaw.Tray.WinUI -r win-x64
+
+      - name: Publish (x64, self-contained)
+        shell: pwsh
+        run: |
+          dotnet publish src/OpenClaw.Tray.WinUI -c Release -r win-x64 --self-contained --no-restore `
+            -o publish-x64 -p:Version=$env:APP_VERSION -p:InformationalVersion=$env:APP_VERSION
+          if (-not (Test-Path "publish-x64\OpenClaw.Tray.WinUI.exe")) { throw "publish output missing" }
+
+      - name: Download the VC++ redistributable
+        shell: pwsh
+        run: |
+          Invoke-WebRequest -Uri "https://aka.ms/vc14/vc_redist.x64.exe" -OutFile vc_redist.x64.exe -UseBasicParsing
+          $sig = Get-AuthenticodeSignature -LiteralPath vc_redist.x64.exe
+          Write-Output "vc_redist signature: $($sig.Status)"
+          if ($sig.Status -ne "Valid") { throw "vc_redist.x64.exe is not validly signed" }
+
+      - name: Build the installer
+        shell: pwsh
+        run: |
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) {
+            Write-Output "Inno Setup missing, installing..."
+            choco install innosetup --no-progress -y | Out-Null
+          }
+          if (-not (Test-Path $iscc)) { throw "ISCC.exe not found" }
+          & $iscc /DMyAppVersion=$env:APP_VERSION /DMyAppArch=x64 `
+            "/Dpublish=$env:GITHUB_WORKSPACE\publish-x64" `
+            "/DvcRedist=$env:GITHUB_WORKSPACE\vc_redist.x64.exe" `
+            "/O$env:GITHUB_WORKSPACE\Output" `
+            installer.iss
+
+      - name: List the output
+        shell: pwsh
+        run: Get-ChildItem Output | Select-Object Name, @{n="MB";e={[math]::Round($_.Length/1MB,1)}} | Format-Table -AutoSize | Out-String | Write-Output
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lanfu-windows-unbranded-${{ env.APP_VERSION }}
+          path: Output/**
+          retention-days: 14
