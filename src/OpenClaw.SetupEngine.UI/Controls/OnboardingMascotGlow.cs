@@ -40,7 +40,8 @@ internal sealed class OnboardingMascotGlow : IDisposable
     public void SetPalette(bool light, bool highContrast)
     {
         _visual.IsVisible = !highContrast;
-        _shadow.Color = light ? Color.FromArgb(255, 239, 75, 88) : Color.FromArgb(255, 255, 77, 77);
+        // 品牌化：辉光跟随 Artwork 的实时轮廓，颜色改用蓝凫品牌蓝（原为 OpenClaw 红）。
+        _shadow.Color = light ? Color.FromArgb(255, 74, 144, 217) : Color.FromArgb(255, 90, 160, 235);
         _shadow.Opacity = light ? 0.2f : 0.4f;
     }
 

@@ -2,6 +2,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Shapes;
 using Windows.Foundation;
 using Windows.UI;
@@ -161,7 +162,38 @@ internal sealed class OnboardingMascotDrawing
         _sweat = Shape(Figure(42, 21, true,
             Curve(38, 25, 40, 27, 42, 27), Curve(44, 27, 46, 25, 42, 21)), _sweatFill, _sweatTransform);
         _body.Children.Add(_sweat);
+        ApplyBrandArtwork();
         SetPalette(light: false, highContrast: false);
+    }
+
+    /// <summary>
+    /// 品牌化：上游造型是 OpenClaw 的红色卡通形象，与蓝凫品牌无关。
+    /// 保留全部动画宿主（浮动、倾斜、辉光、附属件）与动画代码路径不变，
+    /// 只把可见造型替换为蓝凫品牌图案（为深色界面调亮过的版本）。
+    /// </summary>
+    private void ApplyBrandArtwork()
+    {
+        // 隐藏上游矢量造型的所有部件；动画仍照常推进，只是不可见。
+        foreach (var child in _body.Children.ToArray())
+        {
+            if (child is UIElement element)
+            {
+                element.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        var brand = new Image
+        {
+            Width = 138,
+            Height = 138,
+            Stretch = Stretch.Uniform,
+            IsHitTestVisible = false,
+            Source = new BitmapImage(new Uri("ms-appx:///OpenClaw.SetupEngine.UI/Assets/Setup/LanfuMascot.png")),
+        };
+        // 画面为 168 单位；图案居中，上方留出学士帽等附属件的位置。
+        Canvas.SetLeft(brand, 15);
+        Canvas.SetTop(brand, 18);
+        _body.Children.Add(brand);
     }
 
     // Brand artwork intentionally preserves upstream colors; high contrast uses the user's system colors.
