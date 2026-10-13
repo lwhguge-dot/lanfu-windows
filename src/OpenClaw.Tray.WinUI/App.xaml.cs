@@ -43,10 +43,19 @@ namespace OpenClawTray;
 
 public partial class App : Application, OpenClawTray.Services.IAppCommands, IPermissionsPageRuntimeHost
 {
-    internal static readonly UpdatumManager AppUpdater = new("lwhguge-dot", "lanfu-windows")
+    internal static readonly UpdatumManager AppUpdater = new("lwhguge-dot", "LanFu")
     {
         FetchOnlyLatestRelease = true,
-        InstallUpdateSingleFileExecutableName = "LanFu",
+        // The whole product (gateway runtime + this shell) ships as one Inno installer
+        // published on the main LanFu repo; the lanfu-windows fork has no releases.
+        // The asset name carries no runtime identifier, so the default win-x64 asset
+        // pattern would never match it - pin the exact name.
+        AssetRegexPattern = "^LanFu-Setup-x64\\.exe$",
+        InstallUpdateWindowsExeType = UpdatumWindowsExeType.Installer,
+        // Silent in-place upgrade: the installer stops the old gateway and shell
+        // itself, preserves the token/model/connection wiring, and relaunches both
+        // when it finishes. No wizard, no questions.
+        InstallUpdateWindowsInstallerArguments = "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART",
     };
 
     private ITrayController? _trayController;
