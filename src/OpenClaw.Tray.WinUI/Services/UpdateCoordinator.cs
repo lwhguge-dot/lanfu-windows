@@ -444,6 +444,13 @@ internal sealed class UpdateCoordinator(
             // "remind me later" SkippedUpdateTag — the user is asking *now*.
             var shouldContinue = await CheckForUpdatesAsync(userInitiated: true);
             refreshStatus();
+            // Release the in-flight flag BEFORE awaiting a result dialog: the
+            // dialog can sit unacknowledged on a hidden window indefinitely
+            // (e.g. the Hub was closed), and that must not block the next
+            // manual check until an app restart. Re-entrancy past this point is
+            // tolerated: a concurrent dialog throws InvalidOperationException,
+            // which ShowUpdateInfoDialogAsync already swallows and logs.
+            Interlocked.Exchange(ref _manualUpdateCheckInFlight, 0);
 
             // The "Available" path already prompts via UpdateDialog. For the
             // other terminal states a manual click would otherwise produce no

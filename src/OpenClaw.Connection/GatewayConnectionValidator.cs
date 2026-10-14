@@ -32,7 +32,7 @@ internal sealed class GatewayConnectionValidator(
                 ? new GatewayCredential(ephemeral.Token, false, CredentialResolver.SourceDeviceToken)
                 : resolver.ResolveOperator(candidate, identity.DirectoryPath);
             if (ResolveCredential() is null)
-                return new(SetupCodeOutcome.ConnectionFailed, "Enter a setup code or shared token for this gateway.");
+                return new(SetupCodeOutcome.ConnectionFailed, "请输入此网关的设置代码或共享 Token。");
             SshTunnelConfig? config = null;
             long? generation = null;
             var url = candidate.Url;
@@ -53,7 +53,7 @@ internal sealed class GatewayConnectionValidator(
             {
                 var credential = ResolveCredential();
                 if (credential is null)
-                    return new(SetupCodeOutcome.ConnectionFailed, "Enter a setup code or shared token for this gateway.");
+                    return new(SetupCodeOutcome.ConnectionFailed, "请输入此网关的设置代码或共享 Token。");
                 var record = candidate with { Url = url, RequiresV2Signature = candidate.RequiresV2Signature || identity.UseV2Signature };
                 var permission = await authorize(record, credential, tunnel, config, generation, ct).ConfigureAwait(false);
                 if (!permission.Allowed)
@@ -125,7 +125,7 @@ internal sealed class GatewayConnectionValidator(
         {
             logger.Warn($"Native gateway validation failed: {ex.GetType().Name}");
             return new(SetupCodeOutcome.ConnectionFailed,
-                ex is OperationCanceledException ? "Gateway connection check timed out." : "Gateway connection check failed. Review the address, credentials and SSH settings.");
+                ex is OperationCanceledException ? "网关连接检查超时。" : "网关连接检查失败，请核对地址、凭据与 SSH 设置。");
         }
         finally
         {
@@ -172,7 +172,7 @@ internal sealed class GatewayConnectionValidator(
         void StatusChanged(object? sender, ConnectionStatus status)
         {
             if (status is ConnectionStatus.Error or ConnectionStatus.Disconnected)
-                completion.TrySetResult(new(SetupCodeOutcome.ConnectionFailed, "Gateway connection check failed."));
+                completion.TrySetResult(new(SetupCodeOutcome.ConnectionFailed, "网关连接检查失败。"));
         }
 
         client.HandshakeSucceeded += Handshake;

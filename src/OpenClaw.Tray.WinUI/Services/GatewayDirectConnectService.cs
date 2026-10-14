@@ -120,7 +120,7 @@ internal sealed class GatewayDirectConnectService
                     candidate, validationIdentity, cancellationToken);
                 cancellationToken.ThrowIfCancellationRequested();
                 if (validation.Outcome != SetupCodeOutcome.Success)
-                    return Failed(previousSnapshot, false, validation.ErrorMessage ?? "Gateway connection check failed.");
+                    return Failed(previousSnapshot, false, validation.ErrorMessage ?? "网关连接检查失败。");
                 candidate = candidate with
                 {
                     RequiresV2Signature = candidate.RequiresV2Signature || validationIdentity.UseV2Signature
