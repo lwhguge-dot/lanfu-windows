@@ -7906,7 +7906,7 @@
   <data name="WorkspaceShell_SearchPages" xml:space="preserve"><value>搜索桌面端页面</value></data>
   <data name="WorkspaceShell_Tray" xml:space="preserve"><value>Windows 托盘菜单</value></data>
   <data name="WorkspaceShell_Setup" xml:space="preserve"><value>安装向导</value></data>
-  <data name="WorkspaceShell_Owner.Text" xml:space="preserve"><value>所有者</value></data>
+  <data name="WorkspaceShell_Owner.Text" xml:space="preserve"><value>蓝凫</value></data>
   <data name="WorkspaceShell_PersonalWorkspace.Text" xml:space="preserve"><value>个人工作区</value></data>
   <data name="WorkspaceShell_Pages.Text" xml:space="preserve"><value>页面</value></data>
   <data name="WorkspaceShell_SessionsLabel.Text" xml:space="preserve"><value>会话</value></data>

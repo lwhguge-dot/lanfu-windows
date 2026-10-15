@@ -1,6 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Imaging;
 using OpenClawTray.A2UI.Rendering;
 using OpenClawTray.Presentation;
 using OpenClawTray.Services;
@@ -9,6 +10,13 @@ namespace OpenClawTray.Controls;
 
 public sealed partial class AgentIdentityBadge : UserControl
 {
+    // LanFu's preset agent identity references the gateway-served brand mark via a
+    // same-origin path, which the network policy below cannot fetch. The identical
+    // image ships inside the app, so agents without their own emoji or loadable
+    // avatar fall back to the bundled mark instead of a generic person glyph.
+    private static readonly BitmapImage BundledBrandMark =
+        new(new Uri("ms-appx:///Assets/lanfu-mark.png"));
+
     private WorkspaceAgent? _agent;
     private CancellationTokenSource? _loadCancellation;
 
@@ -34,14 +42,29 @@ public sealed partial class AgentIdentityBadge : UserControl
         AgentId.Text = agent.Id;
         Picture.Initials = agent.Emoji ?? string.Empty;
         Picture.ProfilePicture = null;
+        if (string.IsNullOrEmpty(agent.Emoji))
+            ApplyBrandFallback();
         AutomationProperties.SetName(this, $"{agent.Name}, {agent.Id}");
         ToolTipService.SetToolTip(this, $"{agent.Name} ({agent.Id})");
         if (IsLoaded) _ = LoadPictureAsync();
     }
 
+    private void ApplyBrandFallback()
+    {
+        if (Picture.ProfilePicture is null && string.IsNullOrEmpty(Picture.Initials))
+            Picture.ProfilePicture = BundledBrandMark;
+    }
+
     private async Task LoadPictureAsync()
     {
-        if (_loadCancellation is not null || Picture.ProfilePicture is not null || _agent?.AvatarUrl is not { } source)
+        if (_loadCancellation is not null || _agent?.AvatarUrl is not { } source)
+        {
+            ApplyBrandFallback();
+            return;
+        }
+        // The bundled mark is only a placeholder; a loadable custom avatar replaces it.
+        if (Picture.ProfilePicture is not null &&
+            !ReferenceEquals(Picture.ProfilePicture, BundledBrandMark))
             return;
         var cancellation = new CancellationTokenSource();
         _loadCancellation = cancellation;
@@ -63,6 +86,7 @@ public sealed partial class AgentIdentityBadge : UserControl
         catch (Exception ex)
         {
             Logger.Warn($"[Workspace] Agent picture failed to load: {ex.Message}");
+            ApplyBrandFallback();
         }
         finally
         {

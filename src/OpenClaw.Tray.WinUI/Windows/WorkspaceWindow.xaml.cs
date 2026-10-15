@@ -600,9 +600,17 @@ public sealed partial class WorkspaceWindow : WindowEx
     {
         OwnerName.Text = _identity.DisplayName ?? Text("Owner.Text");
         OwnerPicture.DisplayName = _identity.DisplayName ?? "";
+        // Without a user-set display name the owner card speaks as the product itself:
+        // the bundled LanFu brand mark instead of the generic person placeholder.
+        OwnerPicture.ProfilePicture = string.IsNullOrWhiteSpace(_identity.DisplayName)
+            ? OwnerBrandMark
+            : null;
         AutomationProperties.SetName(OwnerButton,
             string.IsNullOrWhiteSpace(OwnerName.Text) ? Text("Owner.Text") : OwnerName.Text);
     }
+
+    private static readonly Microsoft.UI.Xaml.Media.Imaging.BitmapImage OwnerBrandMark =
+        new(new Uri("ms-appx:///Assets/lanfu-mark.png"));
 
     private void OnAssistantChanged(object sender, SelectionChangedEventArgs e)
     {

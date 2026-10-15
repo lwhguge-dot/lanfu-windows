@@ -43,20 +43,34 @@ namespace OpenClawTray;
 
 public partial class App : Application, OpenClawTray.Services.IAppCommands, IPermissionsPageRuntimeHost
 {
-    internal static readonly UpdatumManager AppUpdater = new("lwhguge-dot", "LanFu")
+    // Dedicated fine-grained GitHub PAT with only "Public repositories" (read-only)
+    // access, used solely to raise update checks above the 60 req/h anonymous
+    // API limit that a shared office NAT or VPN exit exhausts. Empty = anonymous.
+    // The token grants no private access and cannot write anything.
+    internal const string UpdateCheckGitHubToken = "";
+
+    internal static readonly UpdatumManager AppUpdater = CreateAppUpdater();
+
+    private static UpdatumManager CreateAppUpdater()
     {
-        FetchOnlyLatestRelease = true,
-        // The whole product (gateway runtime + this shell) ships as one Inno installer
-        // published on the main LanFu repo; the lanfu-windows fork has no releases.
-        // The asset name carries no runtime identifier, so the default win-x64 asset
-        // pattern would never match it - pin the exact name.
-        AssetRegexPattern = "^LanFu-Setup-x64\\.exe$",
-        InstallUpdateWindowsExeType = UpdatumWindowsExeType.Installer,
-        // Silent in-place upgrade: the installer stops the old gateway and shell
-        // itself, preserves the token/model/connection wiring, and relaunches both
-        // when it finishes. No wizard, no questions.
-        InstallUpdateWindowsInstallerArguments = "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART",
-    };
+        var updater = new UpdatumManager("lwhguge-dot", "LanFu")
+        {
+            FetchOnlyLatestRelease = true,
+            // The whole product (gateway runtime + this shell) ships as one Inno installer
+            // published on the main LanFu repo; the lanfu-windows fork has no releases.
+            // The asset name carries no runtime identifier, so the default win-x64 asset
+            // pattern would never match it - pin the exact name.
+            AssetRegexPattern = "^LanFu-Setup-x64\\.exe$",
+            InstallUpdateWindowsExeType = UpdatumWindowsExeType.Installer,
+            // Silent in-place upgrade: the installer stops the old gateway and shell
+            // itself, preserves the token/model/connection wiring, and relaunches both
+            // when it finishes. No wizard, no questions.
+            InstallUpdateWindowsInstallerArguments = "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART",
+        };
+        if (!string.IsNullOrWhiteSpace(UpdateCheckGitHubToken))
+            updater.GithubClient.Credentials = new Octokit.Credentials(UpdateCheckGitHubToken);
+        return updater;
+    }
 
     private ITrayController? _trayController;
     private IWindowManager? _windowManager;
