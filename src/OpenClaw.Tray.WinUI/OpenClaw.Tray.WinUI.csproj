@@ -8,13 +8,11 @@
     <Nullable>enable</Nullable>
     <EnableMsixTooling>true</EnableMsixTooling>
     <ApplicationIcon>Assets\lanfu.ico</ApplicationIcon>
-    <AssemblyTitle>OpenClaw Companion</AssemblyTitle>
-    <FileDescription>OpenClaw Companion</FileDescription>
-    <Product>OpenClaw Companion</Product>
     <RootNamespace>OpenClawTray</RootNamespace>
     <AssemblyName>LanFu</AssemblyName>
     <Product>LanFu</Product>
     <AssemblyTitle>LanFu</AssemblyTitle>
+    <FileDescription>LanFu</FileDescription>
     <Company>LanFu Edu</Company>
     <!-- LanFu is a Simplified-Chinese product: zh-CN is the PRI's default (neutral)
          language, so every resource lookup that has no language-specific match - and
@@ -38,10 +36,21 @@
   <PropertyGroup Condition="'$(DevBuild)' == 'true'">
     <DefineConstants>$(DefineConstants);DEV_BUILD</DefineConstants>
     <AppIdentityMarker>dev</AppIdentityMarker>
-    <AssemblyTitle>OpenClaw Companion (Dev)</AssemblyTitle>
-    <FileDescription>OpenClaw Companion (Dev)</FileDescription>
-    <Product>OpenClaw Companion (Dev)</Product>
+    <AssemblyTitle>LanFu (Dev)</AssemblyTitle>
+    <FileDescription>LanFu (Dev)</FileDescription>
+    <Product>LanFu (Dev)</Product>
   </PropertyGroup>
+
+  <!-- Read-only GitHub PAT for authenticated update checks. The value comes from
+       the release pipeline's Actions secret via -p:UpdateCheckGitHubToken=... and
+       is baked in as assembly metadata; the token literal never lands in git.
+       Builds without the property (local, fork CI) fall back to anonymous checks. -->
+  <ItemGroup Condition="'$(UpdateCheckGitHubToken)' != ''">
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>UpdateCheckGitHubToken</_Parameter1>
+      <_Parameter2>$(UpdateCheckGitHubToken)</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
   <PropertyGroup Condition="'$(DevBuild)' != 'true'">
     <AppIdentityMarker>release</AppIdentityMarker>
   </PropertyGroup>

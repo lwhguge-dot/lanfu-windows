@@ -43,13 +43,22 @@ namespace OpenClawTray;
 
 public partial class App : Application, OpenClawTray.Services.IAppCommands, IPermissionsPageRuntimeHost
 {
-    // Dedicated fine-grained GitHub PAT with only "Public repositories" (read-only)
-    // access, used solely to raise update checks above the 60 req/h anonymous
-    // API limit that a shared office NAT or VPN exit exhausts. Empty = anonymous.
-    // The token grants no private access and cannot write anything.
-    internal const string UpdateCheckGitHubToken = "";
-
     internal static readonly UpdatumManager AppUpdater = CreateAppUpdater();
+
+    // A dedicated fine-grained GitHub PAT with only "Public repositories" (read-only)
+    // access, used solely to raise update checks above the 60 req/h anonymous API
+    // limit that a shared office NAT or VPN exit exhausts. It grants no private
+    // access and cannot write anything. The value is injected at build time by the
+    // release pipeline (MSBuild property -> AssemblyMetadata) so the literal never
+    // lands in git; builds without the property fall back to anonymous checks.
+    private static string? ResolveUpdateCheckToken()
+    {
+        var metadata = typeof(App).Assembly
+            .GetCustomAttributes<System.Reflection.AssemblyMetadataAttribute>()
+            .FirstOrDefault(attribute =>
+                string.Equals(attribute.Key, "UpdateCheckGitHubToken", StringComparison.Ordinal));
+        return string.IsNullOrWhiteSpace(metadata?.Value) ? null : metadata.Value;
+    }
 
     private static UpdatumManager CreateAppUpdater()
     {
@@ -67,8 +76,9 @@ public partial class App : Application, OpenClawTray.Services.IAppCommands, IPer
             // when it finishes. No wizard, no questions.
             InstallUpdateWindowsInstallerArguments = "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART",
         };
-        if (!string.IsNullOrWhiteSpace(UpdateCheckGitHubToken))
-            updater.GithubClient.Credentials = new Octokit.Credentials(UpdateCheckGitHubToken);
+        var token = ResolveUpdateCheckToken();
+        if (!string.IsNullOrEmpty(token))
+            updater.GithubClient.Credentials = new Octokit.Credentials(token);
         return updater;
     }
 
