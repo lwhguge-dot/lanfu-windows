@@ -36,14 +36,14 @@ public sealed partial class SettingsPage : Page
     private enum UninstallUiState { Idle, InProgress, Success, Failure }
 
     private static string GatewayIdleBodyText =>
-        $"Removes the WSL distro ({AppIdentity.SetupDistroName}), its disk image, autostart entry, and clears gateway credentials. Your MCP token is preserved. Onboarding will reset.";
+        "将删除 LanFu 网关的 WSL 发行版、其磁盘映像、开机启动项，并清除网关凭据。MCP 令牌会保留，配置向导将重置。";
 
 
     public SettingsPage()
     {
         InitializeComponent();
         LocalGatewaySetupDescriptionText.Text =
-            $"Launches setup to install the app-owned {AppIdentity.SetupDistroName} WSL distro or re-run provider and model setup for an existing one. Existing local gateways are only replaced after confirmation.";
+            "启动设置以安装由应用管理的 LanFu 网关 WSL 发行版，或为现有网关重新运行提供商与模型设置。只有在确认后才会替换现有本地网关。";
         GatewayBodyText.Text = GatewayIdleBodyText;
         _gatewayUptimeRefreshTimer.Tick += OnGatewayUptimeRefreshTimerTick;
         DataContextChanged += OnDataContextChanged;
@@ -290,8 +290,8 @@ public sealed partial class SettingsPage : Page
         try
         {
             new ToastContentBuilder()
-                .AddText("Test Notification")
-                .AddText("This is a test notification from OpenClaw settings.")
+                .AddText("测试通知")
+                .AddText("这是一条来自 LanFu 设置的测试通知。")
                 .Show();
         }
         catch (Exception ex)

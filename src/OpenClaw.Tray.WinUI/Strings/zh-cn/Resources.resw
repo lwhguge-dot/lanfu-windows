@@ -180,7 +180,7 @@
     <value>当连接的网关支持时，打开网关技能配置。</value>
   </data>
   <data name="StatusCronTitle.Text" xml:space="preserve">
-    <value>Cron / 计划</value>
+    <value>计划任务</value>
   </data>
   <data name="StatusCronDescription.Text" xml:space="preserve">
     <value>当连接的网关支持时，打开计划自动化控件。</value>
@@ -1747,7 +1747,7 @@
     <value>刷新</value>
   </data>
   <data name="CronPage_TextBlock_10.Text" xml:space="preserve">
-    <value>⏱️ Cron 作业</value>
+    <value>⏱️ 计划任务</value>
   </data>
   <data name="CronPage_TextBlock_29.Text" xml:space="preserve">
     <value>计划程序状态</value>
@@ -1771,7 +1771,7 @@
     <value>下次运行：</value>
   </data>
   <data name="CronPage_TextBlock_120.Text" xml:space="preserve">
-    <value>未配置 Cron 作业</value>
+    <value>未配置计划任务</value>
   </data>
   <data name="DebugPage_TextBlock_8.Text" xml:space="preserve">
     <value>🐛 调试</value>
@@ -2428,10 +2428,10 @@
     <value>未找到会话</value>
   </data>
   <data name="NotWiredInfoBar.Title" xml:space="preserve">
-    <value>Cron API 尚未接入</value>
+    <value>计划任务管理尚未接入</value>
   </data>
   <data name="NotWiredInfoBar.Message" xml:space="preserve">
-    <value>正在显示示例数据。OpenClawGatewayClient 中尚不提供 Cron 管理方法。</value>
+    <value>正在显示示例数据。当前版本暂不支持在此管理计划任务。</value>
   </data>
   <data name="FallbackInfoBar.Title" xml:space="preserve">
     <value>工作区文件</value>
@@ -2572,7 +2572,7 @@
     <value>音频反馈声音</value>
   </data>
   <data name="VoiceSettingsPage_VoiceHeader.Text" xml:space="preserve">
-    <value>Companion 语音</value>
+    <value>LanFu 语音</value>
   </data>
   <data name="VoiceSettingsPage_VoiceDescription.Text" xml:space="preserve">
     <value>选择朗读响应时使用的语音。</value>
@@ -2746,7 +2746,7 @@
     <value>删除失败(参见 Debug 日志)。</value>
   </data>
   <data name="VoiceSettingsPage_CompanionPreviewText" xml:space="preserve">
-    <value>您好!这是您的 Companion 在说话。</value>
+    <value>您好!这是 LanFu 在说话。</value>
   </data>
   <data name="VoiceSettingsPage_PiperPreviewFailed" xml:space="preserve">
     <value>预览失败(参见 Debug 日志)。</value>
@@ -2758,7 +2758,7 @@
     <value>正在播放...</value>
   </data>
   <data name="VoiceOverlayWindow_HeaderText.Text" xml:space="preserve">
-    <value>Companion 语音</value>
+    <value>LanFu 语音</value>
   </data>
   <data name="VoiceOverlayWindow_StatusBadge.Text" xml:space="preserve">
     <value>就绪</value>
@@ -3629,7 +3629,7 @@
     <value>要安装新的 WSL 网关吗？</value>
   </data>
   <data name="V2_Welcome_LocalReplaceDialog_Body" xml:space="preserve">
-    <value>当前的 LanFu WSL 网关及其 OpenClawGateway 发行版将被删除，随后安装并连接到新的本地 WSL 网关。</value>
+    <value>当前的 LanFu WSL 网关及其网关发行版将被删除，随后安装并连接到新的本地 WSL 网关。</value>
   </data>
   <data name="V2_Welcome_ExternalDialog_Title" xml:space="preserve">
     <value>要安装本地 WSL 网关吗？</value>
@@ -4971,7 +4971,7 @@
     <value>设置或重新配置本地网关</value>
   </data>
   <data name="SettingsPage_LocalGatewaySetup_Description.Text" xml:space="preserve">
-    <value>启动设置以安装由应用管理的 OpenClawGateway WSL 发行版，或为现有网关重新运行提供商和模型设置。只有在确认后才会替换现有本地网关。</value>
+    <value>启动设置以安装由应用管理的 LanFu 网关 WSL 发行版，或为现有网关重新运行提供商和模型设置。只有在确认后才会替换现有本地网关。</value>
   </data>
   <data name="SettingsPage_OpenLocalGatewaySetup.Content" xml:space="preserve">
     <value>打开设置</value>
@@ -4992,7 +4992,7 @@
     <value>通过 Windows 设置 → 应用删除 LanFu 不会清理本地网关(WSL 发行版、磁盘映像)。请先使用下面的“删除本地网关”,然后再卸载 LanFu。</value>
   </data>
   <data name="SettingsPage_RemovesTheWSLDistro.Text" xml:space="preserve">
-    <value>删除 WSL 发行版 (OpenClawGateway)、其磁盘映像、自动启动项,并清除网关凭据。您的 MCP 令牌将被保留。引导将重置。</value>
+    <value>删除 WSL 发行版 (LanFu 网关)、其磁盘映像、自动启动项,并清除网关凭据。您的 MCP 令牌将被保留。引导将重置。</value>
   </data>
   <data name="SettingsPage_RemoveLocalGateway.Content" xml:space="preserve">
     <value>删除本地网关</value>
@@ -5019,7 +5019,7 @@
     <value>未安装技能</value>
   </data>
   <data name="SkillsPage_SkillsExtendYourAgent.Text" xml:space="preserve">
-    <value>技能扩展智能体的能力。通过 CLI 或 ClawHub 安装技能。</value>
+    <value>技能扩展智能体的能力。通过 CLI 或技能市场安装技能。</value>
   </data>
   <data name="UsagePage_GatewayDisconnected.Title" xml:space="preserve">
     <value>网关已断开</value>
@@ -7237,7 +7237,7 @@
   <data name="Onboarding_NativeConnection_Checking" xml:space="preserve"><value>正在检查 Gateway 连接...</value></data>
   <data name="Onboarding_NativeConnection_Cancelled" xml:space="preserve"><value>连接尝试已取消。</value></data>
   <data name="Onboarding_NativeConnection_Checked" xml:space="preserve"><value>连接已检查，未保存任何内容。下一步将再次检查并保存此 Gateway。</value></data>
-  <data name="Onboarding_NativeConnection_Failed" xml:space="preserve"><value>无法确认连接结果。请先在 Companion Settings 中查看当前 Gateway，然后继续。</value></data>
+  <data name="Onboarding_NativeConnection_Failed" xml:space="preserve"><value>无法确认连接结果。请先在 LanFu 设置中查看当前 Gateway，然后继续。</value></data>
   <data name="Onboarding_V2_AlternativesTitle.Text" xml:space="preserve"><value>选择其他设置路径</value></data>
   <data name="Onboarding_V2_ExistingRoute.Header" xml:space="preserve"><value>现有 Gateway</value></data>
   <data name="Onboarding_V2_ExistingRoute.Description" xml:space="preserve"><value>使用已保存或现有连接。不安装 WSL。</value></data>
@@ -7248,7 +7248,7 @@
   <data name="Onboarding_V2_DeferredRoute.Header" xml:space="preserve"><value>稍后设置 Gateway</value></data>
   <data name="Onboarding_V2_DeferredRoute.Description" xml:space="preserve"><value>检查选择，不安装 WSL，也不更改已保存的 Gateway。</value></data>
   <data name="Onboarding_V2_HostUnavailable.Title" xml:space="preserve"><value>此设置主机中无法使用连接编辑器</value></data>
-  <data name="Onboarding_V2_HostUnavailable.Message" xml:space="preserve"><value>从 Companion 应用打开设置以使用原生连接编辑器。</value></data>
+  <data name="Onboarding_V2_HostUnavailable.Message" xml:space="preserve"><value>从 LanFu 应用打开设置以使用原生连接编辑器。</value></data>
   <data name="Onboarding_V2_Back.Content" xml:space="preserve"><value>返回</value></data>
   <data name="Onboarding_V2_CapabilitiesTitle.Text" xml:space="preserve"><value>电脑功能</value></data>
   <data name="Onboarding_V2_CapabilitiesIntro.Text" xml:space="preserve"><value>选择智能体可在此电脑上使用的功能。这些选择不会授予 Windows 隐私访问权限或执行批准。</value></data>
@@ -7268,7 +7268,7 @@
   <data name="Onboarding_V2_Ollama.Header" xml:space="preserve"><value>Ollama 共享</value></data>
   <data name="Onboarding_V2_Ollama.Description" xml:space="preserve"><value>共享现有的 Windows Ollama 服务。不会安装 Local AI 或更改功能配置文件。</value></data>
   <data name="Onboarding_V2_OllamaToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Ollama 共享</value></data>
-  <data name="Onboarding_V2_NativeSettings.Text" xml:space="preserve"><value>执行批准、沙盒授权、记住的捕获同意、MCP 令牌和语音配置仍在 Companion Settings 中管理。</value></data>
+  <data name="Onboarding_V2_NativeSettings.Text" xml:space="preserve"><value>执行批准、沙盒授权、记住的捕获同意、MCP 令牌和语音配置仍在 LanFu 设置中管理。</value></data>
   <data name="Onboarding_V2_Next.Content" xml:space="preserve"><value>下一步</value></data>
   <data name="Onboarding_V2_NetworkExplanation.Text" xml:space="preserve"><value>Local AI 需要 WSL 镜像网络。安装将更新全局 .wslconfig，并一次性停止所有正在运行的 WSL 发行版。不会删除任何发行版。请先保存 WSL 中的工作。</value></data>
   <data name="Onboarding_V2_NetworkConsent.Content" xml:space="preserve"><value>我允许此全局网络更改和一次性 WSL 关闭。</value></data>
@@ -7485,7 +7485,7 @@
   <data name="Onboarding_Copy_GatewayExistingTitle.Text" xml:space="preserve"><value>连接到现有 Gateway</value></data>
   <data name="Onboarding_Copy_GatewayExistingDescription.Text" xml:space="preserve"><value>无需在此电脑上安装 Gateway 或本地 AI 即可连接。</value></data>
   <data name="Onboarding_StartupWarning_Title" xml:space="preserve"><value>Windows 启动</value></data>
-  <data name="Onboarding_StartupWarning_Message" xml:space="preserve"><value>设置已完成，但 Windows 启动首选项未能完全应用。LanFu 将完成重启。您可以在 Companion Settings 中重试此首选项。</value></data>
+  <data name="Onboarding_StartupWarning_Message" xml:space="preserve"><value>设置已完成，但 Windows 启动首选项未能完全应用。LanFu 将完成重启。您可以在 LanFu 设置中重试此首选项。</value></data>
   <data name="Onboarding_RegistryRecovery_Title" xml:space="preserve"><value>Gateway 恢复需要处理</value></data>
   <data name="Onboarding_RegistryRecovery_Message" xml:space="preserve"><value>设置无法协调已保存的 Gateway 更改。未保存的编辑未被提交。请关闭并重新打开 LanFu，重新加载已保存的 Gateway 后再重试。</value></data>
   <data name="Onboarding_RestartRecovery_Title" xml:space="preserve"><value>完成打开 LanFu</value></data>
@@ -7505,7 +7505,7 @@
     <value>未启用</value>
   </data>
   <data name="Migration_InnoCompleted" xml:space="preserve">
-    <value>您的 LanFu 配置已迁移到 Store 版本。请关闭此消息以退出此应用，然后通过 Windows 设置 &gt; 应用 &gt; 已安装的应用卸载旧版 LanFu Companion，再打开 Store 版本。已迁移的配置和网关将予以保留。</value>
+    <value>您的 LanFu 配置已迁移到 Store 版本。请关闭此消息以退出此应用，然后通过 Windows 设置 &gt; 应用 &gt; 已安装的应用卸载旧版 LanFu 桌面端，再打开 Store 版本。已迁移的配置和网关将予以保留。</value>
   </data>
   <data name="Migration_InnoCheckFailed" xml:space="preserve">
     <value>LanFu 无法检查是否已完成向 Store 版本的迁移。此副本无法安全启动。请关闭其他 LanFu 进程后重试。请勿删除迁移数据或运行网关清理。</value>
@@ -7530,7 +7530,7 @@
     <value>暂不</value>
   </data>
   <data name="Migration_StoreCloseInno" xml:space="preserve">
-    <value>关闭旧版 LanFu Companion 应用，然后选择“{0}”以重试。选择“{1}”可退出此预览。请勿强制关闭旧版应用，也请暂时不要卸载。只有在此预览提示已记录迁移完成后，才可卸载旧版应用。</value>
+    <value>关闭旧版 LanFu 桌面端应用，然后选择“{0}”以重试。选择“{1}”可退出此预览。请勿强制关闭旧版应用，也请暂时不要卸载。只有在此预览提示已记录迁移完成后，才可卸载旧版应用。</value>
   </data>
   <data name="Migration_StoreRetry" xml:space="preserve">
     <value>重试</value>
@@ -7545,7 +7545,7 @@
     <value>LanFu 无法安全验证旧版配置是否可迁移。未记录完成状态，旧版应用也未被更改。请关闭此预览，稍后重试。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreAwaitingInnoRemoval" xml:space="preserve">
-    <value>LanFu 已记录迁移完成并保留了您的配置。请关闭此预览，通过 Windows 设置卸载旧版 LanFu Companion 应用，然后打开 Store 版本。请勿删除迁移数据或运行网关清理。</value>
+    <value>LanFu 已记录迁移完成并保留了您的配置。请关闭此预览，通过 Windows 设置卸载旧版 LanFu 桌面端应用，然后打开 Store 版本。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreYes" xml:space="preserve">
     <value>是</value>
@@ -7566,7 +7566,7 @@
     <value>LanFu 无法安全完成迁移。正常启动已被阻止，迁移收据已保留以供恢复。请关闭此预览，稍后重试。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreStartupRefused" xml:space="preserve">
-    <value>LanFu 已完成迁移，但 Windows 未允许在登录时启动 LanFu Companion。您的数据和设置均已迁移。若要自动启动 LanFu，请在 设置 > 应用 > 启动 中启用 LanFu Companion；如果启动由策略管理，请联系管理员。</value>
+    <value>LanFu 已完成迁移，但 Windows 未允许在登录时启动 LanFu 桌面端。您的数据和设置均已迁移。若要自动启动 LanFu，请在 设置 > 应用 > 启动 中启用 LanFu 桌面端；如果启动由策略管理，请联系管理员。</value>
   </data>
   <data name="Migration_StorePending" xml:space="preserve">
     <value>之前的迁移需要恢复或完成。此测试版本无法继续该迁移或正常启动。请关闭此预览。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
@@ -7617,7 +7617,7 @@
     <value>正在检查卸载状态并完成迁移...</value>
   </data>
   <data name="Migration2_CloseInno" xml:space="preserve">
-    <value>请通过托盘菜单关闭 LanFu Companion，然后选择“重试”。</value>
+    <value>请通过托盘菜单关闭 LanFu 桌面端，然后选择“重试”。</value>
   </data>
   <data name="Migration2_CloseInnoTitle" xml:space="preserve">
     <value>关闭旧版应用</value>
@@ -7631,7 +7631,7 @@
   <data name="Migration2_AwaitingRemoval" xml:space="preserve">
     <value>您的配置已通过验证，迁移完成状态已记录。
 
-1. 打开“已安装的应用”，仅卸载旧版 LanFu Companion 应用。请保留 Store 版本。
+1. 打开“已安装的应用”，仅卸载旧版 LanFu 桌面端应用。请保留 Store 版本。
 
 2. 返回此处并选择“重试”以验证移除状态并完成迁移。
 
@@ -7714,17 +7714,17 @@
   <data name="Onboarding_Native_CheckingSupport" xml:space="preserve"><value>正在检查原生 Gateway 支持情况...</value></data>
   <data name="Onboarding_Native_SupportAvailable" xml:space="preserve"><value>此设备支持原生 Gateway。</value></data>
   <data name="Onboarding_Native_SupportUnavailable" xml:space="preserve"><value>目前不支持原生 Gateway。请通过 Windows 更新安装 Windows Insider 内部版本 {0} 或更新的受支持版本，然后重新打开此页面。功能可用性可能因设备而异。</value></data>
-  <data name="Onboarding_Native_SupportCheckFailed" xml:space="preserve"><value>无法验证原生 Gateway 支持情况。请重新打开此页面以重试。如果检查持续失败，请更新或修复 Companion。</value></data>
+  <data name="Onboarding_Native_SupportCheckFailed" xml:space="preserve"><value>无法验证原生 Gateway 支持情况。请重新打开此页面以重试。如果检查持续失败，请更新或修复 LanFu。</value></data>
   <data name="Onboarding_Native_UnsupportedPlatform" xml:space="preserve"><value>原生 Gateway 设置需要受支持的 Windows 客户端系统。不支持 Windows Server。</value></data>
   <data name="Onboarding_Native_WindowsUpdate.Content" xml:space="preserve"><value>打开 Windows 更新</value></data>
   <data name="Onboarding_Native_Recommended.Text" xml:space="preserve"><value>推荐</value></data>
   <data name="Onboarding_Native_Alternatives.Header" xml:space="preserve"><value>其他 Gateway 选项</value></data>
   <data name="Onboarding_Native_UpdateLaunchFailed" xml:space="preserve"><value>无法打开 Windows 更新。请打开 Windows 设置，然后选择 Windows 更新。</value></data>
-  <data name="Onboarding_Native_Lifecycle.Text" xml:space="preserve"><value>在 Companion 中继续使用与 WSL 相同的 Gateway 设置向导。连接前将验证配置和健康状态。现有 WSL Gateway 和默认 LanFu 配置不会被替换。</value></data>
+  <data name="Onboarding_Native_Lifecycle.Text" xml:space="preserve"><value>在 LanFu 中继续使用与 WSL 相同的 Gateway 设置向导。连接前将验证配置和健康状态。现有 WSL Gateway 和默认 LanFu 配置不会被替换。</value></data>
   <data name="Onboarding_Native_Acquisition.Text" xml:space="preserve"><value>如果尚未安装 Gateway，设置程序将使用 WinGet 从 Microsoft Store 安装，并在验证包后自动继续。</value></data>
   <data name="Onboarding_Native_InstallingPackage" xml:space="preserve"><value>正在使用 WinGet 从 Microsoft Store 安装 Gateway...</value></data>
   <data name="Onboarding_Native_VerifyingPackage" xml:space="preserve"><value>WinGet 已完成。正在验证 Gateway 注册和执行别名，然后继续...</value></data>
-  <data name="Onboarding_Native_ProgressSubtitle.Text" xml:space="preserve"><value>Companion 将准备您的 Gateway，然后帮助您连接 AI。</value></data>
+  <data name="Onboarding_Native_ProgressSubtitle.Text" xml:space="preserve"><value>LanFu 将准备您的 Gateway，然后帮助您连接 AI。</value></data>
   <data name="Onboarding_Native_Recovery.Header" xml:space="preserve"><value>Gateway 恢复</value></data>
   <data name="Onboarding_Native_Terminal.Content" xml:space="preserve"><value>打开终端</value></data>
   <data name="Onboarding_Native_Restart.Content" xml:space="preserve"><value>重启 Gateway</value></data>
@@ -7735,21 +7735,21 @@
   <data name="Onboarding_Native_StepVerify" xml:space="preserve"><value>启动并验证 Gateway</value></data>
   <data name="Onboarding_Native_Retry.Content" xml:space="preserve"><value>重试设置</value></data>
   <data name="Onboarding_Native_Preview" xml:space="preserve"><value>仅供预览。不会安装任何包或启动 Gateway。</value></data>
-  <data name="Onboarding_Native_Review.Text" xml:space="preserve"><value>选择“设置 Gateway”即表示您授权 WinGet 从 Microsoft Store 安装缺失的 Gateway 包，并接受包协议和商店源协议。如果 WinGet 尚未就绪，设置可能会先修复应用安装程序再重试。Companion 随后将验证包、准备专用配置文件并打开 Gateway 设置。提供商登录仍需您交互操作。此方式不会安装 WSL、本地 AI 或 Tailscale。</value></data>
+  <data name="Onboarding_Native_Review.Text" xml:space="preserve"><value>选择“设置 Gateway”即表示您授权 WinGet 从 Microsoft Store 安装缺失的 Gateway 包，并接受包协议和商店源协议。如果 WinGet 尚未就绪，设置可能会先修复应用安装程序再重试。LanFu 随后将验证包、准备专用配置文件并打开 Gateway 设置。提供商登录仍需您交互操作。此方式不会安装 WSL、本地 AI 或 Tailscale。</value></data>
   <data name="Onboarding_Native_FeaturesNote.Text" xml:space="preserve"><value>节点模式连接 Gateway 并完成配对后，即可使用这些 Windows 功能。Windows 权限和命令审批仍然适用。</value></data>
   <data name="Onboarding_Native_ConfiguredTitle" xml:space="preserve"><value>原生 Gateway 已配置</value></data>
-  <data name="Onboarding_Native_CapabilitySummary" xml:space="preserve"><value>{0}。您可以在 Companion 设置中更改这些选项。</value></data>
+  <data name="Onboarding_Native_CapabilitySummary" xml:space="preserve"><value>{0}。您可以在 LanFu 设置中更改这些选项。</value></data>
   <data name="Onboarding_Native_ReviewTitle" xml:space="preserve"><value>已准备好设置您的原生 Gateway</value></data>
   <data name="Onboarding_Native_Start.Content" xml:space="preserve"><value>设置 Gateway</value></data>
   <data name="Onboarding_Native_Cancel.Content" xml:space="preserve"><value>取消设置</value></data>
   <data name="Onboarding_Native_Back.Content" xml:space="preserve"><value>返回</value></data>
-  <data name="Onboarding_Native_Open.Content" xml:space="preserve"><value>打开 Companion 进行连接</value></data>
+  <data name="Onboarding_Native_Open.Content" xml:space="preserve"><value>打开 LanFu 进行连接</value></data>
   <data name="Onboarding_Native_Available" xml:space="preserve"><value>已安装 Gateway 包 {0}。</value></data>
-  <data name="Onboarding_Native_InProgress" xml:space="preserve"><value>正在准备原生 Gateway。接下来请在 Companion 中连接 AI。</value></data>
+  <data name="Onboarding_Native_InProgress" xml:space="preserve"><value>正在准备原生 Gateway。接下来请在 LanFu 中连接 AI。</value></data>
   <data name="Onboarding_Native_Cancelled" xml:space="preserve"><value>设置已取消。WinGet 请求已取消，但 Windows 仍可能完成部署。已输入的配置保留在专用原生配置目录中。未删除任何 Gateway 包。</value></data>
-  <data name="Onboarding_Native_Configured" xml:space="preserve"><value>已在 {0} 验证 Gateway 配置和经过身份验证的健康状态。打开 Companion 启动 Gateway，并在连接设置中完成设备配对。您选择的 Windows 功能已保存。</value></data>
+  <data name="Onboarding_Native_Configured" xml:space="preserve"><value>已在 {0} 验证 Gateway 配置和经过身份验证的健康状态。打开 LanFu 启动 Gateway，并在连接设置中完成设备配对。您选择的 Windows 功能已保存。</value></data>
   <data name="Onboarding_Native_ReplaceDraftTitle" xml:space="preserve"><value>替换未完成的 Gateway 设置？</value></data>
-  <data name="Onboarding_Native_ReplaceDraftContent" xml:space="preserve"><value>这只会清除 Companion 设置草稿。现有工作区文件、配置和凭据将被保留。新设置使用新的配置文件，不会导入或更改旧 Gateway 数据、WSL 设置或包管理的配置文件。</value></data>
+  <data name="Onboarding_Native_ReplaceDraftContent" xml:space="preserve"><value>这只会清除 LanFu 设置草稿。现有工作区文件、配置和凭据将被保留。新设置使用新的配置文件，不会导入或更改旧 Gateway 数据、WSL 设置或包管理的配置文件。</value></data>
   <data name="Onboarding_Native_ReplaceDraftPrimary" xml:space="preserve"><value>丢弃并重新设置</value></data>
   <data name="Onboarding_Native_ReplaceDraftClose" xml:space="preserve"><value>保留草稿</value></data>
   <data name="Settings_PersistenceConflict_Title" xml:space="preserve"><value>无法保存设置</value></data>
@@ -7934,9 +7934,9 @@
   <data name="AgentCreation_Description" xml:space="preserve"><value>在已连接的网关上创建智能体及其工作区。此操作不会创建会话或更改当前聊天。</value></data>
   <data name="AgentCreation_PermissionRequired" xml:space="preserve"><value>请连接具有 operator.admin 权限的网关以创建智能体。</value></data>
   <data name="AgentCreation_Failed" xml:space="preserve"><value>无法确认智能体是否创建成功。请关闭此对话框并刷新智能体列表，然后再试。</value></data>
-  <data name="Onboarding_AiSetup_LocalState_ManagementBlocked" xml:space="preserve"><value>Companion 管理不可用。</value></data>
-  <data name="Onboarding_AiSetup_LocalOwnershipMissing" xml:space="preserve"><value>此配置文件没有现有本地 AI 提供程序的所有权凭据。如果 Companion 在之前的设置尝试中创建了它，请重新打开原始 Companion 配置文件并选择“恢复并使用本地 AI”。未进行任何更改。使用检测到的模型不会恢复 Companion 管理。</value></data>
-  <data name="Onboarding_AiSetup_LocalOwnershipInvalid" xml:space="preserve"><value>已保存的本地 AI 所有权、模型或网关配置不再匹配。请在原始 Companion 配置文件中检查原始网关及其模型设置，包括已修改的模型允许列表条目。保留所有权凭据，不要复制身份验证凭据或替换提供程序。</value></data>
+  <data name="Onboarding_AiSetup_LocalState_ManagementBlocked" xml:space="preserve"><value>LanFu 管理不可用。</value></data>
+  <data name="Onboarding_AiSetup_LocalOwnershipMissing" xml:space="preserve"><value>此配置文件没有现有本地 AI 提供程序的所有权凭据。如果 LanFu 在之前的设置尝试中创建了它，请重新打开原始 LanFu 配置文件并选择“恢复并使用本地 AI”。未进行任何更改。使用检测到的模型不会恢复 LanFu 管理。</value></data>
+  <data name="Onboarding_AiSetup_LocalOwnershipInvalid" xml:space="preserve"><value>已保存的本地 AI 所有权、模型或网关配置不再匹配。请在原始 LanFu 配置文件中检查原始网关及其模型设置，包括已修改的模型允许列表条目。保留所有权凭据，不要复制身份验证凭据或替换提供程序。</value></data>
   <data name="Onboarding_AiSetup_LocalOwnershipUnavailable" xml:space="preserve"><value>无法检查原始网关的所有权或配置。请重新连接原始网关并再次检查。未进行任何更改。</value></data>
   <data name="Onboarding_AiSetup_LocalOwnershipFiles" xml:space="preserve"><value>受管理的本地 AI 安装需要修复文件。请先在本地 AI 设置中停止运行时并解决原始网关路由问题，再修复文件。保留所有权凭据。</value></data>
   <data name="ChatPage_SetupUnavailable" xml:space="preserve">
