@@ -7951,4 +7951,11 @@ Vos paramètres, votre passerelle, vos fichiers et vos modèles restent en place
   <data name="ChatPage_SetupCheckAgain.Content" xml:space="preserve">
     <value>Vérifier à nouveau</value>
   </data>
+  <data name="Update_Message_IntegrityFailed" xml:space="preserve">
+    <value>Le paquet de mise à jour a échoué à la vérification, l'installation a donc été annulée.
+
+L'installateur téléchargé ne correspond pas à la version publiée (téléchargement interrompu ou fichier corrompu). Veuillez télécharger l'installateur depuis la page GitHub Release et l'installer manuellement.
+
+Détails : {0}</value>
+  </data>
 </root>

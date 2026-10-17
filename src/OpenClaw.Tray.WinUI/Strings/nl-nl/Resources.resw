@@ -7952,4 +7952,11 @@ Uw instellingen, gateway, bestanden en modellen blijven op hun plaats.</value>
   <data name="ChatPage_SetupCheckAgain.Content" xml:space="preserve">
     <value>Opnieuw controleren</value>
   </data>
+  <data name="Update_Message_IntegrityFailed" xml:space="preserve">
+    <value>Het updatepakket is niet geverifieerd, dus de installatie is geannuleerd.
+
+De gedownloade installatieprogramma komt niet overeen met de gepubliceerde release (onderbroken download of beschadigd bestand). Download het installatieprogramma van de GitHub Release-pagina en installeer het handmatig.
+
+Details: {0}</value>
+  </data>
 </root>

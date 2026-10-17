@@ -7951,4 +7951,11 @@
   <data name="ChatPage_SetupCheckAgain.Content" xml:space="preserve">
     <value>再次檢查</value>
   </data>
+  <data name="Update_Message_IntegrityFailed" xml:space="preserve">
+    <value>更新包驗證失敗，已取消安裝。
+
+下載的安裝程式可能與發行版本不一致（網路中斷或檔案損毀）。請開啟 GitHub Release 頁面手動下載安裝程式重新安裝。
+
+詳細資料：{0}</value>
+  </data>
 </root>

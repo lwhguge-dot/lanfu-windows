@@ -8005,4 +8005,11 @@ Suas configurações, gateway, arquivos e modelos permanecem onde estão.</value
   <data name="ChatPage_SetupCheckAgain.Content" xml:space="preserve">
     <value>Verificar novamente</value>
   </data>
+  <data name="Update_Message_IntegrityFailed" xml:space="preserve">
+    <value>O pacote de atualização falhou na verificação, então a instalação foi cancelada.
+
+O instalador baixado não corresponde à versão publicada (download interrompido ou arquivo corrompido). Baixe o instalador na página GitHub Release e instale manualmente.
+
+Detalhes: {0}</value>
+  </data>
 </root>
