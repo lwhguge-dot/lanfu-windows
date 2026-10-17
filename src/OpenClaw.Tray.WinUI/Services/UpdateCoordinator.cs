@@ -571,21 +571,21 @@ internal sealed class UpdateCoordinator(
             // the live install (0.4.8 shipped a mixed old/new install this way).
             Logger.Info($"Verifying downloaded installer integrity ({downloadedAsset.FileName})");
             var integrity = await UpdateIntegrityVerifier.VerifyAsync(downloadedAsset);
-            switch (integrity.Status)
+            switch (integrity.Verdict)
             {
-                case UpdateIntegrityVerifier.Status.Verified:
+                case UpdateIntegrityChecks.Verdict.Verified:
                     Logger.Info($"[Update] Integrity verified (sha256 {integrity.Actual})");
                     break;
-                case UpdateIntegrityVerifier.Status.ChecksumUnavailable:
-                case UpdateIntegrityVerifier.Status.Error:
+                case UpdateIntegrityChecks.Verdict.ChecksumUnavailable:
+                case UpdateIntegrityChecks.Verdict.Error:
                     // Older releases carry no SHA256SUMS.txt and a checksum fetch
                     // may fail offline; the size check already ran, so proceed
                     // rather than blocking legitimate updates.
-                    Logger.Warn($"[Update] Integrity check skipped: {integrity.Status} ({integrity.Detail})");
+                    Logger.Warn($"[Update] Integrity check skipped: {integrity.Verdict} ({integrity.Detail})");
                     break;
                 default:
                     Logger.Error(
-                        $"[Update] Integrity check failed: {integrity.Status} " +
+                        $"[Update] Integrity check failed: {integrity.Verdict} " +
                         $"expected={integrity.Expected} actual={integrity.Actual}");
                     try
                     {
@@ -600,7 +600,7 @@ internal sealed class UpdateCoordinator(
                         LocalizationHelper.GetString("Update_Title_Failed"),
                         LocalizationHelper.Format(
                             "Update_Message_IntegrityFailed",
-                            $"{integrity.Status}: expected {integrity.Expected ?? "?"}, got {integrity.Actual ?? "?"}"));
+                            $"{integrity.Verdict}: expected {integrity.Expected ?? "?"}, got {integrity.Actual ?? "?"}"));
                     return false;
             }
 
