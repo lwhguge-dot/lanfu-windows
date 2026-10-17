@@ -108,6 +108,7 @@ public abstract class WebSocketClientBase : IDisposable
     private string? _remoteCloseStatusDescription;
     private readonly SemaphoreSlim _sendLock = new(1, 1);
     private static readonly int[] BackoffMs = { 1000, 2000, 4000, 8000, 15000, 30000, 60000 };
+    private const int LoopbackReconnectCapMs = 15000;
     private static readonly TimeSpan DefaultConnectAttemptTimeout = TimeSpan.FromSeconds(15);
 
     protected readonly string _token;
@@ -590,6 +591,16 @@ public abstract class WebSocketClientBase : IDisposable
         }
     }
 
+    /// <summary>
+    /// True when the client targets a gateway on this machine. Local gateways are
+    /// supervised by the installer's watchdog, so a long reconnect backoff only makes
+    /// the app look disconnected while the gateway is still starting.
+    /// </summary>
+    private static bool IsLoopbackGatewayUrl(string url) =>
+        Uri.TryCreate(url, UriKind.Absolute, out var uri) &&
+        (uri.IsLoopback ||
+         string.Equals(uri.Host, "localhost", StringComparison.OrdinalIgnoreCase));
+
     protected async Task ReconnectWithBackoffAsync(
         ClientWebSocket? expectedSocket = null,
         long expectedGeneration = 0)
@@ -609,6 +620,13 @@ public abstract class WebSocketClientBase : IDisposable
                 && IsReconnectOwner(ownerSocket, ownerGeneration))
             {
                 var delay = BackoffMs[Math.Min(_reconnectAttempts, BackoffMs.Length - 1)];
+                // A supervised local gateway starts on this machine and can take up to a
+                // minute to become ready (state-migration probe + plugin/model load). The
+                // 30s/60s tail of the generic backoff leaves the shell showing "disconnected"
+                // long after the gateway is up, so cap loopback reconnects at 15s. Remote
+                // gateways keep the full backoff.
+                if (delay > LoopbackReconnectCapMs && IsLoopbackGatewayUrl(_gatewayUrl))
+                    delay = LoopbackReconnectCapMs;
                 // Add 0-25% jitter to prevent thundering herd when multiple clients
                 // (operator + node) reconnect on the same schedule
                 var jitter = Random.Shared.Next(0, delay / 4);
