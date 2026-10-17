@@ -376,3 +376,7 @@ Output/
 *.png.tmp
 vc_redist.x64.exe
 *.png
+
+# LanFu brand art referenced from XAML via ms-appx (must ship in the installer).
+# The blanket *.png rule above would otherwise keep it out of git.
+!src/OpenClaw.Tray.WinUI/Assets/lanfu-mark.png
