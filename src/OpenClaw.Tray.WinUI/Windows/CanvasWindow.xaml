@@ -29,7 +29,7 @@
 
             <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
                 <TextBlock Text="🎨" FontSize="20"/>
-                <TextBlock x:Uid="CanvasWindow_TextBlock_31" Text="OpenClaw Canvas" Style="{StaticResource CaptionTextBlockStyle}"
+                <TextBlock x:Uid="CanvasWindow_TextBlock_31" Text="LanFu Canvas" Style="{StaticResource CaptionTextBlockStyle}"
                            FontSize="13" VerticalAlignment="Center" FontWeight="SemiBold"/>
             </StackPanel>
 

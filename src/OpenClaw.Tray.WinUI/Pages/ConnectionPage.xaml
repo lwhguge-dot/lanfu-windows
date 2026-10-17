@@ -302,21 +302,21 @@
                                         x:Name="GatewayHostStartButton"
                                         Content="Start"
                                         Click="OnStartGatewayClicked"
-                                        ToolTipService.ToolTip="Run openclaw gateway start in WSL"
+                                        ToolTipService.ToolTip="Run lanfu gateway start in WSL"
                                         AutomationProperties.Name="Start WSL gateway"
                                         AutomationProperties.AutomationId="GatewayHostStartAction"/>
                                 <Button x:Uid="ConnectionPage_GatewayHostStopButton"
                                         x:Name="GatewayHostStopButton"
                                         Content="Stop"
                                         Click="OnStopGatewayClicked"
-                                        ToolTipService.ToolTip="Run openclaw gateway stop in WSL"
+                                        ToolTipService.ToolTip="Run lanfu gateway stop in WSL"
                                         AutomationProperties.Name="Stop WSL gateway"
                                         AutomationProperties.AutomationId="GatewayHostStopAction"/>
                                 <Button x:Uid="ConnectionPage_GatewayHostRestartButton"
                                         x:Name="GatewayHostRestartButton"
                                         Content="Restart"
                                         Click="OnRestartGatewayClicked"
-                                        ToolTipService.ToolTip="Run openclaw gateway restart in WSL"
+                                        ToolTipService.ToolTip="Run lanfu gateway restart in WSL"
                                         AutomationProperties.Name="Restart WSL gateway"
                                         AutomationProperties.AutomationId="GatewayHostRestartAction"/>
                             </StackPanel>
@@ -1090,7 +1090,7 @@
 
                     <!-- Setup code pane -->
                     <StackPanel x:Name="AddSetupCodePane" Spacing="8" Visibility="Collapsed">
-                        <TextBlock x:Uid="ConnectionPage_PasteASetupCode" Text="Paste a setup code from the gateway's QR or `openclaw qr` output."
+                        <TextBlock x:Uid="ConnectionPage_PasteASetupCode" Text="Paste a setup code from the gateway's QR or `lanfu qr` output."
                                    Style="{StaticResource CaptionTextBlockStyle}"
                                    Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                    TextWrapping="Wrap"/>
