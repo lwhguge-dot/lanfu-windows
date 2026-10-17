@@ -54,6 +54,18 @@ jobs:
         shell: pwsh
         run: dotnet restore src/OpenClaw.Tray.WinUI -r win-x64
 
+      # Guardrail tests: the installer integrity decision table and per-locale
+      # resource key parity. The full Tray suite still carries known upstream-
+      # contract failures, so CI runs only the checks LanFu owns — a regression
+      # here (like the missing locale key we shipped in 0.4.14) fails the build
+      # before the installer is produced.
+      - name: Run guardrail unit tests
+        shell: pwsh
+        run: |
+          dotnet test tests/OpenClaw.Tray.Tests/OpenClaw.Tray.Tests.csproj -c Release --nologo `
+            --filter "FullyQualifiedName~UpdateIntegrityChecksTests|FullyQualifiedName~AllLocales_HaveSameKeyCount|FullyQualifiedName~AllLocales_HaveExactlySameKeysAsEnUs" `
+            --logger "console;verbosity=normal"
+
       - name: Publish (x64, self-contained)
         shell: pwsh
         run: |
