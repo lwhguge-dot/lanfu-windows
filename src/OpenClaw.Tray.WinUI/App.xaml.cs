@@ -3957,7 +3957,7 @@ public partial class App : Application, OpenClawTray.Services.IAppCommands, IPer
         }
     }
 
-    private async Task ShowSetupRestartErrorAsync(string message, string title = "Restart OpenClaw")
+    private async Task ShowSetupRestartErrorAsync(string message, string title = "重启 LanFu")
     {
         var xamlRoot = _windowManager?.SetupXamlRoot;
         if (xamlRoot is null)

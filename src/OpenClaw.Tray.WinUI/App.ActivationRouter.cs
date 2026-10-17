@@ -91,10 +91,10 @@ public partial class App : IActivationPlanSink
 
                 dialog = new ContentDialog
                 {
-                    Title = "Confirm OpenClaw action",
-                    Content = $"A deep link wants to {confirmation.ActionDisplayName}.",
-                    PrimaryButtonText = "Allow",
-                    CloseButtonText = "Cancel",
+                    Title = "确认 LanFu 操作",
+                    Content = $"一个链接请求执行：{confirmation.ActionDisplayName}。",
+                    PrimaryButtonText = "允许",
+                    CloseButtonText = "取消",
                     DefaultButton = ContentDialogButton.Close,
                     XamlRoot = xamlRoot
                 };
