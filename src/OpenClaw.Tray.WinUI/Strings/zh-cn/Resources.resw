@@ -361,6 +361,13 @@
 
 {0}</value>
   </data>
+  <data name="Update_Message_IntegrityFailed" xml:space="preserve">
+    <value>更新包校验失败，已取消安装。
+
+下载的安装包可能与发布版本不一致（网络中断或文件损坏）。请打开 GitHub Release 页面手动下载安装包重新安装。
+
+详情：{0}</value>
+  </data>
   <data name="Update_Title_Skipped" xml:space="preserve">
     <value>已跳过更新检查</value>
   </data>

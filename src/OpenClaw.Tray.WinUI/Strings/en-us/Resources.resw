@@ -389,6 +389,13 @@
 
 {0}</value>
   </data>
+  <data name="Update_Message_IntegrityFailed" xml:space="preserve">
+    <value>The update package failed verification, so the install was cancelled.
+
+The downloaded installer does not match the published release (interrupted download or corrupted file). Please download the installer from the GitHub Release page and install it manually.
+
+Details: {0}</value>
+  </data>
   <data name="Update_Title_Skipped" xml:space="preserve">
     <value>Update check skipped</value>
   </data>

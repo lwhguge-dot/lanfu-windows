@@ -566,6 +566,44 @@ internal sealed class UpdateCoordinator(
                 return false;
             }
 
+            // A corrupt/partial download can still be "complete" from Updatum's
+            // point of view; verify the payload before letting Inno Setup touch
+            // the live install (0.4.8 shipped a mixed old/new install this way).
+            Logger.Info($"Verifying downloaded installer integrity ({downloadedAsset.FileName})");
+            var integrity = await UpdateIntegrityVerifier.VerifyAsync(downloadedAsset);
+            switch (integrity.Status)
+            {
+                case UpdateIntegrityVerifier.Status.Verified:
+                    Logger.Info($"[Update] Integrity verified (sha256 {integrity.Actual})");
+                    break;
+                case UpdateIntegrityVerifier.Status.ChecksumUnavailable:
+                case UpdateIntegrityVerifier.Status.Error:
+                    // Older releases carry no SHA256SUMS.txt and a checksum fetch
+                    // may fail offline; the size check already ran, so proceed
+                    // rather than blocking legitimate updates.
+                    Logger.Warn($"[Update] Integrity check skipped: {integrity.Status} ({integrity.Detail})");
+                    break;
+                default:
+                    Logger.Error(
+                        $"[Update] Integrity check failed: {integrity.Status} " +
+                        $"expected={integrity.Expected} actual={integrity.Actual}");
+                    try
+                    {
+                        downloadedAsset.SafeDeleteFile();
+                    }
+                    catch (Exception cleanupEx)
+                    {
+                        Logger.Warn($"[Update] Could not delete corrupt download: {cleanupEx.Message}");
+                    }
+                    await ShowUpdateInfoDialogAsync(
+                        "IntegrityFailed",
+                        LocalizationHelper.GetString("Update_Title_Failed"),
+                        LocalizationHelper.Format(
+                            "Update_Message_IntegrityFailed",
+                            $"{integrity.Status}: expected {integrity.Expected ?? "?"}, got {integrity.Actual ?? "?"}"));
+                    return false;
+            }
+
             Logger.Info("Installing update and restarting...");
             await updater.InstallUpdateAsync(downloadedAsset);
             return true;
