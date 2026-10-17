@@ -671,7 +671,7 @@ Use one of these options:
     <value>📋 Device ID Copied</value>
   </data>
   <data name="Toast_DeviceIdCopiedDetail" xml:space="preserve">
-    <value>Run: openclaw devices approve {0}...</value>
+    <value>Run: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_NodeSummaryCopied" xml:space="preserve">
     <value>📋 Node summary copied</value>
@@ -697,7 +697,7 @@ Use one of these options:
     <value>⏳ Awaiting Pairing Approval</value>
   </data>
   <data name="Toast_PairingPendingDetail" xml:space="preserve">
-    <value>Run on gateway: openclaw devices approve {0}...</value>
+    <value>Run on gateway: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_CopyPairingCommand" xml:space="preserve">
     <value>Copy approval command</value>
@@ -1714,7 +1714,7 @@ Use one of these options:
     <value>Connect</value>
   </data>
   <data name="ConnectionPage_TextBlock_111.Text" xml:space="preserve">
-    <value>Run 'openclaw qr' on the gateway host for a setup code, or find the token in the gateway's config.</value>
+    <value>Run 'lanfu qr' on the gateway host for a setup code, or find the token in the gateway's config.</value>
   </data>
   <data name="GatewayEmptyText.Text" xml:space="preserve">
     <value>No gateways found. Click Scan to search.</value>
@@ -1723,7 +1723,7 @@ Use one of these options:
     <value>🔑 Setup Code</value>
   </data>
   <data name="ConnectionPage_TextBlock_129.Text" xml:space="preserve">
-    <value>Paste a setup code from openclaw qr</value>
+    <value>Paste a setup code from lanfu qr</value>
   </data>
   <data name="ApplySetupCodeButton.Content" xml:space="preserve">
     <value>Apply</value>
@@ -3902,7 +3902,7 @@ Commands are blocked while sandboxing is unavailable because strict fallback blo
     <value>Run gateway doctor</value>
   </data>
   <data name="DiagnosticsPage_Card_Doctor.Description" xml:space="preserve">
-    <value>Opens a terminal and runs openclaw doctor to check the local gateway for problems.</value>
+    <value>Opens a terminal and runs lanfu doctor to check the local gateway for problems.</value>
   </data>
   <data name="DiagnosticsPage_Section_Share.Text" xml:space="preserve">
     <value>Share diagnostics with support</value>
@@ -4298,7 +4298,7 @@ Commands are blocked while sandboxing is unavailable because strict fallback blo
     <value>My gateway</value>
   </data>
   <data name="ConnectionPage_PasteASetupCode.Text" xml:space="preserve">
-    <value>Paste a setup code from the gateway's QR or `openclaw qr` output.</value>
+    <value>Paste a setup code from the gateway's QR or `lanfu qr` output.</value>
   </data>
   <data name="ConnectionPage_PasteSetupCodeHere2.PlaceholderText" xml:space="preserve">
     <value>Paste setup code here…</value>
@@ -6132,19 +6132,19 @@ Make sure the gateway is running.</value>
     <value>Open terminal</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Run openclaw gateway start in WSL</value>
+    <value>Run lanfu gateway start in WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Start WSL gateway</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Run openclaw gateway stop in WSL</value>
+    <value>Run lanfu gateway stop in WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Stop WSL gateway</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Run openclaw gateway restart in WSL</value>
+    <value>Run lanfu gateway restart in WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Restart WSL gateway</value>
@@ -8020,5 +8020,19 @@ Your settings, gateway, files, and models stay where they are.</value>
   </data>
   <data name="ChatPage_SetupCheckAgain.Content" xml:space="preserve">
     <value>Check again</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Title" xml:space="preserve">
+    <value>Turn off Node Sandbox?</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Content" xml:space="preserve">
+    <value>Agent-started Windows commands will run as you and may access your files, network, clipboard, and LanFu settings.
+
+This is the high-risk mode. Only do this if you trust the agent and need it for debugging or performance.</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Confirm" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
 </root>

@@ -632,7 +632,7 @@
     <value>📋 设备 ID 已复制</value>
   </data>
   <data name="Toast_DeviceIdCopiedDetail" xml:space="preserve">
-    <value>运行: openclaw devices approve {0}...</value>
+    <value>运行: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_NodeSummaryCopied" xml:space="preserve">
     <value>📋 节点摘要已复制</value>
@@ -656,7 +656,7 @@
     <value>⏳ 等待配对批准</value>
   </data>
   <data name="Toast_PairingPendingDetail" xml:space="preserve">
-    <value>在网关上运行: openclaw devices approve {0}...</value>
+    <value>在网关上运行: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_CopyPairingCommand" xml:space="preserve">
     <value>复制批准命令</value>
@@ -1667,7 +1667,7 @@
     <value>连接</value>
   </data>
   <data name="ConnectionPage_TextBlock_111.Text" xml:space="preserve">
-    <value>在网关主机上运行 'openclaw qr' 获取设置代码，或在网关配置中查找令牌。</value>
+    <value>在网关主机上运行 'lanfu qr' 获取设置代码，或在网关配置中查找令牌。</value>
   </data>
   <data name="GatewayEmptyText.Text" xml:space="preserve">
     <value>未找到网关。单击“扫描”进行搜索。</value>
@@ -1676,7 +1676,7 @@
     <value>🔑 设置代码</value>
   </data>
   <data name="ConnectionPage_TextBlock_129.Text" xml:space="preserve">
-    <value>粘贴来自 openclaw qr 的设置代码</value>
+    <value>粘贴来自 lanfu qr 的设置代码</value>
   </data>
   <data name="ApplySetupCodeButton.Content" xml:space="preserve">
     <value>应用</value>
@@ -3855,7 +3855,7 @@
     <value>运行 Gateway 诊断</value>
   </data>
   <data name="DiagnosticsPage_Card_Doctor.Description" xml:space="preserve">
-    <value>打开终端并运行 openclaw doctor，以检查本地 Gateway 是否存在问题。</value>
+    <value>打开终端并运行 lanfu doctor，以检查本地 Gateway 是否存在问题。</value>
   </data>
   <data name="DiagnosticsPage_Section_Share.Text" xml:space="preserve">
     <value>将诊断信息提供给支持人员</value>
@@ -4251,7 +4251,7 @@
     <value>我的网关</value>
   </data>
   <data name="ConnectionPage_PasteASetupCode.Text" xml:space="preserve">
-    <value>粘贴来自网关的 QR 码或 `openclaw qr` 输出的设置代码。</value>
+    <value>粘贴来自网关的 QR 码或 `lanfu qr` 输出的设置代码。</value>
   </data>
   <data name="ConnectionPage_PasteSetupCodeHere2.PlaceholderText" xml:space="preserve">
     <value>在此粘贴设置代码…</value>
@@ -6128,19 +6128,19 @@
     <value>打开终端</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>在 WSL 中运行 openclaw gateway start</value>
+    <value>在 WSL 中运行 lanfu gateway start</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>启动 WSL 网关</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>在 WSL 中运行 openclaw gateway stop</value>
+    <value>在 WSL 中运行 lanfu gateway stop</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>停止 WSL 网关</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>在 WSL 中运行 openclaw gateway restart</value>
+    <value>在 WSL 中运行 lanfu gateway restart</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>重启 WSL 网关</value>
@@ -7957,5 +7957,19 @@
   </data>
   <data name="ChatPage_SetupCheckAgain.Content" xml:space="preserve">
     <value>再次检查</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Title" xml:space="preserve">
+    <value>确定关闭节点沙盒？</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Content" xml:space="preserve">
+    <value>智能体启动的 Windows 命令将以你的身份运行，可能访问你的文件、网络、剪贴板和 LanFu 设置。
+
+这是高风险模式，仅在你信任智能体且确实需要调试或性能时才关闭。</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Confirm" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
+    <value>取消</value>
   </data>
 </root>

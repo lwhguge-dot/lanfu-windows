@@ -625,7 +625,7 @@ Utilisez l'une de ces options :
     <value>📋 Identifiant de la machine copié</value>
   </data>
   <data name="Toast_DeviceIdCopiedDetail" xml:space="preserve">
-    <value>Exécutez: openclaw devices approve {0}...</value>
+    <value>Exécutez: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_NodeSummaryCopied" xml:space="preserve">
     <value>📋 Résumé du nœud copié</value>
@@ -649,7 +649,7 @@ Utilisez l'une de ces options :
     <value>⏳ En attente de l'approbation de l'appairage</value>
   </data>
   <data name="Toast_PairingPendingDetail" xml:space="preserve">
-    <value>Lancer sur la passerelle : openclaw devices approve {0}...</value>
+    <value>Lancer sur la passerelle : lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_CopyPairingCommand" xml:space="preserve">
     <value>Copier la commande d'approbation</value>
@@ -1660,7 +1660,7 @@ Utilisez l'une de ces options :
     <value>Connecter</value>
   </data>
   <data name="ConnectionPage_TextBlock_111.Text" xml:space="preserve">
-    <value>Exécutez 'openclaw qr' sur l’hôte de passerelle pour obtenir un code de configuration, ou trouvez le jeton dans la configuration de la passerelle.</value>
+    <value>Exécutez 'lanfu qr' sur l’hôte de passerelle pour obtenir un code de configuration, ou trouvez le jeton dans la configuration de la passerelle.</value>
   </data>
   <data name="GatewayEmptyText.Text" xml:space="preserve">
     <value>Aucune passerelle trouvée. Cliquez sur Analyser pour rechercher.</value>
@@ -1669,7 +1669,7 @@ Utilisez l'une de ces options :
     <value>🔑 Code de configuration</value>
   </data>
   <data name="ConnectionPage_TextBlock_129.Text" xml:space="preserve">
-    <value>Collez un code de configuration depuis openclaw qr</value>
+    <value>Collez un code de configuration depuis lanfu qr</value>
   </data>
   <data name="ApplySetupCodeButton.Content" xml:space="preserve">
     <value>Appliquer</value>
@@ -3848,7 +3848,7 @@ Les commandes sont bloquées tant que le sandboxing est indisponible, car le blo
     <value>Exécuter le diagnostic de la Gateway</value>
   </data>
   <data name="DiagnosticsPage_Card_Doctor.Description" xml:space="preserve">
-    <value>Ouvre un terminal et exécute openclaw doctor pour vérifier si la Gateway locale présente des problèmes.</value>
+    <value>Ouvre un terminal et exécute lanfu doctor pour vérifier si la Gateway locale présente des problèmes.</value>
   </data>
   <data name="DiagnosticsPage_Section_Share.Text" xml:space="preserve">
     <value>Share diagnostics with support</value>
@@ -4244,7 +4244,7 @@ Les commandes sont bloquées tant que le sandboxing est indisponible, car le blo
     <value>Ma passerelle</value>
   </data>
   <data name="ConnectionPage_PasteASetupCode.Text" xml:space="preserve">
-    <value>Collez un code de configuration depuis le QR de la passerelle ou la sortie d'`openclaw qr`.</value>
+    <value>Collez un code de configuration depuis le QR de la passerelle ou la sortie d'`lanfu qr`.</value>
   </data>
   <data name="ConnectionPage_PasteSetupCodeHere2.PlaceholderText" xml:space="preserve">
     <value>Collez le code de configuration ici…</value>
@@ -6121,19 +6121,19 @@ Assurez-vous que la passerelle est en cours d'exécution.</value>
     <value>Ouvrir le terminal</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Exécuter openclaw gateway start dans WSL</value>
+    <value>Exécuter lanfu gateway start dans WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Démarrer la passerelle WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Exécuter openclaw gateway stop dans WSL</value>
+    <value>Exécuter lanfu gateway stop dans WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Arrêter la passerelle WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>Exécuter openclaw gateway restart dans WSL</value>
+    <value>Exécuter lanfu gateway restart dans WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Redémarrer la passerelle WSL</value>
@@ -7957,5 +7957,19 @@ Vos paramètres, votre passerelle, vos fichiers et vos modèles restent en place
 L'installateur téléchargé ne correspond pas à la version publiée (téléchargement interrompu ou fichier corrompu). Veuillez télécharger l'installateur depuis la page GitHub Release et l'installer manuellement.
 
 Détails : {0}</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Title" xml:space="preserve">
+    <value>Désactiver le bac à sable Node ?</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Content" xml:space="preserve">
+    <value>Les commandes Windows lancées par l'agent s'exécuteront sous votre compte et pourront accéder à vos fichiers, votre réseau, votre presse-papiers et aux paramètres LanFu.
+
+C'est le mode à haut risque. Ne le désactivez que si vous faites confiance à l'agent et en avez besoin pour le débogage ou les performances.</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Confirm" xml:space="preserve">
+    <value>Désactiver</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
+    <value>Annuler</value>
   </data>
 </root>

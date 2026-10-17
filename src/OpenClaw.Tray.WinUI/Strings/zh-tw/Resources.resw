@@ -625,7 +625,7 @@
     <value>📋 裝置 ID 已複製</value>
   </data>
   <data name="Toast_DeviceIdCopiedDetail" xml:space="preserve">
-    <value>執行: openclaw devices approve {0}...</value>
+    <value>執行: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_NodeSummaryCopied" xml:space="preserve">
     <value>📋 節點摘要已複製</value>
@@ -649,7 +649,7 @@
     <value>⏳ 等待配對批準</value>
   </data>
   <data name="Toast_PairingPendingDetail" xml:space="preserve">
-    <value>在閘道器上執行: openclaw devices approve {0}...</value>
+    <value>在閘道器上執行: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_CopyPairingCommand" xml:space="preserve">
     <value>複製核准命令</value>
@@ -1660,7 +1660,7 @@
     <value>連線</value>
   </data>
   <data name="ConnectionPage_TextBlock_111.Text" xml:space="preserve">
-    <value>在閘道主機上執行 'openclaw qr' 取得設定碼，或在閘道設定中尋找權杖。</value>
+    <value>在閘道主機上執行 'lanfu qr' 取得設定碼，或在閘道設定中尋找權杖。</value>
   </data>
   <data name="GatewayEmptyText.Text" xml:space="preserve">
     <value>找不到閘道。按一下「掃描」進行搜尋。</value>
@@ -1669,7 +1669,7 @@
     <value>🔑 設定碼</value>
   </data>
   <data name="ConnectionPage_TextBlock_129.Text" xml:space="preserve">
-    <value>貼上來自 openclaw qr 的設定碼</value>
+    <value>貼上來自 lanfu qr 的設定碼</value>
   </data>
   <data name="ApplySetupCodeButton.Content" xml:space="preserve">
     <value>套用</value>
@@ -3848,7 +3848,7 @@
     <value>執行 Gateway 診斷</value>
   </data>
   <data name="DiagnosticsPage_Card_Doctor.Description" xml:space="preserve">
-    <value>開啟終端機並執行 openclaw doctor，以檢查本機 Gateway 是否有問題。</value>
+    <value>開啟終端機並執行 lanfu doctor，以檢查本機 Gateway 是否有問題。</value>
   </data>
   <data name="DiagnosticsPage_Section_Share.Text" xml:space="preserve">
     <value>Share diagnostics with support</value>
@@ -4244,7 +4244,7 @@
     <value>我的閘道</value>
   </data>
   <data name="ConnectionPage_PasteASetupCode.Text" xml:space="preserve">
-    <value>貼上來自閘道的 QR 碼或 `openclaw qr` 輸出的設定代碼。</value>
+    <value>貼上來自閘道的 QR 碼或 `lanfu qr` 輸出的設定代碼。</value>
   </data>
   <data name="ConnectionPage_PasteSetupCodeHere2.PlaceholderText" xml:space="preserve">
     <value>在此貼上設定代碼…</value>
@@ -6121,19 +6121,19 @@
     <value>開啟終端機</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>在 WSL 中執行 openclaw gateway start</value>
+    <value>在 WSL 中執行 lanfu gateway start</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>啟動 WSL 閘道</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>在 WSL 中執行 openclaw gateway stop</value>
+    <value>在 WSL 中執行 lanfu gateway stop</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>停止 WSL 閘道</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>在 WSL 中執行 openclaw gateway restart</value>
+    <value>在 WSL 中執行 lanfu gateway restart</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>重新啟動 WSL 閘道</value>
@@ -7957,5 +7957,19 @@
 下載的安裝程式可能與發行版本不一致（網路中斷或檔案損毀）。請開啟 GitHub Release 頁面手動下載安裝程式重新安裝。
 
 詳細資料：{0}</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Title" xml:space="preserve">
+    <value>確定關閉節點沙箱？</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Content" xml:space="preserve">
+    <value>智能體啟動的 Windows 命令將以您的身分執行，可能存取您的檔案、網路、剪貼簿與 LanFu 設定。
+
+這是高風險模式，僅在您信任智能體且確實需要偵錯或效能時才關閉。</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Confirm" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
+    <value>取消</value>
   </data>
 </root>

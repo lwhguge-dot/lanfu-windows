@@ -626,7 +626,7 @@ Gebruik een van deze opties:
     <value>📋 Apparaat-ID gekopieerd</value>
   </data>
   <data name="Toast_DeviceIdCopiedDetail" xml:space="preserve">
-    <value>Voer uit: openclaw devices approve {0}...</value>
+    <value>Voer uit: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_NodeSummaryCopied" xml:space="preserve">
     <value>📋 Node-overzicht gekopieerd</value>
@@ -650,7 +650,7 @@ Gebruik een van deze opties:
     <value>⏳ Wachten op koppelingsgoedkeuring</value>
   </data>
   <data name="Toast_PairingPendingDetail" xml:space="preserve">
-    <value>Voer uit op gateway: openclaw devices approve {0}...</value>
+    <value>Voer uit op gateway: lanfu devices approve {0}...</value>
   </data>
   <data name="Toast_CopyPairingCommand" xml:space="preserve">
     <value>Goedkeuringsopdracht kopiëren</value>
@@ -1661,7 +1661,7 @@ Gebruik een van deze opties:
     <value>Verbinden</value>
   </data>
   <data name="ConnectionPage_TextBlock_111.Text" xml:space="preserve">
-    <value>Voer 'openclaw qr' uit op de gatewayhost voor een installatiecode, of zoek het token in de gatewayconfiguratie.</value>
+    <value>Voer 'lanfu qr' uit op de gatewayhost voor een installatiecode, of zoek het token in de gatewayconfiguratie.</value>
   </data>
   <data name="GatewayEmptyText.Text" xml:space="preserve">
     <value>Geen gateways gevonden. Klik op Scannen om te zoeken.</value>
@@ -1670,7 +1670,7 @@ Gebruik een van deze opties:
     <value>🔑 Installatiecode</value>
   </data>
   <data name="ConnectionPage_TextBlock_129.Text" xml:space="preserve">
-    <value>Plak een installatiecode van openclaw qr</value>
+    <value>Plak een installatiecode van lanfu qr</value>
   </data>
   <data name="ApplySetupCodeButton.Content" xml:space="preserve">
     <value>Toepassen</value>
@@ -3849,7 +3849,7 @@ Opdrachten worden geblokkeerd zolang sandboxing niet beschikbaar is, omdat strik
     <value>Gatewaydiagnose uitvoeren</value>
   </data>
   <data name="DiagnosticsPage_Card_Doctor.Description" xml:space="preserve">
-    <value>Opent een terminal en voert openclaw doctor uit om de lokale Gateway op problemen te controleren.</value>
+    <value>Opent een terminal en voert lanfu doctor uit om de lokale Gateway op problemen te controleren.</value>
   </data>
   <data name="DiagnosticsPage_Section_Share.Text" xml:space="preserve">
     <value>Share diagnostics with support</value>
@@ -4245,7 +4245,7 @@ Opdrachten worden geblokkeerd zolang sandboxing niet beschikbaar is, omdat strik
     <value>Mijn gateway</value>
   </data>
   <data name="ConnectionPage_PasteASetupCode.Text" xml:space="preserve">
-    <value>Plak een installatiecode van de QR van de gateway of de uitvoer van `openclaw qr`.</value>
+    <value>Plak een installatiecode van de QR van de gateway of de uitvoer van `lanfu qr`.</value>
   </data>
   <data name="ConnectionPage_PasteSetupCodeHere2.PlaceholderText" xml:space="preserve">
     <value>Plak hier de installatiecode…</value>
@@ -6122,19 +6122,19 @@ Controleer of de gateway actief is.</value>
     <value>Terminal openen</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>openclaw gateway start uitvoeren in WSL</value>
+    <value>lanfu gateway start uitvoeren in WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostStartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>WSL-gateway starten</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>openclaw gateway stop uitvoeren in WSL</value>
+    <value>lanfu gateway stop uitvoeren in WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostStopButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>WSL-gateway stoppen</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
-    <value>openclaw gateway restart uitvoeren in WSL</value>
+    <value>lanfu gateway restart uitvoeren in WSL</value>
   </data>
   <data name="ConnectionPage_GatewayHostRestartButton.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>WSL-gateway opnieuw starten</value>
@@ -7958,5 +7958,19 @@ Uw instellingen, gateway, bestanden en modellen blijven op hun plaats.</value>
 De gedownloade installatieprogramma komt niet overeen met de gepubliceerde release (onderbroken download of beschadigd bestand). Download het installatieprogramma van de GitHub Release-pagina en installeer het handmatig.
 
 Details: {0}</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Title" xml:space="preserve">
+    <value>Node-sandbox uitschakelen?</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Content" xml:space="preserve">
+    <value>Door de agent gestarte Windows-opdrachten worden als u uitgevoerd en kunnen toegang krijgen tot uw bestanden, netwerk, klembord en LanFu-instellingen.
+
+Dit is de hoogrisicomodus. Schakel dit alleen uit als u de agent vertrouwt en dit nodig hebt voor foutopsporing of prestaties.</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Confirm" xml:space="preserve">
+    <value>Uitschakelen</value>
+  </data>
+  <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
+    <value>Annuleren</value>
   </data>
 </root>

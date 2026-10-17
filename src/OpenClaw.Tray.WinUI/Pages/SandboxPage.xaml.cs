@@ -658,10 +658,10 @@ public sealed partial class SandboxPage : Page
 
             var dialog = new ContentDialog
             {
-                Title = "Turn off Node Sandbox?",
-                Content = "Agent-started Windows commands will run as you and may access your files, network, clipboard, and OpenClaw settings.\n\nThis is the high-risk mode. Only do this if you trust the agent and need it for debugging or performance.",
-                PrimaryButtonText = "Turn off",
-                CloseButtonText = "Cancel",
+                Title = L("Sandbox_DisableDialog_Title"),
+                Content = L("Sandbox_DisableDialog_Content"),
+                PrimaryButtonText = L("Sandbox_DisableDialog_Confirm"),
+                CloseButtonText = L("Sandbox_DisableDialog_Cancel"),
                 DefaultButton = ContentDialogButton.Close,
                 XamlRoot = this.XamlRoot,
             };
