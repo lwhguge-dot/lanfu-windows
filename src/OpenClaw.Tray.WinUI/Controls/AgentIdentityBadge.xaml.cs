@@ -76,6 +76,15 @@ public sealed partial class AgentIdentityBadge : UserControl
             if (Uri.TryCreate(source, UriKind.Absolute, out var uri) && uri.Scheme == Uri.UriSchemeHttps)
                 media.AllowHost(uri.Host);
             var image = await media.LoadImageAsync(source, cancellation.Token);
+            if (image is null)
+            {
+                // The preset avatar is a same-origin path ("/lanfu-mark.png") that the
+                // public-network resolver refuses to fetch, so LoadImageAsync returns
+                // null instead of throwing. Keep the bundled brand mark rather than
+                // blanking the badge (0.4.9 shipped a person glyph here for this reason).
+                ApplyBrandFallback();
+                return;
+            }
             if (!cancellation.IsCancellationRequested && IsLoaded && _agent?.AvatarUrl == source)
                 Picture.ProfilePicture = image;
         }
