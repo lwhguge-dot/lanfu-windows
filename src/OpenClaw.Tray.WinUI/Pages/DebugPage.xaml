@@ -86,6 +86,26 @@
                         </controls:InfoBar.Content>
                     </controls:InfoBar>
 
+                    <!-- Health snapshot: read-only summary refreshed on load and state changes. -->
+                    <StackPanel x:Name="HealthSection"
+                                Spacing="{StaticResource DiagSettingsCardSpacing}"
+                                Margin="0,0,0,12">
+                        <TextBlock x:Uid="DiagnosticsPage_Section_Health"
+                                   Text="Health"
+                                   Style="{StaticResource DiagSectionHeaderTextBlockStyle}"/>
+                        <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                                BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="16,12">
+                            <TextBlock x:Name="HealthSummaryText"
+                                       AutomationProperties.AutomationId="DiagnosticsHealthSummary"
+                                       TextWrapping="Wrap"
+                                       LineHeight="22"
+                                       Foreground="{ThemeResource TextFillColorSecondaryBrush}"/>
+                        </Border>
+                    </StackPanel>
+
                     <!-- Gateway — shown only when the active gateway is an
                          app-managed WSL distro we can run commands in
                          (CanControlWslGateway). Hidden for SSH/remote

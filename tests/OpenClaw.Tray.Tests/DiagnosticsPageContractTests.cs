@@ -23,6 +23,21 @@ public sealed class DiagnosticsPageContractTests
     }
 
     [Fact]
+    public void DebugPage_HostsHealthSnapshotSection()
+    {
+        var xaml = Read("src", "OpenClaw.Tray.WinUI", "Pages", "DebugPage.xaml");
+        var cs = Read("src", "OpenClaw.Tray.WinUI", "Pages", "DebugPage.xaml.cs");
+
+        Assert.Contains("DiagnosticsPage_Section_Health", xaml);
+        Assert.Contains("x:Name=\"HealthSummaryText\"", xaml);
+        Assert.Contains("DiagnosticsHealthSummary", xaml);
+        Assert.Contains("RefreshHealthSummary", cs);
+        Assert.Contains("DiagnosticsPage_Health_VersionFormat", cs);
+        Assert.Contains("DiagnosticsPage_Health_MemoryFormat", cs);
+        Assert.Contains("DiagnosticsPage_Health_CronFormat", cs);
+    }
+
+    [Fact]
     public void DebugPage_HasThreeTaskOrientedSections()
     {
         var xaml = Read("src", "OpenClaw.Tray.WinUI", "Pages", "DebugPage.xaml");

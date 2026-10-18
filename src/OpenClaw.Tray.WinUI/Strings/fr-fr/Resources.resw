@@ -7972,4 +7972,55 @@ C'est le mode à haut risque. Ne le désactivez que si vous faites confiance à 
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
+  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
+    <value>État</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
+    <value>Aperçu de l'état</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
+    <value>Version, mises à jour, mémoire et tâches planifiées en un coup d'œil.</value>
+  </data>
+  <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
+    <value>Version : {0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateNever" xml:space="preserve">
+    <value>Mise à jour : pas encore vérifiée</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateCheckedFormat" xml:space="preserve">
+    <value>Mise à jour : vérifiée {0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateAvailableFormat" xml:space="preserve">
+    <value>Mise à jour : {0} disponible (vérifiée {1})</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryFormat" xml:space="preserve">
+    <value>Mémoire : DREAMS.md mis à jour {0}, {1} notes</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryMissing" xml:space="preserve">
+    <value>Mémoire : DREAMS.md introuvable</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronFormat" xml:space="preserve">
+    <value>Tâches planifiées : {0} actives, dernière exécution {1}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronNone" xml:space="preserve">
+    <value>Tâches planifiées : aucune</value>
+  </data>
+  <data name="DiagnosticsPage_Health_Never" xml:space="preserve">
+    <value>jamais</value>
+  </data>
+  <data name="DiagnosticsPage_Health_JustNow" xml:space="preserve">
+    <value>à l'instant</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MinutesAgoFormat" xml:space="preserve">
+    <value>il y a {0} min</value>
+  </data>
+  <data name="DiagnosticsPage_Health_HoursAgoFormat" xml:space="preserve">
+    <value>il y a {0} h</value>
+  </data>
+  <data name="DiagnosticsPage_Health_DaysAgoFormat" xml:space="preserve">
+    <value>il y a {0} j</value>
+  </data>
+  <data name="DiagnosticsPage_Section_Health.Text" xml:space="preserve">
+    <value>État</value>
+  </data>
 </root>

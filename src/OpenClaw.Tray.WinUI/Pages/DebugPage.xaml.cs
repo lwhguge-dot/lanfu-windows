@@ -114,6 +114,11 @@ public sealed partial class DebugPage : Page
         // (per docs/DATA_FLOW_ARCHITECTURE.md reactive-by-default ethos).
         CurrentApp.SettingsChanged += OnSettingsChanged;
         UpdateStatusInfoBar();
+        RefreshHealthSummary();
+        if (CurrentApp.GatewayClient is { } healthClient)
+        {
+            _ = healthClient.RequestCronListAsync();
+        }
         UpdateGatewayDoctorCard();
         LoadDeviceIdentity();
         LoadOpenTelemetryEndpoint();
@@ -128,6 +133,12 @@ public sealed partial class DebugPage : Page
             case nameof(AppState.GatewaySelf):
                 UpdateStatusInfoBar();
                 UpdateGatewayDoctorCard();
+                RefreshHealthSummary();
+                break;
+            case nameof(AppState.UpdateInfo):
+            case nameof(AppState.CronList):
+            case nameof(AppState.LastCheckTime):
+                RefreshHealthSummary();
                 break;
         }
     }
@@ -191,6 +202,140 @@ public sealed partial class DebugPage : Page
                 StatusInfoBar.Message = LocalizationHelper.Format("DebugPage_StatusGatewayFormat", gatewayDisplay);
                 break;
         }
+    }
+
+
+    // ── Health snapshot ──────────────────────────────────────────────
+
+    /// <summary>
+    /// Build the read-only health summary: version, update check, memory
+    /// (DREAMS.md age + note count) and scheduled-job state. Local file reads
+    /// only; all gateway data comes from AppState so this can run on every
+    /// status change without extra RPCs.
+    /// </summary>
+    private void RefreshHealthSummary()
+    {
+        if (HealthSummaryText is null) return;
+
+        var lines = new List<string>
+        {
+            LocalizationHelper.Format("DiagnosticsPage_Health_VersionFormat", AppVersionInfo.DisplayVersion)
+        };
+
+        var update = _appState?.UpdateInfo;
+        if (update?.CheckedAt is null)
+        {
+            lines.Add(LocalizationHelper.GetString("DiagnosticsPage_Health_UpdateNever"));
+        }
+        else if (!string.IsNullOrWhiteSpace(update.LatestVersion))
+        {
+            lines.Add(LocalizationHelper.Format(
+                "DiagnosticsPage_Health_UpdateAvailableFormat",
+                update.LatestVersion,
+                FormatHealthRelativeTime(update.CheckedAt.Value)));
+        }
+        else
+        {
+            lines.Add(LocalizationHelper.Format(
+                "DiagnosticsPage_Health_UpdateCheckedFormat",
+                FormatHealthRelativeTime(update.CheckedAt.Value)));
+        }
+
+        lines.Add(BuildMemoryHealthLine());
+        lines.Add(BuildCronHealthLine());
+
+        HealthSummaryText.Text = string.Join(Environment.NewLine, lines);
+    }
+
+    private static string BuildMemoryHealthLine()
+    {
+        try
+        {
+            var workspace = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+                ".lanfu",
+                "workspace");
+            var dreams = Path.Combine(workspace, "DREAMS.md");
+            if (!File.Exists(dreams))
+            {
+                return LocalizationHelper.GetString("DiagnosticsPage_Health_MemoryMissing");
+            }
+
+            var notes = 0;
+            var memoryDir = Path.Combine(workspace, "memory");
+            if (Directory.Exists(memoryDir))
+            {
+                notes = Directory.EnumerateFiles(memoryDir, "*.md", SearchOption.AllDirectories).Count();
+            }
+
+            return LocalizationHelper.Format(
+                "DiagnosticsPage_Health_MemoryFormat",
+                FormatHealthRelativeTime(File.GetLastWriteTime(dreams)),
+                notes);
+        }
+        catch (Exception ex)
+        {
+            Logger.Debug($"[DebugPage] health memory check failed: {ex.Message}");
+            return LocalizationHelper.GetString("DiagnosticsPage_Health_MemoryMissing");
+        }
+    }
+
+    private string BuildCronHealthLine()
+    {
+        var cron = _appState?.CronList;
+        JsonElement jobs;
+        if (cron is { ValueKind: JsonValueKind.Object } cronObject &&
+            cronObject.TryGetProperty("jobs", out jobs) &&
+            jobs.ValueKind == JsonValueKind.Array &&
+            jobs.GetArrayLength() > 0)
+        {
+            var enabled = 0;
+            var lastRunMs = 0L;
+            foreach (var job in jobs.EnumerateArray())
+            {
+                if (job.ValueKind != JsonValueKind.Object) continue;
+                if (job.TryGetProperty("enabled", out var enabledEl) && enabledEl.ValueKind == JsonValueKind.True)
+                {
+                    enabled++;
+                }
+                if (job.TryGetProperty("lastRunAtMs", out var lastRunEl) && lastRunEl.ValueKind == JsonValueKind.Number)
+                {
+                    lastRunMs = Math.Max(lastRunMs, lastRunEl.GetInt64());
+                }
+            }
+
+            var lastRun = lastRunMs > 0
+                ? FormatHealthRelativeTime(DateTimeOffset.FromUnixTimeMilliseconds(lastRunMs).LocalDateTime)
+                : LocalizationHelper.GetString("DiagnosticsPage_Health_Never");
+            return LocalizationHelper.Format("DiagnosticsPage_Health_CronFormat", enabled, lastRun);
+        }
+
+        return LocalizationHelper.GetString("DiagnosticsPage_Health_CronNone");
+    }
+
+    private static string FormatHealthRelativeTime(DateTime when)
+    {
+        var delta = DateTime.Now - when;
+        if (delta.TotalMinutes < 1)
+        {
+            return LocalizationHelper.GetString("DiagnosticsPage_Health_JustNow");
+        }
+        if (delta.TotalHours < 1)
+        {
+            return LocalizationHelper.Format(
+                "DiagnosticsPage_Health_MinutesAgoFormat",
+                Math.Max(1, (int)delta.TotalMinutes));
+        }
+        if (delta.TotalDays < 1)
+        {
+            return LocalizationHelper.Format(
+                "DiagnosticsPage_Health_HoursAgoFormat",
+                (int)delta.TotalHours);
+        }
+
+        return LocalizationHelper.Format(
+            "DiagnosticsPage_Health_DaysAgoFormat",
+            (int)delta.TotalDays);
     }
 
     private void OnManageOnConnection(object sender, RoutedEventArgs e)

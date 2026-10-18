@@ -8035,4 +8035,55 @@ This is the high-risk mode. Only do this if you trust the agent and need it for 
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
+    <value>Health</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
+    <value>Health snapshot</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
+    <value>Version, update, memory and scheduled jobs at a glance.</value>
+  </data>
+  <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
+    <value>Version: {0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateNever" xml:space="preserve">
+    <value>Update: not checked yet</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateCheckedFormat" xml:space="preserve">
+    <value>Update: checked {0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateAvailableFormat" xml:space="preserve">
+    <value>Update: {0} available (checked {1})</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryFormat" xml:space="preserve">
+    <value>Memory: DREAMS.md updated {0}, {1} notes</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryMissing" xml:space="preserve">
+    <value>Memory: DREAMS.md not found</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronFormat" xml:space="preserve">
+    <value>Scheduled jobs: {0} enabled, last run {1}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronNone" xml:space="preserve">
+    <value>Scheduled jobs: none configured</value>
+  </data>
+  <data name="DiagnosticsPage_Health_Never" xml:space="preserve">
+    <value>never</value>
+  </data>
+  <data name="DiagnosticsPage_Health_JustNow" xml:space="preserve">
+    <value>just now</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MinutesAgoFormat" xml:space="preserve">
+    <value>{0} min ago</value>
+  </data>
+  <data name="DiagnosticsPage_Health_HoursAgoFormat" xml:space="preserve">
+    <value>{0} h ago</value>
+  </data>
+  <data name="DiagnosticsPage_Health_DaysAgoFormat" xml:space="preserve">
+    <value>{0} d ago</value>
+  </data>
+  <data name="DiagnosticsPage_Section_Health.Text" xml:space="preserve">
+    <value>Health</value>
+  </data>
 </root>

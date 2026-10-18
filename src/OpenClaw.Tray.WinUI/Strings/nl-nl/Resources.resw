@@ -7973,4 +7973,55 @@ Dit is de hoogrisicomodus. Schakel dit alleen uit als u de agent vertrouwt en di
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>Annuleren</value>
   </data>
+  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
+    <value>Statusoverzicht</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
+    <value>Versie, updates, geheugen en geplande taken in één oogopslag.</value>
+  </data>
+  <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
+    <value>Versie: {0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateNever" xml:space="preserve">
+    <value>Update: nog niet gecontroleerd</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateCheckedFormat" xml:space="preserve">
+    <value>Update: gecontroleerd {0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateAvailableFormat" xml:space="preserve">
+    <value>Update: {0} beschikbaar (gecontroleerd {1})</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryFormat" xml:space="preserve">
+    <value>Geheugen: DREAMS.md bijgewerkt {0}, {1} notities</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryMissing" xml:space="preserve">
+    <value>Geheugen: DREAMS.md niet gevonden</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronFormat" xml:space="preserve">
+    <value>Geplande taken: {0} actief, laatst uitgevoerd {1}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronNone" xml:space="preserve">
+    <value>Geplande taken: geen</value>
+  </data>
+  <data name="DiagnosticsPage_Health_Never" xml:space="preserve">
+    <value>nooit</value>
+  </data>
+  <data name="DiagnosticsPage_Health_JustNow" xml:space="preserve">
+    <value>zojuist</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MinutesAgoFormat" xml:space="preserve">
+    <value>{0} min geleden</value>
+  </data>
+  <data name="DiagnosticsPage_Health_HoursAgoFormat" xml:space="preserve">
+    <value>{0} uur geleden</value>
+  </data>
+  <data name="DiagnosticsPage_Health_DaysAgoFormat" xml:space="preserve">
+    <value>{0} dagen geleden</value>
+  </data>
+  <data name="DiagnosticsPage_Section_Health.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
 </root>

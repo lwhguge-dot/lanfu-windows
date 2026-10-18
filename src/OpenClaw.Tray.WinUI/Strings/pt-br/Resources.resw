@@ -8026,4 +8026,55 @@ Este é o modo de alto risco. Desative apenas se confiar no agente e precisar di
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
+  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
+    <value>Integridade</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
+    <value>Resumo da integridade</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
+    <value>Versão, atualizações, memória e tarefas agendadas de relance.</value>
+  </data>
+  <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
+    <value>Versão: {0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateNever" xml:space="preserve">
+    <value>Atualização: ainda não verificada</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateCheckedFormat" xml:space="preserve">
+    <value>Atualização: verificada {0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateAvailableFormat" xml:space="preserve">
+    <value>Atualização: {0} disponível (verificada {1})</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryFormat" xml:space="preserve">
+    <value>Memória: DREAMS.md atualizado {0}, {1} notas</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryMissing" xml:space="preserve">
+    <value>Memória: DREAMS.md não encontrado</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronFormat" xml:space="preserve">
+    <value>Tarefas agendadas: {0} ativas, última execução {1}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronNone" xml:space="preserve">
+    <value>Tarefas agendadas: nenhuma</value>
+  </data>
+  <data name="DiagnosticsPage_Health_Never" xml:space="preserve">
+    <value>nunca</value>
+  </data>
+  <data name="DiagnosticsPage_Health_JustNow" xml:space="preserve">
+    <value>agora mesmo</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MinutesAgoFormat" xml:space="preserve">
+    <value>há {0} min</value>
+  </data>
+  <data name="DiagnosticsPage_Health_HoursAgoFormat" xml:space="preserve">
+    <value>há {0} h</value>
+  </data>
+  <data name="DiagnosticsPage_Health_DaysAgoFormat" xml:space="preserve">
+    <value>há {0} d</value>
+  </data>
+  <data name="DiagnosticsPage_Section_Health.Text" xml:space="preserve">
+    <value>Integridade</value>
+  </data>
 </root>

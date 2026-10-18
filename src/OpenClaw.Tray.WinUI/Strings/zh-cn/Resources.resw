@@ -7972,4 +7972,55 @@
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
+  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
+    <value>运行状态</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
+    <value>运行状态快照</value>
+  </data>
+  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
+    <value>版本、更新、记忆整理与定时任务一览。</value>
+  </data>
+  <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
+    <value>版本：{0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateNever" xml:space="preserve">
+    <value>更新：尚未检查</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateCheckedFormat" xml:space="preserve">
+    <value>更新：上次检查于{0}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_UpdateAvailableFormat" xml:space="preserve">
+    <value>更新：发现 {0}（检查于{1}）</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryFormat" xml:space="preserve">
+    <value>记忆：DREAMS.md 更新于{0}，笔记 {1} 篇</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MemoryMissing" xml:space="preserve">
+    <value>记忆：未找到 DREAMS.md</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronFormat" xml:space="preserve">
+    <value>定时任务：已启用 {0} 个，最近运行 {1}</value>
+  </data>
+  <data name="DiagnosticsPage_Health_CronNone" xml:space="preserve">
+    <value>定时任务：暂无任务</value>
+  </data>
+  <data name="DiagnosticsPage_Health_Never" xml:space="preserve">
+    <value>从未</value>
+  </data>
+  <data name="DiagnosticsPage_Health_JustNow" xml:space="preserve">
+    <value>刚刚</value>
+  </data>
+  <data name="DiagnosticsPage_Health_MinutesAgoFormat" xml:space="preserve">
+    <value>{0} 分钟前</value>
+  </data>
+  <data name="DiagnosticsPage_Health_HoursAgoFormat" xml:space="preserve">
+    <value>{0} 小时前</value>
+  </data>
+  <data name="DiagnosticsPage_Health_DaysAgoFormat" xml:space="preserve">
+    <value>{0} 天前</value>
+  </data>
+  <data name="DiagnosticsPage_Section_Health.Text" xml:space="preserve">
+    <value>运行状态</value>
+  </data>
 </root>
