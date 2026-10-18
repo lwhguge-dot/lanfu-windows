@@ -7512,7 +7512,7 @@
     <value>未启用</value>
   </data>
   <data name="Migration_InnoCompleted" xml:space="preserve">
-    <value>您的 LanFu 配置已迁移到 Store 版本。请关闭此消息以退出此应用，然后通过 Windows 设置 &gt; 应用 &gt; 已安装的应用卸载旧版 LanFu 桌面端，再打开 Store 版本。已迁移的配置和网关将予以保留。</value>
+    <value>您的 LanFu 配置已迁移到 Store 版本。请关闭此消息以退出此应用，然后通过 Windows 设置 &gt; 应用 &gt; 已安装的应用卸载旧版 OpenClaw Companion，再打开 Store 版本。已迁移的配置和网关将予以保留。</value>
   </data>
   <data name="Migration_InnoCheckFailed" xml:space="preserve">
     <value>LanFu 无法检查是否已完成向 Store 版本的迁移。此副本无法安全启动。请关闭其他 LanFu 进程后重试。请勿删除迁移数据或运行网关清理。</value>
@@ -7537,7 +7537,7 @@
     <value>暂不</value>
   </data>
   <data name="Migration_StoreCloseInno" xml:space="preserve">
-    <value>关闭旧版 LanFu 桌面端应用，然后选择“{0}”以重试。选择“{1}”可退出此预览。请勿强制关闭旧版应用，也请暂时不要卸载。只有在此预览提示已记录迁移完成后，才可卸载旧版应用。</value>
+    <value>关闭旧版 OpenClaw Companion 应用，然后选择“{0}”以重试。选择“{1}”可退出此预览。请勿强制关闭旧版应用，也请暂时不要卸载。只有在此预览提示已记录迁移完成后，才可卸载旧版应用。</value>
   </data>
   <data name="Migration_StoreRetry" xml:space="preserve">
     <value>重试</value>
@@ -7552,7 +7552,7 @@
     <value>LanFu 无法安全验证旧版配置是否可迁移。未记录完成状态，旧版应用也未被更改。请关闭此预览，稍后重试。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreAwaitingInnoRemoval" xml:space="preserve">
-    <value>LanFu 已记录迁移完成并保留了您的配置。请关闭此预览，通过 Windows 设置卸载旧版 LanFu 桌面端应用，然后打开 Store 版本。请勿删除迁移数据或运行网关清理。</value>
+    <value>LanFu 已记录迁移完成并保留了您的配置。请关闭此预览，通过 Windows 设置卸载旧版 OpenClaw Companion 应用，然后打开 Store 版本。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreYes" xml:space="preserve">
     <value>是</value>
@@ -7573,7 +7573,7 @@
     <value>LanFu 无法安全完成迁移。正常启动已被阻止，迁移收据已保留以供恢复。请关闭此预览，稍后重试。请勿删除迁移数据或运行网关清理。</value>
   </data>
   <data name="Migration_StoreStartupRefused" xml:space="preserve">
-    <value>LanFu 已完成迁移，但 Windows 未允许在登录时启动 LanFu 桌面端。您的数据和设置均已迁移。若要自动启动 LanFu，请在 设置 > 应用 > 启动 中启用 LanFu 桌面端；如果启动由策略管理，请联系管理员。</value>
+    <value>LanFu 已完成迁移，但 Windows 未允许在登录时启动 OpenClaw Companion。您的数据和设置均已迁移。若要自动启动 LanFu，请在 设置 > 应用 > 启动 中启用 OpenClaw Companion；如果启动由策略管理，请联系管理员。</value>
   </data>
   <data name="Migration_StorePending" xml:space="preserve">
     <value>之前的迁移需要恢复或完成。此测试版本无法继续该迁移或正常启动。请关闭此预览。请勿卸载旧版应用、删除迁移数据或运行网关清理。</value>
@@ -7624,7 +7624,7 @@
     <value>正在检查卸载状态并完成迁移...</value>
   </data>
   <data name="Migration2_CloseInno" xml:space="preserve">
-    <value>请通过托盘菜单关闭 LanFu 桌面端，然后选择“重试”。</value>
+    <value>请通过托盘菜单关闭 OpenClaw Companion，然后选择“重试”。</value>
   </data>
   <data name="Migration2_CloseInnoTitle" xml:space="preserve">
     <value>关闭旧版应用</value>
@@ -7638,7 +7638,7 @@
   <data name="Migration2_AwaitingRemoval" xml:space="preserve">
     <value>您的配置已通过验证，迁移完成状态已记录。
 
-1. 打开“已安装的应用”，仅卸载旧版 LanFu 桌面端应用。请保留 Store 版本。
+1. 打开“已安装的应用”，仅卸载旧版 OpenClaw Companion 应用。请保留 Store 版本。
 
 2. 返回此处并选择“重试”以验证移除状态并完成迁移。
 

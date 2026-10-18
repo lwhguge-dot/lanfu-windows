@@ -69,7 +69,7 @@ public sealed class OnboardingCopyRefinementTests
     public void WelcomeAndGatewayCopyIsTruthfulLocalizedAndUsesRepositorySafetyUrl()
     {
         var strings = Strings("en-us");
-        Assert.Equal("OpenClaw is your AI assistant for getting things done on your PC.",
+        Assert.Equal("LanFu is your AI assistant for getting things done on your PC.",
             strings["Onboarding_Flow_WelcomeDescription.Text"]);
         Assert.Equal("Before you get started", strings["Onboarding_V2_WelcomeTrust.Title"]);
         Assert.Contains("change or delete files", strings["Onboarding_V2_WelcomeTrust.Message"]);
@@ -78,7 +78,7 @@ public sealed class OnboardingCopyRefinementTests
         Assert.Equal("Install a local Gateway (WSL)", strings["Onboarding_Copy_GatewayLocalTitle.Text"]);
         Assert.Equal("Install a local Gateway (WSL), recommended",
             strings["Onboarding_Copy_GatewayLocalChoice.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name"]);
-        Assert.Equal("Install a private OpenClaw Gateway in WSL.", strings["Onboarding_Copy_GatewayLocalDescription.Text"]);
+        Assert.Equal("Install a private LanFu Gateway in WSL.", strings["Onboarding_Copy_GatewayLocalDescription.Text"]);
         Assert.DoesNotContain("directly on Windows", string.Join("\n", strings.Where(pair => pair.Key.StartsWith("Onboarding_Copy_")).Select(pair => pair.Value)));
         Assert.Equal("Your PC supports Local AI", strings["Onboarding_Welcome_LocalAiAvailableBadge.Text"]);
         var welcome = XDocument.Parse(Read(@"src\OpenClaw.SetupEngine.UI\Pages\SecurityNoticePage.xaml"));

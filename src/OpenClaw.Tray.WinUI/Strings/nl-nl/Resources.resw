@@ -7506,7 +7506,7 @@ Het binaire bestand wxc-exec is niet gevonden. {1} Als dit een ontwikkelaarsbuil
     <value>inactief</value>
   </data>
   <data name="Migration_InnoCompleted" xml:space="preserve">
-    <value>Uw LanFu-configuratie is gemigreerd naar de Store-versie. Sluit dit bericht om deze app af te sluiten. Verwijder daarna de vorige LanFu Companion-app via Windows-instellingen &gt; Apps &gt; Geïnstalleerde apps en open de Store-versie. Uw gemigreerde configuratie en gateway blijven behouden.</value>
+    <value>Uw LanFu-configuratie is gemigreerd naar de Store-versie. Sluit dit bericht om deze app af te sluiten. Verwijder daarna de vorige OpenClaw Companion-app via Windows-instellingen &gt; Apps &gt; Geïnstalleerde apps en open de Store-versie. Uw gemigreerde configuratie en gateway blijven behouden.</value>
   </data>
   <data name="Migration_InnoCheckFailed" xml:space="preserve">
     <value>LanFu kon niet controleren of de migratie naar de Store-versie is voltooid. Deze versie kan niet veilig starten. Sluit andere LanFu-processen en probeer het opnieuw. Verwijder geen migratiegegevens en voer geen gatewayopruiming uit.</value>
@@ -7531,7 +7531,7 @@ Kies {1} om dit voorbeeld te sluiten zonder de migratie te starten en de vorige 
     <value>Nu niet</value>
   </data>
   <data name="Migration_StoreCloseInno" xml:space="preserve">
-    <value>Sluit de vorige LanFu Companion-app en kies daarna {0} om het opnieuw te proberen. Kies {1} om dit voorbeeld te sluiten. Forceer niet dat de vorige app stopt en verwijder deze nog niet. Verwijder de app pas nadat dit voorbeeld meldt dat de voltooiing van de migratie is vastgelegd.</value>
+    <value>Sluit de vorige OpenClaw Companion-app en kies daarna {0} om het opnieuw te proberen. Kies {1} om dit voorbeeld te sluiten. Forceer niet dat de vorige app stopt en verwijder deze nog niet. Verwijder de app pas nadat dit voorbeeld meldt dat de voltooiing van de migratie is vastgelegd.</value>
   </data>
   <data name="Migration_StoreRetry" xml:space="preserve">
     <value>Opnieuw proberen</value>
@@ -7546,7 +7546,7 @@ Kies {1} om dit voorbeeld te sluiten zonder de migratie te starten en de vorige 
     <value>LanFu kon de vorige configuratie niet veilig valideren voor migratie. Er is geen voltooiing vastgelegd en de vorige app is niet gewijzigd. Sluit dit voorbeeld en probeer het later opnieuw. Verwijder de vorige app of migratiegegevens niet en voer geen gatewayopruiming uit.</value>
   </data>
   <data name="Migration_StoreAwaitingInnoRemoval" xml:space="preserve">
-    <value>LanFu heeft de voltooiing van de migratie vastgelegd en uw configuratie behouden. Sluit dit voorbeeld, verwijder de vorige LanFu Companion-app via Windows-instellingen en open daarna de Store-versie. Verwijder geen migratiegegevens en voer geen gatewayopruiming uit.</value>
+    <value>LanFu heeft de voltooiing van de migratie vastgelegd en uw configuratie behouden. Sluit dit voorbeeld, verwijder de vorige OpenClaw Companion-app via Windows-instellingen en open daarna de Store-versie. Verwijder geen migratiegegevens en voer geen gatewayopruiming uit.</value>
   </data>
   <data name="Migration_StoreYes" xml:space="preserve">
     <value>Ja</value>
@@ -7567,7 +7567,7 @@ Kies {1} om dit voorbeeld te sluiten zonder de migratie te starten en de vorige 
     <value>LanFu kon de voltooide migratie niet veilig afronden. Normaal opstarten is geblokkeerd en het migratiebewijs is voor herstel bewaard. Sluit dit voorbeeld en probeer het later opnieuw. Verwijder geen migratiegegevens en voer geen gatewayopruiming uit.</value>
   </data>
   <data name="Migration_StoreStartupRefused" xml:space="preserve">
-    <value>LanFu heeft de migratie voltooid, maar Windows heeft LanFu Companion niet bij het aanmelden ingeschakeld. Uw gegevens en instellingen zijn gemigreerd. Als u LanFu automatisch wilt starten, schakelt u LanFu Companion in via Instellingen > Apps > Opstarten, of neem contact op met uw beheerder als opstarten door beleid wordt beheerd.</value>
+    <value>LanFu heeft de migratie voltooid, maar Windows heeft OpenClaw Companion niet bij het aanmelden ingeschakeld. Uw gegevens en instellingen zijn gemigreerd. Als u LanFu automatisch wilt starten, schakelt u OpenClaw Companion in via Instellingen > Apps > Opstarten, of neem contact op met uw beheerder als opstarten door beleid wordt beheerd.</value>
   </data>
   <data name="Migration_StorePending" xml:space="preserve">
     <value>Een vorige migratie moet worden hersteld of afgerond. Deze testversie kan die migratie niet voortzetten of normaal starten. Sluit dit voorbeeld. Verwijder de vorige app of migratiegegevens niet en voer geen gatewayopruiming uit.</value>
@@ -7618,7 +7618,7 @@ Kies {1} om dit voorbeeld te sluiten zonder de migratie te starten en de vorige 
     <value>De verwijdering wordt gecontroleerd en de migratie wordt afgerond...</value>
   </data>
   <data name="Migration2_CloseInno" xml:space="preserve">
-    <value>Sluit LanFu Companion via het menu in het systeemvak en kies daarna Opnieuw proberen.</value>
+    <value>Sluit OpenClaw Companion via het menu in het systeemvak en kies daarna Opnieuw proberen.</value>
   </data>
   <data name="Migration2_CloseInnoTitle" xml:space="preserve">
     <value>Sluit de vorige app</value>
@@ -7632,7 +7632,7 @@ Kies {1} om dit voorbeeld te sluiten zonder de migratie te starten en de vorige 
   <data name="Migration2_AwaitingRemoval" xml:space="preserve">
     <value>Uw configuratie is gevalideerd en de voltooiing van de migratie is vastgelegd.
 
-1. Open Geïnstalleerde apps en verwijder alleen de vorige LanFu Companion-app. Behoud de Store-versie.
+1. Open Geïnstalleerde apps en verwijder alleen de vorige OpenClaw Companion-app. Behoud de Store-versie.
 
 2. Keer hier terug en kies Opnieuw proberen om de verwijdering te verifiëren en af te ronden.
 

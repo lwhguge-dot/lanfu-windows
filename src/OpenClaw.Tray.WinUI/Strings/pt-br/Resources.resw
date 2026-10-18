@@ -7559,7 +7559,7 @@ O binário wxc-exec não pôde ser localizado. {1} Se esta for uma build de dese
     <value>inativa</value>
   </data>
   <data name="Migration_InnoCompleted" xml:space="preserve">
-    <value>Sua configuração do LanFu foi migrada para a versão da Store. Feche esta mensagem para sair deste aplicativo. Depois, desinstale o aplicativo LanFu Companion anterior em Configurações do Windows &gt; Aplicativos &gt; Aplicativos instalados e abra a versão da Store. Sua configuração migrada e seu gateway serão preservados.</value>
+    <value>Sua configuração do LanFu foi migrada para a versão da Store. Feche esta mensagem para sair deste aplicativo. Depois, desinstale o aplicativo OpenClaw Companion anterior em Configurações do Windows &gt; Aplicativos &gt; Aplicativos instalados e abra a versão da Store. Sua configuração migrada e seu gateway serão preservados.</value>
   </data>
   <data name="Migration_InnoCheckFailed" xml:space="preserve">
     <value>O LanFu não conseguiu verificar se a migração para a versão da Store foi concluída. Esta cópia não pode iniciar com segurança. Feche os outros processos do LanFu e tente novamente. Não exclua os dados de migração nem execute a limpeza do gateway.</value>
@@ -7584,7 +7584,7 @@ Escolha {1} para sair desta prévia sem iniciar a migração e continuar usando 
     <value>Agora não</value>
   </data>
   <data name="Migration_StoreCloseInno" xml:space="preserve">
-    <value>Feche o aplicativo LanFu Companion anterior e escolha {0} para tentar novamente. Escolha {1} para sair desta prévia. Não force o encerramento do aplicativo anterior nem o desinstale ainda. Desinstale somente depois que esta prévia informar que a conclusão da migração foi registrada.</value>
+    <value>Feche o aplicativo OpenClaw Companion anterior e escolha {0} para tentar novamente. Escolha {1} para sair desta prévia. Não force o encerramento do aplicativo anterior nem o desinstale ainda. Desinstale somente depois que esta prévia informar que a conclusão da migração foi registrada.</value>
   </data>
   <data name="Migration_StoreRetry" xml:space="preserve">
     <value>Tentar novamente</value>
@@ -7599,7 +7599,7 @@ Escolha {1} para sair desta prévia sem iniciar a migração e continuar usando 
     <value>O LanFu não pôde validar com segurança a configuração anterior para a migração. Nenhuma conclusão foi registrada e o aplicativo anterior não foi alterado. Feche esta prévia e tente novamente mais tarde. Não desinstale o aplicativo anterior, não exclua os dados de migração nem execute a limpeza do gateway.</value>
   </data>
   <data name="Migration_StoreAwaitingInnoRemoval" xml:space="preserve">
-    <value>O LanFu registrou a conclusão da migração e preservou sua configuração. Feche esta prévia, desinstale o aplicativo LanFu Companion anterior nas Configurações do Windows e abra a versão da Store. Não exclua os dados de migração nem execute a limpeza do gateway.</value>
+    <value>O LanFu registrou a conclusão da migração e preservou sua configuração. Feche esta prévia, desinstale o aplicativo OpenClaw Companion anterior nas Configurações do Windows e abra a versão da Store. Não exclua os dados de migração nem execute a limpeza do gateway.</value>
   </data>
   <data name="Migration_StoreYes" xml:space="preserve">
     <value>Sim</value>
@@ -7620,7 +7620,7 @@ Escolha {1} para sair desta prévia sem iniciar a migração e continuar usando 
     <value>O LanFu não conseguiu concluir a migração com segurança. A inicialização normal está bloqueada e o recibo de migração foi preservado para recuperação. Feche esta prévia e tente novamente mais tarde. Não exclua os dados de migração nem execute a limpeza do gateway.</value>
   </data>
   <data name="Migration_StoreStartupRefused" xml:space="preserve">
-    <value>O LanFu concluiu a migração, mas o Windows não permitiu iniciar o LanFu Companion ao entrar. Seus dados e configurações foram migrados. Para iniciar o LanFu automaticamente, ative o LanFu Companion em Configurações > Aplicativos > Inicializar ou fale com seu administrador se a inicialização for gerenciada por política.</value>
+    <value>O LanFu concluiu a migração, mas o Windows não permitiu iniciar o OpenClaw Companion ao entrar. Seus dados e configurações foram migrados. Para iniciar o LanFu automaticamente, ative o OpenClaw Companion em Configurações > Aplicativos > Inicializar ou fale com seu administrador se a inicialização for gerenciada por política.</value>
   </data>
   <data name="Migration_StorePending" xml:space="preserve">
     <value>Uma migração anterior precisa de recuperação ou finalização. Esta versão de teste não pode continuá-la nem iniciar normalmente. Feche esta prévia. Não desinstale o aplicativo anterior, não exclua os dados de migração nem execute a limpeza do gateway.</value>
@@ -7671,7 +7671,7 @@ Escolha {1} para sair desta prévia sem iniciar a migração e continuar usando 
     <value>Verificando a desinstalação e finalizando a migração...</value>
   </data>
   <data name="Migration2_CloseInno" xml:space="preserve">
-    <value>Feche o LanFu Companion pelo menu na bandeja do sistema e selecione Tentar novamente.</value>
+    <value>Feche o OpenClaw Companion pelo menu na bandeja do sistema e selecione Tentar novamente.</value>
   </data>
   <data name="Migration2_CloseInnoTitle" xml:space="preserve">
     <value>Feche o aplicativo anterior</value>
@@ -7685,7 +7685,7 @@ Escolha {1} para sair desta prévia sem iniciar a migração e continuar usando 
   <data name="Migration2_AwaitingRemoval" xml:space="preserve">
     <value>Sua configuração foi validada e a conclusão da migração foi registrada.
 
-1. Abra Aplicativos instalados e desinstale apenas o aplicativo LanFu Companion anterior. Mantenha a versão da Store.
+1. Abra Aplicativos instalados e desinstale apenas o aplicativo OpenClaw Companion anterior. Mantenha a versão da Store.
 
 2. Volte aqui e selecione Tentar novamente para verificar a remoção e finalizar.
 

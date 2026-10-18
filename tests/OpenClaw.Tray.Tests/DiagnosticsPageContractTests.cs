@@ -481,7 +481,7 @@ public sealed class DiagnosticsPageContractTests
         var document = System.Xml.Linq.XDocument.Parse(xaml);
         System.Xml.Linq.XNamespace x = "http://schemas.microsoft.com/winfx/2006/xaml";
         var title = document.Descendants().Single(element => element.Name.LocalName == "TitleBar");
-        Assert.Equal("OpenClaw Settings", (string?)title.Attribute("Title"));
+        Assert.Equal("LanFu Settings", (string?)title.Attribute("Title"));
         var header = document.Descendants().Single(element => (string?)element.Attribute(x + "Name") == "SettingsNavigationToolbar");
         var buttons = header.Descendants().Where(element => element.Name.LocalName == "Button").ToArray();
         Assert.Equal(new[] { "NavPaneToggleButton", "SettingsSearchButton", "NavBackButton", "NavForwardButton" },
