@@ -189,7 +189,9 @@ internal sealed class UpdateCoordinator(
             }
 
             releaseTag = release.TagName;
-            changelog = updater.GetChangelog(true) ?? "No release notes available.";
+            changelog = UpdateChangelog.Normalize(updater.GetChangelog(true));
+            if (string.IsNullOrWhiteSpace(changelog))
+                changelog = "No release notes available.";
             Logger.Info($"Update available: {releaseTag}");
             appState.UpdateInfo = new UpdateCommandCenterInfo
             {

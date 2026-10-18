@@ -63,7 +63,7 @@ jobs:
         shell: pwsh
         run: |
           dotnet test tests/OpenClaw.Tray.Tests/OpenClaw.Tray.Tests.csproj -c Release --nologo `
-            --filter "FullyQualifiedName~UpdateIntegrityChecksTests|FullyQualifiedName~AllLocales_HaveSameKeyCount|FullyQualifiedName~AllLocales_HaveExactlySameKeysAsEnUs" `
+            --filter "FullyQualifiedName~UpdateIntegrityChecksTests|FullyQualifiedName~UpdateChangelogTests|FullyQualifiedName~AllLocales_HaveSameKeyCount|FullyQualifiedName~AllLocales_HaveExactlySameKeysAsEnUs" `
             --logger "console;verbosity=normal"
 
       - name: Publish (x64, self-contained)
