@@ -7972,15 +7972,6 @@
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>取消</value>
   </data>
-  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
-    <value>运行状态</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
-    <value>运行状态快照</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
-    <value>版本、更新、记忆整理与定时任务一览。</value>
-  </data>
   <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
     <value>版本：{0}</value>
   </data>

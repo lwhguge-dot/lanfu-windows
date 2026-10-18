@@ -7973,15 +7973,6 @@ Dit is de hoogrisicomodus. Schakel dit alleen uit als u de agent vertrouwt en di
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>Annuleren</value>
   </data>
-  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
-    <value>Statusoverzicht</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
-    <value>Versie, updates, geheugen en geplande taken in één oogopslag.</value>
-  </data>
   <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
     <value>Versie: {0}</value>
   </data>

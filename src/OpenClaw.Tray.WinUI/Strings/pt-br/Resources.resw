@@ -8026,15 +8026,6 @@ Este é o modo de alto risco. Desative apenas se confiar no agente e precisar di
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
-    <value>Integridade</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
-    <value>Resumo da integridade</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
-    <value>Versão, atualizações, memória e tarefas agendadas de relance.</value>
-  </data>
   <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
     <value>Versão: {0}</value>
   </data>

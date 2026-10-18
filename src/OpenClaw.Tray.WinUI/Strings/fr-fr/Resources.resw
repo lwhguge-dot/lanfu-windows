@@ -7972,15 +7972,6 @@ C'est le mode à haut risque. Ne le désactivez que si vous faites confiance à 
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>Annuler</value>
   </data>
-  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
-    <value>État</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
-    <value>Aperçu de l'état</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
-    <value>Version, mises à jour, mémoire et tâches planifiées en un coup d'œil.</value>
-  </data>
   <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
     <value>Version : {0}</value>
   </data>

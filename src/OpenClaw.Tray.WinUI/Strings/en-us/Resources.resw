@@ -8035,15 +8035,6 @@ This is the high-risk mode. Only do this if you trust the agent and need it for 
   <data name="Sandbox_DisableDialog_Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="DiagnosticsPage_Section_Health" xml:space="preserve">
-    <value>Health</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Header" xml:space="preserve">
-    <value>Health snapshot</value>
-  </data>
-  <data name="DiagnosticsPage_Card_Health_Description" xml:space="preserve">
-    <value>Version, update, memory and scheduled jobs at a glance.</value>
-  </data>
   <data name="DiagnosticsPage_Health_VersionFormat" xml:space="preserve">
     <value>Version: {0}</value>
   </data>
