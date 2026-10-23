@@ -758,7 +758,7 @@ The gateway is Node.js. Node.js runs natively on Windows. But:
 | File paths (forward vs back slash) | Low | Node.js `path` module handles this if used consistently. |
 | Spawning child processes | Medium | `spawn('sh', ['-c', ...])` won't work on Windows. Need `cmd.exe` or `powershell.exe`. |
 | `launchd`/`systemd` service install | High | `openclaw onboard --install-daemon` installs a launchd/systemd service. Windows needs a Windows Service or Task Scheduler equivalent. |
-| WhatsApp/Telegram/Discord channels | Low | These are network clients, platform-agnostic. |
+| Channel integrations | Low | These are network clients, platform-agnostic. |
 | Pi agent RPC | Low | Spawns Node.js processes - should work cross-platform. |
 | File watching (chokidar) | Low | Works on Windows. |
 | Browser automation (Playwright) | Low | Playwright supports Windows natively. |

@@ -211,7 +211,7 @@ public static partial class SessionDisplayResolver
         return (repo, branch) switch { ({ Length: > 0 }, { Length: > 0 }) => $"{repo} ⎇ {branch}", ({ Length: > 0 }, _) => repo, (_, { Length: > 0 }) => branch, _ => null };
     }
 
-    private static string ChannelLabel(string channel) => channel.ToLowerInvariant() switch { "imessage" => "iMessage", "whatsapp" => "WhatsApp", "sms" => "SMS", _ => Capitalize(channel) };
+    private static string ChannelLabel(string channel) => channel.ToLowerInvariant() switch { "sms" => "SMS", _ => Capitalize(channel) };
     private static string Capitalize(string value) => value.Length > 0 ? char.ToUpperInvariant(value[0]) + value[1..] : value;
     private static string? NonEmpty(string? value) => string.IsNullOrWhiteSpace(value) ? null : value.Trim();
 

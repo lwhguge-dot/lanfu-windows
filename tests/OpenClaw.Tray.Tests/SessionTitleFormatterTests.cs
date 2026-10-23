@@ -105,22 +105,22 @@ public sealed class SessionTitleFormatterTests
     {
         var sessions = new[]
         {
-            new SessionInfo { Key = "legacy-a", DisplayName = "Research", Channel = "Slack" },
-            new SessionInfo { Key = "legacy-b", DisplayName = "Research", Channel = "WhatsApp" },
+            new SessionInfo { Key = "legacy-a", DisplayName = "Research", Channel = "Feishu" },
+            new SessionInfo { Key = "legacy-b", DisplayName = "Research", Channel = "Matrix" },
         };
         var titles = SessionTitleFormatter.FormatUnique(sessions);
         var titledSessions = sessions
             .Select((session, index) => (Session: session, Title: titles[index]));
 
-        var whatsAppTitle = titledSessions
-            .Single(item => item.Session.Channel == "WhatsApp")
+        var matrixTitle = titledSessions
+            .Single(item => item.Session.Channel == "Matrix")
             .Title;
 
-        Assert.Equal("Research (2)", whatsAppTitle);
+        Assert.Equal("Research (2)", matrixTitle);
     }
 
     [Theory]
-    [InlineData("agent:main:telegram:main:direct:491234567890", "Telegram direct message")]
+    [InlineData("agent:main:feishu:main:direct:peer_491234", "Feishu direct message")]
     [InlineData("agent:main:tui-01234567-89ab-cdef-0123-456789abcdef", "Terminal session")]
     [InlineData("agent:main:tui-01234567-89ab-cdef-0123-456789abcdef:heartbeat", "Heartbeat")]
     [InlineData("agent:main:subagent:01234567-89ab-cdef-0123-456789abcdef", "Subagent")]
@@ -138,10 +138,10 @@ public sealed class SessionTitleFormatterTests
     {
         var explicitTitle = new SessionInfo
         {
-            Key = "agent:main:telegram:main:direct:491234567890",
+            Key = "agent:main:feishu:main:direct:peer_491234",
             Label = "Family chat",
             Classification = "direct",
-            Channel = "telegram",
+            Channel = "feishu",
         };
 
         Assert.Equal("Family chat", SessionTitleFormatter.Format(explicitTitle));
@@ -154,10 +154,10 @@ public sealed class SessionTitleFormatterTests
         {
             Key = "route",
             Classification = "Direct",
-            Channel = "telegram",
+            Channel = "feishu",
         };
 
-        Assert.Equal("Telegram direct message", SessionTitleFormatter.Format(session));
+        Assert.Equal("Feishu direct message", SessionTitleFormatter.Format(session));
     }
 
     [Fact]

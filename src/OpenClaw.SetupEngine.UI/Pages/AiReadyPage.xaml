@@ -33,7 +33,7 @@
                         <controls:RecommendedBadge x:Name="RecommendedBadge" />
                     </tk:SettingsCard>
                     <tk:SettingsCard x:Name="ChannelsChoice" x:Uid="Onboarding_Ready_Channels" Header="接入频道"
-                                     Description="WhatsApp、Telegram 等。何时登录由你决定。" Tag="Channels" IsClickEnabled="True" Click="Choose_Click" />
+                                     Description="飞书、企业微信等。何时登录由你决定。" Tag="Channels" IsClickEnabled="True" Click="Choose_Click" />
                     <tk:SettingsCard x:Name="SkillsChoice" x:Uid="Onboarding_Ready_Skills" Header="浏览技能"
                                      Description="浏览智能体可用的技能。不会自动安装任何内容。" Tag="Skills" IsClickEnabled="True" Click="Choose_Click" />
                 </StackPanel>

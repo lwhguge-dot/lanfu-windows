@@ -11,9 +11,9 @@ namespace OpenClaw.Shared.Tests;
 public class ChannelStartResultTests
 {
     [Theory]
-    [InlineData("unknown channel: whatsapp", true)]
-    [InlineData("Unknown Channel: telegram", true)]  // case-insensitive
-    [InlineData("UNKNOWN CHANNEL: signal", true)]
+    [InlineData("unknown channel: feishu", true)]
+    [InlineData("Unknown Channel: matrix", true)]  // case-insensitive
+    [InlineData("UNKNOWN CHANNEL: nostr", true)]
     public void LooksLikeMissingPlugin_IsTrueWhenErrorContainsUnknownChannel(string error, bool expected)
     {
         var result = new ChannelStartResult { Ok = false, Error = error };

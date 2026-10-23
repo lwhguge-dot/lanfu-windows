@@ -259,7 +259,7 @@ integration, before the subsequent onboarding UI updates:
 | Proof | Result |
 | --- | --- |
 | Fresh ARM64 MSIX 0.0.0.1 profile | Automatic exact-identity pairing, authenticated wizard RPC, all requested optional steps bypassed, validated optional-tail cancellation, final config/owned-health checks and disposable registry publication passed |
-| Existing configuration | Repeated the complete proof with enabled web search (`maxResults: 3`) and existing disabled Telegram/pairing configuration; both subtrees remained exactly equal |
+| Existing configuration | Repeated the complete proof with enabled web search (`maxResults: 3`) and existing disabled channel/pairing configuration; both subtrees remained exactly equal |
 | Safety/provider answers | Test-only authorization accepted safety and skipped provider credentials/integrations; real UI consent remains explicit |
 | Historical full build | Passed |
 | Historical Shared / Tray suites | 3,983 passed / 33 skipped; 2,996 passed |

@@ -377,7 +377,7 @@ public class WizardConsoleTailTests
     public void PreservesUtf8QrBlockCharacters()
     {
         var line = """
-            {"_meta":{"name":"openclaw","logLevelName":"INFO","path":{"method":"console.log"}},"message":"Open WhatsApp and scan:\n████ ▄▄ ████"}
+            {"_meta":{"name":"openclaw","logLevelName":"INFO","path":{"method":"console.log"}},"message":"Open the app and scan:\n████ ▄▄ ████"}
             """;
 
         var extracted = WizardConsoleTail.TryExtractConsoleMessage(line);
@@ -406,9 +406,9 @@ public class WizardConsoleTailTests
     public void DoesNotTreatRegularMultilineConsoleOutputAsQrArt()
     {
         var message = """
-            Waiting for WhatsApp connection...
-            Open the WhatsApp app, go to Linked Devices, then scan this QR:
-            Docs: https://docs.openclaw.ai/whatsapp
+            Waiting for channel connection...
+            Open the app, go to Linked Devices, then scan this QR:
+            Docs: https://docs.openclaw.ai/channels
             """;
 
         Assert.False(WizardConsoleTail.LooksLikeTerminalQrArt(message));

@@ -5830,113 +5830,8 @@ Controleer of de gateway actief is.</value>
   <data name="ChannelsPage_Controls" xml:space="preserve">
     <value>Besturing</value>
   </data>
-  <data name="ChannelsPage_HelpWhatsApp" xml:space="preserve">
-    <value>WhatsApp gekoppelde apparaten hulp →</value>
-  </data>
-  <data name="ChannelsPage_HelpSignal" xml:space="preserve">
-    <value>Signal gekoppelde apparaten hulp →</value>
-  </data>
-  <data name="ChannelsPage_HelpTelegram" xml:space="preserve">
-    <value>Een Telegram-bot aanmaken →</value>
-  </data>
-  <data name="ChannelsPage_HelpDiscord" xml:space="preserve">
-    <value>Een Discord-bot aanmaken →</value>
-  </data>
-  <data name="ChannelsPage_HelpGoogleChat" xml:space="preserve">
-    <value>Een Google Chat-webhook toevoegen →</value>
-  </data>
-  <data name="ChannelsPage_HelpSlack" xml:space="preserve">
-    <value>Slack-app-dashboard →</value>
-  </data>
   <data name="ChannelsPage_HelpNostr" xml:space="preserve">
     <value>Over Nostr →</value>
-  </data>
-  <data name="ChannelsPage_HelpIMessage" xml:space="preserve">
-    <value>Over Berichten op macOS →</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppHeadline" xml:space="preserve">
-    <value>Koppel uw WhatsApp-telefoon</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep1" xml:space="preserve">
-    <value>Klik op "Show QR" in het gedeelte Koppelen hieronder.</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep2" xml:space="preserve">
-    <value>Op uw telefoon: WhatsApp → Instellingen → Gekoppelde apparaten → Apparaat koppelen.</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep3" xml:space="preserve">
-    <value>Scan de QR-code die hier verschijnt.</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalHeadline" xml:space="preserve">
-    <value>Koppel uw Signal-telefoon</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep1" xml:space="preserve">
-    <value>Klik op "Show QR" in het gedeelte Koppelen hieronder.</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep2" xml:space="preserve">
-    <value>Op uw telefoon: Signal → Instellingen → Gekoppelde apparaten → Nieuw apparaat koppelen.</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep3" xml:space="preserve">
-    <value>Scan de QR-code die hier verschijnt.</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramHeadline" xml:space="preserve">
-    <value>Telegram verbinden via een bot</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep1" xml:space="preserve">
-    <value>Open Telegram en stuur een bericht naar @BotFather.</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep2" xml:space="preserve">
-    <value>Stuur /newbot en volg de aanwijzingen. Kopieer het bot-token aan het einde.</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep3" xml:space="preserve">
-    <value>Plak het token in het configuratieformulier hieronder.</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep4" xml:space="preserve">
-    <value>Klik op "Save and start". Het kanaal start automatisch.</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordHeadline" xml:space="preserve">
-    <value>Discord verbinden via een bot</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep1" xml:space="preserve">
-    <value>Open de Discord Developer Portal en maak of selecteer een toepassing.</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep2" xml:space="preserve">
-    <value>Open Bot, voeg zo nodig een bot toe en stel het token opnieuw in om het te kopiëren.</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep3" xml:space="preserve">
-    <value>Plak het bottoken in het configuratieformulier hieronder.</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep4" xml:space="preserve">
-    <value>Klik op "Save and start" en voeg de bot daarna toe aan uw server met de OAuth2-installatielink.</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatHeadline" xml:space="preserve">
-    <value>Google Chat verbinden via een webhook</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep1" xml:space="preserve">
-    <value>Open in Google Chat de ruimte → Webhooks beheren → Webhook toevoegen.</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep2" xml:space="preserve">
-    <value>Kopieer de webhook-URL.</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep3" xml:space="preserve">
-    <value>Plak de URL in het configuratieformulier hieronder.</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep4" xml:space="preserve">
-    <value>Klik op "Save and start".</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackHeadline" xml:space="preserve">
-    <value>Slack verbinden via een app</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep1" xml:space="preserve">
-    <value>Maak een Slack-app aan op api.slack.com/apps en installeer deze in uw werkruimte.</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep2" xml:space="preserve">
-    <value>Kopieer het bot-token (xoxb-…) en het ondertekeningsgeheim.</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep3" xml:space="preserve">
-    <value>Plak beide in het configuratieformulier hieronder.</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep4" xml:space="preserve">
-    <value>Klik op "Save and start".</value>
   </data>
   <data name="ChannelsPage_GuideNostrHeadline" xml:space="preserve">
     <value>Nostr verbinden via relays</value>
@@ -5953,18 +5848,6 @@ Controleer of de gateway actief is.</value>
   <data name="ChannelsPage_GuideNostrStep4" xml:space="preserve">
     <value>Klik op "Save and start".</value>
   </data>
-  <data name="ChannelsPage_GuideIMessageHeadline" xml:space="preserve">
-    <value>iMessage is alleen beschikbaar op macOS</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep1" xml:space="preserve">
-    <value>iMessage leest de lokale Messages.app-database, die alleen op macOS bestaat.</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep2" xml:space="preserve">
-    <value>Om iMessage met LanFu te gebruiken, voert u de gateway uit op een Mac in plaats van deze Windows-host.</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep3" xml:space="preserve">
-    <value>Alle andere kanalen in deze lijst werken prima vanaf een Windows-gehoste gateway.</value>
-  </data>
   <data name="ChannelsPage_GuideGenericHeadline" xml:space="preserve">
     <value>Dit kanaal verbinden</value>
   </data>
@@ -5977,41 +5860,11 @@ Controleer of de gateway actief is.</value>
   <data name="ChannelsPage_GuideGenericStep3" xml:space="preserve">
     <value>Sla de configuratie op; LanFu start het kanaal automatisch.</value>
   </data>
-  <data name="ChannelsPage_FieldBotToken" xml:space="preserve">
-    <value>Bot-token</value>
-  </data>
-  <data name="ChannelsPage_FieldDiscordBotToken" xml:space="preserve">
-    <value>Discord-bottoken</value>
-  </data>
-  <data name="ChannelsPage_PlaceholderDiscordBotToken" xml:space="preserve">
-    <value>Plak het Discord-bottoken</value>
-  </data>
-  <data name="ChannelsPage_FieldWebhookUrl" xml:space="preserve">
-    <value>Webhook-URL</value>
-  </data>
-  <data name="ChannelsPage_FieldSigningSecret" xml:space="preserve">
-    <value>Ondertekeningsgeheim</value>
-  </data>
   <data name="ChannelsPage_FieldPrivateKey" xml:space="preserve">
     <value>Privésleutel (nsec)</value>
   </data>
   <data name="ChannelsPage_FieldRelayUrls" xml:space="preserve">
     <value>Relay-URL's</value>
-  </data>
-  <data name="ChannelsPage_HelpBotToken" xml:space="preserve">
-    <value>Verkrijg het via @BotFather (/newbot).</value>
-  </data>
-  <data name="ChannelsPage_HelpDiscordBotToken" xml:space="preserve">
-    <value>Kopieer uit de Discord Developer Portal → Bot → Token opnieuw instellen.</value>
-  </data>
-  <data name="ChannelsPage_HelpWebhookGoogleChat" xml:space="preserve">
-    <value>Open een ruimte → Webhooks beheren → Webhook toevoegen.</value>
-  </data>
-  <data name="ChannelsPage_HelpSlackBotToken" xml:space="preserve">
-    <value>OAuth-tokens van uw Slack-app.</value>
-  </data>
-  <data name="ChannelsPage_HelpSlackSigningSecret" xml:space="preserve">
-    <value>Basisinformatie → App-referenties.</value>
   </data>
   <data name="ChannelsPage_HelpRelayUrls" xml:space="preserve">
     <value>Eén per regel.</value>
@@ -7449,7 +7302,7 @@ Het binaire bestand wxc-exec is niet gevonden. {1} Als dit een ontwikkelaarsbuil
   <data name="Onboarding_Ready_Skills.Header" xml:space="preserve"><value>Vaardigheden verkennen</value></data>
   <data name="Onboarding_Ready_Skills.Description" xml:space="preserve"><value>Bekijk vaardigheden voor je agent. Er wordt niets automatisch geïnstalleerd.</value></data>
   <data name="Onboarding_Ready_Channels.Header" xml:space="preserve"><value>Kanalen verbinden</value></data>
-  <data name="Onboarding_Ready_Channels.Description" xml:space="preserve"><value>WhatsApp, Telegram en meer. Jij kiest wanneer je je aanmeldt.</value></data>
+  <data name="Onboarding_Ready_Channels.Description" xml:space="preserve"><value>Feishu, WeCom en meer. Jij kiest wanneer je je aanmeldt.</value></data>
   <data name="Onboarding_Ready_Return.Content" xml:space="preserve"><value>Terug naar AI</value></data>
   <data name="Onboarding_Ready_Model" xml:space="preserve"><value>Geverifieerd model: {0}</value></data>
   <data name="Onboarding_Ready_Verifying" xml:space="preserve"><value>Dezelfde Gateway, agent en hetzelfde model opnieuw controleren...</value></data>

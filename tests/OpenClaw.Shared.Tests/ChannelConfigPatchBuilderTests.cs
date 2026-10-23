@@ -31,14 +31,14 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("""{ "agents": [] }""");
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "12345:abc")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "cli_abc123")));
 
         Assert.Null(result.BlockedReason);
         Assert.NotNull(result.Patch);
         var patch = result.Patch!.Value;
-        Assert.Equal("12345:abc", patch.GetProperty("channels").GetProperty("telegram").GetProperty("botToken").GetString());
-        Assert.True(patch.GetProperty("channels").GetProperty("telegram").GetProperty("enabled").GetBoolean());
+        Assert.Equal("cli_abc123", patch.GetProperty("channels").GetProperty("feishu").GetProperty("appId").GetString());
+        Assert.True(patch.GetProperty("channels").GetProperty("feishu").GetProperty("enabled").GetBoolean());
         // Existing top-level keys are preserved verbatim.
         Assert.Equal(JsonValueKind.Array, patch.GetProperty("agents").ValueKind);
     }
@@ -49,24 +49,24 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("""
             {
               "channels": {
-                "discord":  { "token": "discord-token", "enabled": true },
-                "telegram": { "botToken": "old-token", "enabled": false }
+                "wecom":   { "secret": "wecom-secret", "enabled": true },
+                "feishu": { "appId": "old-app-id", "enabled": false }
               }
             }
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "new-token")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "new-app-id")));
 
         Assert.Null(result.BlockedReason);
         var patch = result.Patch!.Value;
         var channels = patch.GetProperty("channels");
-        Assert.Equal("new-token", channels.GetProperty("telegram").GetProperty("botToken").GetString());
-        Assert.True(channels.GetProperty("telegram").GetProperty("enabled").GetBoolean()); // forced to true
-        Assert.Equal("discord-token",
-            channels.GetProperty("discord").GetProperty("token").GetString());
-        Assert.True(channels.GetProperty("discord").GetProperty("enabled").GetBoolean()); // untouched
+        Assert.Equal("new-app-id", channels.GetProperty("feishu").GetProperty("appId").GetString());
+        Assert.True(channels.GetProperty("feishu").GetProperty("enabled").GetBoolean()); // forced to true
+        Assert.Equal("wecom-secret",
+            channels.GetProperty("wecom").GetProperty("secret").GetString());
+        Assert.True(channels.GetProperty("wecom").GetProperty("enabled").GetBoolean()); // untouched
     }
 
     [Fact]
@@ -94,10 +94,10 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("{}");
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "12345:abc")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "cli_abc123")));
 
-        var enabled = result.Patch!.Value.GetProperty("channels").GetProperty("telegram").GetProperty("enabled");
+        var enabled = result.Patch!.Value.GetProperty("channels").GetProperty("feishu").GetProperty("enabled");
         Assert.Equal(JsonValueKind.True, enabled.ValueKind);
     }
 
@@ -107,13 +107,13 @@ public class ChannelConfigPatchBuilderTests
         var empty = Json("{}");
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            empty, "discord",
-            Updates(("channels.discord.token", "discord-token")));
+            empty, "wecom",
+            Updates(("channels.wecom.secret", "wecom-secret")));
 
         Assert.Null(result.BlockedReason);
         var channels = result.Patch!.Value.GetProperty("channels");
-        Assert.Equal("discord-token",
-            channels.GetProperty("discord").GetProperty("token").GetString());
+        Assert.Equal("wecom-secret",
+            channels.GetProperty("wecom").GetProperty("secret").GetString());
     }
 
     [Fact]
@@ -123,11 +123,11 @@ public class ChannelConfigPatchBuilderTests
         var notObject = Json("null");
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            notObject, "telegram",
-            Updates(("channels.telegram.botToken", "abc")));
+            notObject, "feishu",
+            Updates(("channels.feishu.appId", "cli_abc")));
 
         Assert.NotNull(result.Patch);
-        Assert.Equal("abc", result.Patch!.Value.GetProperty("channels").GetProperty("telegram").GetProperty("botToken").GetString());
+        Assert.Equal("cli_abc", result.Patch!.Value.GetProperty("channels").GetProperty("feishu").GetProperty("appId").GetString());
     }
 
     [Fact]
@@ -136,11 +136,11 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("{}");
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.advanced.proxy.url", "http://localhost:8080")));
+            existing, "feishu",
+            Updates(("channels.feishu.advanced.proxy.url", "http://localhost:8080")));
 
         Assert.Equal("http://localhost:8080",
-            result.Patch!.Value.GetProperty("channels").GetProperty("telegram")
+            result.Patch!.Value.GetProperty("channels").GetProperty("feishu")
                 .GetProperty("advanced").GetProperty("proxy").GetProperty("url").GetString());
     }
 
@@ -152,19 +152,19 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("""
             {
               "channels": {
-                "slack":    { "signingSecret": "[REDACTED]", "enabled": true },
-                "telegram": { "botToken": "old", "enabled": false }
+                "matrix": { "accessToken": "[REDACTED]", "enabled": true },
+                "feishu": { "appId": "old", "enabled": false }
               }
             }
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "new")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "new")));
 
         Assert.Null(result.Patch);
         Assert.NotNull(result.BlockedReason);
-        Assert.Equal("channels.slack.signingSecret", result.BlockedPath);
+        Assert.Equal("channels.matrix.accessToken", result.BlockedPath);
         Assert.Contains("redacted", result.BlockedReason!, System.StringComparison.OrdinalIgnoreCase);
     }
 
@@ -176,18 +176,18 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("""
             {
               "channels": {
-                "telegram": { "botToken": "<redacted>", "enabled": true }
+                "feishu": { "appId": "<redacted>", "enabled": true }
               }
             }
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "real-new-token")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "real-new-app-id")));
 
         Assert.Null(result.BlockedReason);
-        Assert.Equal("real-new-token",
-            result.Patch!.Value.GetProperty("channels").GetProperty("telegram").GetProperty("botToken").GetString());
+        Assert.Equal("real-new-app-id",
+            result.Patch!.Value.GetProperty("channels").GetProperty("feishu").GetProperty("appId").GetString());
     }
 
     [Fact]
@@ -198,9 +198,9 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("""
             {
               "channels": {
-                "slack": {
-                  "botToken": "xoxb-old",
-                  "appToken": "[REDACTED]",
+                "matrix": {
+                  "accessToken": "syt_old",
+                  "refreshToken": "[REDACTED]",
                   "enabled": true
                 }
               }
@@ -208,12 +208,12 @@ public class ChannelConfigPatchBuilderTests
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "slack",
-            Updates(("channels.slack.botToken", "xoxb-new")));
+            existing, "matrix",
+            Updates(("channels.matrix.accessToken", "syt_new")));
 
         Assert.Null(result.Patch);
         Assert.NotNull(result.BlockedReason);
-        Assert.Equal("channels.slack.appToken", result.BlockedPath);
+        Assert.Equal("channels.matrix.refreshToken", result.BlockedPath);
     }
 
     [Fact]
@@ -222,9 +222,9 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("""
             {
               "channels": {
-                "slack": {
-                  "botToken": "xoxb-old",
-                  "accounts": { "work": { "botToken": "<redacted>" } },
+                "matrix": {
+                  "accessToken": "syt_old",
+                  "accounts": { "work": { "accessToken": "<redacted>" } },
                   "enabled": true
                 }
               }
@@ -232,12 +232,12 @@ public class ChannelConfigPatchBuilderTests
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "slack",
-            Updates(("channels.slack.botToken", "xoxb-new")));
+            existing, "matrix",
+            Updates(("channels.matrix.accessToken", "syt_new")));
 
         Assert.Null(result.Patch);
         Assert.NotNull(result.BlockedReason);
-        Assert.Equal("channels.slack.accounts.work.botToken", result.BlockedPath);
+        Assert.Equal("channels.matrix.accounts.work.accessToken", result.BlockedPath);
     }
 
     [Theory]
@@ -250,17 +250,17 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json($$"""
             {
               "channels": {
-                "slack": { "signingSecret": "{{sentinel.Replace("\\", "\\\\")}}", "enabled": true }
+                "matrix": { "accessToken": "{{sentinel.Replace("\\", "\\\\")}}", "enabled": true }
               }
             }
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "abc")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "cli_abc")));
 
         Assert.NotNull(result.BlockedReason);
-        Assert.Equal("channels.slack.signingSecret", result.BlockedPath);
+        Assert.Equal("channels.matrix.accessToken", result.BlockedPath);
     }
 
     [Theory]
@@ -278,14 +278,14 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json($$"""
             {
               "channels": {
-                "slack": { "signingSecret": "{{variant}}", "enabled": true }
+                "matrix": { "accessToken": "{{variant}}", "enabled": true }
               }
             }
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "abc")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "cli_abc")));
 
         Assert.Null(result.BlockedReason);
         Assert.NotNull(result.Patch);
@@ -299,14 +299,14 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("""
             {
               "channels": {
-                "slack": { "label": "no redacted secrets here", "enabled": true }
+                "matrix": { "label": "no redacted secrets here", "enabled": true }
               }
             }
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "abc")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "cli_abc")));
 
         Assert.Null(result.BlockedReason);
         Assert.NotNull(result.Patch);
@@ -324,40 +324,40 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("""
             {
               "channels": {
-                "slack": { "webhookUrls": ["https://real.example/", "[REDACTED]"], "enabled": true }
+                "matrix": { "webhookUrls": ["https://real.example/", "[REDACTED]"], "enabled": true }
               }
             }
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "telegram",
-            Updates(("channels.telegram.botToken", "abc")));
+            existing, "feishu",
+            Updates(("channels.feishu.appId", "cli_abc")));
 
         Assert.NotNull(result.BlockedReason);
-        Assert.Equal("channels.slack.webhookUrls[1]", result.BlockedPath);
+        Assert.Equal("channels.matrix.webhookUrls[1]", result.BlockedPath);
     }
 
     [Fact]
     public void BuildPatch_PrefixChannelId_DoesNotSkipSentinelInLongerChannelName()
     {
         // The exclude prefix is `channels.{id}.` with a trailing dot — that
-        // dot is what stops `channelId = "tel"` from skipping sentinels in
-        // `channels.telegram.*`. Documenting that boundary so a refactor
+        // dot is what stops `channelId = "fei"` from skipping sentinels in
+        // `channels.feishu.*`. Documenting that boundary so a refactor
         // can't silently drop the dot (Hanselman review LOW-11).
         var existing = Json("""
             {
               "channels": {
-                "telegram": { "botToken": "[REDACTED]", "enabled": true }
+                "feishu": { "appId": "[REDACTED]", "enabled": true }
               }
             }
             """);
 
         var result = ChannelConfigPatchBuilder.BuildPatch(
-            existing, "tel",
-            Updates(("channels.tel.apiKey", "abc")));
+            existing, "fei",
+            Updates(("channels.fei.apiKey", "abc")));
 
         Assert.NotNull(result.BlockedReason);
-        Assert.Equal("channels.telegram.botToken", result.BlockedPath);
+        Assert.Equal("channels.feishu.appId", result.BlockedPath);
     }
 
     [Fact]
@@ -366,8 +366,8 @@ public class ChannelConfigPatchBuilderTests
         var existing = Json("{}");
         Assert.Throws<System.ArgumentException>(() =>
             ChannelConfigPatchBuilder.BuildPatch(
-                existing, "telegram",
-                Updates(("channels..botToken", "abc"))));
+                existing, "feishu",
+                Updates(("channels..appId", "abc"))));
     }
 
     [Fact]
@@ -376,6 +376,6 @@ public class ChannelConfigPatchBuilderTests
         Assert.Throws<System.ArgumentException>(() =>
             ChannelConfigPatchBuilder.BuildPatch(
                 Json("{}"), "",
-                Updates(("channels.telegram.botToken", "abc"))));
+                Updates(("channels.feishu.appId", "abc"))));
     }
 }

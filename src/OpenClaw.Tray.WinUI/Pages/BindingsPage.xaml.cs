@@ -176,15 +176,7 @@ public sealed partial class BindingsPage : Page
         public string AgentId { get; set; } = "main";
         public int? Priority { get; set; }
 
-        public string ChannelIcon => Channel switch
-        {
-            "whatsapp" => "📱",
-            "telegram" => "✈️",
-            "discord" => "🎮",
-            "slack" => "💼",
-            "signal" => "🔒",
-            _ => "📡"
-        };
+        public string ChannelIcon => "📡";
 
         public string PeerDisplay => string.IsNullOrEmpty(Peer) ? "All" : Peer;
         public string RouteDisplay => $"{ChannelIcon} {Channel} ({AccountId}) → {AgentId}";

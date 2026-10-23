@@ -1,17 +1,14 @@
 namespace OpenClaw.SetupEngine;
 
-// Values are persisted in restart receipts. Keep legacy channel destinations stable.
-public enum SetupNativeDestination { Chat = 0, WhatsApp = 1, Telegram = 2, Channels = 3, Skills = 4 }
+// Values are persisted in restart receipts. Keep persisted destinations stable
+// (Chat=0/Channels=3/Skills=4 retain their historic numeric values; the retired
+// channel-specific members 1/2 were removed along with those channels).
+public enum SetupNativeDestination { Chat = 0, Channels = 3, Skills = 4 }
 
 /// <summary>A UI destination, not a model role or an authorization claim.</summary>
 public sealed record SetupNativeTarget(SetupNativeDestination Destination, string SessionKey)
 {
-    public string? ChannelId => Destination switch
-    {
-        SetupNativeDestination.WhatsApp => "whatsapp",
-        SetupNativeDestination.Telegram => "telegram",
-        _ => null,
-    };
+    public string? ChannelId => null;
 
     public bool Matches(GatewayAiSetupCompletion proof)
     {

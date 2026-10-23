@@ -133,15 +133,15 @@ public class SessionActionPlannerTests
     public void BuildPrompt_Delete_IsDestructive_AndUsesDisplayName()
     {
         var prompt = SessionActionPlanner.BuildPrompt(
-            SessionActionKind.Delete, "agent:main:wa", "WhatsApp · Bob", isMainSession: false);
+            SessionActionKind.Delete, "agent:main:feishu", "Feishu · Bob", isMainSession: false);
 
         Assert.NotNull(prompt);
         Assert.Equal(SessionActionKind.Delete, prompt!.Kind);
-        Assert.Equal("WhatsApp \u00B7 Bob", prompt.SessionName);
+        Assert.Equal("Feishu \u00B7 Bob", prompt.SessionName);
         Assert.True(prompt!.IsDestructive);
         Assert.Equal("Delete", prompt.ConfirmLabel);
-        Assert.Contains("WhatsApp \u00B7 Bob", prompt.Body);
-        Assert.DoesNotContain("agent:main:wa", prompt.Body);
+        Assert.Contains("Feishu \u00B7 Bob", prompt.Body);
+        Assert.DoesNotContain("agent:main:feishu", prompt.Body);
     }
 
     [Fact]

@@ -70,10 +70,10 @@ public static class ChannelConfigPatchBuilder
     /// if the gateway hasn't returned config yet, in which case we start
     /// with an empty document.
     /// </param>
-    /// <param name="channelId">Channel id, e.g. <c>telegram</c>.</param>
+    /// <param name="channelId">Channel id, e.g. <c>feishu</c>.</param>
     /// <param name="updates">
-    /// Dot-path / value pairs, e.g. <c>("channels.telegram.botToken",
-    /// "12345:abc")</c>. The builder also sets <c>channels.{channelId}.enabled
+    /// Dot-path / value pairs, e.g. <c>("channels.feishu.appId",
+    /// "cli_a1b2c3")</c>. The builder also sets <c>channels.{channelId}.enabled
     /// = true</c> automatically — callers shouldn't include it.
     /// </param>
     /// <param name="multilineDotPaths">
@@ -135,8 +135,8 @@ public static class ChannelConfigPatchBuilder
         }
 
         // Channel enable flag — the gateway needs `enabled: true` alongside
-        // credentials before it will start the channel (see e.g. gateway test
-        // src/commands/channels.adds-non-default-telegram-account.test.ts).
+        // credentials before it will start the channel (see e.g. gateway tests
+        // covering channels.adds-non-default-account config writes).
         SetNestedValue(root, $"channels.{channelId}.enabled", true);
 
         // Reserialize → re-parse → clone so the returned JsonElement isn't

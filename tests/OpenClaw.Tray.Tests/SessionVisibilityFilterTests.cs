@@ -167,12 +167,12 @@ public class SessionVisibilityFilterTests
 
     [Theory]
     [InlineData("all", "all")]
-    [InlineData("Slack", "Slack")]
-    [InlineData("slack", "slack")]
+    [InlineData("Feishu", "Feishu")]
+    [InlineData("feishu", "feishu")]
     [InlineData("missing", "all")]
     public void ResolveActiveChannel_PreservesOnlyVisibleChannels(string activeChannel, string expected)
     {
-        var visibleChannels = new[] { "Slack", "WhatsApp" };
+        var visibleChannels = new[] { "Feishu", "Matrix" };
 
         Assert.Equal(expected, SessionVisibilityFilter.ResolveActiveChannel(activeChannel, visibleChannels));
     }

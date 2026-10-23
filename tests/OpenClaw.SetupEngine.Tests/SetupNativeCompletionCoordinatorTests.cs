@@ -78,8 +78,6 @@ public sealed class SetupNativeCompletionCoordinatorTests
     [InlineData(SetupNativeDestination.Chat)]
     [InlineData(SetupNativeDestination.Channels)]
     [InlineData(SetupNativeDestination.Skills)]
-    [InlineData(SetupNativeDestination.WhatsApp)]
-    [InlineData(SetupNativeDestination.Telegram)]
     public async Task ShowingChooserDoesNothing_ExplicitChoiceVerifiesThenFinalizesAndPublishes(SetupNativeDestination destination)
     {
         var calls = new List<string>();
@@ -105,7 +103,7 @@ public sealed class SetupNativeCompletionCoordinatorTests
             (_, _) => pending.Task, (_, _) => { finalized++; return Task.CompletedTask; },
             (_, _) => ++launched == 1 ? Task.FromException(new IOException("Synthetic launch failure")) : Task.CompletedTask);
         var first = owner.SelectAsync(SetupNativeDestination.Chat);
-        await Assert.ThrowsAsync<InvalidOperationException>(() => owner.SelectAsync(SetupNativeDestination.Telegram));
+        await Assert.ThrowsAsync<InvalidOperationException>(() => owner.SelectAsync(SetupNativeDestination.Channels));
         pending.SetResult(Route);
         await Assert.ThrowsAsync<IOException>(() => first);
         Assert.False(owner.IsCompleted);

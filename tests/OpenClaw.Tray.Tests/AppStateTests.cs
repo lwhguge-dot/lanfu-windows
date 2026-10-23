@@ -82,7 +82,7 @@ public class AppStateTests
         var fired = new List<string>();
         state.PropertyChanged += (_, e) => fired.Add(e.PropertyName!);
 
-        var snap = new ChannelsStatusSnapshot { ChannelOrder = new[] { "whatsapp" } };
+        var snap = new ChannelsStatusSnapshot { ChannelOrder = new[] { "feishu" } };
         state.ChannelsSnapshot = snap;
 
         Assert.Single(fired);

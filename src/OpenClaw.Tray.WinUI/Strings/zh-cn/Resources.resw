@@ -5836,113 +5836,8 @@
   <data name="ChannelsPage_Controls" xml:space="preserve">
     <value>控制</value>
   </data>
-  <data name="ChannelsPage_HelpWhatsApp" xml:space="preserve">
-    <value>WhatsApp 已关联设备帮助 →</value>
-  </data>
-  <data name="ChannelsPage_HelpSignal" xml:space="preserve">
-    <value>Signal 已关联设备帮助 →</value>
-  </data>
-  <data name="ChannelsPage_HelpTelegram" xml:space="preserve">
-    <value>如何创建 Telegram 机器人 →</value>
-  </data>
-  <data name="ChannelsPage_HelpDiscord" xml:space="preserve">
-    <value>如何创建 Discord 机器人 →</value>
-  </data>
-  <data name="ChannelsPage_HelpGoogleChat" xml:space="preserve">
-    <value>如何添加 Google Chat webhook →</value>
-  </data>
-  <data name="ChannelsPage_HelpSlack" xml:space="preserve">
-    <value>Slack 应用控制台 →</value>
-  </data>
   <data name="ChannelsPage_HelpNostr" xml:space="preserve">
     <value>关于 Nostr →</value>
-  </data>
-  <data name="ChannelsPage_HelpIMessage" xml:space="preserve">
-    <value>关于 macOS“信息”→</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppHeadline" xml:space="preserve">
-    <value>关联您的 WhatsApp 手机</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep1" xml:space="preserve">
-    <value>点击下方“关联”部分中的 "Show QR"。</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep2" xml:space="preserve">
-    <value>在手机上：WhatsApp → 设置 → 已关联设备 → 关联设备。</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep3" xml:space="preserve">
-    <value>扫描此处显示的 QR 码。</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalHeadline" xml:space="preserve">
-    <value>关联您的 Signal 手机</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep1" xml:space="preserve">
-    <value>点击下方“关联”部分中的 "Show QR"。</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep2" xml:space="preserve">
-    <value>在手机上：Signal → 设置 → 已关联设备 → 关联新设备。</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep3" xml:space="preserve">
-    <value>扫描此处显示的 QR 码。</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramHeadline" xml:space="preserve">
-    <value>通过机器人连接 Telegram</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep1" xml:space="preserve">
-    <value>打开 Telegram 并向 @BotFather 发送消息。</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep2" xml:space="preserve">
-    <value>发送 /newbot 并按照提示操作。最后复制机器人令牌。</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep3" xml:space="preserve">
-    <value>将令牌粘贴到下方的配置表单中。</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep4" xml:space="preserve">
-    <value>点击 "Save and start"。频道将自动启动。</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordHeadline" xml:space="preserve">
-    <value>通过机器人连接 Discord</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep1" xml:space="preserve">
-    <value>打开 Discord 开发者门户，然后创建或选择一个应用。</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep2" xml:space="preserve">
-    <value>打开 Bot，按需添加机器人，然后重置并复制其令牌。</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep3" xml:space="preserve">
-    <value>将机器人令牌粘贴到下方的配置表单中。</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep4" xml:space="preserve">
-    <value>点击 "Save and start"，然后使用 OAuth2 安装链接将机器人添加到服务器。</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatHeadline" xml:space="preserve">
-    <value>通过 webhook 连接 Google Chat</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep1" xml:space="preserve">
-    <value>在 Google Chat 中，打开聊天室 → 管理 webhook → 添加 webhook。</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep2" xml:space="preserve">
-    <value>复制 webhook URL。</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep3" xml:space="preserve">
-    <value>将 URL 粘贴到下方的配置表单中。</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep4" xml:space="preserve">
-    <value>点击 "Save and start"。</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackHeadline" xml:space="preserve">
-    <value>通过应用连接 Slack</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep1" xml:space="preserve">
-    <value>在 api.slack.com/apps 上创建 Slack 应用并将其安装到您的工作区。</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep2" xml:space="preserve">
-    <value>复制机器人令牌 (xoxb-…) 和签名密钥。</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep3" xml:space="preserve">
-    <value>将两者粘贴到下方的配置表单中。</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep4" xml:space="preserve">
-    <value>点击 "Save and start"。</value>
   </data>
   <data name="ChannelsPage_GuideNostrHeadline" xml:space="preserve">
     <value>通过中继连接 Nostr</value>
@@ -5959,18 +5854,6 @@
   <data name="ChannelsPage_GuideNostrStep4" xml:space="preserve">
     <value>点击 "Save and start"。</value>
   </data>
-  <data name="ChannelsPage_GuideIMessageHeadline" xml:space="preserve">
-    <value>iMessage 仅适用于 macOS</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep1" xml:space="preserve">
-    <value>iMessage 读取本地 Messages.app 数据库，该数据库仅存在于 macOS 上。</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep2" xml:space="preserve">
-    <value>若要将 iMessage 与 LanFu 配合使用，请在 Mac 上运行网关，而非此 Windows 主机。</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep3" xml:space="preserve">
-    <value>此列表中的所有其他频道都可以在 Windows 托管的网关上正常使用。</value>
-  </data>
   <data name="ChannelsPage_GuideGenericHeadline" xml:space="preserve">
     <value>连接此频道</value>
   </data>
@@ -5983,41 +5866,11 @@
   <data name="ChannelsPage_GuideGenericStep3" xml:space="preserve">
     <value>保存配置；LanFu 将自动启动频道。</value>
   </data>
-  <data name="ChannelsPage_FieldBotToken" xml:space="preserve">
-    <value>机器人令牌</value>
-  </data>
-  <data name="ChannelsPage_FieldDiscordBotToken" xml:space="preserve">
-    <value>Discord 机器人令牌</value>
-  </data>
-  <data name="ChannelsPage_PlaceholderDiscordBotToken" xml:space="preserve">
-    <value>粘贴 Discord 机器人令牌</value>
-  </data>
-  <data name="ChannelsPage_FieldWebhookUrl" xml:space="preserve">
-    <value>Webhook 网址</value>
-  </data>
-  <data name="ChannelsPage_FieldSigningSecret" xml:space="preserve">
-    <value>签名密钥</value>
-  </data>
   <data name="ChannelsPage_FieldPrivateKey" xml:space="preserve">
     <value>私钥 (nsec)</value>
   </data>
   <data name="ChannelsPage_FieldRelayUrls" xml:space="preserve">
     <value>中继 URL</value>
-  </data>
-  <data name="ChannelsPage_HelpBotToken" xml:space="preserve">
-    <value>从 @BotFather (/newbot) 获取。</value>
-  </data>
-  <data name="ChannelsPage_HelpDiscordBotToken" xml:space="preserve">
-    <value>从 Discord 开发者门户 → Bot → Reset Token 复制。</value>
-  </data>
-  <data name="ChannelsPage_HelpWebhookGoogleChat" xml:space="preserve">
-    <value>打开聊天室 → 管理 webhook → 添加 webhook。</value>
-  </data>
-  <data name="ChannelsPage_HelpSlackBotToken" xml:space="preserve">
-    <value>来自您 Slack 应用的 OAuth 令牌。</value>
-  </data>
-  <data name="ChannelsPage_HelpSlackSigningSecret" xml:space="preserve">
-    <value>Basic Information → App Credentials。</value>
   </data>
   <data name="ChannelsPage_HelpRelayUrls" xml:space="preserve">
     <value>每行一个。</value>
@@ -7455,7 +7308,7 @@
   <data name="Onboarding_Ready_Skills.Header" xml:space="preserve"><value>探索技能</value></data>
   <data name="Onboarding_Ready_Skills.Description" xml:space="preserve"><value>浏览智能体的技能。不会自动安装任何内容。</value></data>
   <data name="Onboarding_Ready_Channels.Header" xml:space="preserve"><value>连接渠道</value></data>
-  <data name="Onboarding_Ready_Channels.Description" xml:space="preserve"><value>WhatsApp、Telegram 等。由您选择何时登录。</value></data>
+  <data name="Onboarding_Ready_Channels.Description" xml:space="preserve"><value>飞书、企业微信等。由您选择何时登录。</value></data>
   <data name="Onboarding_Ready_Return.Content" xml:space="preserve"><value>返回 AI 设置</value></data>
   <data name="Onboarding_Ready_Model" xml:space="preserve"><value>已验证的模型：{0}</value></data>
   <data name="Onboarding_Ready_Verifying" xml:space="preserve"><value>正在重新验证同一 Gateway、智能体和模型...</value></data>

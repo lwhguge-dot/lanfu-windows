@@ -68,7 +68,7 @@ static class FluentIconCatalog
     public const string MoreOverflow = "\uE712";   // More — saved-row overflow ⋯ button
 
     // ── Channel actions ────────────────────────────────────────────
-    public const string ChannelLogout = "\uF3B1";   // SignOut — per-channel logout (WhatsApp/Signal in the header; non-QR channels' destructive "disconnect" body action)
+    public const string ChannelLogout = "\uF3B1";   // SignOut — per-channel logout in the header; non-QR channels' destructive "disconnect" body action
     public const string ChannelStart = "\uE768";    // Play — start-channel header action
 
     // ── Glance chips (Connection page) ─────────────────────────────

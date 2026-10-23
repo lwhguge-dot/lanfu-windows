@@ -5840,113 +5840,8 @@ Make sure the gateway is running.</value>
   <data name="ChannelsPage_Controls" xml:space="preserve">
     <value>Controls</value>
   </data>
-  <data name="ChannelsPage_HelpWhatsApp" xml:space="preserve">
-    <value>WhatsApp Linked devices help →</value>
-  </data>
-  <data name="ChannelsPage_HelpSignal" xml:space="preserve">
-    <value>Signal Linked devices help →</value>
-  </data>
-  <data name="ChannelsPage_HelpTelegram" xml:space="preserve">
-    <value>How to create a Telegram bot →</value>
-  </data>
-  <data name="ChannelsPage_HelpDiscord" xml:space="preserve">
-    <value>How to create a Discord bot →</value>
-  </data>
-  <data name="ChannelsPage_HelpGoogleChat" xml:space="preserve">
-    <value>How to add a Google Chat webhook →</value>
-  </data>
-  <data name="ChannelsPage_HelpSlack" xml:space="preserve">
-    <value>Slack app dashboard →</value>
-  </data>
   <data name="ChannelsPage_HelpNostr" xml:space="preserve">
     <value>About Nostr →</value>
-  </data>
-  <data name="ChannelsPage_HelpIMessage" xml:space="preserve">
-    <value>About macOS Messages →</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppHeadline" xml:space="preserve">
-    <value>Link your WhatsApp phone</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep1" xml:space="preserve">
-    <value>Click &quot;Show QR&quot; in the Linking section below.</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep2" xml:space="preserve">
-    <value>On your phone: WhatsApp → Settings → Linked devices → Link a device.</value>
-  </data>
-  <data name="ChannelsPage_GuideWhatsAppStep3" xml:space="preserve">
-    <value>Scan the QR code that appears here.</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalHeadline" xml:space="preserve">
-    <value>Link your Signal phone</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep1" xml:space="preserve">
-    <value>Click &quot;Show QR&quot; in the Linking section below.</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep2" xml:space="preserve">
-    <value>On your phone: Signal → Settings → Linked devices → Link new device.</value>
-  </data>
-  <data name="ChannelsPage_GuideSignalStep3" xml:space="preserve">
-    <value>Scan the QR code that appears here.</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramHeadline" xml:space="preserve">
-    <value>Connect Telegram via a bot</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep1" xml:space="preserve">
-    <value>Open Telegram and send a message to @BotFather.</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep2" xml:space="preserve">
-    <value>Send /newbot and follow the prompts. Copy the bot token at the end.</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep3" xml:space="preserve">
-    <value>Paste the token into the Configuration form below.</value>
-  </data>
-  <data name="ChannelsPage_GuideTelegramStep4" xml:space="preserve">
-    <value>Click &quot;Save and start&quot;. The channel will start automatically.</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordHeadline" xml:space="preserve">
-    <value>Connect Discord via a bot</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep1" xml:space="preserve">
-    <value>Open the Discord Developer Portal, then create or select an application.</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep2" xml:space="preserve">
-    <value>Open Bot, add a bot if needed, then reset and copy its token.</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep3" xml:space="preserve">
-    <value>Paste the bot token into the Configuration form below.</value>
-  </data>
-  <data name="ChannelsPage_GuideDiscordStep4" xml:space="preserve">
-    <value>Click &quot;Save and start&quot;, then add the bot to your server with its OAuth2 installation link.</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatHeadline" xml:space="preserve">
-    <value>Connect Google Chat via a webhook</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep1" xml:space="preserve">
-    <value>In Google Chat, open the space → Manage webhooks → Add webhook.</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep2" xml:space="preserve">
-    <value>Copy the webhook URL.</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep3" xml:space="preserve">
-    <value>Paste the URL into the Configuration form below.</value>
-  </data>
-  <data name="ChannelsPage_GuideGoogleChatStep4" xml:space="preserve">
-    <value>Click &quot;Save and start&quot;.</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackHeadline" xml:space="preserve">
-    <value>Connect Slack via an app</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep1" xml:space="preserve">
-    <value>Create a Slack app at api.slack.com/apps and install it to your workspace.</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep2" xml:space="preserve">
-    <value>Copy the bot token (xoxb-…) and the signing secret.</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep3" xml:space="preserve">
-    <value>Paste both into the Configuration form below.</value>
-  </data>
-  <data name="ChannelsPage_GuideSlackStep4" xml:space="preserve">
-    <value>Click &quot;Save and start&quot;.</value>
   </data>
   <data name="ChannelsPage_GuideNostrHeadline" xml:space="preserve">
     <value>Connect Nostr via relays</value>
@@ -5963,18 +5858,6 @@ Make sure the gateway is running.</value>
   <data name="ChannelsPage_GuideNostrStep4" xml:space="preserve">
     <value>Click &quot;Save and start&quot;.</value>
   </data>
-  <data name="ChannelsPage_GuideIMessageHeadline" xml:space="preserve">
-    <value>iMessage is macOS-only</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep1" xml:space="preserve">
-    <value>iMessage reads the local Messages.app database, which only exists on macOS.</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep2" xml:space="preserve">
-    <value>To use iMessage with LanFu, run the gateway on a Mac instead of this Windows host.</value>
-  </data>
-  <data name="ChannelsPage_GuideIMessageStep3" xml:space="preserve">
-    <value>All other channels in this list work fine from a Windows-hosted gateway.</value>
-  </data>
   <data name="ChannelsPage_GuideGenericHeadline" xml:space="preserve">
     <value>Connect this channel</value>
   </data>
@@ -5987,41 +5870,11 @@ Make sure the gateway is running.</value>
   <data name="ChannelsPage_GuideGenericStep3" xml:space="preserve">
     <value>Save the config; LanFu will start the channel automatically.</value>
   </data>
-  <data name="ChannelsPage_FieldBotToken" xml:space="preserve">
-    <value>Bot token</value>
-  </data>
-  <data name="ChannelsPage_FieldDiscordBotToken" xml:space="preserve">
-    <value>Discord Bot Token</value>
-  </data>
-  <data name="ChannelsPage_PlaceholderDiscordBotToken" xml:space="preserve">
-    <value>Paste Discord bot token</value>
-  </data>
-  <data name="ChannelsPage_FieldWebhookUrl" xml:space="preserve">
-    <value>Webhook URL</value>
-  </data>
-  <data name="ChannelsPage_FieldSigningSecret" xml:space="preserve">
-    <value>Signing secret</value>
-  </data>
   <data name="ChannelsPage_FieldPrivateKey" xml:space="preserve">
     <value>Private key (nsec)</value>
   </data>
   <data name="ChannelsPage_FieldRelayUrls" xml:space="preserve">
     <value>Relay URLs</value>
-  </data>
-  <data name="ChannelsPage_HelpBotToken" xml:space="preserve">
-    <value>Get from @BotFather (/newbot).</value>
-  </data>
-  <data name="ChannelsPage_HelpDiscordBotToken" xml:space="preserve">
-    <value>Copy from Discord Developer Portal → Bot → Reset Token.</value>
-  </data>
-  <data name="ChannelsPage_HelpWebhookGoogleChat" xml:space="preserve">
-    <value>Open a space → Manage webhooks → Add webhook.</value>
-  </data>
-  <data name="ChannelsPage_HelpSlackBotToken" xml:space="preserve">
-    <value>OAuth tokens from your Slack app.</value>
-  </data>
-  <data name="ChannelsPage_HelpSlackSigningSecret" xml:space="preserve">
-    <value>Basic Information → App Credentials.</value>
   </data>
   <data name="ChannelsPage_HelpRelayUrls" xml:space="preserve">
     <value>One per line.</value>
@@ -7519,7 +7372,7 @@ Make sure the gateway is running.</value>
   <data name="Onboarding_Ready_Skills.Header" xml:space="preserve"><value>Explore skills</value></data>
   <data name="Onboarding_Ready_Skills.Description" xml:space="preserve"><value>Browse skills for your agent. Nothing is installed automatically.</value></data>
   <data name="Onboarding_Ready_Channels.Header" xml:space="preserve"><value>Connect channels</value></data>
-  <data name="Onboarding_Ready_Channels.Description" xml:space="preserve"><value>WhatsApp, Telegram, and more. You choose when to sign in.</value></data>
+  <data name="Onboarding_Ready_Channels.Description" xml:space="preserve"><value>Feishu, WeCom, and more. You choose when to sign in.</value></data>
   <data name="Onboarding_Ready_Return.Content" xml:space="preserve"><value>Back to AI setup</value></data>
   <data name="Onboarding_Ready_Model" xml:space="preserve"><value>Verified model: {0}</value></data>
   <data name="Onboarding_Ready_Verifying" xml:space="preserve"><value>Rechecking the same Gateway, agent, and model...</value></data>

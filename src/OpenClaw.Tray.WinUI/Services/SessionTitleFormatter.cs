@@ -198,8 +198,6 @@ internal static class SessionTitleFormatter
 
     private static string ChannelLabel(string? channel) => channel?.ToLowerInvariant() switch
     {
-        "imessage" => "iMessage",
-        "whatsapp" => "WhatsApp",
         "sms" => "SMS",
         { Length: > 0 } value => char.ToUpperInvariant(value[0]) + value[1..],
         _ => "Channel",

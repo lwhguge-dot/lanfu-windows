@@ -9,18 +9,18 @@ public sealed class SessionDisplayResolverTests
     {
         var resolved = SessionDisplayResolver.Resolve(new SessionInfo
         {
-            Key = "agent:main:telegram:main:direct:491234567890",
-            DisplayName = "Telegram:491234567890",
+            Key = "agent:main:feishu:main:direct:peer_123",
+            DisplayName = "Feishu:peer_123",
             Classification = "direct",
             AgentId = "main",
             AccountId = "main",
             PeerKind = "direct",
         });
 
-        Assert.Equal("Telegram direct message", resolved.Title);
+        Assert.Equal("Feishu direct message", resolved.Title);
         Assert.Equal("direct", resolved.Classification);
         Assert.Equal("main", resolved.AccountId);
-        Assert.DoesNotContain("491234567890", resolved.Title, StringComparison.Ordinal);
+        Assert.DoesNotContain("peer_123", resolved.Title, StringComparison.Ordinal);
     }
 
     [Fact]

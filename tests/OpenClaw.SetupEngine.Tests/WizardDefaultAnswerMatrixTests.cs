@@ -17,10 +17,10 @@ public class WizardDefaultAnswerMatrixTests
     private static readonly string[] ChannelOptions =
     [
         "__skip__",
-        "teams",
-        "telegram",
-        "discord",
-        "whatsapp",
+        "feishu",
+        "wecom",
+        "matrix",
+        "qqbot",
     ];
 
     [Fact]
@@ -69,9 +69,9 @@ public class WizardDefaultAnswerMatrixTests
         foreach (var provider in ProviderOptions)
         {
             yield return [provider, "__skip__"];
-            yield return [provider, "teams"];
-            yield return [provider, "telegram"];
-            yield return [provider, "discord,whatsapp"];
+            yield return [provider, "feishu"];
+            yield return [provider, "wecom"];
+            yield return [provider, "matrix,qqbot"];
         }
     }
 

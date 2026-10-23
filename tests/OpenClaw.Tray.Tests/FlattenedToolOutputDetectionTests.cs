@@ -39,7 +39,7 @@ public class FlattenedToolOutputDetectionTests
     }
 
     [Theory]
-    [InlineData("OpenClaw 2026.4.23 (a979721) — iMessage green bubble energy, but for everyone.\nUsage: openclaw nodes invoke")]
+    [InlineData("OpenClaw 2026.4.23 (a979721) — pocket-claw energy, but for everyone.\nUsage: openclaw nodes invoke")]
     [InlineData("OpenClaw v1.5.0 — gateway test build")]
     [InlineData("openclaw nodes invoke --node main --command canvas.eval")]
     public void DetectsOpenClawCliBanner(string text)

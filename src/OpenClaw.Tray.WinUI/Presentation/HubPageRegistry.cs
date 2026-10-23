@@ -89,8 +89,7 @@ internal static class HubPageRegistry
     {
         OpenClaw.SetupEngine.SetupNativeDestination.Chat => "chat",
         OpenClaw.SetupEngine.SetupNativeDestination.Skills => "skills",
-        OpenClaw.SetupEngine.SetupNativeDestination.WhatsApp or OpenClaw.SetupEngine.SetupNativeDestination.Telegram or
-            OpenClaw.SetupEngine.SetupNativeDestination.Channels => "channels",
+        OpenClaw.SetupEngine.SetupNativeDestination.Channels => "channels",
         _ => throw new ArgumentOutOfRangeException(nameof(destination)),
     };
 

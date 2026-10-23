@@ -41,7 +41,7 @@ public class ConfigEditorModelTests
             }
           },
           "channels": {
-            "slack": {
+            "feishu": {
               "enabled": false
             }
           }
@@ -54,12 +54,12 @@ public class ConfigEditorModelTests
             {
                 ["gateway.reload.mode"] = "manual",
                 ["gateway.reload.interval"] = 10L,
-                ["channels.slack.enabled"] = true,
+                ["channels.feishu.enabled"] = true,
             });
 
         Assert.Equal("manual", updated.GetProperty("gateway").GetProperty("reload").GetProperty("mode").GetString());
         Assert.Equal(10, updated.GetProperty("gateway").GetProperty("reload").GetProperty("interval").GetInt64());
-        Assert.True(updated.GetProperty("channels").GetProperty("slack").GetProperty("enabled").GetBoolean());
+        Assert.True(updated.GetProperty("channels").GetProperty("feishu").GetProperty("enabled").GetBoolean());
     }
 
     [Fact]

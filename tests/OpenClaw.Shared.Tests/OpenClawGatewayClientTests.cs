@@ -1959,10 +1959,10 @@ public class OpenClawGatewayClientTests
           "type": "event",
           "event": "session.message",
           "payload": {
-            "sessionKey": "agent:main:whatsapp:direct:+15551234567",
+            "sessionKey": "agent:main:feishu:direct:ou_15551234567",
             "message": {
               "role": "user",
-              "content": "testing from whatsapp",
+              "content": "testing from feishu",
               "timestamp": 1781631273567
             },
             "state": "final"
@@ -1971,9 +1971,9 @@ public class OpenClawGatewayClientTests
         """);
 
         Assert.NotNull(received);
-        Assert.Equal("agent:main:whatsapp:direct:+15551234567", received!.SessionKey);
+        Assert.Equal("agent:main:feishu:direct:ou_15551234567", received!.SessionKey);
         Assert.Equal("user", received.Role);
-        Assert.Equal("testing from whatsapp", received.Text);
+        Assert.Equal("testing from feishu", received.Text);
         Assert.Equal("final", received.State);
         Assert.Equal(1781631273567, received.Ts);
     }
@@ -2022,7 +2022,7 @@ public class OpenClawGatewayClientTests
           "type": "event",
           "event": "session.message",
           "payload": {
-            "sessionKey": "agent:main:whatsapp:direct:+15551234567",
+            "sessionKey": "agent:main:feishu:direct:ou_15551234567",
             "message": {
               "role": "assistant",
               "content": [
@@ -2036,7 +2036,7 @@ public class OpenClawGatewayClientTests
         """);
 
         Assert.NotNull(received);
-        Assert.Equal("agent:main:whatsapp:direct:+15551234567", received!.SessionKey);
+        Assert.Equal("agent:main:feishu:direct:ou_15551234567", received!.SessionKey);
         Assert.Equal("assistant", received.Role);
         Assert.Equal("hello from assistant", received.Text);
         Assert.Equal("final", received.State);
@@ -2710,7 +2710,7 @@ public class OpenClawGatewayClientTests
           "type": "event",
           "event": "session.message",
           "payload": {
-            "sessionKey": "agent:main:whatsapp:direct:+15551234567",
+            "sessionKey": "agent:main:feishu:direct:ou_15551234567",
             "message": "not-an-object",
             "state": "final"
           }
@@ -2735,7 +2735,7 @@ public class OpenClawGatewayClientTests
           "type": "event",
           "event": "session.message",
           "payload": {
-            "sessionKey": "agent:main:whatsapp:direct:+15551234567",
+            "sessionKey": "agent:main:feishu:direct:ou_15551234567",
             "message": {
               "role": "assistant",
               "content": "assistant reply",
@@ -2772,7 +2772,7 @@ public class OpenClawGatewayClientTests
           "type": "event",
           "event": "session.message",
           "payload": {
-            "sessionKey": "agent:main:whatsapp:direct:+15551234567",
+            "sessionKey": "agent:main:feishu:direct:ou_15551234567",
             "message": {
               "role": "assistant",
               "content": "{{fullMessage}}",
@@ -3369,13 +3369,13 @@ public class OpenClawGatewayClientTests
         helper.ParseSessionsPayload("""
         [
           {
-            "key": "agent:main:telegram:main:direct:491234567890",
+            "key": "agent:main:feishu:main:direct:peer_491234",
             "label": "Family chat",
-            "displayName": "Telegram:491234567890",
+            "displayName": "Feishu:peer_491234",
             "derivedTitle": "Latest plans",
             "modelProvider": "openai",
             "model": "gpt-5.4",
-            "channel": "telegram",
+            "channel": "feishu",
             "groupChannel": "family",
             "chatType": "direct",
             "origin": { "label": "Tony" },
@@ -3544,7 +3544,7 @@ public class OpenClawGatewayClientTests
         [
           {
             "key": "agent:main:subagent:child",
-            "channel": "telegram",
+            "channel": "feishu",
             "classification": "subagent",
             "agentId": "main",
             "isMain": false,
@@ -3557,7 +3557,7 @@ public class OpenClawGatewayClientTests
         """);
 
         var session = Assert.Single(helper.GetSessionList());
-        Assert.Equal("telegram", session.Channel);
+        Assert.Equal("feishu", session.Channel);
         Assert.Equal("subagent", session.Classification);
         Assert.Equal("main", session.AgentId);
         Assert.True(session.IsBackground == true);
@@ -4739,14 +4739,14 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_WithChannels_FiresEventWithCorrectNames()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"discord":{"status":"running","running":true},"telegram":{"status":"ready","configured":true}}""";
+        var json = """{"wecom":{"status":"running","running":true},"feishu":{"status":"ready","configured":true}}""";
 
         var (channels, fired) = helper.ParseChannelHealthPayload(json);
 
         Assert.True(fired);
         Assert.Equal(2, channels.Length);
-        Assert.Contains(channels, c => c.Name == "discord");
-        Assert.Contains(channels, c => c.Name == "telegram");
+        Assert.Contains(channels, c => c.Name == "wecom");
+        Assert.Contains(channels, c => c.Name == "feishu");
     }
 
     [Fact]
@@ -4766,7 +4766,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_StatusField_TakesPriorityOverDerivedStatus()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"discord":{"status":"degraded","running":true}}""";
+        var json = """{"wecom":{"status":"degraded","running":true}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4780,7 +4780,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_RunningTrue_NoStatusField_DerivedAsRunning()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"telegram":{"running":true}}""";
+        var json = """{"feishu":{"running":true}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4793,7 +4793,7 @@ public class OpenClawGatewayClientTests
     {
         var helper = new GatewayClientTestHelper();
         // lastError present and non-null → hasError = true
-        var json = """{"whatsapp":{"lastError":"connection refused"}}""";
+        var json = """{"matrix":{"lastError":"connection refused"}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4806,7 +4806,7 @@ public class OpenClawGatewayClientTests
     {
         // lastError=null should NOT set hasError (ValueKind == Null is excluded)
         var helper = new GatewayClientTestHelper();
-        var json = """{"slack":{"lastError":null,"configured":true}}""";
+        var json = """{"nostr":{"lastError":null,"configured":true}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4819,7 +4819,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_ConfiguredAndProbeOk_DerivedAsReady()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"telegram":{"configured":true,"probe":{"ok":true}}}""";
+        var json = """{"feishu":{"configured":true,"probe":{"ok":true}}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4831,7 +4831,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_ConfiguredAndLinked_DerivedAsReady()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"whatsapp":{"configured":true,"linked":true}}""";
+        var json = """{"matrix":{"configured":true,"linked":true}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4845,7 +4845,7 @@ public class OpenClawGatewayClientTests
     {
         // configured=true with no lastError and no explicit status → ready (catch-all)
         var helper = new GatewayClientTestHelper();
-        var json = """{"telegram":{"configured":true}}""";
+        var json = """{"feishu":{"configured":true}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4857,7 +4857,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_NotConfigured_DerivedAsNotConfigured()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"discord":{}}""";
+        var json = """{"wecom":{}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4870,7 +4870,7 @@ public class OpenClawGatewayClientTests
     {
         // Error takes priority over running in the derivation chain
         var helper = new GatewayClientTestHelper();
-        var json = """{"slack":{"running":true,"lastError":"timeout"}}""";
+        var json = """{"nostr":{"running":true,"lastError":"timeout"}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4884,7 +4884,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_ParsesErrorProperty()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"discord":{"status":"error","error":"Bot token invalid"}}""";
+        var json = """{"wecom":{"status":"error","error":"Bot token invalid"}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4895,7 +4895,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_ParsesAuthAgeProperty()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"whatsapp":{"status":"ready","authAge":"3 days ago"}}""";
+        var json = """{"matrix":{"status":"ready","authAge":"3 days ago"}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4906,7 +4906,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_ParsesTypeProperty()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"telegram":{"status":"ready","type":"webhook"}}""";
+        var json = """{"feishu":{"status":"ready","type":"webhook"}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4917,7 +4917,7 @@ public class OpenClawGatewayClientTests
     public void ParseChannelHealth_LinkedFalse_IsLinkedIsFalse()
     {
         var helper = new GatewayClientTestHelper();
-        var json = """{"whatsapp":{"linked":false,"status":"not configured"}}""";
+        var json = """{"matrix":{"linked":false,"status":"not configured"}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 
@@ -4930,7 +4930,7 @@ public class OpenClawGatewayClientTests
         // probe.ok=false + configured=true + no isLinked → falls to configured&&!hasError → ready
         // (the two "ready" clauses effectively mean configured=true always means ready if no error)
         var helper = new GatewayClientTestHelper();
-        var json = """{"telegram":{"configured":true,"probe":{"ok":false}}}""";
+        var json = """{"feishu":{"configured":true,"probe":{"ok":false}}}""";
 
         var (channels, _) = helper.ParseChannelHealthPayload(json);
 

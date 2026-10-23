@@ -422,13 +422,14 @@ follow real primary-model verification, not discovery or browser sign-in.
 Showing the page creates no pending handoff and performs no finalization.
 
 The final screen has exactly three choices: **Talk to my agent**, with a visible
-Recommended badge, opens Chat; **Connect channels** opens Channels (WhatsApp,
-Telegram, and more); **Explore skills** opens Skills for the verified agent.
+Recommended badge, opens Chat; **Connect channels** opens Channels (Feishu,
+WeCom, and more); **Explore skills** opens Skills for the verified agent.
 There are no bottom Return or Skip buttons; the progress dots remain. Selecting
 a card is the final action, with no extra Finish button. These are navigation
 choices, never automatic sign-in, channel configuration, or skill installation.
-Legacy WhatsApp/Telegram receipt destinations retain their numeric mappings and
-channel focus behavior, but are not separate choices on this screen.
+The retired channel-specific receipt destinations (numeric values 1/2) were
+removed along with those channels; remaining destinations keep their historic
+numeric mappings so persisted restart receipts stay stable.
 
 Each explicit choice drains the prior AI page, rechecks the same Gateway,
 endpoint, agent, model and main session through bounded verification,

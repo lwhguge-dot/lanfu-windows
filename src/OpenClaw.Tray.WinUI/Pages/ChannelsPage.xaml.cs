@@ -635,7 +635,7 @@ public sealed partial class ChannelsPage : Page
         // The 0 top/bottom padding plus MinHeight=64 leaves the title
         // visually pinned ~8 px from the card border regardless of what
         // we set on Padding. A pixel-measured baseline confirmed the
-        // Telegram card had ~7 px above the title and ~2 px below the
+        // channel card had ~7 px above the title and ~2 px below the
         // last subtitle, even with `Padding = (24, 32, 24, 32)`.
         //
         // Local Resources["ExpanderHeaderPadding"] = ... DOES NOT work
@@ -654,7 +654,7 @@ public sealed partial class ChannelsPage : Page
         // Calibration (verified empirically by screenshot pixel-counting
         // at 100% DPI on the OpenClaw hub window):
         //
-        //   Margin     Telegram-card visible (top / bottom)
+        //   Margin     channel-card visible (top / bottom)
         //   ──────    ──────────────────────────────────────
         //   32         48 px / 45 px   (much too generous)
         //   16         28 px / 25 px   (top hits floor of range)
@@ -870,9 +870,10 @@ public sealed partial class ChannelsPage : Page
     {
         var stack = new StackPanel { Spacing = 16, Margin = new Thickness(0, 8, 0, 0) };
 
-        // iMessage and other Windows-incompatible channels: show the setup
-        // guide (which explains *why* and points at relevant docs) but skip
-        // Status/Linking/Configuration since nothing here will actually work.
+        // Windows-incompatible channels (if the catalog ever lists one
+        // again): show the setup guide (which explains *why* and points at
+        // relevant docs) but skip Status/Linking/Configuration since nothing
+        // here will actually work.
         if (record.IsUnavailableOnWindows)
         {
             var unavailableGuide = BuildSetupGuide(record);
@@ -905,13 +906,12 @@ public sealed partial class ChannelsPage : Page
         // value grid inside the expander body, regardless of configured
         // state.
 
-        // Linking section (WhatsApp/Signal) — body is built lazily when the user opens the section.
+        // Linking section (QR-link channels) — body is built lazily when the user opens the section.
         if (record.Capabilities.HasFlag(ChannelCapabilities.CanShowQr))
             stack.Children.Add(BuildLinkingPlaceholder(record));
 
         // Configuration section — inline credential form for channels we have
-        // explicit field definitions for (Telegram/Discord bot tokens,
-        // Slack tokens, Google Chat webhook, Nostr key/relays).
+        // explicit field definitions for (e.g. Nostr key/relays).
         //
         // For configured channels the section header reads "Replace
         // credentials" so the form's purpose is clear; for unconfigured
@@ -941,7 +941,7 @@ public sealed partial class ChannelsPage : Page
     /// Contents per channel state:
     ///   * Configured + running, non-QR  → [Stop] + [Disconnect and forget credentials]
     ///   * Configured + not running, non-QR → [Start] + [Disconnect and forget credentials]
-    ///   * Configured + running, QR (WhatsApp/Signal) → [Logout] (the QR-flow analog of Stop; unlinks the device, scan a fresh QR to relink)
+    ///   * Configured + running, QR → [Logout] (the QR-flow analog of Stop; unlinks the device, scan a fresh QR to relink)
     ///   * Configured + linked-but-not-connected, QR → [Logout]
     /// </summary>
     private FrameworkElement? BuildControlsSection(ChannelRecord record)
@@ -1152,22 +1152,13 @@ public sealed partial class ChannelsPage : Page
 
     /// <summary>
     /// External help URL for each channel. Where the credentials come from a
-    /// phone app (WhatsApp / Signal) we point at the canonical "Linked devices"
-    /// help page — useful when the user doesn't know where the toggle lives.
-    /// Where the channel is Windows-incompatible (iMessage) we link to a doc
-    /// explaining why.
+    /// phone app we point at the canonical "Linked devices" help page —
+    /// useful when the user doesn't know where the toggle lives.
     /// </summary>
     private static (string? Text, string? Url) ResolveExternalHelpLink(string channelId) =>
         channelId.ToLowerInvariant() switch
         {
-            "whatsapp"   => (LocalizationHelper.GetString("ChannelsPage_HelpWhatsApp"),     "https://faq.whatsapp.com/378279004439436/"),
-            "signal"     => (LocalizationHelper.GetString("ChannelsPage_HelpSignal"),       "https://support.signal.org/hc/en-us/articles/360007320551"),
-            "telegram"   => (LocalizationHelper.GetString("ChannelsPage_HelpTelegram"),     "https://core.telegram.org/bots/features#botfather"),
-            "discord"    => (LocalizationHelper.GetString("ChannelsPage_HelpDiscord"),  "https://discord.com/developers/applications"),
-            "googlechat" => (LocalizationHelper.GetString("ChannelsPage_HelpGoogleChat"), "https://developers.google.com/chat/how-tos/webhooks"),
-            "slack"      => (LocalizationHelper.GetString("ChannelsPage_HelpSlack"),              "https://api.slack.com/apps"),
             "nostr"      => (LocalizationHelper.GetString("ChannelsPage_HelpNostr"),                      "https://nostr.com/"),
-            "imessage"   => (LocalizationHelper.GetString("ChannelsPage_HelpIMessage"),             "https://support.apple.com/guide/messages/welcome/mac"),
             _ => (null, null),
         };
 
@@ -1179,58 +1170,12 @@ public sealed partial class ChannelsPage : Page
     private static (string? Headline, string[]? Steps) ResolveSetupGuide(string channelId) =>
         channelId.ToLowerInvariant() switch
         {
-            "whatsapp" => (LocalizationHelper.GetString("ChannelsPage_GuideWhatsAppHeadline"), new[]
-            {
-                LocalizationHelper.GetString("ChannelsPage_GuideWhatsAppStep1"),
-                LocalizationHelper.GetString("ChannelsPage_GuideWhatsAppStep2"),
-                LocalizationHelper.GetString("ChannelsPage_GuideWhatsAppStep3"),
-            }),
-            "signal" => (LocalizationHelper.GetString("ChannelsPage_GuideSignalHeadline"), new[]
-            {
-                LocalizationHelper.GetString("ChannelsPage_GuideSignalStep1"),
-                LocalizationHelper.GetString("ChannelsPage_GuideSignalStep2"),
-                LocalizationHelper.GetString("ChannelsPage_GuideSignalStep3"),
-            }),
-            "telegram" => (LocalizationHelper.GetString("ChannelsPage_GuideTelegramHeadline"), new[]
-            {
-                LocalizationHelper.GetString("ChannelsPage_GuideTelegramStep1"),
-                LocalizationHelper.GetString("ChannelsPage_GuideTelegramStep2"),
-                LocalizationHelper.GetString("ChannelsPage_GuideTelegramStep3"),
-                LocalizationHelper.GetString("ChannelsPage_GuideTelegramStep4"),
-            }),
-            "discord" => (LocalizationHelper.GetString("ChannelsPage_GuideDiscordHeadline"), new[]
-            {
-                LocalizationHelper.GetString("ChannelsPage_GuideDiscordStep1"),
-                LocalizationHelper.GetString("ChannelsPage_GuideDiscordStep2"),
-                LocalizationHelper.GetString("ChannelsPage_GuideDiscordStep3"),
-                LocalizationHelper.GetString("ChannelsPage_GuideDiscordStep4"),
-            }),
-            "googlechat" => (LocalizationHelper.GetString("ChannelsPage_GuideGoogleChatHeadline"), new[]
-            {
-                LocalizationHelper.GetString("ChannelsPage_GuideGoogleChatStep1"),
-                LocalizationHelper.GetString("ChannelsPage_GuideGoogleChatStep2"),
-                LocalizationHelper.GetString("ChannelsPage_GuideGoogleChatStep3"),
-                LocalizationHelper.GetString("ChannelsPage_GuideGoogleChatStep4"),
-            }),
-            "slack" => (LocalizationHelper.GetString("ChannelsPage_GuideSlackHeadline"), new[]
-            {
-                LocalizationHelper.GetString("ChannelsPage_GuideSlackStep1"),
-                LocalizationHelper.GetString("ChannelsPage_GuideSlackStep2"),
-                LocalizationHelper.GetString("ChannelsPage_GuideSlackStep3"),
-                LocalizationHelper.GetString("ChannelsPage_GuideSlackStep4"),
-            }),
             "nostr" => (LocalizationHelper.GetString("ChannelsPage_GuideNostrHeadline"), new[]
             {
                 LocalizationHelper.GetString("ChannelsPage_GuideNostrStep1"),
                 LocalizationHelper.GetString("ChannelsPage_GuideNostrStep2"),
                 LocalizationHelper.GetString("ChannelsPage_GuideNostrStep3"),
                 LocalizationHelper.GetString("ChannelsPage_GuideNostrStep4"),
-            }),
-            "imessage" => (LocalizationHelper.GetString("ChannelsPage_GuideIMessageHeadline"), new[]
-            {
-                LocalizationHelper.GetString("ChannelsPage_GuideIMessageStep1"),
-                LocalizationHelper.GetString("ChannelsPage_GuideIMessageStep2"),
-                LocalizationHelper.GetString("ChannelsPage_GuideIMessageStep3"),
             }),
             _ => (LocalizationHelper.GetString("ChannelsPage_GuideGenericHeadline"), new[]
             {
@@ -1255,60 +1200,13 @@ public sealed partial class ChannelsPage : Page
     /// <summary>
     /// Per-channel inline-form schema. Fields were validated against the
     /// gateway test fixtures (src/cli/config-cli.test.ts and related tests
-    /// confirm channels.telegram.botToken, channels.slack.botToken/signingSecret,
-    /// channels.discord.token, etc.). Returns null for channels without an
-    /// inline form — those still get the "Open Config page" stub.
+    /// confirm channels.nostr.nsec, channels.nostr.relays, etc.). Returns
+    /// null for channels without an inline form — those still get the
+    /// "Open Config page" stub.
     /// </summary>
     private static IReadOnlyList<ConfigField>? ResolveConfigFields(string channelId) =>
         channelId.ToLowerInvariant() switch
         {
-            "telegram" => new[]
-            {
-                new ConfigField(
-                    "channels.telegram.botToken",
-                    LocalizationHelper.GetString("ChannelsPage_FieldBotToken"),
-                    "123456:ABCdef...",
-                    Sensitive: true,
-                    Required: true,
-                    HelpText: LocalizationHelper.GetString("ChannelsPage_HelpBotToken")),
-            },
-            "discord" => new[]
-            {
-                new ConfigField(
-                    "channels.discord.token",
-                    LocalizationHelper.GetString("ChannelsPage_FieldDiscordBotToken"),
-                    LocalizationHelper.GetString("ChannelsPage_PlaceholderDiscordBotToken"),
-                    Sensitive: true,
-                    Required: true,
-                    HelpText: LocalizationHelper.GetString("ChannelsPage_HelpDiscordBotToken")),
-            },
-            "googlechat" => new[]
-            {
-                new ConfigField(
-                    "channels.googlechat.webhookUrl",
-                    LocalizationHelper.GetString("ChannelsPage_FieldWebhookUrl"),
-                    "https://chat.googleapis.com/v1/spaces/...",
-                    Sensitive: true,
-                    Required: true,
-                    HelpText: LocalizationHelper.GetString("ChannelsPage_HelpWebhookGoogleChat")),
-            },
-            "slack" => new[]
-            {
-                new ConfigField(
-                    "channels.slack.botToken",
-                    LocalizationHelper.GetString("ChannelsPage_FieldBotToken"),
-                    "xoxb-...",
-                    Sensitive: true,
-                    Required: true,
-                    HelpText: LocalizationHelper.GetString("ChannelsPage_HelpSlackBotToken")),
-                new ConfigField(
-                    "channels.slack.signingSecret",
-                    LocalizationHelper.GetString("ChannelsPage_FieldSigningSecret"),
-                    "",
-                    Sensitive: true,
-                    Required: true,
-                    HelpText: LocalizationHelper.GetString("ChannelsPage_HelpSlackSigningSecret")),
-            },
             "nostr" => new[]
             {
                 new ConfigField(
@@ -1682,7 +1580,7 @@ public sealed partial class ChannelsPage : Page
 
         if (linked == true)
         {
-            // WhatsApp-style self.e164 if present
+            // Linked-account self.e164 if present
             if (raw.TryGetProperty("self", out var self) && self.ValueKind == JsonValueKind.Object)
             {
                 var e164 = GetString(self, "e164") ?? GetString(self, "jid");
@@ -1705,7 +1603,7 @@ public sealed partial class ChannelsPage : Page
         if (raw.TryGetProperty("reconnectAttempts", out var attempts) && attempts.ValueKind == JsonValueKind.Number && attempts.TryGetInt32(out var att) && att > 0)
             pairs.Add(("Reconnect attempts", att.ToString()));
 
-        // Probe info (TG/Discord/Signal/GoogleChat/iMessage)
+        // Probe info (plugin channels that health-check their upstream)
         if (raw.TryGetProperty("probe", out var probe) && probe.ValueKind == JsonValueKind.Object)
         {
             var ok = GetBool(probe, "ok");
@@ -2060,9 +1958,7 @@ public sealed partial class ChannelsPage : Page
         if (ct.IsCancellationRequested) return;
         messageBlock.Text = !string.IsNullOrEmpty(start.Message)
             ? start.Message
-            : channelId.Equals("whatsapp", StringComparison.OrdinalIgnoreCase)
-                ? "Open WhatsApp on your phone → Settings → Linked devices → scan this QR."
-                : "Open the mobile app's linked-devices screen and scan this QR.";
+            : "Open the mobile app's linked-devices screen and scan this QR.";
 
         // Long-poll once for completion
         var waitParams = new { currentQrDataUrl = start.QrDataUrl, timeoutMs = 30000 };
@@ -2326,8 +2222,8 @@ public sealed partial class ChannelsPage : Page
     /// the gateway config so the channel can be started again later
     /// without re-entering the bot token / webhook URL / etc. Wired to
     /// the "Stop" button in the body CONTROLS section on non-QR running
-    /// channels (Telegram, Discord, Slack, GoogleChat, Nostr); for
-    /// WhatsApp/Signal the analogous action is Logout (unlinks the device).
+    /// channels (e.g. Nostr); for QR channels the analogous action is
+    /// Logout (unlinks the device).
     /// </summary>
     private async Task StopChannelAsync(string channelId)
     {
@@ -2475,14 +2371,14 @@ public sealed partial class ChannelsPage : Page
         if (!string.IsNullOrEmpty(lastError) && running != true)
             return ("SystemFillColorCriticalBrush", "error", BadgeSeverity.Critical, BuildErrorSubtitleLines(raw, lastError!));
 
-        // WhatsApp-style flow: linked/connected
+        // QR-link flow: linked/connected
         if (record.Capabilities.HasFlag(ChannelCapabilities.CanShowQr))
         {
             if (configured == false) return ("SystemFillColorNeutralBrush", "not configured", BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
             if (linked == false) return ("SystemFillColorCriticalBrush", "not linked", BadgeSeverity.Critical, Single("Scan a QR to link this device"));
-            if (connected == true) return ("SystemFillColorSuccessBrush", "connected", BadgeSeverity.Success, BuildWhatsAppSubtitleLines(raw));
-            if (running == true) return ("SystemFillColorCautionBrush", "running", BadgeSeverity.Caution, BuildWhatsAppSubtitleLines(raw));
-            return ("SystemFillColorCautionBrush", "linked", BadgeSeverity.Caution, BuildWhatsAppSubtitleLines(raw));
+            if (connected == true) return ("SystemFillColorSuccessBrush", "connected", BadgeSeverity.Success, BuildQrSubtitleLines(raw));
+            if (running == true) return ("SystemFillColorCautionBrush", "running", BadgeSeverity.Caution, BuildQrSubtitleLines(raw));
+            return ("SystemFillColorCautionBrush", "linked", BadgeSeverity.Caution, BuildQrSubtitleLines(raw));
         }
 
         // Generic flow
@@ -2507,10 +2403,10 @@ public sealed partial class ChannelsPage : Page
         return lines;
     }
 
-    private static IReadOnlyList<string> BuildWhatsAppSubtitleLines(JsonElement raw)
+    private static IReadOnlyList<string> BuildQrSubtitleLines(JsonElement raw)
     {
         // Line 1: identity (phone / JID). Line 2: activity (auth age,
-        // last message). Single-account WhatsApp connection is the common
+        // last message). Single-account connection is the common
         // case so we don't bother surfacing account count.
         var lines = new List<string>();
 
@@ -2579,13 +2475,6 @@ public sealed partial class ChannelsPage : Page
     /// </summary>
     private static string ResolveTagline(string channelId) => channelId.ToLowerInvariant() switch
     {
-        "whatsapp"   => "Link your phone: scan a QR to connect",
-        "telegram"   => "Bot integration: paste your bot token to set up",
-        "discord"    => "Bot integration: paste your Discord bot token",
-        "googlechat" => "Webhook integration: paste a Google Chat webhook",
-        "slack"      => "OAuth app: install a Slack app to connect",
-        "signal"     => "Link your phone: scan a QR to connect",
-        "imessage"   => "macOS-only: requires running the gateway on a Mac",
         "nostr"      => "Decentralized: paste your nsec and relays",
         _            => "Plugin channel: expand to configure",
     };

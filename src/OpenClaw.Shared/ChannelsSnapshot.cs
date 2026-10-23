@@ -23,7 +23,7 @@ public sealed class ChannelsStatusSnapshot
     /// <summary>Canonical ordered list of channel ids the gateway is aware of.</summary>
     public IReadOnlyList<string> ChannelOrder { get; init; } = [];
 
-    /// <summary>Sidebar label per id (e.g. <c>"whatsapp" → "WhatsApp"</c>).</summary>
+    /// <summary>Sidebar label per id (e.g. <c>"feishu" → "Feishu"</c>).</summary>
     public IReadOnlyDictionary<string, string> ChannelLabels { get; init; }
         = new Dictionary<string, string>();
 
@@ -38,13 +38,13 @@ public sealed class ChannelsStatusSnapshot
 
     /// <summary>
     /// Per-channel raw status JSON. Keys are channel ids; values are arbitrary channel-specific
-    /// status documents (typed records like <see cref="WhatsAppChannelStatus"/> available for
-    /// built-ins; plugin channels use the generic shape).
+    /// status documents (parse via <see cref="ChannelsStatusParser.ExtractGeneric"/> for the
+    /// common shape; channel plugins may add their own fields).
     /// </summary>
     public IReadOnlyDictionary<string, JsonElement> Channels { get; init; }
         = new Dictionary<string, JsonElement>();
 
-    /// <summary>Per-channel account list. Channels with multi-account support (e.g. WhatsApp Business).</summary>
+    /// <summary>Per-channel account list. Channels with multi-account support (e.g. matrix).</summary>
     public IReadOnlyDictionary<string, IReadOnlyList<ChannelAccountSnapshot>> ChannelAccounts { get; init; }
         = new Dictionary<string, IReadOnlyList<ChannelAccountSnapshot>>();
 
@@ -146,90 +146,6 @@ public sealed class ChannelProbe
     public double? ElapsedMs { get; init; }
     public string? Version { get; init; }
     public string? Error { get; init; }
-}
-
-// ─── Typed status records for built-in channels ─────────────────────────────
-// These cover the fields Mac surfaces in its detail-pane "details line"; plugin
-// channels (e.g. nostr) use the generic shape above.
-
-public sealed class WhatsAppChannelStatus
-{
-    public bool Configured { get; init; }
-    public bool Running { get; init; }
-    public bool Connected { get; init; }
-    public bool Linked { get; init; }
-    public string? LastError { get; init; }
-    public WhatsAppSelf? Self { get; init; }
-    public double? AuthAgeMs { get; init; }
-    public double? LastConnectedAt { get; init; }
-    public double? LastMessageAt { get; init; }
-    public int ReconnectAttempts { get; init; }
-    public WhatsAppLastDisconnect? LastDisconnect { get; init; }
-}
-
-public sealed class WhatsAppSelf
-{
-    public string? E164 { get; init; }
-    public string? Jid { get; init; }
-}
-
-public sealed class WhatsAppLastDisconnect
-{
-    public double? At { get; init; }
-    public int? Status { get; init; }
-    public string? Error { get; init; }
-    public bool? LoggedOut { get; init; }
-}
-
-public sealed class TelegramChannelStatus
-{
-    public bool Configured { get; init; }
-    public bool Running { get; init; }
-    public string? LastError { get; init; }
-    public ChannelProbe? Probe { get; init; }
-    public double? LastProbeAt { get; init; }
-    public string? BotUsername { get; init; }
-}
-
-public sealed class DiscordChannelStatus
-{
-    public bool Configured { get; init; }
-    public bool Running { get; init; }
-    public string? LastError { get; init; }
-    public ChannelProbe? Probe { get; init; }
-    public double? LastProbeAt { get; init; }
-    public string? WebhookUrl { get; init; }
-}
-
-public sealed class GoogleChatChannelStatus
-{
-    public bool Configured { get; init; }
-    public bool Running { get; init; }
-    public string? LastError { get; init; }
-    public ChannelProbe? Probe { get; init; }
-    public double? LastProbeAt { get; init; }
-    public string? WebhookUrl { get; init; }
-}
-
-public sealed class SignalChannelStatus
-{
-    public bool Configured { get; init; }
-    public bool Running { get; init; }
-    public string? LastError { get; init; }
-    public ChannelProbe? Probe { get; init; }
-    public double? LastProbeAt { get; init; }
-    public string? BaseUrl { get; init; }
-}
-
-public sealed class IMessageChannelStatus
-{
-    public bool Configured { get; init; }
-    public bool Running { get; init; }
-    public string? LastError { get; init; }
-    public ChannelProbe? Probe { get; init; }
-    public double? LastProbeAt { get; init; }
-    public string? CliPath { get; init; }
-    public string? DbPath { get; init; }
 }
 
 // ─── Web login (QR linking) ──────────────────────────────────────────────────

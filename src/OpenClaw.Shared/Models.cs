@@ -103,7 +103,7 @@ public class OpenClawNotification
     public bool IsChat { get; set; } = false; // True if from chat response
 
     // Structured metadata (populated by gateway when available)
-    public string? Channel { get; set; }   // e.g. telegram, email, chat
+    public string? Channel { get; set; }   // e.g. feishu, email, chat
     public string? Agent { get; set; }     // agent name/identifier
     public string? Intent { get; set; }    // normalized intent (reminder, build, alert)
     public string[]? Tags { get; set; }    // free-form routing tags

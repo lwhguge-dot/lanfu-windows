@@ -25,14 +25,14 @@ public class ChannelsStatusParserTests
         var json = """
             {
               "ts": 1716000000.5,
-              "channelOrder": ["whatsapp", "telegram"],
-              "channelLabels": { "whatsapp": "WhatsApp", "telegram": "Telegram" },
+              "channelOrder": ["feishu", "matrix"],
+              "channelLabels": { "feishu": "Feishu", "matrix": "Matrix" },
               "channels": {}
             }
             """;
         var snap = ChannelsStatusParser.Parse(Json(json));
-        Assert.Equal(new[] { "whatsapp", "telegram" }, snap.ChannelOrder);
-        Assert.Equal("WhatsApp", snap.ChannelLabels["whatsapp"]);
+        Assert.Equal(new[] { "feishu", "matrix" }, snap.ChannelOrder);
+        Assert.Equal("Feishu", snap.ChannelLabels["feishu"]);
         Assert.Equal(1716000000.5, snap.Ts);
     }
 
@@ -41,18 +41,18 @@ public class ChannelsStatusParserTests
     {
         var json = """
             {
-              "channelOrder": ["whatsapp"],
-              "channelLabels": { "whatsapp": "Legacy Label" },
+              "channelOrder": ["feishu"],
+              "channelLabels": { "feishu": "Legacy Label" },
               "channelMeta": [
-                { "id": "whatsapp", "label": "WhatsApp", "detailLabel": "WhatsApp Business", "systemImage": "message.fill" }
+                { "id": "feishu", "label": "Feishu", "detailLabel": "Feishu Bot", "systemImage": "message.fill" }
               ],
               "channels": {}
             }
             """;
         var snap = ChannelsStatusParser.Parse(Json(json));
-        Assert.Equal("WhatsApp", snap.ResolveLabel("whatsapp"));
-        Assert.Equal("WhatsApp Business", snap.ResolveDetailLabel("whatsapp"));
-        Assert.Equal("message.fill", snap.ResolveSystemImage("whatsapp"));
+        Assert.Equal("Feishu", snap.ResolveLabel("feishu"));
+        Assert.Equal("Feishu Bot", snap.ResolveDetailLabel("feishu"));
+        Assert.Equal("message.fill", snap.ResolveSystemImage("feishu"));
     }
 
     [Fact]
@@ -69,17 +69,17 @@ public class ChannelsStatusParserTests
     {
         var json = """
             {
-              "channelOrder": ["telegram"],
+              "channelOrder": ["feishu"],
               "channels": {
-                "telegram": { "configured": true, "running": true, "botUsername": "openclaw_bot" }
+                "feishu": { "configured": true, "running": true, "botUsername": "lanfu_bot" }
               }
             }
             """;
         var snap = ChannelsStatusParser.Parse(Json(json));
-        Assert.True(snap.Channels.ContainsKey("telegram"));
-        var tg = snap.Channels["telegram"];
-        Assert.Equal(JsonValueKind.True, tg.GetProperty("configured").ValueKind);
-        Assert.Equal("openclaw_bot", tg.GetProperty("botUsername").GetString());
+        Assert.True(snap.Channels.ContainsKey("feishu"));
+        var raw = snap.Channels["feishu"];
+        Assert.Equal(JsonValueKind.True, raw.GetProperty("configured").ValueKind);
+        Assert.Equal("lanfu_bot", raw.GetProperty("botUsername").GetString());
     }
 
     [Fact]
@@ -87,46 +87,25 @@ public class ChannelsStatusParserTests
     {
         var json = """
             {
-              "channelOrder": ["whatsapp"],
+              "channelOrder": ["feishu"],
               "channels": {},
               "channelAccounts": {
-                "whatsapp": [
+                "feishu": [
                   { "id": "primary", "configured": true, "running": true, "lastInboundAt": 1716000000000 },
                   { "id": "secondary", "configured": false }
                 ]
               },
-              "channelDefaultAccountId": { "whatsapp": "primary" }
+              "channelDefaultAccountId": { "feishu": "primary" }
             }
             """;
         var snap = ChannelsStatusParser.Parse(Json(json));
-        var accs = snap.ChannelAccounts["whatsapp"];
+        var accs = snap.ChannelAccounts["feishu"];
         Assert.Equal(2, accs.Count);
         Assert.Equal("primary", accs[0].Id);
         Assert.True(accs[0].Configured);
         Assert.Equal(1716000000000d, accs[0].LastInboundAt);
         Assert.False(accs[1].Configured);
-        Assert.Equal("primary", snap.ChannelDefaultAccountId["whatsapp"]);
-    }
-
-    [Fact]
-    public void ExtractWhatsApp_PopulatesAllFields()
-    {
-        var json = """
-            {
-              "configured": true, "running": true, "connected": true, "linked": true,
-              "self": { "e164": "+44...", "jid": "44...@s.whatsapp.net" },
-              "authAgeMs": 86400000, "lastConnectedAt": 1716000000000, "lastMessageAt": 1716000005000,
-              "reconnectAttempts": 2,
-              "lastDisconnect": { "at": 1715999000000, "status": 1006, "error": "timeout", "loggedOut": false }
-            }
-            """;
-        var status = ChannelsStatusParser.ExtractWhatsApp(Json(json));
-        Assert.NotNull(status);
-        Assert.True(status!.Connected);
-        Assert.Equal("+44...", status.Self!.E164);
-        Assert.Equal(2, status.ReconnectAttempts);
-        Assert.Equal("timeout", status.LastDisconnect!.Error);
-        Assert.False(status.LastDisconnect.LoggedOut);
+        Assert.Equal("primary", snap.ChannelDefaultAccountId["feishu"]);
     }
 
     [Fact]
@@ -155,7 +134,7 @@ public class ChannelsStatusParserTests
     [Fact]
     public void ExtractGeneric_PopulatesActivityAndModeFields()
     {
-        // Mirrors what the live gateway returns for a running Telegram channel.
+        // Mirrors what the live gateway returns for a running polling channel.
         var json = """
             {
               "configured": true, "running": true, "connected": true,
@@ -211,8 +190,6 @@ public class ChannelsAggregatorTests
         var records = ChannelsAggregator.Aggregate(null, DateTime.UtcNow);
         Assert.Equal(ChannelsAggregator.BuiltInChannelOrder.Count, records.Count);
         var ids = records.Select(r => r.Id).ToHashSet();
-        Assert.Contains("whatsapp", ids);
-        Assert.Contains("telegram", ids);
         Assert.Contains("nostr", ids);
     }
 
@@ -220,12 +197,12 @@ public class ChannelsAggregatorTests
     public void Aggregate_PutsConfiguredFirst()
     {
         var snap = SnapshotWith(
-            "whatsapp,telegram,discord",
-            ("whatsapp", """{ "configured": false }"""),
-            ("telegram", """{ "configured": true, "running": true }"""),
-            ("discord", """{ "configured": false }"""));
+            "feishu,matrix,nostr",
+            ("feishu", """{ "configured": false }"""),
+            ("matrix", """{ "configured": true, "running": true }"""),
+            ("nostr", """{ "configured": false }"""));
         var records = ChannelsAggregator.Aggregate(snap, DateTime.UtcNow);
-        Assert.Equal("telegram", records[0].Id);
+        Assert.Equal("matrix", records[0].Id);
         Assert.True(records[0].IsConfigured);
         Assert.False(records[1].IsConfigured);
         Assert.False(records[2].IsConfigured);
@@ -236,11 +213,11 @@ public class ChannelsAggregatorTests
     {
         var snap = new ChannelsStatusSnapshot
         {
-            ChannelOrder = new[] { "whatsapp" },
-            Channels = new Dictionary<string, JsonElement> { ["whatsapp"] = Json("""{ "configured": false }""") },
+            ChannelOrder = new[] { "feishu" },
+            Channels = new Dictionary<string, JsonElement> { ["feishu"] = Json("""{ "configured": false }""") },
             ChannelAccounts = new Dictionary<string, IReadOnlyList<ChannelAccountSnapshot>>
             {
-                ["whatsapp"] = new[]
+                ["feishu"] = new[]
                 {
                     new ChannelAccountSnapshot { Id = "primary", Configured = true, Running = true },
                 }
@@ -258,17 +235,17 @@ public class ChannelsAggregatorTests
         // AVAILABLE entries so the user can discover and add more.
         var snap = new ChannelsStatusSnapshot
         {
-            ChannelOrder = new[] { "telegram" },
+            ChannelOrder = new[] { "feishu" },
             Channels = new Dictionary<string, JsonElement>
             {
-                ["telegram"] = Json("""{ "configured": true, "running": true }"""),
+                ["feishu"] = Json("""{ "configured": true, "running": true }"""),
             },
         };
         var records = ChannelsAggregator.Aggregate(snap, DateTime.UtcNow);
 
-        // Configured (telegram) appears first, then every other built-in
+        // Configured (feishu) appears first, then every other built-in
         // catalog channel as unconfigured "preview" entries.
-        Assert.Equal("telegram", records[0].Id);
+        Assert.Equal("feishu", records[0].Id);
         Assert.True(records[0].IsConfigured);
 
         var allIds = records.Select(r => r.Id).ToHashSet(StringComparer.OrdinalIgnoreCase);
@@ -279,7 +256,7 @@ public class ChannelsAggregatorTests
         Assert.Equal(records.Count, records.Select(r => r.Id.ToLowerInvariant()).Distinct().Count());
 
         // All non-target built-ins are unconfigured.
-        Assert.All(records.Where(r => !string.Equals(r.Id, "telegram", System.StringComparison.OrdinalIgnoreCase)),
+        Assert.All(records.Where(r => !string.Equals(r.Id, "feishu", System.StringComparison.OrdinalIgnoreCase)),
             r => Assert.False(r.IsConfigured));
     }
 
@@ -288,88 +265,10 @@ public class ChannelsAggregatorTests
     {
         // Gateway provides no labels for preview channels; the aggregator
         // should fall back to the built-in pretty-name catalog so the
-        // AVAILABLE list never shows raw lowercase ids like "googlechat".
+        // AVAILABLE list never shows raw lowercase ids.
         var records = ChannelsAggregator.Aggregate(null, DateTime.UtcNow);
         var byId = records.ToDictionary(r => r.Id.ToLowerInvariant());
-        Assert.Equal("WhatsApp",    byId["whatsapp"].Label);
-        Assert.Equal("Google Chat", byId["googlechat"].Label);
-        Assert.Equal("iMessage",    byId["imessage"].Label);
-    }
-
-    [Fact]
-    public void Aggregate_CapabilitiesAreInferredFromId()
-    {
-        // All four channels are configured here, so their full capability set
-        // (Logout for whatsapp/telegram/signal, ShowQr+Relink for whatsapp/signal)
-        // should be reported. CanLogout/CanRelink are gated on "configured" —
-        // see Aggregate_NotConfigured_HidesLogoutAndRelink for the negative case.
-        var snap = SnapshotWith(
-            "whatsapp,telegram,discord,signal",
-            ("whatsapp", """{ "configured": true, "running": true }"""),
-            ("telegram", """{ "configured": true, "running": true }"""),
-            ("discord",  """{ "configured": true, "running": true }"""),
-            ("signal",   """{ "configured": true, "running": true }"""));
-        var records = ChannelsAggregator.Aggregate(snap, DateTime.UtcNow).ToDictionary(r => r.Id);
-
-        Assert.True(records["whatsapp"].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-        Assert.True(records["whatsapp"].Capabilities.HasFlag(ChannelCapabilities.CanShowQr));
-        Assert.True(records["whatsapp"].Capabilities.HasFlag(ChannelCapabilities.CanRelink));
-        Assert.True(records["telegram"].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-        Assert.False(records["telegram"].Capabilities.HasFlag(ChannelCapabilities.CanShowQr));
-        Assert.False(records["discord"].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-        Assert.True(records["signal"].Capabilities.HasFlag(ChannelCapabilities.CanShowQr));
-        // Configured Signal exposes CanLogout — it's a QR channel and Logout
-        // is the unlink-the-device action (lightweight, re-scan to reconnect).
-        // Without this, the Channels page would render zero control buttons
-        // for a configured Signal card (isQr=true + hasLogout=false fell
-        // through both branches in BuildControlsSection).
-        Assert.True(records["signal"].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-    }
-
-    [Fact]
-    public void Aggregate_NotConfigured_HidesLogoutAndRelink_KeepsShowQr()
-    {
-        // Regression: unconfigured WhatsApp / Telegram used to surface a
-        // Logout header action because CanLogout was id-driven only. We now
-        // gate CanLogout AND CanRelink on IsConfigured so the page doesn't
-        // show "Logout" on a channel the user has never signed into.
-        // CanShowQr stays available on QR channels because it's the bootstrap
-        // path — that's how the user *first* configures WhatsApp/Signal.
-        var snap = SnapshotWith(
-            "whatsapp,telegram,signal",
-            ("whatsapp", """{ "configured": false }"""),
-            ("telegram", """{ "configured": false }"""),
-            ("signal",   """{ "configured": false }"""));
-        var records = ChannelsAggregator.Aggregate(snap, DateTime.UtcNow).ToDictionary(r => r.Id);
-
-        Assert.False(records["whatsapp"].IsConfigured);
-        Assert.False(records["telegram"].IsConfigured);
-        Assert.False(records["signal"].IsConfigured);
-
-        // CanLogout must be absent on every unconfigured channel.
-        Assert.False(records["whatsapp"].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-        Assert.False(records["telegram"].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-        Assert.False(records["signal"].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-
-        // CanRelink (rotate an existing link) is meaningless when there's no link.
-        Assert.False(records["whatsapp"].Capabilities.HasFlag(ChannelCapabilities.CanRelink));
-        Assert.False(records["signal"].Capabilities.HasFlag(ChannelCapabilities.CanRelink));
-
-        // CanShowQr stays — it's the bootstrap path for QR channels.
-        Assert.True(records["whatsapp"].Capabilities.HasFlag(ChannelCapabilities.CanShowQr));
-        Assert.True(records["signal"].Capabilities.HasFlag(ChannelCapabilities.CanShowQr));
-
-        // Refresh is always available.
-        Assert.True(records["whatsapp"].Capabilities.HasFlag(ChannelCapabilities.CanRefresh));
-        Assert.True(records["telegram"].Capabilities.HasFlag(ChannelCapabilities.CanRefresh));
-    }
-
-    [Fact]
-    public void Aggregate_iMessageIsUnavailableOnWindows()
-    {
-        var snap = SnapshotWith("imessage", ("imessage", "{}"));
-        var records = ChannelsAggregator.Aggregate(snap, DateTime.UtcNow);
-        Assert.True(records[0].IsUnavailableOnWindows);
+        Assert.Equal("Nostr", byId["nostr"].Label);
     }
 
     [Fact]
@@ -409,28 +308,28 @@ public class ChannelsAggregatorTests
     [Fact]
     public void Aggregate_CanStart_OnlyWhenConfiguredButNotRunning()
     {
-        // 'telegram': configured but stopped — this is the canonical "Start
+        // 'feishu': configured but stopped — this is the canonical "Start
         // channel" scenario.
-        // 'discord':  configured AND running — Start would be a no-op, no flag.
-        // 'slack':    not configured at all — no Start until credentials exist.
+        // 'matrix': configured AND running — Start would be a no-op, no flag.
+        // 'nostr':  not configured at all — no Start until credentials exist.
         var snap = SnapshotWith(
-            "telegram,discord,slack",
-            ("telegram", """{ "configured": true }"""),
-            ("discord",  """{ "configured": true, "running": true }"""),
-            ("slack",    """{ }"""));
+            "feishu,matrix,nostr",
+            ("feishu", """{ "configured": true }"""),
+            ("matrix", """{ "configured": true, "running": true }"""),
+            ("nostr",  """{ }"""));
         var records = ChannelsAggregator.Aggregate(snap, DateTime.UtcNow).ToDictionary(r => r.Id);
 
-        Assert.True(records["telegram"].IsConfigured);
-        Assert.False(records["telegram"].IsRunning);
-        Assert.True(records["telegram"].Capabilities.HasFlag(ChannelCapabilities.CanStart));
+        Assert.True(records["feishu"].IsConfigured);
+        Assert.False(records["feishu"].IsRunning);
+        Assert.True(records["feishu"].Capabilities.HasFlag(ChannelCapabilities.CanStart));
 
-        Assert.True(records["discord"].IsConfigured);
-        Assert.True(records["discord"].IsRunning);
-        Assert.False(records["discord"].Capabilities.HasFlag(ChannelCapabilities.CanStart));
+        Assert.True(records["matrix"].IsConfigured);
+        Assert.True(records["matrix"].IsRunning);
+        Assert.False(records["matrix"].Capabilities.HasFlag(ChannelCapabilities.CanStart));
 
-        Assert.False(records["slack"].IsConfigured);
-        Assert.False(records["slack"].IsRunning);
-        Assert.False(records["slack"].Capabilities.HasFlag(ChannelCapabilities.CanStart));
+        Assert.False(records["nostr"].IsConfigured);
+        Assert.False(records["nostr"].IsRunning);
+        Assert.False(records["nostr"].Capabilities.HasFlag(ChannelCapabilities.CanStart));
     }
 
     [Fact]
@@ -441,21 +340,21 @@ public class ChannelsAggregatorTests
         // those channels — dropping them silently is a regression.
         var snap = new ChannelsStatusSnapshot
         {
-            ChannelOrder = new[] { "telegram" }, // only one in order
+            ChannelOrder = new[] { "feishu" }, // only one in order
             Channels = new Dictionary<string, JsonElement>
             {
-                ["telegram"] = Json("""{ "configured": true, "running": true }"""),
+                ["feishu"] = Json("""{ "configured": true, "running": true }"""),
                 ["custom-plugin"] = Json("""{ "configured": true, "running": true }"""),
             },
         };
         var records = ChannelsAggregator.Aggregate(snap, DateTime.UtcNow);
         var byId = records.ToDictionary(r => r.Id);
-        Assert.Contains("telegram", byId.Keys);
+        Assert.Contains("feishu", byId.Keys);
         Assert.Contains("custom-plugin", byId.Keys);
-        // Both gateway-reported channels are configured. (Built-in extras —
-        // whatsapp/discord/etc. — appear unconfigured per the discoverability
-        // union; see Aggregate_AlwaysUnionsBuiltInCatalog.)
-        Assert.True(byId["telegram"].IsConfigured);
+        // Both gateway-reported channels are configured. (Built-in extras
+        // appear unconfigured per the discoverability union; see
+        // Aggregate_AlwaysUnionsBuiltInCatalog.)
+        Assert.True(byId["feishu"].IsConfigured);
         Assert.True(byId["custom-plugin"].IsConfigured);
     }
 
@@ -474,11 +373,11 @@ public class ChannelsAggregatorTests
         var records = ChannelsAggregator.Aggregate(snap, DateTime.UtcNow);
         var ids = records.Select(r => r.Id).ToHashSet();
         // Custom plugin-a / plugin-b surface — and the built-in catalog
-        // ALWAYS unions in for discoverability, so whatsapp et al. also
-        // appear (per Aggregate_AlwaysUnionsBuiltInCatalog).
+        // ALWAYS unions in for discoverability (per
+        // Aggregate_AlwaysUnionsBuiltInCatalog).
         Assert.Contains("plugin-a", ids);
         Assert.Contains("plugin-b", ids);
-        Assert.Contains("whatsapp", ids);
+        Assert.Contains("nostr", ids);
     }
 
     [Fact]

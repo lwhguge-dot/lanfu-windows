@@ -176,12 +176,10 @@ public sealed class SetupNativeHandoffTests
     private static GatewayAiSetupCompletion Proof => new(SetupCompletionIntent.CustodianOnboarding,
         Gateway.Id, GatewayDashboardBinding.Capture(Gateway), "provider/model", "primary", 4,
         IdentityBinding: new string('B', 64), SessionKey: "agent:primary:main");
-    private static SetupNativeCompletion Choice => new(Proof, new(SetupNativeDestination.Telegram, "agent:primary:main"));
+    private static SetupNativeCompletion Choice => new(Proof, new(SetupNativeDestination.Channels, "agent:primary:main"));
 
     [Theory]
     [InlineData(SetupNativeDestination.Chat, 0, "chat")]
-    [InlineData(SetupNativeDestination.WhatsApp, 1, "channels")]
-    [InlineData(SetupNativeDestination.Telegram, 2, "channels")]
     [InlineData(SetupNativeDestination.Channels, 3, "channels")]
     [InlineData(SetupNativeDestination.Skills, 4, "skills")]
     public void NativeRecordIsVersionedAndCannotBecomeALegacyBrowserReceipt(SetupNativeDestination destination, int persistedValue, string page)
@@ -490,14 +488,14 @@ public sealed class SetupNativeHandoffTests
     public void FocusPolicyDoesNotTreatFallbackOrConfiguredOtherChannelsAsAuthoritativeAbsence()
     {
         Assert.Equal(SetupChannelAvailability.Unconfirmed,
-            SetupChannelFocusPolicy.GetAvailability(new(), "whatsapp"));
+            SetupChannelFocusPolicy.GetAvailability(new(), "feishu"));
         Assert.Equal(SetupChannelAvailability.Unconfirmed,
             SetupChannelFocusPolicy.GetAvailability(new() { Channels = new Dictionary<string, System.Text.Json.JsonElement>
-                { ["telegram"] = default } }, "whatsapp"));
+                { ["matrix"] = default } }, "feishu"));
         Assert.Equal(SetupChannelAvailability.NotOffered,
-            SetupChannelFocusPolicy.GetAvailability(new() { ChannelOrder = ["telegram"] }, "whatsapp"));
+            SetupChannelFocusPolicy.GetAvailability(new() { ChannelOrder = ["matrix"] }, "feishu"));
         Assert.Equal(SetupChannelAvailability.Offered,
-            SetupChannelFocusPolicy.GetAvailability(new() { ChannelOrder = ["whatsapp"] }, "whatsapp"));
+            SetupChannelFocusPolicy.GetAvailability(new() { ChannelOrder = ["feishu"] }, "feishu"));
     }
 
     private sealed class Clock : TimeProvider

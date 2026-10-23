@@ -32,34 +32,6 @@ public static class ChannelsStatusParser
 
     // ─── Typed extractors for individual channels ────────────────────────────
 
-    public static WhatsAppChannelStatus? ExtractWhatsApp(JsonElement channel) =>
-        channel.ValueKind == JsonValueKind.Object
-            ? new WhatsAppChannelStatus
-            {
-                Configured = GetBool(channel, "configured") ?? false,
-                Running = GetBool(channel, "running") ?? false,
-                Connected = GetBool(channel, "connected") ?? false,
-                Linked = GetBool(channel, "linked") ?? false,
-                LastError = GetString(channel, "lastError"),
-                Self = channel.TryGetProperty("self", out var s) && s.ValueKind == JsonValueKind.Object
-                    ? new WhatsAppSelf { E164 = GetString(s, "e164"), Jid = GetString(s, "jid") }
-                    : null,
-                AuthAgeMs = GetDouble(channel, "authAgeMs"),
-                LastConnectedAt = GetDouble(channel, "lastConnectedAt"),
-                LastMessageAt = GetDouble(channel, "lastMessageAt"),
-                ReconnectAttempts = (int)(GetDouble(channel, "reconnectAttempts") ?? 0),
-                LastDisconnect = channel.TryGetProperty("lastDisconnect", out var d) && d.ValueKind == JsonValueKind.Object
-                    ? new WhatsAppLastDisconnect
-                    {
-                        At = GetDouble(d, "at"),
-                        Status = (int?)GetDouble(d, "status"),
-                        Error = GetString(d, "error"),
-                        LoggedOut = GetBool(d, "loggedOut"),
-                    }
-                    : null,
-            }
-            : null;
-
     public static GenericChannelStatus? ExtractGeneric(JsonElement channel) =>
         channel.ValueKind == JsonValueKind.Object
             ? new GenericChannelStatus

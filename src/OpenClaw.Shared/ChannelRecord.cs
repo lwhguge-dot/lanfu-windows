@@ -38,7 +38,7 @@ public sealed class ChannelRecord
     /// <summary>Capability flags (per-channel — driven by id).</summary>
     public ChannelCapabilities Capabilities { get; init; }
 
-    /// <summary>True if Windows cannot host this channel even when configured (e.g. iMessage).</summary>
+    /// <summary>True if Windows cannot host this channel even when configured.</summary>
     public bool IsUnavailableOnWindows { get; init; }
 
     /// <summary>Sort order (gateway-provided); lower wins.</summary>
@@ -66,9 +66,9 @@ public enum ChannelCapabilities
     /// <summary>
     /// Configured-and-running non-QR channel: offer a <c>channels.stop</c>
     /// action (pause without clearing credentials). QR-link channels
-    /// (WhatsApp/Signal) instead expose <see cref="CanLogout"/> in the
-    /// header — for them "logout" already means "unlink this device",
-    /// which is the analogous lightweight pause action.
+    /// instead expose <see cref="CanLogout"/> in the header — for them
+    /// "logout" already means "unlink this device", which is the analogous
+    /// lightweight pause action.
     /// </summary>
     CanStop = 1 << 5,
 }
@@ -81,42 +81,35 @@ public static class ChannelsAggregator
 {
     /// <summary>Built-in fallback ordering when the gateway returns an empty <c>channelOrder</c>.</summary>
     public static readonly IReadOnlyList<string> BuiltInChannelOrder =
-        new[] { "whatsapp", "telegram", "discord", "googlechat", "slack", "signal", "imessage", "nostr" };
+        new[] { "nostr" };
 
     /// <summary>
     /// Pretty labels for the built-in channels. Used when the gateway
     /// hasn't reported a label (typical for "preview" channels — those the
     /// user hasn't configured yet and the gateway doesn't have a plugin
-    /// for). Without this we'd render raw lowercase ids ("discord",
-    /// "googlechat") which look broken.
+    /// for). Without this we'd render raw lowercase ids, which look broken.
     /// </summary>
     private static readonly IReadOnlyDictionary<string, string> BuiltInChannelLabels =
         new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
-            ["whatsapp"]   = "WhatsApp",
-            ["telegram"]   = "Telegram",
-            ["discord"]    = "Discord",
-            ["googlechat"] = "Google Chat",
-            ["slack"]      = "Slack",
-            ["signal"]     = "Signal",
-            ["imessage"]   = "iMessage",
-            ["nostr"]      = "Nostr",
+            ["nostr"] = "Nostr",
         };
 
-    /// <summary>Channels that require a phone-app QR scan.</summary>
+    /// <summary>Channels that require a phone-app QR scan. Empty until the
+    /// gateway exposes a QR-linked channel again.</summary>
     private static readonly HashSet<string> QrLinkChannels =
-        new(StringComparer.OrdinalIgnoreCase) { "whatsapp", "signal" };
+        new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>Channels that support a per-channel logout/unlink action.
-    /// For QR channels (WhatsApp/Signal) Logout = unlink the device (re-scan
-    /// to reconnect). For non-QR channels (Telegram) Logout = clear stored
-    /// credentials (re-enter them to reconnect).</summary>
+    /// Logout = clear stored credentials (re-enter them to reconnect).
+    /// Empty until the gateway exposes a channel with a logout flow again.</summary>
     private static readonly HashSet<string> LogoutChannels =
-        new(StringComparer.OrdinalIgnoreCase) { "whatsapp", "telegram", "signal" };
+        new(StringComparer.OrdinalIgnoreCase);
 
-    /// <summary>Channels that cannot be hosted on Windows.</summary>
+    /// <summary>Channels that cannot be hosted on Windows. Empty until such
+    /// a channel exists in the catalog again.</summary>
     private static readonly HashSet<string> WindowsUnsupportedChannels =
-        new(StringComparer.OrdinalIgnoreCase) { "imessage" };
+        new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
     /// Aggregate a snapshot into <see cref="ChannelRecord"/>s.
@@ -160,7 +153,7 @@ public static class ChannelsAggregator
             //   CanRefresh — kept for backcompat, but the page no longer renders
             //                a per-channel Refresh button; one page-level
             //                Refresh-all covers it.
-            //   CanShowQr  — QR channels (WhatsApp/Signal): available even when
+            //   CanShowQr  — QR channels: available even when
             //                unconfigured because the QR scan IS how you
             //                configure them. Show-QR is the bootstrap path.
             //   CanRelink  — QR channels, only once already configured: relink
@@ -187,7 +180,7 @@ public static class ChannelsAggregator
             if (configured && !running)
                 caps |= ChannelCapabilities.CanStart;
             // CanStop: lightweight pause for non-QR running channels.
-            // For QR channels (WhatsApp/Signal) we don't set CanStop —
+            // For QR channels we don't set CanStop —
             // "Logout" is the analogous lightweight action there (unlink
             // the device; can scan a fresh QR to reconnect).
             if (configured && running && !isQrChannel)

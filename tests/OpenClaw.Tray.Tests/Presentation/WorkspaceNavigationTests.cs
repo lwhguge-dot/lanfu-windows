@@ -760,7 +760,7 @@ public sealed class WorkspaceNavigationTests
     [InlineData("agent:main:main", null, null)]
     [InlineData("agent:main:dashboard:chat", null, null)]
     [InlineData("agent:main:voice:call", null, null)]
-    [InlineData("agent:main:telegram:direct:peer", null, null)]
+    [InlineData("agent:main:feishu:direct:peer", null, null)]
     public void Projection_PreservesForegroundMetadataAndExplicitFalseOverride(string key, string? classification, bool? background)
     {
         using var agents = JsonDocument.Parse("""{"agents":[{"id":"main"}]}""");

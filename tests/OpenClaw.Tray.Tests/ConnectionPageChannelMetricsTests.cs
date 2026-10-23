@@ -71,9 +71,9 @@ public sealed class ConnectionPageChannelMetricsTests
         // channel (linked=false) + one stopped + one error → expect 1.
         var channels = new[]
         {
-            new ChannelHealth { Name = "telegram", Status = "running", IsLinked = false },
-            new ChannelHealth { Name = "discord",  Status = "stopped", IsLinked = true },
-            new ChannelHealth { Name = "slack",    Status = "error",   IsLinked = true,  Error = "auth expired" },
+            new ChannelHealth { Name = "feishu", Status = "running", IsLinked = false },
+            new ChannelHealth { Name = "wecom",  Status = "stopped", IsLinked = true },
+            new ChannelHealth { Name = "matrix", Status = "error",   IsLinked = true,  Error = "auth expired" },
         };
 
         Assert.Equal(1, ConnectionPageChannelMetrics.CountHealthyChannels(channels));

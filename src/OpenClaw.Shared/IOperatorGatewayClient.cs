@@ -149,9 +149,9 @@ public interface IOperatorGatewayClient
     /// </summary>
     Task<GatewayUpdateStatus?> GetUpdateStatusAsync(int timeoutMs = 5000) =>
         Task.FromResult<GatewayUpdateStatus?>(null);
-    /// <summary>Log out / unlink a channel (whatsapp, telegram). Sends channels.logout { channel }.</summary>
+    /// <summary>Log out / unlink a channel that supports logout. Sends channels.logout { channel }.</summary>
     Task<bool> LogoutChannelAsync(string channelName, int timeoutMs = 12000);
-    /// <summary>Begin a QR linking flow (whatsapp, signal). Sends web.login.start { force, timeoutMs }.</summary>
+    /// <summary>Begin a QR linking flow for a QR-linked channel. Sends web.login.start { force, timeoutMs }.</summary>
     Task<WebLoginStartResult?> WebLoginStartAsync(bool force = false, int timeoutMs = 30000);
     /// <summary>Long-poll for QR linking completion. Sends web.login.wait { currentQrDataUrl, timeoutMs }.</summary>
     Task<WebLoginWaitResult?> WebLoginWaitAsync(string? currentQrDataUrl = null, int timeoutMs = 30000);

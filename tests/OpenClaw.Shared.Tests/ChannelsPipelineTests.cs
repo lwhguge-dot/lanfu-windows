@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using OpenClaw.Shared;
@@ -20,55 +19,50 @@ public class ChannelsPipelineTests
     public void Pipeline_ProducesExpectedRecordsForRealisticSnapshot()
     {
         // Approximates what the gateway would return after a fresh probe
-        // with WhatsApp connected, Telegram running, Discord erroring,
-        // and Slack/Nostr unconfigured.
+        // with feishu connected, matrix running, wecom erroring,
+        // and weixin/nostr unconfigured.
         var json = """
             {
               "ts": 1716000000,
-              "channelOrder": ["whatsapp", "telegram", "discord", "slack", "nostr"],
-              "channelLabels": { "whatsapp": "WhatsApp", "telegram": "Telegram", "discord": "Discord", "slack": "Slack", "nostr": "Nostr" },
+              "channelOrder": ["feishu", "matrix", "wecom", "weixin", "nostr"],
+              "channelLabels": { "feishu": "Feishu", "matrix": "Matrix", "wecom": "WeCom", "weixin": "WeChat", "nostr": "Nostr" },
               "channels": {
-                "whatsapp": { "configured": true, "running": true, "connected": true, "linked": true, "self": { "e164": "+44..." }, "authAgeMs": 86400000, "lastMessageAt": 1716000000000 },
-                "telegram": { "configured": true, "running": true, "probe": { "ok": true, "elapsedMs": 91 }, "lastProbeAt": 1716000000000, "botUsername": "openclaw_bot" },
-                "discord":  { "configured": true, "running": false, "lastError": "RateLimited", "probe": { "ok": false, "status": 429 }, "lastProbeAt": 1716000000000 },
-                "slack":    { "configured": false },
-                "nostr":    { "configured": false }
+                "feishu": { "configured": true, "running": true, "connected": true },
+                "matrix": { "configured": true, "running": true, "probe": { "ok": true, "elapsedMs": 91 }, "lastProbeAt": 1716000000000 },
+                "wecom":   { "configured": true, "running": false, "lastError": "AuthExpired", "probe": { "ok": false, "status": 401 }, "lastProbeAt": 1716000000000 },
+                "weixin":  { "configured": false },
+                "nostr":   { "configured": false }
               }
             }
             """;
         var snapshot = ChannelsStatusParser.Parse(Json(json));
         var records = ChannelsAggregator.Aggregate(snapshot, DateTime.UtcNow);
 
-        // Order: configured first (whatsapp, telegram, discord), then unconfigured (slack, nostr),
-        // then built-in extras the gateway didn't list (googlechat, signal, imessage) — appended
-        // for discoverability so the user can add more channels.
+        // Order: configured first (feishu, matrix, wecom), then unconfigured
+        // (weixin, nostr). No built-in extras beyond the reported channels —
+        // the built-in catalog only carries channels this gateway still ships.
         var ids = records.Select(r => r.Id).ToList();
         Assert.Equal(
-            new[] { "whatsapp", "telegram", "discord", "slack", "nostr", "googlechat", "signal", "imessage" },
+            new[] { "feishu", "matrix", "wecom", "weixin", "nostr" },
             ids);
         Assert.True(records[0].IsConfigured);
         Assert.True(records[1].IsConfigured);
         Assert.True(records[2].IsConfigured);
-        Assert.False(records[3].IsConfigured); // slack
+        Assert.False(records[3].IsConfigured); // weixin
         Assert.False(records[4].IsConfigured); // nostr
-        Assert.False(records[5].IsConfigured); // googlechat (preview)
-        Assert.False(records[6].IsConfigured); // signal (preview)
-        Assert.False(records[7].IsConfigured); // imessage (preview)
 
-        // Capabilities reflect channel id
-        Assert.True(records[0].Capabilities.HasFlag(ChannelCapabilities.CanShowQr));
-        Assert.True(records[0].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-        Assert.True(records[1].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
-        Assert.False(records[2].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
+        // Capabilities reflect channel id: none of the currently shipped
+        // channels are QR-link or logout channels.
+        Assert.False(records[0].Capabilities.HasFlag(ChannelCapabilities.CanShowQr));
+        Assert.False(records[0].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
+        Assert.True(records[0].Capabilities.HasFlag(ChannelCapabilities.CanStop));
+        Assert.False(records[1].Capabilities.HasFlag(ChannelCapabilities.CanLogout));
 
-        // Labels: snapshot supplies the ones it knows; preview channels fall
-        // back to the built-in pretty-name catalog (so users don't see
-        // lowercase ids like "googlechat" in the AVAILABLE list).
-        Assert.Equal("WhatsApp", records[0].Label);
+        // Labels: the snapshot supplies them; preview channels fall back to
+        // the built-in pretty-name catalog (so users don't see lowercase ids
+        // in the AVAILABLE list).
+        Assert.Equal("Feishu", records[0].Label);
         Assert.Equal("Nostr", records[4].Label);
-        Assert.Equal("Google Chat", records[5].Label);
-        Assert.Equal("Signal", records[6].Label);
-        Assert.Equal("iMessage", records[7].Label);
     }
 
     [Fact]

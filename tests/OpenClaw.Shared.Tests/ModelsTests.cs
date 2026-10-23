@@ -345,7 +345,7 @@ public class ChannelHealthTests
     [InlineData("OK", "[ON]")]
     public void DisplayText_ShowsOn_ForOkStatuses(string status, string expected)
     {
-        var health = new ChannelHealth { Name = "slack", Status = status };
+        var health = new ChannelHealth { Name = "feishu", Status = status };
         Assert.StartsWith(expected, health.DisplayText);
     }
 
@@ -354,7 +354,7 @@ public class ChannelHealthTests
     [InlineData("Linked", "[LINKED]")]
     public void DisplayText_ShowsLinked_ForLinkedStatus(string status, string expected)
     {
-        var health = new ChannelHealth { Name = "telegram", Status = status };
+        var health = new ChannelHealth { Name = "matrix", Status = status };
         Assert.StartsWith(expected, health.DisplayText);
     }
 
@@ -363,7 +363,7 @@ public class ChannelHealthTests
     [InlineData("Ready", "[READY]")]
     public void DisplayText_ShowsReady_ForReadyStatus(string status, string expected)
     {
-        var health = new ChannelHealth { Name = "telegram", Status = status };
+        var health = new ChannelHealth { Name = "matrix", Status = status };
         Assert.StartsWith(expected, health.DisplayText);
     }
 
@@ -372,7 +372,7 @@ public class ChannelHealthTests
     [InlineData("reconnecting", "[...]")]
     public void DisplayText_ShowsLoading_ForConnectingStatuses(string status, string expected)
     {
-        var health = new ChannelHealth { Name = "slack", Status = status };
+        var health = new ChannelHealth { Name = "feishu", Status = status };
         Assert.StartsWith(expected, health.DisplayText);
     }
 
@@ -381,7 +381,7 @@ public class ChannelHealthTests
     [InlineData("disconnected", "[ERR]")]
     public void DisplayText_ShowsError_ForErrorStatuses(string status, string expected)
     {
-        var health = new ChannelHealth { Name = "slack", Status = status };
+        var health = new ChannelHealth { Name = "feishu", Status = status };
         Assert.StartsWith(expected, health.DisplayText);
     }
 
@@ -390,7 +390,7 @@ public class ChannelHealthTests
     [InlineData("stopped", "[OFF]")]
     public void DisplayText_ShowsOff_ForStoppedStatuses(string status, string expected)
     {
-        var health = new ChannelHealth { Name = "telegram", Status = status };
+        var health = new ChannelHealth { Name = "matrix", Status = status };
         Assert.StartsWith(expected, health.DisplayText);
     }
 
@@ -411,8 +411,8 @@ public class ChannelHealthTests
     [Fact]
     public void DisplayText_CapitalizesChannelName()
     {
-        var health = new ChannelHealth { Name = "slack", Status = "ok" };
-        Assert.Contains("Slack", health.DisplayText);
+        var health = new ChannelHealth { Name = "feishu", Status = "ok" };
+        Assert.Contains("Feishu", health.DisplayText);
     }
 
     [Fact]
@@ -420,7 +420,7 @@ public class ChannelHealthTests
     {
         var health = new ChannelHealth 
         { 
-            Name = "telegram", 
+            Name = "matrix", 
             Status = "ready",
             IsLinked = true,
             AuthAge = "2d ago"
@@ -433,7 +433,7 @@ public class ChannelHealthTests
     {
         var health = new ChannelHealth 
         { 
-            Name = "slack", 
+            Name = "feishu", 
             Status = "error",
             Error = "Connection timeout"
         };
@@ -550,9 +550,9 @@ public class SessionInfoTests
         var session = new SessionInfo 
         { 
             IsMain = true,
-            Channel = "slack"
+            Channel = "matrix"
         };
-        Assert.Equal("Main · slack", session.DisplayText);
+        Assert.Equal("Main · matrix", session.DisplayText);
     }
 
     [Fact]
@@ -561,10 +561,10 @@ public class SessionInfoTests
         var session = new SessionInfo 
         { 
             IsMain = true,
-            Channel = "telegram",
+            Channel = "feishu",
             CurrentActivity = "💻 Running"
         };
-        Assert.Equal("Main · telegram · 💻 Running", session.DisplayText);
+        Assert.Equal("Main · feishu · 💻 Running", session.DisplayText);
     }
 
     [Fact]
@@ -647,7 +647,7 @@ public class SessionInfoTests
     {
         var session = new SessionInfo
         {
-            DisplayName = "telegram:alerts",
+            DisplayName = "feishu:alerts",
             Model = "claude-opus-4-6",
             TotalTokens = 12_000,
             ContextTokens = 200_000,
@@ -655,7 +655,7 @@ public class SessionInfoTests
         };
 
         var text = session.RichDisplayText;
-        Assert.Contains("telegram:alerts", text);
+        Assert.Contains("feishu:alerts", text);
         Assert.Contains("claude-opus-4-6", text);
         Assert.Contains("12.0K/200.0K ctx", text);
         Assert.Contains("think high", text);
@@ -1026,9 +1026,9 @@ public class CommandCenterModelTests
     {
         using var doc = System.Text.Json.JsonDocument.Parse("""
             {
-              "discord": { "configured": false, "running": false, "lastError": null },
-              "telegram": { "configured": true, "running": false, "tokenSource": "env" },
-              "whatsapp": { "configured": true, "running": true, "linked": true, "authAge": "5m", "type": "web" },
+              "wecom": { "configured": false, "running": false, "lastError": null },
+              "feishu": { "configured": true, "running": false, "tokenSource": "env" },
+              "matrix": { "configured": true, "running": true, "linked": true, "authAge": "5m", "type": "web" },
               "broken": { "configured": true, "running": false, "lastError": "bad token" }
             }
             """);
@@ -1036,11 +1036,11 @@ public class CommandCenterModelTests
         var channels = ChannelHealthParser.Parse(doc.RootElement);
 
         Assert.Equal(4, channels.Length);
-        Assert.Equal("not configured", channels.Single(c => c.Name == "discord").Status);
-        Assert.Equal("ready", channels.Single(c => c.Name == "telegram").Status);
-        Assert.Equal("running", channels.Single(c => c.Name == "whatsapp").Status);
-        Assert.True(channels.Single(c => c.Name == "whatsapp").IsLinked);
-        Assert.Equal("5m", channels.Single(c => c.Name == "whatsapp").AuthAge);
+        Assert.Equal("not configured", channels.Single(c => c.Name == "wecom").Status);
+        Assert.Equal("ready", channels.Single(c => c.Name == "feishu").Status);
+        Assert.Equal("running", channels.Single(c => c.Name == "matrix").Status);
+        Assert.True(channels.Single(c => c.Name == "matrix").IsLinked);
+        Assert.Equal("5m", channels.Single(c => c.Name == "matrix").AuthAge);
         Assert.Equal("error", channels.Single(c => c.Name == "broken").Status);
         Assert.Equal("bad token", channels.Single(c => c.Name == "broken").Error);
     }
@@ -1078,14 +1078,14 @@ public class CommandCenterModelTests
     {
         var info = ChannelCommandCenterInfo.FromHealth(new ChannelHealth
         {
-            Name = "telegram",
+            Name = "matrix",
             Status = "running",
             IsLinked = true,
             AuthAge = "2h",
             Type = "webhook"
         });
 
-        Assert.Equal("telegram", info.Name);
+        Assert.Equal("matrix", info.Name);
         Assert.True(info.CanStop);
         Assert.False(info.CanStart);
         Assert.True(info.IsLinked);
@@ -1098,7 +1098,7 @@ public class CommandCenterModelTests
     {
         var info = ChannelCommandCenterInfo.FromHealth(new ChannelHealth
         {
-            Name = "discord",
+            Name = "wecom",
             Status = "stopped"
         });
 
@@ -1937,7 +1937,7 @@ public class SessionInfoRichDisplayTextTests
         var session = new SessionInfo
         {
             DisplayName = "agent",
-            Channel = "slack",
+            Channel = "matrix",
             Model = "gpt-4",
             TotalTokens = 5000,
             ContextTokens = 100_000,
@@ -1949,7 +1949,7 @@ public class SessionInfoRichDisplayTextTests
         };
         var text = session.RichDisplayText;
         // All parts present
-        Assert.Contains("slack", text);
+        Assert.Contains("matrix", text);
         Assert.Contains("gpt-4", text);
         Assert.Contains("ctx", text);
         Assert.Contains("think high", text);
@@ -1958,7 +1958,7 @@ public class SessionInfoRichDisplayTextTests
         Assert.Contains("aborted", text);
         Assert.Contains("searching", text);
         // Order: channel < model < ctx < think < verbose < system < aborted < activity
-        var channelIdx  = text.IndexOf("slack",     StringComparison.Ordinal);
+        var channelIdx  = text.IndexOf("matrix",    StringComparison.Ordinal);
         var modelIdx    = text.IndexOf("gpt-4",     StringComparison.Ordinal);
         var ctxIdx      = text.IndexOf("ctx",       StringComparison.Ordinal);
         var thinkIdx    = text.IndexOf("think",     StringComparison.Ordinal);

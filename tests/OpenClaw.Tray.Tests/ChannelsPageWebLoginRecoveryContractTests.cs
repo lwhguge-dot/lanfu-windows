@@ -3,12 +3,11 @@ using System.Linq;
 namespace OpenClaw.Tray.Tests;
 
 /// <summary>
-/// Source-contract tests for the WhatsApp/QR linking recovery flow (issue #957).
+/// Source-contract tests for the QR (web.login) linking recovery flow (issue #957).
 ///
 /// The Channels linking UI is WinUI code-behind that can't be unit-tested without
-/// a UI thread, so — following the ChannelsPageDiscordConfigContractTests
-/// convention — these assert the source wiring: the linking flow must branch on
-/// the gateway's "no web-login provider loaded" signal and surface actionable
+/// a UI thread, so these assert the source wiring: the linking flow must branch
+/// on the gateway's "no web-login provider loaded" signal and surface actionable
 /// recovery (a copyable gateway-host install command) instead of leaking the
 /// relayed internal exception.
 /// </summary>
