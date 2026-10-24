@@ -3909,7 +3909,7 @@ Opdrachten worden geblokkeerd zolang sandboxing niet beschikbaar is, omdat strik
     <value>Recent log</value>
   </data>
   <data name="DiagnosticsPage_Card_RecentLog.Description" xml:space="preserve">
-    <value>Last 200 lines of openclaw-tray.log, with severity coloring.</value>
+    <value>Laatste 200 regels van lanfu-tray.log, met kleur per ernst.</value>
   </data>
   <data name="DiagnosticsPage_Expander_Identity.Header" xml:space="preserve">
     <value>Device identity</value>
@@ -5793,6 +5793,51 @@ Controleer of de gateway actief is.</value>
   </data>
   <data name="ChannelsPage_UnavailableOnWindows" xml:space="preserve">
     <value>Dit kanaal vereist een macOS-host. Het kan niet worden geconfigureerd vanaf een Windows-machine.</value>
+  </data>
+  <data name="ChannelsPage_MetaNoChannels" xml:space="preserve">
+    <value>deze gateway heeft geen kanalen gerapporteerd</value>
+  </data>
+  <data name="ChannelsPage_MetaConnectHint" xml:space="preserve">
+    <value>maak verbinding met een gateway om beschikbare kanalen te zien</value>
+  </data>
+  <data name="ChannelsPage_MetaCommonChannels" xml:space="preserve">
+    <value>{0} algemene kanalen worden weergegeven (uw gateway heeft er geen vermeld: sommige werken mogelijk niet)</value>
+  </data>
+  <data name="ChannelsPage_MetaConfiguredAvailable" xml:space="preserve">
+    <value>{0} geconfigureerd · {1} beschikbaar om toe te voegen</value>
+  </data>
+  <data name="ChannelsPage_BadgeUnavailableOnWindows" xml:space="preserve">
+    <value>niet beschikbaar op Windows</value>
+  </data>
+  <data name="ChannelsPage_BadgeConfigured" xml:space="preserve">
+    <value>geconfigureerd</value>
+  </data>
+  <data name="ChannelsPage_BadgeNotConfigured" xml:space="preserve">
+    <value>niet geconfigureerd</value>
+  </data>
+  <data name="ChannelsPage_BadgeError" xml:space="preserve">
+    <value>fout</value>
+  </data>
+  <data name="ChannelsPage_BadgeNotLinked" xml:space="preserve">
+    <value>niet gekoppeld</value>
+  </data>
+  <data name="ChannelsPage_BadgeRunning" xml:space="preserve">
+    <value>actief</value>
+  </data>
+  <data name="ChannelsPage_BadgeLinked" xml:space="preserve">
+    <value>gekoppeld</value>
+  </data>
+  <data name="ChannelsPage_BadgeConnected" xml:space="preserve">
+    <value>verbonden</value>
+  </data>
+  <data name="ChannelsPage_QrScanToLink" xml:space="preserve">
+    <value>Scan een QR om dit apparaat te koppelen</value>
+  </data>
+  <data name="ChannelsPage_TaglineNostr" xml:space="preserve">
+    <value>Gedecentraliseerd: plak uw nsec en relays</value>
+  </data>
+  <data name="ChannelsPage_TaglineGeneric" xml:space="preserve">
+    <value>Plug-inkanaal: uitvouwen om te configureren</value>
   </data>
   <data name="ChannelsPage_ReplaceCredentials" xml:space="preserve">
     <value>Inloggegevens vervangen</value>

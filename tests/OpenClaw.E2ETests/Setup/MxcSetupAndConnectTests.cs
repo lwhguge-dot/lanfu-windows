@@ -674,7 +674,7 @@ public sealed class MxcSetupAndConnectTests
 
     private TrayLogCursor GetTrayLogCursor()
     {
-        var logPath = Path.Combine(_fixture.DataDir, "openclaw-tray.log");
+        var logPath = Path.Combine(_fixture.DataDir, "lanfu-tray.log");
         var rotatedLogPath = logPath + ".old";
         var currentInfo = File.Exists(logPath) ? new FileInfo(logPath) : null;
         var rotatedInfo = File.Exists(rotatedLogPath) ? new FileInfo(rotatedLogPath) : null;
@@ -689,7 +689,7 @@ public sealed class MxcSetupAndConnectTests
 
     private async Task<string> WaitForTrayLogLineContainingAsync(TimeSpan timeout, TrayLogCursor cursor, params string[] fragments)
     {
-        var logPath = Path.Combine(_fixture.DataDir, "openclaw-tray.log");
+        var logPath = Path.Combine(_fixture.DataDir, "lanfu-tray.log");
         var deadline = DateTime.UtcNow.Add(timeout);
         var tail = "";
 

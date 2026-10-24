@@ -59,7 +59,7 @@ public sealed partial class A2UICanvasWindow : WindowEx
     public A2UICanvasWindow(IActionSink actions, MediaResolver media, IOpenClawLogger logger)
     {
         InitializeComponent();
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         // Title is set programmatically (rather than via XAML literal) so we
         // never flash "Canvas" in en-US before the locale's resw value loads.
         Title = OpenClawTray.Helpers.LocalizationHelper.GetString("A2UI_CanvasTitle");

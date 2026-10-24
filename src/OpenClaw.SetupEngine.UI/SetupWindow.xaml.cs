@@ -97,7 +97,7 @@ public sealed partial class SetupWindow : Window
 
     private void ApplyWindowIcon()
     {
-        var iconPath = Path.Combine(AppContext.BaseDirectory, "Assets", "openclaw.ico");
+        var iconPath = Path.Combine(AppContext.BaseDirectory, "Assets", "lanfu.ico");
         if (!File.Exists(iconPath))
         {
             System.Diagnostics.Debug.WriteLine($"Setup window icon was not found at '{iconPath}'.");

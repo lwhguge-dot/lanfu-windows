@@ -847,7 +847,7 @@ public sealed class E2ESetupFixture : IAsyncLifetime
 
     public async Task<string> WaitForTrayKeepAliveReadyAsync(TimeSpan? timeout = null)
     {
-        var logPath = Path.Combine(DataDir, "openclaw-tray.log");
+        var logPath = Path.Combine(DataDir, "lanfu-tray.log");
         var expectedStarted = $"[WslKeepAlive] Started keepalive for {_distroName}";
         var expectedExisting = $"[WslKeepAlive] Keepalive already running for {_distroName}";
         var deadline = DateTime.UtcNow.Add(timeout ?? TimeSpan.FromSeconds(30));

@@ -39,7 +39,7 @@ public class McpToolBridge
     public McpToolBridge(
         Func<IReadOnlyList<INodeCapability>> capabilityProvider,
         IOpenClawLogger? logger = null,
-        string serverName = "openclaw-tray-mcp",
+        string serverName = "lanfu-tray-mcp",
         string serverVersion = "0.0.0")
         : this(
             capabilityProvider,

@@ -59,7 +59,7 @@ public sealed class PairingApprovalDialog : WindowEx
         Title = windowTitle;
         this.SetWindowSize(460, 460);
         this.CenterOnScreen();
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         SystemBackdrop = new MicaBackdrop();
         ExtendsContentIntoTitleBar = true;
 

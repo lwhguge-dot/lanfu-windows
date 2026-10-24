@@ -871,7 +871,7 @@ public sealed class NodeService : IDisposable, IAsyncDisposable
                     }
                 },
                 _logger,
-                serverName: "openclaw-tray-mcp",
+                serverName: "lanfu-tray-mcp",
                 serverVersion: AppVersionInfo.Version);
             bridge.ToolTelemetryCompleted += OnToolTelemetryCompleted;
             // Bearer-token auth. Token is created on first start and persists

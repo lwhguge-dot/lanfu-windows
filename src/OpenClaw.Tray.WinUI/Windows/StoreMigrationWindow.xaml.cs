@@ -24,7 +24,7 @@ public sealed partial class StoreMigrationWindow : Window
         InitializeComponent();
         _workflow = workflow;
         Title = Heading.Text = TitleBarText.Text = LocalizationHelper.GetString("Migration2_Title");
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         InstalledApps.Content = LocalizationHelper.GetString("Migration2_InstalledApps");
         PrepareStepTitle.Text = LocalizationHelper.GetString("Migration2_PrepareStepTitle");
         PrepareStepBody.Text = LocalizationHelper.GetString("Migration2_PrepareStepBody");

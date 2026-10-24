@@ -301,7 +301,7 @@ public sealed class GatewayFixtureRun : IAsyncDisposable
             Redact(JsonSerializer.Serialize(metadata, new JsonSerializerOptions { WriteIndented = true })));
         await File.WriteAllLinesAsync(Path.Combine(ArtifactsDirectory, "gateway-requests.jsonl"),
             Gateway.Requests.Select(request => Redact(JsonSerializer.Serialize(request))));
-        foreach (var file in new[] { "crash.log", "openclaw-tray.log" })
+        foreach (var file in new[] { "crash.log", "lanfu-tray.log" })
         {
             var source = Path.Combine(Profile.DataDirectory, file);
             if (File.Exists(source))

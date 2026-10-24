@@ -3927,7 +3927,7 @@ Os comandos são bloqueados enquanto o sandboxing está indisponível porque o b
     <value>Recent log</value>
   </data>
   <data name="DiagnosticsPage_Card_RecentLog.Description" xml:space="preserve">
-    <value>Last 200 lines of openclaw-tray.log, with severity coloring.</value>
+    <value>Últimas 200 linhas do lanfu-tray.log, com cores por severidade.</value>
   </data>
   <data name="DiagnosticsPage_Expander_Identity.Header" xml:space="preserve">
     <value>Device identity</value>
@@ -5770,6 +5770,51 @@ Certifique-se de que o Gateway está em execução.</value>
   </data>
   <data name="ChannelsPage_UnavailableOnWindows" xml:space="preserve">
     <value>Este canal requer um host macOS. Não pode ser configurado a partir de uma máquina Windows.</value>
+  </data>
+  <data name="ChannelsPage_MetaNoChannels" xml:space="preserve">
+    <value>este Gateway não relatou nenhum canal</value>
+  </data>
+  <data name="ChannelsPage_MetaConnectHint" xml:space="preserve">
+    <value>conecte-se a um Gateway para ver os canais disponíveis</value>
+  </data>
+  <data name="ChannelsPage_MetaCommonChannels" xml:space="preserve">
+    <value>exibindo {0} canais comuns (seu Gateway não listou nenhum: alguns podem não funcionar)</value>
+  </data>
+  <data name="ChannelsPage_MetaConfiguredAvailable" xml:space="preserve">
+    <value>{0} configurados · {1} disponíveis para adicionar</value>
+  </data>
+  <data name="ChannelsPage_BadgeUnavailableOnWindows" xml:space="preserve">
+    <value>indisponível no Windows</value>
+  </data>
+  <data name="ChannelsPage_BadgeConfigured" xml:space="preserve">
+    <value>configurado</value>
+  </data>
+  <data name="ChannelsPage_BadgeNotConfigured" xml:space="preserve">
+    <value>não configurado</value>
+  </data>
+  <data name="ChannelsPage_BadgeError" xml:space="preserve">
+    <value>erro</value>
+  </data>
+  <data name="ChannelsPage_BadgeNotLinked" xml:space="preserve">
+    <value>não vinculado</value>
+  </data>
+  <data name="ChannelsPage_BadgeRunning" xml:space="preserve">
+    <value>em execução</value>
+  </data>
+  <data name="ChannelsPage_BadgeLinked" xml:space="preserve">
+    <value>vinculado</value>
+  </data>
+  <data name="ChannelsPage_BadgeConnected" xml:space="preserve">
+    <value>conectado</value>
+  </data>
+  <data name="ChannelsPage_QrScanToLink" xml:space="preserve">
+    <value>Escaneie um QR para vincular este dispositivo</value>
+  </data>
+  <data name="ChannelsPage_TaglineNostr" xml:space="preserve">
+    <value>Descentralizado: cole seu nsec e seus relays</value>
+  </data>
+  <data name="ChannelsPage_TaglineGeneric" xml:space="preserve">
+    <value>Canal de plug-in: expanda para configurar</value>
   </data>
   <data name="ChannelsPage_ReplaceCredentials" xml:space="preserve">
     <value>Substituir credenciais</value>

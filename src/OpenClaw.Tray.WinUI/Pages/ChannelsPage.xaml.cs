@@ -535,11 +535,11 @@ public sealed partial class ChannelsPage : Page
 
         MetaText.Text = records.Count == 0
             ? (connected
-                ? "this gateway didn't report any channels"
-                : "connect to a gateway to see what channels are available")
+                ? LocalizationHelper.GetString("ChannelsPage_MetaNoChannels")
+                : LocalizationHelper.GetString("ChannelsPage_MetaConnectHint"))
             : (connected && !gatewayReportedSomething
-                ? $"showing {records.Count} common channels (your gateway didn't list any: some may not work)"
-                : $"{configured.Count} configured · {available.Count} available to add");
+                ? string.Format(LocalizationHelper.GetString("ChannelsPage_MetaCommonChannels"), records.Count)
+                : string.Format(LocalizationHelper.GetString("ChannelsPage_MetaConfiguredAvailable"), configured.Count, available.Count));
         ApplyNativeChannelFocus(snapshot);
     }
 
@@ -1555,7 +1555,9 @@ public sealed partial class ChannelsPage : Page
 
         if (raw.ValueKind != JsonValueKind.Object)
         {
-            pairs.Add(("Status", record.IsConfigured ? "configured" : "not configured"));
+            pairs.Add(("Status", record.IsConfigured
+                ? LocalizationHelper.GetString("ChannelsPage_BadgeConfigured")
+                : LocalizationHelper.GetString("ChannelsPage_BadgeNotConfigured")));
             return pairs;
         }
 
@@ -1568,15 +1570,15 @@ public sealed partial class ChannelsPage : Page
 
         // Lowercase short forms per naming.md status vocabulary.
         if (!string.IsNullOrEmpty(lastError))
-            pairs.Add(("Status", "error"));
+            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeError")));
         else if (connected == true)
-            pairs.Add(("Status", "connected"));
+            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeConnected")));
         else if (running == true)
-            pairs.Add(("Status", "running"));
+            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeRunning")));
         else if (configured == true)
-            pairs.Add(("Status", "configured"));
+            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeConfigured")));
         else
-            pairs.Add(("Status", "not configured"));
+            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeNotConfigured")));
 
         if (linked == true)
         {
@@ -2352,13 +2354,13 @@ public sealed partial class ChannelsPage : Page
 
         // Unavailable on this OS short-circuit
         if (record.IsUnavailableOnWindows)
-            return ("SystemFillColorNeutralBrush", "unavailable on Windows", BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
+            return ("SystemFillColorNeutralBrush", LocalizationHelper.GetString("ChannelsPage_BadgeUnavailableOnWindows"), BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
 
         if (raw.ValueKind != JsonValueKind.Object)
         {
             return record.IsConfigured
-                ? ("SystemFillColorSuccessBrush", "configured", BadgeSeverity.Success, Array.Empty<string>())
-                : ("SystemFillColorNeutralBrush", "not configured", BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
+                ? ("SystemFillColorSuccessBrush", LocalizationHelper.GetString("ChannelsPage_BadgeConfigured"), BadgeSeverity.Success, Array.Empty<string>())
+                : ("SystemFillColorNeutralBrush", LocalizationHelper.GetString("ChannelsPage_BadgeNotConfigured"), BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
         }
 
         var running = GetBool(raw, "running");
@@ -2369,27 +2371,27 @@ public sealed partial class ChannelsPage : Page
 
         // Error path
         if (!string.IsNullOrEmpty(lastError) && running != true)
-            return ("SystemFillColorCriticalBrush", "error", BadgeSeverity.Critical, BuildErrorSubtitleLines(raw, lastError!));
+            return ("SystemFillColorCriticalBrush", LocalizationHelper.GetString("ChannelsPage_BadgeError"), BadgeSeverity.Critical, BuildErrorSubtitleLines(raw, lastError!));
 
         // QR-link flow: linked/connected
         if (record.Capabilities.HasFlag(ChannelCapabilities.CanShowQr))
         {
-            if (configured == false) return ("SystemFillColorNeutralBrush", "not configured", BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
-            if (linked == false) return ("SystemFillColorCriticalBrush", "not linked", BadgeSeverity.Critical, Single("Scan a QR to link this device"));
-            if (connected == true) return ("SystemFillColorSuccessBrush", "connected", BadgeSeverity.Success, BuildQrSubtitleLines(raw));
-            if (running == true) return ("SystemFillColorCautionBrush", "running", BadgeSeverity.Caution, BuildQrSubtitleLines(raw));
-            return ("SystemFillColorCautionBrush", "linked", BadgeSeverity.Caution, BuildQrSubtitleLines(raw));
+            if (configured == false) return ("SystemFillColorNeutralBrush", LocalizationHelper.GetString("ChannelsPage_BadgeNotConfigured"), BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
+            if (linked == false) return ("SystemFillColorCriticalBrush", LocalizationHelper.GetString("ChannelsPage_BadgeNotLinked"), BadgeSeverity.Critical, Single(LocalizationHelper.GetString("ChannelsPage_QrScanToLink")));
+            if (connected == true) return ("SystemFillColorSuccessBrush", LocalizationHelper.GetString("ChannelsPage_BadgeConnected"), BadgeSeverity.Success, BuildQrSubtitleLines(raw));
+            if (running == true) return ("SystemFillColorCautionBrush", LocalizationHelper.GetString("ChannelsPage_BadgeRunning"), BadgeSeverity.Caution, BuildQrSubtitleLines(raw));
+            return ("SystemFillColorCautionBrush", LocalizationHelper.GetString("ChannelsPage_BadgeLinked"), BadgeSeverity.Caution, BuildQrSubtitleLines(raw));
         }
 
         // Generic flow
         if (running == true)
         {
-            return ("SystemFillColorSuccessBrush", "running", BadgeSeverity.Success, BuildGenericSubtitleLines(record, raw));
+            return ("SystemFillColorSuccessBrush", LocalizationHelper.GetString("ChannelsPage_BadgeRunning"), BadgeSeverity.Success, BuildGenericSubtitleLines(record, raw));
         }
         if (configured == true)
-            return ("SystemFillColorCautionBrush", "configured", BadgeSeverity.Caution, BuildGenericSubtitleLines(record, raw));
+            return ("SystemFillColorCautionBrush", LocalizationHelper.GetString("ChannelsPage_BadgeConfigured"), BadgeSeverity.Caution, BuildGenericSubtitleLines(record, raw));
 
-        return ("SystemFillColorNeutralBrush", "not configured", BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
+        return ("SystemFillColorNeutralBrush", LocalizationHelper.GetString("ChannelsPage_BadgeNotConfigured"), BadgeSeverity.Neutral, Single(ResolveTagline(record.Id)));
     }
 
     private static IReadOnlyList<string> BuildErrorSubtitleLines(JsonElement raw, string lastError)
@@ -2475,8 +2477,8 @@ public sealed partial class ChannelsPage : Page
     /// </summary>
     private static string ResolveTagline(string channelId) => channelId.ToLowerInvariant() switch
     {
-        "nostr"      => "Decentralized: paste your nsec and relays",
-        _            => "Plugin channel: expand to configure",
+        "nostr"      => LocalizationHelper.GetString("ChannelsPage_TaglineNostr"),
+        _            => LocalizationHelper.GetString("ChannelsPage_TaglineGeneric"),
     };
 
     // ─── Tiny utility helpers ─────────────────────────────────────────────

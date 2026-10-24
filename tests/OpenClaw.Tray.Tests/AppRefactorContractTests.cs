@@ -1302,7 +1302,7 @@ public sealed class AppRefactorContractTests
         var root = TestRepositoryPaths.GetRepositoryRoot();
         var source = File.ReadAllText(Path.Combine(root, "src", "OpenClaw.SetupEngine.UI", "SetupWindow.xaml.cs"));
         var trayProject = File.ReadAllText(Path.Combine(root, "src", "OpenClaw.Tray.WinUI", "OpenClaw.Tray.WinUI.csproj"));
-        var iconPath = Path.Combine(root, "src", "OpenClaw.Tray.WinUI", "Assets", "openclaw.ico");
+        var iconPath = Path.Combine(root, "src", "OpenClaw.Tray.WinUI", "Assets", "lanfu.ico");
         var applyWindowIcon = ExtractMethod(source, "ApplyWindowIcon");
 
         Assert.True(File.Exists(iconPath), $"Expected setup window icon at '{iconPath}'.");

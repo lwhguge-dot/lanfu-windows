@@ -51,7 +51,7 @@ public sealed partial class DebugPage : Page
         _terminalLauncher ??= new GatewayTerminalLauncher(new OpenClawTray.AppLogger());
 
     private static readonly string LocalAppData = AppIdentity.ResolveLocalDataDirectory();
-    private static readonly string LogPath = Path.Combine(LocalAppData, "openclaw-tray.log");
+    private static readonly string LogPath = Path.Combine(LocalAppData, "lanfu-tray.log");
     private static readonly string DeviceKeyPath = Path.Combine(LocalAppData, "device-key-ed25519.json");
 
     // Brushes for the colored log rendering. Use SystemFill* theme

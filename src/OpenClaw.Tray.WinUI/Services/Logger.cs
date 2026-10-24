@@ -44,7 +44,7 @@ public static class Logger
 
         try { Directory.CreateDirectory(_logDirectory); }
         catch (Exception ex) { ReportWriteFailure($"create log dir: {ex.Message}"); }
-        _logFilePath = Path.Combine(_logDirectory, "openclaw-tray.log");
+        _logFilePath = Path.Combine(_logDirectory, "lanfu-tray.log");
 
         // Initial rotation pass picks up anything left from a previous run that
         // exceeded the threshold. The append path also rotates periodically.
@@ -152,7 +152,7 @@ public static class Logger
             var fileInfo = new FileInfo(_logFilePath);
             if (fileInfo.Exists && fileInfo.Length > RotateThresholdBytes)
             {
-                var backupPath = Path.Combine(_logDirectory, "openclaw-tray.log.old");
+                var backupPath = Path.Combine(_logDirectory, "lanfu-tray.log.old");
                 if (File.Exists(backupPath)) File.Delete(backupPath);
                 File.Move(_logFilePath, backupPath);
             }

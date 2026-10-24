@@ -31,7 +31,7 @@ public sealed class UpdateDialog : WindowEx
         Title = LocalizationHelper.GetString("WindowTitle_Update");
         this.SetWindowSize(560, 420);
         this.CenterOnScreen();
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         SystemBackdrop = new MicaBackdrop();
 
         var root = new Grid

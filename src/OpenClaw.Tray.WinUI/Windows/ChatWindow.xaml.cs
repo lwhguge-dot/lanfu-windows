@@ -82,7 +82,7 @@ public sealed partial class ChatWindow : WindowEx
         Title = AppIdentity.DecorateWindowTitle("LanFu 对话");
 
         this.SetWindowSize(DefaultChatWidth, DefaultChatHeight);
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
 
         // Set as tool window (hidden from taskbar) + remove system caption.
         var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);

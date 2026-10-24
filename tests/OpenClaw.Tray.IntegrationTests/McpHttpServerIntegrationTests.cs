@@ -33,7 +33,7 @@ public class McpHttpServerIntegrationTests : IClassFixture<TrayAppFixture>
         var result = doc.RootElement.GetProperty("result");
         Assert.Equal("2024-11-05", result.GetProperty("protocolVersion").GetString());
         var serverInfo = result.GetProperty("serverInfo");
-        Assert.Equal("openclaw-tray-mcp", serverInfo.GetProperty("name").GetString());
+        Assert.Equal("lanfu-tray-mcp", serverInfo.GetProperty("name").GetString());
     }
 
     [IntegrationFact]

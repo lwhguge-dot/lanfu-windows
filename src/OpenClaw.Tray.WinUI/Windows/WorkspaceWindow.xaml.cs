@@ -90,7 +90,7 @@ public sealed partial class WorkspaceWindow : WindowEx
             UriSource = new Uri(BrandAssets.RedBotMarkUri),
             ShowAsMonochrome = false
         };
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         SetTitleBar(WorkspaceTitleBar);
         NewAgentLabel.Text = LocalizationHelper.GetString("AgentCreation_Title");
         AutomationProperties.SetName(NewAgentOption, NewAgentLabel.Text);
@@ -769,29 +769,8 @@ public sealed partial class WorkspaceWindow : WindowEx
             _gatewayStatusFlyout.ShowAt(OwnerButton);
         };
         menu.Items.Add(_connectionStatusItem);
-        Add("GetApps", () => _ = OpenLinkAsync("https://docs.openclaw.ai/platforms"), FluentIconCatalog.OpenInBrowser);
         Add("ConnectionTimeline", OpenTimeline, FluentIconCatalog.AgentEvents);
         menu.Items.Add(new MenuFlyoutSeparator());
-        var help = new MenuFlyoutSubItem { Text = Text("Help") };
-        foreach (var (label, url) in new[]
-        {
-            ("Documentation", "https://docs.openclaw.ai"),
-            ("Support", "https://docs.openclaw.ai/help"),
-            ("Community", "https://discord.gg/clawd"),
-            ("ReleaseNotes", "https://docs.openclaw.ai/releases")
-        })
-        {
-            var item = new MenuFlyoutItem { Text = Text(label) };
-            item.Click += async (_, _) => await OpenLinkAsync(url);
-            help.Items.Add(item);
-        }
-        var github = new MenuFlyoutItem
-        {
-            Text = LocalizationHelper.GetString("SettingsPage_AppInfoGitHub.Content")
-        };
-        github.Click += async (_, _) => await OpenLinkAsync("https://github.com/openclaw/openclaw-windows-node");
-        help.Items.Add(github);
-        menu.Items.Add(help);
         Add("About", () => OpenCompanion(CompanionPageId.About), FluentIconCatalog.About);
         OwnerButton.Flyout = menu;
     }

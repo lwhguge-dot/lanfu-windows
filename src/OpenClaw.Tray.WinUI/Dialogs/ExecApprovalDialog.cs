@@ -64,7 +64,7 @@ public sealed class ExecApprovalDialog : WindowEx
         Title = windowTitle;
         this.SetWindowSize(520, 400);
         this.CenterOnScreen();
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         SystemBackdrop = new MicaBackdrop();
         ExtendsContentIntoTitleBar = true;
 

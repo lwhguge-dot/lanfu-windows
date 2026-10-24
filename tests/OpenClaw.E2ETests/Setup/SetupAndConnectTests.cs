@@ -1190,7 +1190,7 @@ public class SetupAndConnectTests
 
     private int CountTrayNodeInvocations(string command)
     {
-        string path = Path.Combine(_fixture.DataDir, "openclaw-tray.log");
+        string path = Path.Combine(_fixture.DataDir, "lanfu-tray.log");
         if (!File.Exists(path))
             return 0;
 

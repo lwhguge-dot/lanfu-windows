@@ -24,7 +24,7 @@ public sealed class WelcomeDialog : WindowEx
         ExtendsContentIntoTitleBar = true;
         this.SetWindowSize(480, 440);
         this.CenterOnScreen();
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         
         // Apply Mica backdrop for modern Windows 11 look
         SystemBackdrop = new MicaBackdrop();

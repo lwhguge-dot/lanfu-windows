@@ -81,8 +81,8 @@
                     <InfoBar.ActionButton>
                         <HyperlinkButton x:Uid="ChannelsPage_DocsLink"
                                          Content="Read the channels guide"
-                                         NavigateUri="https://docs.openclaw.ai/channels"
-                                         AutomationProperties.Name="Open the OpenClaw channels documentation"/>
+                                         NavigateUri="https://github.com/lwhguge-dot/LanFu/tree/main/docs/channels"
+                                         AutomationProperties.Name="Open the LanFu channels guide"/>
                     </InfoBar.ActionButton>
                 </InfoBar>
 

@@ -246,7 +246,7 @@ public sealed partial class CanvasWindow : WindowEx
             LocalizationHelper.GetString("CanvasReloadButton_AutomationName"));
         ExtendsContentIntoTitleBar = true;
         SetTitleBar(AppTitleBar);
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         _dispatcherQueue = DispatcherQueue;
         this.Closed += OnWindowClosed;
 

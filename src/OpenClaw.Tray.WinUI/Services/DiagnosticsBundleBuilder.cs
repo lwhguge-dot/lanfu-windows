@@ -22,7 +22,7 @@ internal sealed record DiagnosticsBundlePaths(
             TrayLogPath: trayLog,
             TrayLogArchivePath: string.IsNullOrWhiteSpace(logDirectory)
                 ? null
-                : Path.Combine(logDirectory, "openclaw-tray.log.old"),
+                : Path.Combine(logDirectory, "lanfu-tray.log.old"),
             DiagnosticsJsonlPath: diagnosticsJsonl,
             CrashLogPath: string.IsNullOrWhiteSpace(logDirectory)
                 ? null

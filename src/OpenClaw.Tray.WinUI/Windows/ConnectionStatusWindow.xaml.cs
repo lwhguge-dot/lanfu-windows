@@ -55,7 +55,7 @@ public sealed partial class ConnectionStatusWindow : WindowEx
         _dispatcherQueue = DispatcherQueue.GetForCurrentThread();
 
         ExtendsContentIntoTitleBar = true;
-        this.SetIcon("Assets\\openclaw.ico");
+        this.SetIcon("Assets\\lanfu.ico");
         if (Content is FrameworkElement root)
             root.Loaded += (_, _) => { _ = VisualTestCapture.CaptureAsync(root, $"ConnectionTimeline-{root.ActualTheme}"); };
 
