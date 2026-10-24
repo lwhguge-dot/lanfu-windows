@@ -2407,7 +2407,7 @@
     <value>所有訊息都會路由至預設代理程式。新增繫結以進行多代理程式路由。</value>
   </data>
   <data name="ConfigSubtitle.Text" xml:space="preserve">
-    <value>使用結構描述引導的表單編輯閘道設定 (openclaw.json)。</value>
+    <value>使用結構描述引導的表單編輯閘道設定 (lanfu.json)。</value>
   </data>
   <data name="DetailPlaceholder.Text" xml:space="preserve">
     <value>從樹狀目錄選取區段以編輯其設定。</value>

@@ -30,7 +30,7 @@ Your settings file at `%APPDATA%\OpenClawTray\settings.json` is not removed auto
 
 ## 🔌 Node mode (agent control)
 
-Use OpenClaw Companion for normal setup. You should not need to edit `openclaw.json` by hand.
+Use LanFu Companion for normal setup. You should not need to edit `lanfu.json` by hand.
 
 1. Open **Companion Settings…** from the tray menu.
 2. Open **Connection** and connect to your gateway. Complete any pending pairing approval shown by the app.

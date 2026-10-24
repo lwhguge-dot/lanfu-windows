@@ -2453,7 +2453,7 @@ Use uma destas opções:
     <value>Todas as mensagens são roteadas para o agente padrão. Adicione vinculações para roteamento com múltiplos agentes.</value>
   </data>
   <data name="ConfigSubtitle.Text" xml:space="preserve">
-    <value>Edite a configuração do Gateway (openclaw.json) com um formulário guiado por esquema.</value>
+    <value>Edite a configuração do Gateway (lanfu.json) com um formulário guiado por esquema.</value>
   </data>
   <data name="DetailPlaceholder.Text" xml:space="preserve">
     <value>Selecione uma seção na árvore para editar suas configurações.</value>

@@ -2461,7 +2461,7 @@ Use one of these options:
     <value>All messages route to the default agent. Add bindings for multi-agent routing.</value>
   </data>
   <data name="ConfigSubtitle.Text" xml:space="preserve">
-    <value>Edit gateway configuration (openclaw.json) with a schema-guided form.</value>
+    <value>Edit gateway configuration (lanfu.json) with a schema-guided form.</value>
   </data>
   <data name="DetailPlaceholder.Text" xml:space="preserve">
     <value>Select a section from the tree to edit its settings.</value>

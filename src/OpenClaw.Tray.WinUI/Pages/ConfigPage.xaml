@@ -30,7 +30,7 @@
                                AutomationProperties.AutomationId="ConfigPageMarker"
                                Style="{StaticResource TitleTextBlockStyle}"/>
                     <TextBlock x:Uid="ConfigSubtitle" x:Name="ConfigSubtitle"
-                               Text="Edit gateway configuration (openclaw.json) with a schema-guided form."
+                               Text="Edit gateway configuration (lanfu.json) with a schema-guided form."
                                Style="{StaticResource CaptionTextBlockStyle}"
                                Foreground="{ThemeResource TextFillColorSecondaryBrush}"
                                TextWrapping="Wrap"/>

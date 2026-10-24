@@ -2407,7 +2407,7 @@ Utilisez l'une de ces options :
     <value>Tous les messages sont acheminés vers l’agent par défaut. Ajoutez des liaisons pour le routage multi-agent.</value>
   </data>
   <data name="ConfigSubtitle.Text" xml:space="preserve">
-    <value>Modifiez la configuration de la passerelle (openclaw.json) avec un formulaire guidé par schéma.</value>
+    <value>Modifiez la configuration de la passerelle (lanfu.json) avec un formulaire guidé par schéma.</value>
   </data>
   <data name="DetailPlaceholder.Text" xml:space="preserve">
     <value>Sélectionnez une section dans l’arborescence pour modifier ses paramètres.</value>

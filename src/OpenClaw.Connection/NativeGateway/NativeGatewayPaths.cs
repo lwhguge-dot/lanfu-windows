@@ -12,8 +12,20 @@ public static class NativeGatewayPaths
         return Path.Combine(registry.GetIdentityDirectory(gatewayId), "native-gateway");
     }
 
-    public static string GetConfigPath(GatewayRegistry registry, string gatewayId) =>
-        Path.Combine(GetStateDirectory(registry, gatewayId), "openclaw.json");
+    public static string GetConfigPath(GatewayRegistry registry, string gatewayId)
+    {
+        var stateDirectory = GetStateDirectory(registry, gatewayId);
+        var configPath = Path.Combine(stateDirectory, "lanfu.json");
+        if (!File.Exists(configPath))
+        {
+            var legacyPath = Path.Combine(stateDirectory, "openclaw.json");
+            if (File.Exists(legacyPath))
+            {
+                return legacyPath;
+            }
+        }
+        return configPath;
+    }
 
     public static IReadOnlyDictionary<string, string> GetEnvironment(GatewayRegistry registry, string gatewayId) =>
         GetEnvironment(registry, gatewayId, static path => path);

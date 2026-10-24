@@ -2414,7 +2414,7 @@
     <value>所有消息都会路由到默认智能体。添加绑定以进行多智能体路由。</value>
   </data>
   <data name="ConfigSubtitle.Text" xml:space="preserve">
-    <value>使用架构引导的表单编辑网关配置 (openclaw.json)。</value>
+    <value>使用架构引导的表单编辑网关配置 (lanfu.json)。</value>
   </data>
   <data name="DetailPlaceholder.Text" xml:space="preserve">
     <value>从树中选择一个部分以编辑其设置。</value>

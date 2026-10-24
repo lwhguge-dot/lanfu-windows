@@ -2408,7 +2408,7 @@ Gebruik een van deze opties:
     <value>Alle berichten worden naar de standaardagent gerouteerd. Voeg koppelingen toe voor routering met meerdere agents.</value>
   </data>
   <data name="ConfigSubtitle.Text" xml:space="preserve">
-    <value>Bewerk gatewayconfiguratie (openclaw.json) met een schemagestuurd formulier.</value>
+    <value>Bewerk gatewayconfiguratie (lanfu.json) met een schemagestuurd formulier.</value>
   </data>
   <data name="DetailPlaceholder.Text" xml:space="preserve">
     <value>Selecteer een sectie in de boomstructuur om de instellingen te bewerken.</value>
