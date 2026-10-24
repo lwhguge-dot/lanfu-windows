@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:schema id="root">
     <xs:element name="root" ns1:IsDataSet="true">
@@ -2437,7 +2437,7 @@ Utilisez l'une de ces options :
     <value>Fichiers de l’espace de travail</value>
   </data>
   <data name="ChatWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>LanFu Chat</value>
+    <value>Chat LanFu</value>
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Tapez une commande...</value>
@@ -2449,10 +2449,10 @@ Utilisez l'une de ces options :
     <value>Rechercher… (Ctrl+E)</value>
   </data>
   <data name="CanvasWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>LanFu Canvas</value>
+    <value>Canevas LanFu</value>
   </data>
   <data name="CanvasWindow_TextBlock_31.Text" xml:space="preserve">
-    <value>LanFu Canvas</value>
+    <value>Canevas LanFu</value>
   </data>
   <data name="CanvasWindowReloadToolTip.Content" xml:space="preserve">
     <value>Recharger</value>
@@ -3010,7 +3010,7 @@ Utilisez l'une de ces options :
     <value>Non connecté</value>
   </data>
   <data name="Chat_Composer_Placeholder_IncompatibleGateway" xml:space="preserve">
-    <value>Gateway update required: incompatible version</value>
+    <value>Mise à jour de la passerelle requise : version incompatible</value>
   </data>
   <data name="Chat_Composer_Tooltip_Attach" xml:space="preserve">
     <value>Joindre</value>
@@ -3812,25 +3812,25 @@ Les commandes sont bloquées tant que le sandboxing est indisponible, car le blo
     <value>Bac à sable</value>
   </data>
   <data name="ChannelsPage_GuideBar.Title" xml:space="preserve">
-    <value>Your gateway didn't list any channels</value>
+    <value>Votre passerelle n’a listé aucun canal</value>
   </data>
   <data name="ChannelsPage_GuideBar.Message" xml:space="preserve">
-    <value>Channels are configured on your gateway. To add one, expand it below and fill in its credentials. The form saves directly to your gateway's config. The setup guide walks through each channel end-to-end.</value>
+    <value>Les canaux sont configurés sur votre passerelle. Pour en ajouter un, dépliez-le ci-dessous et renseignez ses identifiants — le formulaire enregistre directement dans la configuration de la passerelle. L’assistant d’installation détaille chaque canal de bout en bout.</value>
   </data>
   <data name="ChannelsPage_DocsLink.Content" xml:space="preserve">
-    <value>Read the channels guide</value>
+    <value>Lire le guide des canaux</value>
   </data>
   <data name="ChannelsPage_NotConnected.Title" xml:space="preserve">
-    <value>Not connected</value>
+    <value>Non connecté</value>
   </data>
   <data name="ChannelsPage_NotConnected.Message" xml:space="preserve">
-    <value>Connect to a gateway to manage channels.</value>
+    <value>Connectez-vous à une passerelle pour gérer les canaux.</value>
   </data>
   <data name="ChannelsPage_EmptyTitle.Text" xml:space="preserve">
-    <value>No channels available</value>
+    <value>Aucun canal disponible</value>
   </data>
   <data name="ChannelsPage_EmptySubtitle.Text" xml:space="preserve">
-    <value>The gateway didn't report any channels. Install channel plugins on the gateway and refresh.</value>
+    <value>La passerelle n’a signalé aucun canal. Installez les plugins de canal sur la passerelle puis actualisez.</value>
   </data>
   <data name="DiagnosticsPage_Title.Text" xml:space="preserve">
     <value>Diagnostics</value>
@@ -6043,7 +6043,7 @@ Assurez-vous que la passerelle est en cours d'exécution.</value>
     <value>Hors ligne</value>
   </data>
   <data name="BindingsPage_CouldNotLoadBindings" xml:space="preserve">
-    <value>Could not load bindings</value>
+    <value>Impossible de charger les liaisons</value>
   </data>
   <data name="Command_GoToAgentEvents_Subtitle" xml:space="preserve">
     <value>Agent event log</value>
@@ -6175,25 +6175,25 @@ Assurez-vous que la passerelle est en cours d'exécution.</value>
     <value>Toggle Screen Capture</value>
   </data>
   <data name="CommandCenter_AuthFailed" xml:space="preserve">
-    <value>Gateway authentication failed</value>
+    <value>Échec de l’authentification auprès de la passerelle</value>
   </data>
   <data name="CommandCenter_BrowserProxyAuthMayNeed" xml:space="preserve">
-    <value>Browser control needs a gateway shared token</value>
+    <value>Le contrôle du navigateur nécessite un jeton partagé de la passerelle</value>
   </data>
   <data name="CommandCenter_BrowserProxyHostNotDetected" xml:space="preserve">
-    <value>Browser proxy host not detected</value>
+    <value>Hôte du proxy navigateur non détecté</value>
   </data>
   <data name="CommandCenter_BrowserProxySshForwardNotListening" xml:space="preserve">
-    <value>Browser proxy SSH forward is not listening</value>
+    <value>Le transfert SSH du proxy navigateur n’écoute pas</value>
   </data>
   <data name="CommandCenter_GatewayConnectionError" xml:space="preserve">
-    <value>Gateway connection error</value>
+    <value>Erreur de connexion à la passerelle</value>
   </data>
   <data name="CommandCenter_GatewayHealthStale" xml:space="preserve">
-    <value>Gateway health is stale</value>
+    <value>L’état de la passerelle est obsolète</value>
   </data>
   <data name="CommandCenter_GatewayNotConnected" xml:space="preserve">
-    <value>Gateway is not connected</value>
+    <value>La passerelle n’est pas connectée</value>
   </data>
   <data name="CommandCenter_NoChannelsReported" xml:space="preserve">
     <value>No channels reported</value>
@@ -7046,7 +7046,7 @@ Le binaire wxc-exec est introuvable. {1} S'il s'agit d'une build développeur, c
   <data name="Onboarding_Flow_InstallReview.Text" xml:space="preserve"><value>Ce qui sera installé</value></data>
   <data name="Onboarding_Flow_AutoStart.Text" xml:space="preserve"><value>Lancer LanFu à l'ouverture de session</value></data>
   <data name="Onboarding_Flow_AutoStartToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>Lancer LanFu à l'ouverture de session</value></data>
-  <data name="ChatDashboardButton.Content" xml:space="preserve"><value>Dashboard</value></data>
+  <data name="ChatDashboardButton.Content" xml:space="preserve"><value>Tableau de bord</value></data>
   <data name="ChatDashboardHint.Text" xml:space="preserve"><value>Canaux, intégrations et paramètres de la passerelle</value></data>
   <data name="Onboarding_Flow_WelcomeDescription.Text" xml:space="preserve"><value>LanFu est votre assistant IA pour accomplir vos tâches sur votre PC.</value></data>
   <data name="Onboarding_AiSetup_Title.Text" xml:space="preserve"><value>Connectez votre IA</value></data>
@@ -7912,4 +7912,319 @@ C'est le mode à haut risque. Ne le désactivez que si vous faites confiance à 
   <data name="DiagnosticsPage_Section_Health.Text" xml:space="preserve">
     <value>État</value>
   </data>
+    <data name="ChannelsPage_AccountsLabel" xml:space="preserve">
+      <value>Comptes</value>
+    </data>
+    <data name="ChannelsPage_AgeDaysFormat" xml:space="preserve">
+      <value>{0} j</value>
+    </data>
+    <data name="ChannelsPage_AgeHoursFormat" xml:space="preserve">
+      <value>{0} heure</value>
+    </data>
+    <data name="ChannelsPage_AgeMinutesFormat" xml:space="preserve">
+      <value>{0} min</value>
+    </data>
+    <data name="ChannelsPage_AgeSecondsFormat" xml:space="preserve">
+      <value>{0} sec</value>
+    </data>
+    <data name="ChannelsPage_AuthAgeLabel" xml:space="preserve">
+      <value>Ancienneté de l'auth</value>
+    </data>
+    <data name="ChannelsPage_BannerPluginMissingMessageFormat" xml:space="preserve">
+      <value>Installez-le sur la machine passerelle : openclaw plugins install @openclaw/{0}. La commande copiable figure dans la carte dépliable du canal.</value>
+    </data>
+    <data name="ChannelsPage_BannerPluginMissingTitle" xml:space="preserve">
+      <value>La passerelle n’a pas le plugin {0} installé</value>
+    </data>
+    <data name="ChannelsPage_BannerRunningMessage" xml:space="preserve">
+      <value>Configuration enregistrée et canal démarré.</value>
+    </data>
+    <data name="ChannelsPage_BannerRunningTitle" xml:space="preserve">
+      <value>{0} est en cours d'exécution</value>
+    </data>
+    <data name="ChannelsPage_BannerSavedNotRunningMessage" xml:space="preserve">
+      <value>La passerelle a accepté les réglages mais n’a pas démarré le canal. Dépliez le canal ci-dessous : la section État et le diagnostic indiqueront pourquoi.</value>
+    </data>
+    <data name="ChannelsPage_BannerSavedNotRunningTitle" xml:space="preserve">
+      <value>{0} : config enregistrée, mais pas encore démarrée</value>
+    </data>
+    <data name="ChannelsPage_BannerStartFailedTitle" xml:space="preserve">
+      <value>Impossible de démarrer {0}</value>
+    </data>
+    <data name="ChannelsPage_BannerStartRequestedMessage" xml:space="preserve">
+      <value>En attente de la confirmation de la passerelle que le canal est démarré…</value>
+    </data>
+    <data name="ChannelsPage_BannerStartRequestedTitle" xml:space="preserve">
+      <value>Démarrage de {0} demandé</value>
+    </data>
+    <data name="ChannelsPage_BannerStartingMessage" xml:space="preserve">
+      <value>Demande de démarrage du canal envoyée à la passerelle.</value>
+    </data>
+    <data name="ChannelsPage_BannerStartingTitle" xml:space="preserve">
+      <value>Démarrage de {0}…</value>
+    </data>
+    <data name="ChannelsPage_BannerStopFailedTitle" xml:space="preserve">
+      <value>Impossible d'arrêter {0}</value>
+    </data>
+    <data name="ChannelsPage_BannerStopLostConnectionFormat" xml:space="preserve">
+      <value>Connexion à la passerelle perdue pendant l'arrêt ({0}). Essayez Actualiser.</value>
+    </data>
+    <data name="ChannelsPage_BannerStopRejectedMessage" xml:space="preserve">
+      <value>La passerelle n’a pas accepté channels.stop. Essayez Actualiser ou consultez le journal de la passerelle.</value>
+    </data>
+    <data name="ChannelsPage_BannerStoppedMessage" xml:space="preserve">
+      <value>Canal en pause. Appuyez sur Démarrer pour reprendre : les identifiants sont conservés.</value>
+    </data>
+    <data name="ChannelsPage_BannerStoppedTitle" xml:space="preserve">
+      <value>{0} arrêté</value>
+    </data>
+    <data name="ChannelsPage_BannerStoppingMessage" xml:space="preserve">
+      <value>Demande de mise en pause du canal envoyée à la passerelle. Les identifiants sont conservés pour un redémarrage ultérieur.</value>
+    </data>
+    <data name="ChannelsPage_BannerStoppingTitle" xml:space="preserve">
+      <value>Arrêt de {0}…</value>
+    </data>
+    <data name="ChannelsPage_BaseUrlLabel" xml:space="preserve">
+      <value>URL de base</value>
+    </data>
+    <data name="ChannelsPage_BotLabel" xml:space="preserve">
+      <value>Robot</value>
+    </data>
+    <data name="ChannelsPage_CopiedButton" xml:space="preserve">
+      <value>Copié</value>
+    </data>
+    <data name="ChannelsPage_CopyButton" xml:space="preserve">
+      <value>Copier</value>
+    </data>
+    <data name="ChannelsPage_CopyFailedButton" xml:space="preserve">
+      <value>Échec de la copie</value>
+    </data>
+    <data name="ChannelsPage_DiagChannelFormat" xml:space="preserve">
+      <value>Canal : {0}</value>
+    </data>
+    <data name="ChannelsPage_DiagErrorFormat" xml:space="preserve">
+      <value>Erreur : {0}</value>
+    </data>
+    <data name="ChannelsPage_DiagMethodFormat" xml:space="preserve">
+      <value>Méthode : {0}</value>
+    </data>
+    <data name="ChannelsPage_DiagParamsFormat" xml:space="preserve">
+      <value>Paramètres : {0}</value>
+    </data>
+    <data name="ChannelsPage_DiagResponseFormat" xml:space="preserve">
+      <value>Réponse : {0}</value>
+    </data>
+    <data name="ChannelsPage_DisconnectButton" xml:space="preserve">
+      <value>Déconnecter</value>
+    </data>
+    <data name="ChannelsPage_DisconnectConfirmMessage" xml:space="preserve">
+      <value>Ceci déconnecte le canal et efface les identifiants stockés. Vous devrez les ressaisir pour vous reconnecter.</value>
+    </data>
+    <data name="ChannelsPage_DisconnectConfirmTitleFormat" xml:space="preserve">
+      <value>Déconnecter {0} et oublier les identifiants ?</value>
+    </data>
+    <data name="ChannelsPage_DisconnectFailedMessageFormat" xml:space="preserve">
+      <value>Impossible de déconnecter {0}. La passerelle ne prend peut-être pas en charge cette action.</value>
+    </data>
+    <data name="ChannelsPage_DisconnectFailedTitle" xml:space="preserve">
+      <value>Échec de la déconnexion</value>
+    </data>
+    <data name="ChannelsPage_DisconnectNotConnectedMessage" xml:space="preserve">
+      <value>Connectez-vous à une passerelle avant de déconnecter ce canal.</value>
+    </data>
+    <data name="ChannelsPage_ErrorRefreshMessage" xml:space="preserve">
+      <value>La passerelle n’a pas renvoyé de réponse channels.status. Réessayez Actualiser.</value>
+    </data>
+    <data name="ChannelsPage_ErrorRefreshTitle" xml:space="preserve">
+      <value>Impossible d'actualiser les canaux</value>
+    </data>
+    <data name="ChannelsPage_InstallDocsLink" xml:space="preserve">
+      <value>Docs d'installation du plugin →</value>
+    </data>
+    <data name="ChannelsPage_InstallHintFormat" xml:space="preserve">
+      <value>Les plugins de canal sont chargés par la passerelle, pas par la barre : l'installation se fait donc sur la machine qui héberge la passerelle. Si {0} ne démarre pas après Enregistrer, le plugin n'est peut-être pas encore installé.</value>
+    </data>
+    <data name="ChannelsPage_InstallRunHint" xml:space="preserve">
+      <value>Exécutez cette commande sur la machine qui héberge la passerelle. Une fois terminé, revenez et cliquez sur Actualiser.</value>
+    </data>
+    <data name="ChannelsPage_InstallSectionTitle" xml:space="preserve">
+      <value>Installer le plugin sur la passerelle</value>
+    </data>
+    <data name="ChannelsPage_LastErrorLabel" xml:space="preserve">
+      <value>Dernière erreur</value>
+    </data>
+    <data name="ChannelsPage_LastProbeLabel" xml:space="preserve">
+      <value>Dernière sonde</value>
+    </data>
+    <data name="ChannelsPage_LinkedAsLabel" xml:space="preserve">
+      <value>Lié en tant que</value>
+    </data>
+    <data name="ChannelsPage_LinkedLabel" xml:space="preserve">
+      <value>Lié</value>
+    </data>
+    <data name="ChannelsPage_LinkingLabel" xml:space="preserve">
+      <value>Liaison</value>
+    </data>
+    <data name="ChannelsPage_ProbeElapsedMsFormat" xml:space="preserve">
+      <value>{0} ms</value>
+    </data>
+    <data name="ChannelsPage_ProbeFailedFormat" xml:space="preserve">
+      <value>Échec · {0}</value>
+    </data>
+    <data name="ChannelsPage_ProbeOk" xml:space="preserve">
+      <value>Réussi</value>
+    </data>
+    <data name="ChannelsPage_ProbeUnknownError" xml:space="preserve">
+      <value>erreur inconnue</value>
+    </data>
+    <data name="ChannelsPage_QrAlreadyLinkedFormat" xml:space="preserve">
+      <value>{0} est déjà lié.</value>
+    </data>
+    <data name="ChannelsPage_QrDecodeFailedBase64" xml:space="preserve">
+      <value>Échec du décodage QR : base64 invalide de la passerelle.</value>
+    </data>
+    <data name="ChannelsPage_QrDecodeFailedFormat" xml:space="preserve">
+      <value>Échec du décodage QR : {0}</value>
+    </data>
+    <data name="ChannelsPage_QrDecodeFailedMalformed" xml:space="preserve">
+      <value>Échec du décodage QR : URL de données mal formée de la passerelle.</value>
+    </data>
+    <data name="ChannelsPage_QrDiagnosticHeader" xml:space="preserve">
+      <value>Pourquoi cela ne fonctionne-t-il pas ?</value>
+    </data>
+    <data name="ChannelsPage_QrInitialHint" xml:space="preserve">
+      <value>Cliquez sur « Afficher le QR » pour commencer à lier votre téléphone à cet appareil.</value>
+    </data>
+    <data name="ChannelsPage_QrLinkFailedErrorFormat" xml:space="preserve">
+      <value>Impossible de lier {0}. La passerelle a renvoyé une erreur : voir les détails ci-dessous.</value>
+    </data>
+    <data name="ChannelsPage_QrLinkFailedNotConnectedFormat" xml:space="preserve">
+      <value>Impossible de lier {0}. Non connecté à la passerelle.</value>
+    </data>
+    <data name="ChannelsPage_QrLinkedFormat" xml:space="preserve">
+      <value>{0} lié.</value>
+    </data>
+    <data name="ChannelsPage_QrNoQrFormat" xml:space="preserve">
+      <value>La passerelle n’a pas renvoyé de QR pour {0}. Voir ci-dessous ce qu'elle a renvoyé.</value>
+    </data>
+    <data name="ChannelsPage_QrNotConnectedHint" xml:space="preserve">
+      <value>Non connecté à une passerelle. Ouvrez les paramètres Connexion pour vous connecter d'abord.</value>
+    </data>
+    <data name="ChannelsPage_QrProviderInstalledHint" xml:space="preserve">
+      <value>Après avoir installé le fournisseur sur la machine passerelle, revenez et cliquez à nouveau sur Afficher le QR.</value>
+    </data>
+    <data name="ChannelsPage_QrProviderMissingFormat" xml:space="preserve">
+      <value>Votre passerelle ne peut pas encore démarrer la liaison QR de {0} : le fournisseur de connexion web de ce canal n'est pas chargé. La liaison web/QR s'exécute sur la machine qui héberge la passerelle ; corrigez-le là-bas, pas dans la barre.</value>
+    </data>
+    <data name="ChannelsPage_QrRelinkButton" xml:space="preserve">
+      <value>Relier</value>
+    </data>
+    <data name="ChannelsPage_QrRequesting" xml:space="preserve">
+      <value>Demande du code QR à la passerelle…</value>
+    </data>
+    <data name="ChannelsPage_QrScanInstruction" xml:space="preserve">
+      <value>Ouvrez l'écran des appareils liés de l'application mobile et scannez ce QR.</value>
+    </data>
+    <data name="ChannelsPage_QrShowButton" xml:space="preserve">
+      <value>Afficher le QR</value>
+    </data>
+    <data name="ChannelsPage_QrStillWaiting" xml:space="preserve">
+      <value>Toujours en attente : cliquez à nouveau sur Afficher le QR si le code a expiré.</value>
+    </data>
+    <data name="ChannelsPage_QrThisChannel" xml:space="preserve">
+      <value>Ce canal</value>
+    </data>
+    <data name="ChannelsPage_QrUnavailableFormat" xml:space="preserve">
+      <value>La liaison {0} n'est pas encore disponible sur cette passerelle : voir ci-dessous comment l'activer.</value>
+    </data>
+    <data name="ChannelsPage_QrUnsupportedFormat" xml:space="preserve">
+      <value>Cette version de la passerelle ne prend pas encore en charge la liaison QR pour {0}. La liaison QR/web s'exécute sur la machine qui héberge la passerelle : mettez à jour la passerelle vers une version prenant en charge la connexion web, puis revenez cliquer sur Afficher le QR.</value>
+    </data>
+    <data name="ChannelsPage_QrWaitFailedFormat" xml:space="preserve">
+      <value>Échec de l'attente de liaison pour {0}. Voir les détails ci-dessous.</value>
+    </data>
+    <data name="ChannelsPage_ReconnectAttemptsLabel" xml:space="preserve">
+      <value>Tentatives de reconnexion</value>
+    </data>
+    <data name="ChannelsPage_StartNotConnectedMessage" xml:space="preserve">
+      <value>Connectez-vous à une passerelle avant de démarrer des canaux.</value>
+    </data>
+    <data name="ChannelsPage_StatusLabel" xml:space="preserve">
+      <value>État</value>
+    </data>
+    <data name="ChannelsPage_StopNotConnectedMessage" xml:space="preserve">
+      <value>Connectez-vous à une passerelle avant d'arrêter des canaux.</value>
+    </data>
+    <data name="ChannelsPage_SubAccountsFormat" xml:space="preserve">
+      <value>{0} comptes</value>
+    </data>
+    <data name="ChannelsPage_SubAuthAgeFormat" xml:space="preserve">
+      <value>Auth depuis {0}</value>
+    </data>
+    <data name="ChannelsPage_SubConfigured" xml:space="preserve">
+      <value>Configuré</value>
+    </data>
+    <data name="ChannelsPage_SubLastEventFormat" xml:space="preserve">
+      <value>Dernier événement {0}</value>
+    </data>
+    <data name="ChannelsPage_SubLastMessageFormat" xml:space="preserve">
+      <value>Dernier message {0}</value>
+    </data>
+    <data name="ChannelsPage_SubLastProbeFormat" xml:space="preserve">
+      <value>Dernière sonde {0}</value>
+    </data>
+    <data name="ChannelsPage_SubLinkedAsFormat" xml:space="preserve">
+      <value>Lié en tant que {0}</value>
+    </data>
+    <data name="ChannelsPage_SubModeFormat" xml:space="preserve">
+      <value>mode {0}</value>
+    </data>
+    <data name="ChannelsPage_SubProbeMsFormat" xml:space="preserve">
+      <value>sonde de {0} ms</value>
+    </data>
+    <data name="ChannelsPage_SubReconnectAttemptFormat" xml:space="preserve">
+      <value>{0} tentative de reconnexion</value>
+    </data>
+    <data name="ChannelsPage_SubReconnectAttemptsFormat" xml:space="preserve">
+      <value>{0} tentatives de reconnexion</value>
+    </data>
+    <data name="ChannelsPage_TimeDaysAgoFormat" xml:space="preserve">
+      <value>il y a {0} j</value>
+    </data>
+    <data name="ChannelsPage_TimeHoursAgoFormat" xml:space="preserve">
+      <value>il y a {0} h</value>
+    </data>
+    <data name="ChannelsPage_TimeJustNow" xml:space="preserve">
+      <value>à l'instant</value>
+    </data>
+    <data name="ChannelsPage_TimeMinutesAgoFormat" xml:space="preserve">
+      <value>il y a {0} min</value>
+    </data>
+    <data name="ChannelsPage_TimeSecondsAgoFormat" xml:space="preserve">
+      <value>il y a {0} s</value>
+    </data>
+    <data name="ChannelsPage_UnlinkButton" xml:space="preserve">
+      <value>Délier</value>
+    </data>
+    <data name="ChannelsPage_UnlinkConfirmMessage" xml:space="preserve">
+      <value>Ceci délie le canal de cet appareil. Votre compte reste appairé sur votre téléphone : scannez un nouveau QR pour vous reconnecter.</value>
+    </data>
+    <data name="ChannelsPage_UnlinkConfirmTitleFormat" xml:space="preserve">
+      <value>Délier {0} de cet appareil ?</value>
+    </data>
+    <data name="ChannelsPage_UnlinkFailedMessageFormat" xml:space="preserve">
+      <value>Impossible de délier {0}. La passerelle ne prend peut-être pas en charge cette action.</value>
+    </data>
+    <data name="ChannelsPage_UnlinkFailedTitle" xml:space="preserve">
+      <value>Échec de la déliaison</value>
+    </data>
+    <data name="ChannelsPage_UnlinkNotConnectedMessage" xml:space="preserve">
+      <value>Connectez-vous à une passerelle avant de délier cet appareil.</value>
+    </data>
+    <data name="ChannelsPage_WebhookLabel" xml:space="preserve">
+      <value>Webhook</value>
+    </data>
+    <data name="ChannelsPage_Yes" xml:space="preserve">
+      <value>Oui</value>
+    </data>
 </root>

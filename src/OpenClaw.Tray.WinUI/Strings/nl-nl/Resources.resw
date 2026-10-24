@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:schema id="root">
     <xs:element name="root" ns1:IsDataSet="true">
@@ -2438,7 +2438,7 @@ Gebruik een van deze opties:
     <value>Werkruimtebestanden</value>
   </data>
   <data name="ChatWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>LanFu Chat</value>
+    <value>LanFu-chat</value>
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Typ een opdracht...</value>
@@ -2450,10 +2450,10 @@ Gebruik een van deze opties:
     <value>Zoeken… (Ctrl+E)</value>
   </data>
   <data name="CanvasWindow_winexWindowEx_2.Title" xml:space="preserve">
-    <value>LanFu Canvas</value>
+    <value>LanFu-canvas</value>
   </data>
   <data name="CanvasWindow_TextBlock_31.Text" xml:space="preserve">
-    <value>LanFu Canvas</value>
+    <value>LanFu-canvas</value>
   </data>
   <data name="CanvasWindowReloadToolTip.Content" xml:space="preserve">
     <value>Opnieuw laden</value>
@@ -3011,7 +3011,7 @@ Gebruik een van deze opties:
     <value>Niet verbonden</value>
   </data>
   <data name="Chat_Composer_Placeholder_IncompatibleGateway" xml:space="preserve">
-    <value>Gateway update required: incompatible version</value>
+    <value>Gateway-update vereist: incompatibele versie</value>
   </data>
   <data name="Chat_Composer_Tooltip_Attach" xml:space="preserve">
     <value>Bijvoegen</value>
@@ -3813,25 +3813,25 @@ Opdrachten worden geblokkeerd zolang sandboxing niet beschikbaar is, omdat strik
     <value>Sandboxomgeving</value>
   </data>
   <data name="ChannelsPage_GuideBar.Title" xml:space="preserve">
-    <value>Your gateway didn't list any channels</value>
+    <value>Je gateway heeft geen kanalen vermeld</value>
   </data>
   <data name="ChannelsPage_GuideBar.Message" xml:space="preserve">
-    <value>Channels are configured on your gateway. To add one, expand it below and fill in its credentials. The form saves directly to your gateway's config. The setup guide walks through each channel end-to-end.</value>
+    <value>Kanalen worden op je gateway geconfigureerd. Vouw er hieronder een uit en vul de referenties in — het formulier slaat direct op in de gatewayconfiguratie. De installatiewizard doorloopt elk kanaal van begin tot eind.</value>
   </data>
   <data name="ChannelsPage_DocsLink.Content" xml:space="preserve">
-    <value>Read the channels guide</value>
+    <value>Lees de kanaalgids</value>
   </data>
   <data name="ChannelsPage_NotConnected.Title" xml:space="preserve">
-    <value>Not connected</value>
+    <value>Niet verbonden</value>
   </data>
   <data name="ChannelsPage_NotConnected.Message" xml:space="preserve">
-    <value>Connect to a gateway to manage channels.</value>
+    <value>Maak verbinding met een gateway om kanalen te beheren.</value>
   </data>
   <data name="ChannelsPage_EmptyTitle.Text" xml:space="preserve">
-    <value>No channels available</value>
+    <value>Geen kanalen beschikbaar</value>
   </data>
   <data name="ChannelsPage_EmptySubtitle.Text" xml:space="preserve">
-    <value>The gateway didn't report any channels. Install channel plugins on the gateway and refresh.</value>
+    <value>De gateway meldde geen kanalen. Installeer kanaal-plug-ins op de gateway en vernieuw.</value>
   </data>
   <data name="DiagnosticsPage_Title.Text" xml:space="preserve">
     <value>Diagnostics</value>
@@ -6044,7 +6044,7 @@ Controleer of de gateway actief is.</value>
     <value>Niet verbonden</value>
   </data>
   <data name="BindingsPage_CouldNotLoadBindings" xml:space="preserve">
-    <value>Could not load bindings</value>
+    <value>Kan bindingen niet laden</value>
   </data>
   <data name="Command_GoToAgentEvents_Subtitle" xml:space="preserve">
     <value>Agent event log</value>
@@ -6176,25 +6176,25 @@ Controleer of de gateway actief is.</value>
     <value>Toggle Screen Capture</value>
   </data>
   <data name="CommandCenter_AuthFailed" xml:space="preserve">
-    <value>Gateway authentication failed</value>
+    <value>Gatewayverificatie mislukt</value>
   </data>
   <data name="CommandCenter_BrowserProxyAuthMayNeed" xml:space="preserve">
-    <value>Browser control needs a gateway shared token</value>
+    <value>Browserbesturing heeft een gedeeld gateway-token nodig</value>
   </data>
   <data name="CommandCenter_BrowserProxyHostNotDetected" xml:space="preserve">
-    <value>Browser proxy host not detected</value>
+    <value>Host van browserproxy niet gedetecteerd</value>
   </data>
   <data name="CommandCenter_BrowserProxySshForwardNotListening" xml:space="preserve">
-    <value>Browser proxy SSH forward is not listening</value>
+    <value>SSH-forward van browserproxy luistert niet</value>
   </data>
   <data name="CommandCenter_GatewayConnectionError" xml:space="preserve">
-    <value>Gateway connection error</value>
+    <value>Gatewayverbindingsfout</value>
   </data>
   <data name="CommandCenter_GatewayHealthStale" xml:space="preserve">
-    <value>Gateway health is stale</value>
+    <value>Gatewaystatus is verouderd</value>
   </data>
   <data name="CommandCenter_GatewayNotConnected" xml:space="preserve">
-    <value>Gateway is not connected</value>
+    <value>Gateway is niet verbonden</value>
   </data>
   <data name="CommandCenter_NoChannelsReported" xml:space="preserve">
     <value>No channels reported</value>
@@ -7047,7 +7047,7 @@ Het binaire bestand wxc-exec is niet gevonden. {1} Als dit een ontwikkelaarsbuil
   <data name="Onboarding_Flow_InstallReview.Text" xml:space="preserve"><value>Wat er wordt geïnstalleerd</value></data>
   <data name="Onboarding_Flow_AutoStart.Text" xml:space="preserve"><value>LanFu starten bij aanmelden</value></data>
   <data name="Onboarding_Flow_AutoStartToggle.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve"><value>LanFu starten bij aanmelden</value></data>
-  <data name="ChatDashboardButton.Content" xml:space="preserve"><value>Dashboard</value></data>
+  <data name="ChatDashboardButton.Content" xml:space="preserve"><value>Overzicht</value></data>
   <data name="ChatDashboardHint.Text" xml:space="preserve"><value>Kanalen, integraties en gateway-instellingen</value></data>
   <data name="Onboarding_Flow_WelcomeDescription.Text" xml:space="preserve"><value>LanFu is uw AI-assistent om dingen gedaan te krijgen op uw pc.</value></data>
   <data name="Onboarding_AiSetup_Title.Text" xml:space="preserve"><value>Verbind je AI</value></data>
@@ -7913,4 +7913,319 @@ Dit is de hoogrisicomodus. Schakel dit alleen uit als u de agent vertrouwt en di
   <data name="DiagnosticsPage_Section_Health.Text" xml:space="preserve">
     <value>Status</value>
   </data>
+    <data name="ChannelsPage_AccountsLabel" xml:space="preserve">
+      <value>Account(s)</value>
+    </data>
+    <data name="ChannelsPage_AgeDaysFormat" xml:space="preserve">
+      <value>{0} dg</value>
+    </data>
+    <data name="ChannelsPage_AgeHoursFormat" xml:space="preserve">
+      <value>{0} u</value>
+    </data>
+    <data name="ChannelsPage_AgeMinutesFormat" xml:space="preserve">
+      <value>{0} min</value>
+    </data>
+    <data name="ChannelsPage_AgeSecondsFormat" xml:space="preserve">
+      <value>{0} sec</value>
+    </data>
+    <data name="ChannelsPage_AuthAgeLabel" xml:space="preserve">
+      <value>Auth-leeftijd</value>
+    </data>
+    <data name="ChannelsPage_BannerPluginMissingMessageFormat" xml:space="preserve">
+      <value>Installeer het op de gatewaymachine: openclaw plugins install @openclaw/{0}. De kopieerbare opdracht staat in de uitklapbare kaart van het kanaal.</value>
+    </data>
+    <data name="ChannelsPage_BannerPluginMissingTitle" xml:space="preserve">
+      <value>De gateway heeft de plug-in {0} niet geïnstalleerd</value>
+    </data>
+    <data name="ChannelsPage_BannerRunningMessage" xml:space="preserve">
+      <value>Configuratie opgeslagen en het kanaal draait.</value>
+    </data>
+    <data name="ChannelsPage_BannerRunningTitle" xml:space="preserve">
+      <value>{0} wordt uitgevoerd</value>
+    </data>
+    <data name="ChannelsPage_BannerSavedNotRunningMessage" xml:space="preserve">
+      <value>De gateway heeft de instellingen geaccepteerd maar het kanaal niet gestart. Vouw het kanaal hieronder uit: de sectie Status en de diagnostiek tonen waarom.</value>
+    </data>
+    <data name="ChannelsPage_BannerSavedNotRunningTitle" xml:space="preserve">
+      <value>{0}: configuratie opgeslagen, maar nog niet actief</value>
+    </data>
+    <data name="ChannelsPage_BannerStartFailedTitle" xml:space="preserve">
+      <value>Kan {0} niet starten</value>
+    </data>
+    <data name="ChannelsPage_BannerStartRequestedMessage" xml:space="preserve">
+      <value>Wachten op bevestiging van de gateway dat het kanaal draait…</value>
+    </data>
+    <data name="ChannelsPage_BannerStartRequestedTitle" xml:space="preserve">
+      <value>Start van {0} aangevraagd</value>
+    </data>
+    <data name="ChannelsPage_BannerStartingMessage" xml:space="preserve">
+      <value>De gateway vragen dit kanaal te starten.</value>
+    </data>
+    <data name="ChannelsPage_BannerStartingTitle" xml:space="preserve">
+      <value>{0} starten…</value>
+    </data>
+    <data name="ChannelsPage_BannerStopFailedTitle" xml:space="preserve">
+      <value>Kan {0} niet stoppen</value>
+    </data>
+    <data name="ChannelsPage_BannerStopLostConnectionFormat" xml:space="preserve">
+      <value>Verbinding met de gateway verloren tijdens stoppen ({0}). Probeer Vernieuwen.</value>
+    </data>
+    <data name="ChannelsPage_BannerStopRejectedMessage" xml:space="preserve">
+      <value>De gateway accepteerde channels.stop niet. Probeer Vernieuwen of bekijk het gatewaylog.</value>
+    </data>
+    <data name="ChannelsPage_BannerStoppedMessage" xml:space="preserve">
+      <value>Kanaal gepauzeerd. Druk op Start om te hervatten: referenties blijven bewaard.</value>
+    </data>
+    <data name="ChannelsPage_BannerStoppedTitle" xml:space="preserve">
+      <value>{0} gestopt</value>
+    </data>
+    <data name="ChannelsPage_BannerStoppingMessage" xml:space="preserve">
+      <value>De gateway vragen dit kanaal te pauzeren. Referenties blijven bewaard zodat je opnieuw kunt starten.</value>
+    </data>
+    <data name="ChannelsPage_BannerStoppingTitle" xml:space="preserve">
+      <value>{0} stoppen…</value>
+    </data>
+    <data name="ChannelsPage_BaseUrlLabel" xml:space="preserve">
+      <value>Basis-URL</value>
+    </data>
+    <data name="ChannelsPage_BotLabel" xml:space="preserve">
+      <value>Chatbot</value>
+    </data>
+    <data name="ChannelsPage_CopiedButton" xml:space="preserve">
+      <value>Gekopieerd</value>
+    </data>
+    <data name="ChannelsPage_CopyButton" xml:space="preserve">
+      <value>Kopiëren</value>
+    </data>
+    <data name="ChannelsPage_CopyFailedButton" xml:space="preserve">
+      <value>Kopiëren mislukt</value>
+    </data>
+    <data name="ChannelsPage_DiagChannelFormat" xml:space="preserve">
+      <value>Kanaal: {0}</value>
+    </data>
+    <data name="ChannelsPage_DiagErrorFormat" xml:space="preserve">
+      <value>Fout: {0}</value>
+    </data>
+    <data name="ChannelsPage_DiagMethodFormat" xml:space="preserve">
+      <value>Methode: {0}</value>
+    </data>
+    <data name="ChannelsPage_DiagParamsFormat" xml:space="preserve">
+      <value>Parameters: {0}</value>
+    </data>
+    <data name="ChannelsPage_DiagResponseFormat" xml:space="preserve">
+      <value>Antwoord: {0}</value>
+    </data>
+    <data name="ChannelsPage_DisconnectButton" xml:space="preserve">
+      <value>Verbreken</value>
+    </data>
+    <data name="ChannelsPage_DisconnectConfirmMessage" xml:space="preserve">
+      <value>Dit meldt het kanaal af en wist de opgeslagen referenties. Je moet ze opnieuw invoeren om opnieuw te verbinden.</value>
+    </data>
+    <data name="ChannelsPage_DisconnectConfirmTitleFormat" xml:space="preserve">
+      <value>{0} verbreken en referenties vergeten?</value>
+    </data>
+    <data name="ChannelsPage_DisconnectFailedMessageFormat" xml:space="preserve">
+      <value>Kan {0} niet verbreken. De gateway ondersteunt deze actie mogelijk niet.</value>
+    </data>
+    <data name="ChannelsPage_DisconnectFailedTitle" xml:space="preserve">
+      <value>Verbreken mislukt</value>
+    </data>
+    <data name="ChannelsPage_DisconnectNotConnectedMessage" xml:space="preserve">
+      <value>Maak eerst verbinding met een gateway voordat je dit kanaal verbreekt.</value>
+    </data>
+    <data name="ChannelsPage_ErrorRefreshMessage" xml:space="preserve">
+      <value>De gateway gaf geen channels.status-antwoord. Probeer Vernieuwen opnieuw.</value>
+    </data>
+    <data name="ChannelsPage_ErrorRefreshTitle" xml:space="preserve">
+      <value>Kan kanalen niet vernieuwen</value>
+    </data>
+    <data name="ChannelsPage_InstallDocsLink" xml:space="preserve">
+      <value>Plug-in installatiedocumentatie →</value>
+    </data>
+    <data name="ChannelsPage_InstallHintFormat" xml:space="preserve">
+      <value>Kanaal-plug-ins worden door de gateway geladen, niet door het systeemvak: installatie gebeurt dus op de machine die je gateway host. Als {0} na Opslaan niet opstart, is de plug-in mogelijk nog niet geïnstalleerd.</value>
+    </data>
+    <data name="ChannelsPage_InstallRunHint" xml:space="preserve">
+      <value>Voer deze opdracht uit op de machine die de gateway host. Klik daarna hier op Vernieuwen.</value>
+    </data>
+    <data name="ChannelsPage_InstallSectionTitle" xml:space="preserve">
+      <value>Plug-in op de gateway installeren</value>
+    </data>
+    <data name="ChannelsPage_LastErrorLabel" xml:space="preserve">
+      <value>Laatste fout</value>
+    </data>
+    <data name="ChannelsPage_LastProbeLabel" xml:space="preserve">
+      <value>Laatste test</value>
+    </data>
+    <data name="ChannelsPage_LinkedAsLabel" xml:space="preserve">
+      <value>Gekoppeld als</value>
+    </data>
+    <data name="ChannelsPage_LinkedLabel" xml:space="preserve">
+      <value>Gekoppeld</value>
+    </data>
+    <data name="ChannelsPage_LinkingLabel" xml:space="preserve">
+      <value>Koppelen</value>
+    </data>
+    <data name="ChannelsPage_ProbeElapsedMsFormat" xml:space="preserve">
+      <value>{0} ms</value>
+    </data>
+    <data name="ChannelsPage_ProbeFailedFormat" xml:space="preserve">
+      <value>Mislukt · {0}</value>
+    </data>
+    <data name="ChannelsPage_ProbeOk" xml:space="preserve">
+      <value>Gelukt</value>
+    </data>
+    <data name="ChannelsPage_ProbeUnknownError" xml:space="preserve">
+      <value>onbekende fout</value>
+    </data>
+    <data name="ChannelsPage_QrAlreadyLinkedFormat" xml:space="preserve">
+      <value>{0} is al gekoppeld.</value>
+    </data>
+    <data name="ChannelsPage_QrDecodeFailedBase64" xml:space="preserve">
+      <value>QR-decodering mislukt: ongeldige base64 van de gateway.</value>
+    </data>
+    <data name="ChannelsPage_QrDecodeFailedFormat" xml:space="preserve">
+      <value>QR-decodering mislukt: {0}</value>
+    </data>
+    <data name="ChannelsPage_QrDecodeFailedMalformed" xml:space="preserve">
+      <value>QR-decodering mislukt: onjuist gevormde data-URL van de gateway.</value>
+    </data>
+    <data name="ChannelsPage_QrDiagnosticHeader" xml:space="preserve">
+      <value>Waarom werkt dit niet?</value>
+    </data>
+    <data name="ChannelsPage_QrInitialHint" xml:space="preserve">
+      <value>Klik op "QR weergeven" om je telefoon aan dit apparaat te koppelen.</value>
+    </data>
+    <data name="ChannelsPage_QrLinkFailedErrorFormat" xml:space="preserve">
+      <value>Kan {0} niet koppelen. De gateway gaf een fout: zie details hieronder.</value>
+    </data>
+    <data name="ChannelsPage_QrLinkFailedNotConnectedFormat" xml:space="preserve">
+      <value>Kan {0} niet koppelen. Niet verbonden met de gateway.</value>
+    </data>
+    <data name="ChannelsPage_QrLinkedFormat" xml:space="preserve">
+      <value>{0} gekoppeld.</value>
+    </data>
+    <data name="ChannelsPage_QrNoQrFormat" xml:space="preserve">
+      <value>De gateway gaf geen QR voor {0}. Zie hieronder wat hij wel teruggaf.</value>
+    </data>
+    <data name="ChannelsPage_QrNotConnectedHint" xml:space="preserve">
+      <value>Niet verbonden met een gateway. Open eerst de verbindingsinstellingen om te verbinden.</value>
+    </data>
+    <data name="ChannelsPage_QrProviderInstalledHint" xml:space="preserve">
+      <value>Klik na het installeren van de provider op de gatewaymachine opnieuw op QR weergeven.</value>
+    </data>
+    <data name="ChannelsPage_QrProviderMissingFormat" xml:space="preserve">
+      <value>Je gateway kan QR-koppeling voor {0} nog niet starten: de weblogin-provider van dit kanaal is niet geladen. Web-/QR-koppeling draait op de machine die de gateway host; los het daar op, niet in het systeemvak.</value>
+    </data>
+    <data name="ChannelsPage_QrRelinkButton" xml:space="preserve">
+      <value>Opnieuw koppelen</value>
+    </data>
+    <data name="ChannelsPage_QrRequesting" xml:space="preserve">
+      <value>QR-code opvragen bij de gateway…</value>
+    </data>
+    <data name="ChannelsPage_QrScanInstruction" xml:space="preserve">
+      <value>Open het scherm gekoppelde apparaten in de mobiele app en scan deze QR.</value>
+    </data>
+    <data name="ChannelsPage_QrShowButton" xml:space="preserve">
+      <value>QR weergeven</value>
+    </data>
+    <data name="ChannelsPage_QrStillWaiting" xml:space="preserve">
+      <value>Nog steeds wachten: klik opnieuw op QR weergeven als de code verlopen is.</value>
+    </data>
+    <data name="ChannelsPage_QrThisChannel" xml:space="preserve">
+      <value>Dit kanaal</value>
+    </data>
+    <data name="ChannelsPage_QrUnavailableFormat" xml:space="preserve">
+      <value>Koppelen van {0} is op deze gateway nog niet beschikbaar: zie hieronder hoe je het inschakelt.</value>
+    </data>
+    <data name="ChannelsPage_QrUnsupportedFormat" xml:space="preserve">
+      <value>Deze gatewayversie ondersteunt QR-koppeling voor {0} nog niet. QR-/webkoppeling draait op de machine die de gateway host: werk de gateway bij naar een versie met weblogin en klik daarna opnieuw op QR weergeven.</value>
+    </data>
+    <data name="ChannelsPage_QrWaitFailedFormat" xml:space="preserve">
+      <value>Wachten op koppeling van {0} mislukt. Zie details hieronder.</value>
+    </data>
+    <data name="ChannelsPage_ReconnectAttemptsLabel" xml:space="preserve">
+      <value>Verbindingspogingen</value>
+    </data>
+    <data name="ChannelsPage_StartNotConnectedMessage" xml:space="preserve">
+      <value>Maak eerst verbinding met een gateway voordat je kanalen start.</value>
+    </data>
+    <data name="ChannelsPage_StatusLabel" xml:space="preserve">
+      <value>Toestand</value>
+    </data>
+    <data name="ChannelsPage_StopNotConnectedMessage" xml:space="preserve">
+      <value>Maak eerst verbinding met een gateway voordat je kanalen stopt.</value>
+    </data>
+    <data name="ChannelsPage_SubAccountsFormat" xml:space="preserve">
+      <value>{0} account(s)</value>
+    </data>
+    <data name="ChannelsPage_SubAuthAgeFormat" xml:space="preserve">
+      <value>Auth {0} geleden</value>
+    </data>
+    <data name="ChannelsPage_SubConfigured" xml:space="preserve">
+      <value>Geconfigureerd</value>
+    </data>
+    <data name="ChannelsPage_SubLastEventFormat" xml:space="preserve">
+      <value>Laatste gebeurtenis {0}</value>
+    </data>
+    <data name="ChannelsPage_SubLastMessageFormat" xml:space="preserve">
+      <value>Laatste bericht {0}</value>
+    </data>
+    <data name="ChannelsPage_SubLastProbeFormat" xml:space="preserve">
+      <value>Laatste test {0}</value>
+    </data>
+    <data name="ChannelsPage_SubLinkedAsFormat" xml:space="preserve">
+      <value>Gekoppeld als {0}</value>
+    </data>
+    <data name="ChannelsPage_SubModeFormat" xml:space="preserve">
+      <value>{0}-modus</value>
+    </data>
+    <data name="ChannelsPage_SubProbeMsFormat" xml:space="preserve">
+      <value>test van {0} ms</value>
+    </data>
+    <data name="ChannelsPage_SubReconnectAttemptFormat" xml:space="preserve">
+      <value>{0} verbindingspoging</value>
+    </data>
+    <data name="ChannelsPage_SubReconnectAttemptsFormat" xml:space="preserve">
+      <value>{0} verbindingspogingen</value>
+    </data>
+    <data name="ChannelsPage_TimeDaysAgoFormat" xml:space="preserve">
+      <value>{0} d geleden</value>
+    </data>
+    <data name="ChannelsPage_TimeHoursAgoFormat" xml:space="preserve">
+      <value>{0} u geleden</value>
+    </data>
+    <data name="ChannelsPage_TimeJustNow" xml:space="preserve">
+      <value>zojuist</value>
+    </data>
+    <data name="ChannelsPage_TimeMinutesAgoFormat" xml:space="preserve">
+      <value>{0} min geleden</value>
+    </data>
+    <data name="ChannelsPage_TimeSecondsAgoFormat" xml:space="preserve">
+      <value>{0} s geleden</value>
+    </data>
+    <data name="ChannelsPage_UnlinkButton" xml:space="preserve">
+      <value>Ontkoppelen</value>
+    </data>
+    <data name="ChannelsPage_UnlinkConfirmMessage" xml:space="preserve">
+      <value>Dit ontkoppelt het kanaal van dit apparaat. Je account blijft gekoppeld op je telefoon: scan een nieuwe QR om opnieuw te verbinden.</value>
+    </data>
+    <data name="ChannelsPage_UnlinkConfirmTitleFormat" xml:space="preserve">
+      <value>{0} van dit apparaat ontkoppelen?</value>
+    </data>
+    <data name="ChannelsPage_UnlinkFailedMessageFormat" xml:space="preserve">
+      <value>Kan {0} niet ontkoppelen. De gateway ondersteunt deze actie mogelijk niet.</value>
+    </data>
+    <data name="ChannelsPage_UnlinkFailedTitle" xml:space="preserve">
+      <value>Ontkoppelen mislukt</value>
+    </data>
+    <data name="ChannelsPage_UnlinkNotConnectedMessage" xml:space="preserve">
+      <value>Maak eerst verbinding met een gateway voordat je dit apparaat ontkoppelt.</value>
+    </data>
+    <data name="ChannelsPage_WebhookLabel" xml:space="preserve">
+      <value>Webhook</value>
+    </data>
+    <data name="ChannelsPage_Yes" xml:space="preserve">
+      <value>Ja</value>
+    </data>
 </root>

@@ -413,10 +413,10 @@ public sealed partial class ChannelsPage : Page
                 (BoundClient is null || !ReferenceEquals(client, BoundClient))) return;
             if (snapshot == null)
             {
-                ErrorBar.Title = "Couldn't refresh channels";
+                ErrorBar.Title = LocalizationHelper.GetString("ChannelsPage_ErrorRefreshTitle");
                 ErrorBar.Message = _nativeSetupRequest is not null
                     ? LocalizationHelper.GetString("Onboarding_Ready_ChannelUnconfirmed")
-                    : "The gateway didn't return a channels.status response. Try Refresh again.";
+                    : LocalizationHelper.GetString("ChannelsPage_ErrorRefreshMessage");
                 SetInfoBarOpen(ErrorBar, true);
                 _nativeDestinationPresented = _nativeSetupRequest is not null;
                 return;
@@ -509,14 +509,14 @@ public sealed partial class ChannelsPage : Page
                 // Gateway accepted config.set but the channel still isn't
                 // configured/running. Don't lie about it.
                 SaveBanner.Severity = InfoBarSeverity.Warning;
-                SaveBanner.Title = $"{pending.ChannelId}: config saved, but not running yet";
-                SaveBanner.Message = "The gateway accepted the settings but didn't start the channel. Expand the channel below: the Status section and the diagnostic disclosure will show why.";
+                SaveBanner.Title = string.Format(LocalizationHelper.GetString("ChannelsPage_BannerSavedNotRunningTitle"), pending.ChannelId);
+                SaveBanner.Message = LocalizationHelper.GetString("ChannelsPage_BannerSavedNotRunningMessage");
             }
             else if (!_pendingBannerIsAction && pending.Severity == InfoBarSeverity.Success && record != null && record.IsConfigured)
             {
                 SaveBanner.Severity = InfoBarSeverity.Success;
-                SaveBanner.Title = $"{pending.ChannelId} is running";
-                SaveBanner.Message = "Configuration saved and the channel is up.";
+                SaveBanner.Title = string.Format(LocalizationHelper.GetString("ChannelsPage_BannerRunningTitle"), pending.ChannelId);
+                SaveBanner.Message = LocalizationHelper.GetString("ChannelsPage_BannerRunningMessage");
                 // Clear the cached form values now that we're confirmed running.
                 _formValuesByChannel.Remove(pending.ChannelId);
             }
@@ -1555,7 +1555,7 @@ public sealed partial class ChannelsPage : Page
 
         if (raw.ValueKind != JsonValueKind.Object)
         {
-            pairs.Add(("Status", record.IsConfigured
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_StatusLabel"), record.IsConfigured
                 ? LocalizationHelper.GetString("ChannelsPage_BadgeConfigured")
                 : LocalizationHelper.GetString("ChannelsPage_BadgeNotConfigured")));
             return pairs;
@@ -1570,15 +1570,15 @@ public sealed partial class ChannelsPage : Page
 
         // Lowercase short forms per naming.md status vocabulary.
         if (!string.IsNullOrEmpty(lastError))
-            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeError")));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_StatusLabel"), LocalizationHelper.GetString("ChannelsPage_BadgeError")));
         else if (connected == true)
-            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeConnected")));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_StatusLabel"), LocalizationHelper.GetString("ChannelsPage_BadgeConnected")));
         else if (running == true)
-            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeRunning")));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_StatusLabel"), LocalizationHelper.GetString("ChannelsPage_BadgeRunning")));
         else if (configured == true)
-            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeConfigured")));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_StatusLabel"), LocalizationHelper.GetString("ChannelsPage_BadgeConfigured")));
         else
-            pairs.Add(("Status", LocalizationHelper.GetString("ChannelsPage_BadgeNotConfigured")));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_StatusLabel"), LocalizationHelper.GetString("ChannelsPage_BadgeNotConfigured")));
 
         if (linked == true)
         {
@@ -1587,23 +1587,23 @@ public sealed partial class ChannelsPage : Page
             {
                 var e164 = GetString(self, "e164") ?? GetString(self, "jid");
                 if (!string.IsNullOrEmpty(e164))
-                    pairs.Add(("Linked as", e164));
+                    pairs.Add((LocalizationHelper.GetString("ChannelsPage_LinkedAsLabel"), e164));
                 else
-                    pairs.Add(("Linked", "Yes"));
+                    pairs.Add((LocalizationHelper.GetString("ChannelsPage_LinkedLabel"), LocalizationHelper.GetString("ChannelsPage_Yes")));
             }
             else
             {
-                pairs.Add(("Linked", "Yes"));
+                pairs.Add((LocalizationHelper.GetString("ChannelsPage_LinkedLabel"), LocalizationHelper.GetString("ChannelsPage_Yes")));
             }
         }
 
         // Auth age (WA)
         if (raw.TryGetProperty("authAgeMs", out var ageMs) && ageMs.ValueKind == JsonValueKind.Number && ageMs.TryGetDouble(out var ageDouble))
-            pairs.Add(("Auth age", FormatAge(ageDouble)));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_AuthAgeLabel"), FormatAge(ageDouble)));
 
         // Reconnect attempts (WA)
         if (raw.TryGetProperty("reconnectAttempts", out var attempts) && attempts.ValueKind == JsonValueKind.Number && attempts.TryGetInt32(out var att) && att > 0)
-            pairs.Add(("Reconnect attempts", att.ToString()));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_ReconnectAttemptsLabel"), att.ToString()));
 
         // Probe info (plugin channels that health-check their upstream)
         if (raw.TryGetProperty("probe", out var probe) && probe.ValueKind == JsonValueKind.Object)
@@ -1614,31 +1614,33 @@ public sealed partial class ChannelsPage : Page
             var probeError = GetString(probe, "error");
             if (ok == true)
             {
-                var parts = new List<string> { "OK" };
-                if (elapsed.HasValue) parts.Add($"{(int)elapsed.Value} ms");
+                var parts = new List<string> { LocalizationHelper.GetString("ChannelsPage_ProbeOk") };
+                if (elapsed.HasValue) parts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_ProbeElapsedMsFormat"), (int)elapsed.Value));
                 if (!string.IsNullOrEmpty(version)) parts.Add(version);
-                pairs.Add(("Last probe", string.Join(" · ", parts)));
+                pairs.Add((LocalizationHelper.GetString("ChannelsPage_LastProbeLabel"), string.Join(" · ", parts)));
             }
             else if (ok == false)
             {
-                pairs.Add(("Last probe", $"Failed · {probeError ?? "unknown error"}"));
+                pairs.Add((LocalizationHelper.GetString("ChannelsPage_LastProbeLabel"),
+                    string.Format(LocalizationHelper.GetString("ChannelsPage_ProbeFailedFormat"),
+                        probeError ?? LocalizationHelper.GetString("ChannelsPage_ProbeUnknownError"))));
             }
         }
 
         // Channel-specific identifiers
         if (GetString(raw, "botUsername") is { Length: > 0 } botUsername)
-            pairs.Add(("Bot", "@" + botUsername));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_BotLabel"), "@" + botUsername));
         if (GetString(raw, "webhookUrl") is { Length: > 0 } webhook)
-            pairs.Add(("Webhook", webhook));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_WebhookLabel"), webhook));
         if (GetString(raw, "baseUrl") is { Length: > 0 } baseUrl)
-            pairs.Add(("Base URL", baseUrl));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_BaseUrlLabel"), baseUrl));
 
         // Accounts
         if (record.Accounts.Count > 0)
-            pairs.Add(("Accounts", record.Accounts.Count == 1 ? "1" : record.Accounts.Count.ToString()));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_AccountsLabel"), record.Accounts.Count == 1 ? "1" : record.Accounts.Count.ToString()));
 
         if (!string.IsNullOrEmpty(lastError))
-            pairs.Add(("Last error", lastError));
+            pairs.Add((LocalizationHelper.GetString("ChannelsPage_LastErrorLabel"), lastError));
 
         return pairs;
     }
@@ -1648,7 +1650,7 @@ public sealed partial class ChannelsPage : Page
         var stack = new StackPanel { Spacing = 8 };
         stack.Children.Add(new TextBlock
         {
-            Text = "LINKING",
+            Text = LocalizationHelper.GetString("ChannelsPage_LinkingLabel").ToUpperInvariant(),
             Style = (Style)Application.Current.Resources["CaptionTextBlockStyle"],
             FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
             CharacterSpacing = 80,
@@ -1668,7 +1670,7 @@ public sealed partial class ChannelsPage : Page
         // text with the real instructions once a QR is on screen.
         var messageBlock = new TextBlock
         {
-            Text = "Click \"Show QR\" to start linking your phone to this device.",
+            Text = LocalizationHelper.GetString("ChannelsPage_QrInitialHint"),
             Style = (Style)Application.Current.Resources["BodyTextBlockStyle"],
             Foreground = (Brush)Application.Current.Resources["TextFillColorSecondaryBrush"],
             TextWrapping = TextWrapping.Wrap,
@@ -1682,7 +1684,7 @@ public sealed partial class ChannelsPage : Page
             HorizontalAlignment = HorizontalAlignment.Stretch,
             HorizontalContentAlignment = HorizontalAlignment.Stretch,
             IsExpanded = false,
-            Header = "Why isn't this working?",
+            Header = LocalizationHelper.GetString("ChannelsPage_QrDiagnosticHeader"),
             Visibility = Visibility.Collapsed,
         };
         var diagnosticBody = new TextBlock
@@ -1698,8 +1700,8 @@ public sealed partial class ChannelsPage : Page
         diagnostic.Content = diagnosticBody;
 
         var buttonsRow = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8 };
-        var showQrBtn = new Button { Content = "Show QR", Style = (Style)Application.Current.Resources["AccentButtonStyle"] };
-        var relinkBtn = new Button { Content = "Relink" };
+        var showQrBtn = new Button { Content = LocalizationHelper.GetString("ChannelsPage_QrShowButton"), Style = (Style)Application.Current.Resources["AccentButtonStyle"] };
+        var relinkBtn = new Button { Content = LocalizationHelper.GetString("ChannelsPage_QrRelinkButton") };
         buttonsRow.Children.Add(showQrBtn);
         buttonsRow.Children.Add(relinkBtn);
 
@@ -1751,17 +1753,17 @@ public sealed partial class ChannelsPage : Page
         {
             var parts = new List<string>
             {
-                $"Method:   {method}",
-                $"Channel:  {channelId}",
-                $"Params:   {System.Text.Json.JsonSerializer.Serialize(@params)}",
+                string.Format(LocalizationHelper.GetString("ChannelsPage_DiagMethodFormat"), method),
+                string.Format(LocalizationHelper.GetString("ChannelsPage_DiagChannelFormat"), channelId),
+                string.Format(LocalizationHelper.GetString("ChannelsPage_DiagParamsFormat"), System.Text.Json.JsonSerializer.Serialize(@params)),
             };
-            if (!string.IsNullOrEmpty(error)) parts.Add($"Error:    {error}");
+            if (!string.IsNullOrEmpty(error)) parts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_DiagErrorFormat"), error));
             if (!string.IsNullOrEmpty(rawResponse))
             {
                 // Trim verbose stack traces; keep first 1000 chars (plenty for diagnosis,
                 // small enough to read in the disclosure).
                 var trimmed = rawResponse.Length > 1000 ? rawResponse[..1000] + "…" : rawResponse;
-                parts.Add($"Response: {trimmed}");
+                parts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_DiagResponseFormat"), trimmed));
             }
             diagnosticBody.Text = string.Join("\n", parts);
             diagnostic.Visibility = Visibility.Visible;
@@ -1784,7 +1786,7 @@ public sealed partial class ChannelsPage : Page
 
             recoveryPanel.Children.Add(new TextBlock
             {
-                Text = $"Your gateway can't start {channelId} QR linking yet. It doesn't have the {channelId} web-login provider loaded. Web/QR linking runs on the machine that hosts your gateway, so this is fixed there, not in the tray.",
+                Text = string.Format(LocalizationHelper.GetString("ChannelsPage_QrProviderMissingFormat"), channelId),
                 TextWrapping = TextWrapping.Wrap,
                 Style = (Style)Application.Current.Resources["BodyTextBlockStyle"],
                 Foreground = (Brush)Application.Current.Resources["TextFillColorSecondaryBrush"],
@@ -1805,7 +1807,7 @@ public sealed partial class ChannelsPage : Page
             Grid.SetColumn(cmdBox, 0);
             cmdRow.Children.Add(cmdBox);
 
-            var copyBtn = new Button { Content = "Copy" };
+            var copyBtn = new Button { Content = LocalizationHelper.GetString("ChannelsPage_CopyButton") };
             Grid.SetColumn(copyBtn, 1);
             copyBtn.Click += (_, _) =>
             {
@@ -1814,16 +1816,16 @@ public sealed partial class ChannelsPage : Page
                     var pkgData = new DataPackage();
                     pkgData.SetText(cmd);
                     Clipboard.SetContent(pkgData);
-                    copyBtn.Content = "Copied";
+                    copyBtn.Content = LocalizationHelper.GetString("ChannelsPage_CopiedButton");
                     _ = Task.Delay(1200).ContinueWith(_ =>
                     {
                         if (DispatcherQueue == null) return;
-                        DispatcherQueue.TryEnqueue(() => copyBtn.Content = "Copy");
+                        DispatcherQueue.TryEnqueue(() => copyBtn.Content = LocalizationHelper.GetString("ChannelsPage_CopyButton"));
                     }, TaskScheduler.Default);
                 }
                 catch
                 {
-                    copyBtn.Content = "Copy failed";
+                    copyBtn.Content = LocalizationHelper.GetString("ChannelsPage_CopyFailedButton");
                 }
             };
             cmdRow.Children.Add(copyBtn);
@@ -1831,7 +1833,7 @@ public sealed partial class ChannelsPage : Page
 
             recoveryPanel.Children.Add(new TextBlock
             {
-                Text = "After installing the provider on your gateway host, come back and click Show QR again.",
+                Text = LocalizationHelper.GetString("ChannelsPage_QrProviderInstalledHint"),
                 TextWrapping = TextWrapping.Wrap,
                 Style = (Style)Application.Current.Resources["CaptionTextBlockStyle"],
                 Foreground = (Brush)Application.Current.Resources["TextFillColorSecondaryBrush"],
@@ -1849,7 +1851,7 @@ public sealed partial class ChannelsPage : Page
 
             recoveryPanel.Children.Add(new TextBlock
             {
-                Text = $"This gateway version doesn't support QR linking for {channelId} yet. QR/web linking runs on the machine that hosts your gateway: update your gateway to a version that supports web login, then come back and click Show QR again.",
+                Text = string.Format(LocalizationHelper.GetString("ChannelsPage_QrUnsupportedFormat"), channelId),
                 TextWrapping = TextWrapping.Wrap,
                 Style = (Style)Application.Current.Resources["BodyTextBlockStyle"],
                 Foreground = (Brush)Application.Current.Resources["TextFillColorSecondaryBrush"],
@@ -1867,7 +1869,7 @@ public sealed partial class ChannelsPage : Page
         if (client == null)
         {
             qrImage.Visibility = Visibility.Collapsed;
-            messageBlock.Text = "Not connected to a gateway. Open Connection settings to connect first.";
+            messageBlock.Text = LocalizationHelper.GetString("ChannelsPage_QrNotConnectedHint");
             HideDiagnostic();
             HideRecovery();
             return;
@@ -1883,7 +1885,7 @@ public sealed partial class ChannelsPage : Page
             catch (Exception ex) { Logger.Debug($"ChannelsPage: prior linking cts cancel/dispose failed: {ex.Message}"); }
         }
 
-        messageBlock.Text = "Requesting QR code from the gateway…";
+        messageBlock.Text = LocalizationHelper.GetString("ChannelsPage_QrRequesting");
         HideDiagnostic();
         HideRecovery();
 
@@ -1896,7 +1898,7 @@ public sealed partial class ChannelsPage : Page
             // Only happens when the websocket is not connected; no gateway response
             // to surface.
             qrImage.Visibility = Visibility.Collapsed;
-            messageBlock.Text = $"Couldn't link {channelId}. Not connected to the gateway.";
+            messageBlock.Text = string.Format(LocalizationHelper.GetString("ChannelsPage_QrLinkFailedNotConnectedFormat"), channelId);
             return;
         }
 
@@ -1905,7 +1907,7 @@ public sealed partial class ChannelsPage : Page
             qrImage.Visibility = Visibility.Collapsed;
 
             var displayName = string.IsNullOrEmpty(channelId)
-                ? "This channel"
+                ? LocalizationHelper.GetString("ChannelsPage_QrThisChannel")
                 : $"{char.ToUpper(channelId[0])}{channelId[1..]}";
 
             if (start.LooksLikeMissingWebLoginProvider)
@@ -1914,7 +1916,7 @@ public sealed partial class ChannelsPage : Page
                 // loaded for this channel. Show actionable recovery instead of the
                 // relayed internal error as the headline (issue #957). Keep the raw
                 // gateway detail available in the collapsed diagnostic.
-                messageBlock.Text = $"{displayName} linking isn't available on this gateway yet: see how to enable it below.";
+                messageBlock.Text = string.Format(LocalizationHelper.GetString("ChannelsPage_QrUnavailableFormat"), displayName);
                 ShowProviderRecovery();
                 ShowDiagnostic("web.login.start", startParams, start.Error, start.RawResponse);
                 return;
@@ -1925,13 +1927,13 @@ public sealed partial class ChannelsPage : Page
                 // Gateway is too old to implement web.login at all. Installing a
                 // plugin wouldn't add the method — guide the user to update the
                 // gateway instead.
-                messageBlock.Text = $"{displayName} linking isn't available on this gateway yet: see how to enable it below.";
+                messageBlock.Text = string.Format(LocalizationHelper.GetString("ChannelsPage_QrUnavailableFormat"), displayName);
                 ShowUnsupportedRecovery();
                 ShowDiagnostic("web.login.start", startParams, start.Error, start.RawResponse);
                 return;
             }
 
-            messageBlock.Text = $"Couldn't link {channelId}. The gateway returned an error: see details below.";
+            messageBlock.Text = string.Format(LocalizationHelper.GetString("ChannelsPage_QrLinkFailedErrorFormat"), channelId);
             ShowDiagnostic("web.login.start", startParams, start.Error, start.RawResponse);
             return;
         }
@@ -1939,7 +1941,7 @@ public sealed partial class ChannelsPage : Page
         {
             messageBlock.Text = !string.IsNullOrEmpty(start.Message)
                 ? start.Message
-                : $"{channelId} is already linked.";
+                : string.Format(LocalizationHelper.GetString("ChannelsPage_QrAlreadyLinkedFormat"), channelId);
             qrImage.Visibility = Visibility.Collapsed;
             await RefreshAsync(probe: false);
             return;
@@ -1951,7 +1953,7 @@ public sealed partial class ChannelsPage : Page
             qrImage.Visibility = Visibility.Collapsed;
             messageBlock.Text = !string.IsNullOrEmpty(start.Message)
                 ? start.Message
-                : $"Gateway didn't return a QR for {channelId}. See details below for what it returned.";
+                : string.Format(LocalizationHelper.GetString("ChannelsPage_QrNoQrFormat"), channelId);
             ShowDiagnostic("web.login.start", startParams, null, start.RawResponse);
             return;
         }
@@ -1960,7 +1962,7 @@ public sealed partial class ChannelsPage : Page
         if (ct.IsCancellationRequested) return;
         messageBlock.Text = !string.IsNullOrEmpty(start.Message)
             ? start.Message
-            : "Open the mobile app's linked-devices screen and scan this QR.";
+            : LocalizationHelper.GetString("ChannelsPage_QrScanInstruction");
 
         // Long-poll once for completion
         var waitParams = new { currentQrDataUrl = start.QrDataUrl, timeoutMs = 30000 };
@@ -1968,12 +1970,12 @@ public sealed partial class ChannelsPage : Page
         if (ct.IsCancellationRequested) return;
         if (waitResult == null)
         {
-            messageBlock.Text = "Still waiting: click Show QR again if the code has expired.";
+            messageBlock.Text = LocalizationHelper.GetString("ChannelsPage_QrStillWaiting");
             return;
         }
         if (!string.IsNullOrEmpty(waitResult.Error))
         {
-            messageBlock.Text = $"Link wait failed for {channelId}. See details below.";
+            messageBlock.Text = string.Format(LocalizationHelper.GetString("ChannelsPage_QrWaitFailedFormat"), channelId);
             ShowDiagnostic("web.login.wait", waitParams, waitResult.Error, waitResult.RawResponse);
             return;
         }
@@ -1981,7 +1983,7 @@ public sealed partial class ChannelsPage : Page
         {
             messageBlock.Text = !string.IsNullOrEmpty(waitResult.Message)
                 ? waitResult.Message
-                : $"{channelId} linked.";
+                : string.Format(LocalizationHelper.GetString("ChannelsPage_QrLinkedFormat"), channelId);
             qrImage.Visibility = Visibility.Collapsed;
             await RefreshAsync(probe: false);
         }
@@ -1995,7 +1997,7 @@ public sealed partial class ChannelsPage : Page
         }
         else
         {
-            messageBlock.Text = "Still waiting: click Show QR again if the code has expired.";
+            messageBlock.Text = LocalizationHelper.GetString("ChannelsPage_QrStillWaiting");
         }
     }
 
@@ -2007,7 +2009,7 @@ public sealed partial class ChannelsPage : Page
             if (commaIdx <= 0)
             {
                 target.Visibility = Visibility.Collapsed;
-                messageBlock.Text = "QR decode failed: malformed data URL from gateway.";
+                messageBlock.Text = LocalizationHelper.GetString("ChannelsPage_QrDecodeFailedMalformed");
                 return;
             }
             var base64 = dataUrl[(commaIdx + 1)..];
@@ -2019,7 +2021,7 @@ public sealed partial class ChannelsPage : Page
             catch (FormatException)
             {
                 target.Visibility = Visibility.Collapsed;
-                messageBlock.Text = "QR decode failed: invalid base64 from gateway.";
+                messageBlock.Text = LocalizationHelper.GetString("ChannelsPage_QrDecodeFailedBase64");
                 return;
             }
 
@@ -2045,7 +2047,7 @@ public sealed partial class ChannelsPage : Page
             // Surface decode failures to the user — silent hide makes gateway faults
             // look like UX bugs.
             target.Visibility = Visibility.Collapsed;
-            messageBlock.Text = $"QR decode failed: {ex.Message}";
+            messageBlock.Text = string.Format(LocalizationHelper.GetString("ChannelsPage_QrDecodeFailedFormat"), ex.Message);
         }
     }
 
@@ -2098,7 +2100,7 @@ public sealed partial class ChannelsPage : Page
 
         body.Children.Add(new TextBlock
         {
-            Text = $"Channel plugins are loaded by the gateway, not the tray: so installs happen on the machine that hosts your gateway. If {record.Id} isn't coming up after Save, the plugin may not be installed yet.",
+            Text = string.Format(LocalizationHelper.GetString("ChannelsPage_InstallHintFormat"), record.Id),
             TextWrapping = TextWrapping.Wrap,
             Style = (Style)Application.Current.Resources["BodyTextBlockStyle"],
             Foreground = (Brush)Application.Current.Resources["TextFillColorSecondaryBrush"],
@@ -2119,7 +2121,7 @@ public sealed partial class ChannelsPage : Page
         Grid.SetColumn(cmdBox, 0);
         cmdRow.Children.Add(cmdBox);
 
-        var copyBtn = new Button { Content = "Copy" };
+        var copyBtn = new Button { Content = LocalizationHelper.GetString("ChannelsPage_CopyButton") };
         copyBtn.Click += (_, _) =>
         {
             try
@@ -2128,16 +2130,16 @@ public sealed partial class ChannelsPage : Page
                 pkgData.SetText(cmd);
                 Clipboard.SetContent(pkgData);
                 // Briefly indicate copied — flip the label, restore after a short delay.
-                copyBtn.Content = "Copied";
+                copyBtn.Content = LocalizationHelper.GetString("ChannelsPage_CopiedButton");
                 _ = Task.Delay(1200).ContinueWith(_ =>
                 {
                     if (DispatcherQueue == null) return;
-                    DispatcherQueue.TryEnqueue(() => copyBtn.Content = "Copy");
+                    DispatcherQueue.TryEnqueue(() => copyBtn.Content = LocalizationHelper.GetString("ChannelsPage_CopyButton"));
                 }, TaskScheduler.Default);
             }
             catch
             {
-                copyBtn.Content = "Copy failed";
+                copyBtn.Content = LocalizationHelper.GetString("ChannelsPage_CopyFailedButton");
             }
         };
         Grid.SetColumn(copyBtn, 1);
@@ -2147,7 +2149,7 @@ public sealed partial class ChannelsPage : Page
 
         body.Children.Add(new TextBlock
         {
-            Text = "Run this command on the machine that hosts your gateway. After it finishes, come back and click Refresh.",
+            Text = LocalizationHelper.GetString("ChannelsPage_InstallRunHint"),
             Style = (Style)Application.Current.Resources["CaptionTextBlockStyle"],
             Foreground = (Brush)Application.Current.Resources["TextFillColorTertiaryBrush"],
             TextWrapping = TextWrapping.Wrap,
@@ -2155,13 +2157,13 @@ public sealed partial class ChannelsPage : Page
 
         var docsLink = new HyperlinkButton
         {
-            Content = "Plugin install docs →",
+            Content = LocalizationHelper.GetString("ChannelsPage_InstallDocsLink"),
             NavigateUri = new Uri("https://docs.openclaw.ai/plugins/install"),
             Padding = new Thickness(0),
         };
         body.Children.Add(docsLink);
 
-        return BuildSection("Install plugin on your gateway", body);
+        return BuildSection(LocalizationHelper.GetString("ChannelsPage_InstallSectionTitle"), body);
     }
 
     private async Task LogoutAsync(string channelId, bool isQr)
@@ -2169,10 +2171,10 @@ public sealed partial class ChannelsPage : Page
         var client = BoundClient;
         if (client == null)
         {
-            ErrorBar.Title = "Not connected";
+            ErrorBar.Title = LocalizationHelper.GetString("ChannelsPage_BannerNotConnectedTitle");
             ErrorBar.Message = isQr
-                ? "Connect to a gateway before unlinking this device."
-                : "Connect to a gateway before disconnecting this channel.";
+                ? LocalizationHelper.GetString("ChannelsPage_UnlinkNotConnectedMessage")
+                : LocalizationHelper.GetString("ChannelsPage_DisconnectNotConnectedMessage");
             SetInfoBarOpen(ErrorBar, true);
             return;
         }
@@ -2183,13 +2185,15 @@ public sealed partial class ChannelsPage : Page
         var dialog = new ContentDialog
         {
             Title = isQr
-                ? $"Unlink {channelId} from this device?"
-                : $"Disconnect {channelId} and forget credentials?",
+                ? string.Format(LocalizationHelper.GetString("ChannelsPage_UnlinkConfirmTitleFormat"), channelId)
+                : string.Format(LocalizationHelper.GetString("ChannelsPage_DisconnectConfirmTitleFormat"), channelId),
             Content = isQr
-                ? "This unlinks the channel from this device. Your account stays paired on your phone: scan a fresh QR to reconnect."
-                : "This signs out the channel and clears the stored credentials. You'll need to re-enter them to reconnect.",
-            PrimaryButtonText = isQr ? "Unlink" : "Disconnect",
-            CloseButtonText = "Cancel",
+                ? LocalizationHelper.GetString("ChannelsPage_UnlinkConfirmMessage")
+                : LocalizationHelper.GetString("ChannelsPage_DisconnectConfirmMessage"),
+            PrimaryButtonText = isQr
+                ? LocalizationHelper.GetString("ChannelsPage_UnlinkButton")
+                : LocalizationHelper.GetString("ChannelsPage_DisconnectButton"),
+            CloseButtonText = LocalizationHelper.GetString("NodesPage_Common_Cancel"),
             DefaultButton = ContentDialogButton.Close,
             XamlRoot = XamlRoot,
         };
@@ -2209,10 +2213,12 @@ public sealed partial class ChannelsPage : Page
         var ok = await client.LogoutChannelAsync(channelId);
         if (!ok)
         {
-            ErrorBar.Title = isQr ? "Unlink failed" : "Disconnect failed";
+            ErrorBar.Title = isQr
+                ? LocalizationHelper.GetString("ChannelsPage_UnlinkFailedTitle")
+                : LocalizationHelper.GetString("ChannelsPage_DisconnectFailedTitle");
             ErrorBar.Message = isQr
-                ? $"Could not unlink {channelId}. The gateway may not support this action."
-                : $"Could not disconnect {channelId}. The gateway may not support this action.";
+                ? string.Format(LocalizationHelper.GetString("ChannelsPage_UnlinkFailedMessageFormat"), channelId)
+                : string.Format(LocalizationHelper.GetString("ChannelsPage_DisconnectFailedMessageFormat"), channelId);
             SetInfoBarOpen(ErrorBar, true);
         }
         await RefreshAsync(probe: false);
@@ -2236,15 +2242,15 @@ public sealed partial class ChannelsPage : Page
         var client = BoundClient;
         if (client == null)
         {
-            _pendingSaveBanner = (channelId, "Not connected",
-                "Connect to a gateway before stopping channels.",
+            _pendingSaveBanner = (channelId, LocalizationHelper.GetString("ChannelsPage_BannerNotConnectedTitle"),
+                LocalizationHelper.GetString("ChannelsPage_StopNotConnectedMessage"),
                 InfoBarSeverity.Error);
             ApplyPendingSaveBanner();
             return;
         }
 
-        _pendingSaveBanner = (channelId, $"Stopping {channelId}…",
-            "Asking the gateway to pause this channel. Credentials are kept so you can start it again.",
+        _pendingSaveBanner = (channelId, string.Format(LocalizationHelper.GetString("ChannelsPage_BannerStoppingTitle"), channelId),
+            LocalizationHelper.GetString("ChannelsPage_BannerStoppingMessage"),
             InfoBarSeverity.Informational);
         ApplyPendingSaveBanner();
 
@@ -2257,8 +2263,8 @@ public sealed partial class ChannelsPage : Page
         {
             // Don't let the network exception become an unobserved task fault —
             // the user clicked Stop, they deserve to see why it didn't work.
-            _pendingSaveBanner = (channelId, $"Couldn't stop {channelId}",
-                $"Lost connection to the gateway while stopping ({ex.GetType().Name}). Try Refresh.",
+            _pendingSaveBanner = (channelId, string.Format(LocalizationHelper.GetString("ChannelsPage_BannerStopFailedTitle"), channelId),
+                string.Format(LocalizationHelper.GetString("ChannelsPage_BannerStopLostConnectionFormat"), ex.GetType().Name),
                 InfoBarSeverity.Error);
             ApplyPendingSaveBanner();
             return;
@@ -2266,15 +2272,15 @@ public sealed partial class ChannelsPage : Page
 
         if (!ok)
         {
-            _pendingSaveBanner = (channelId, $"Couldn't stop {channelId}",
-                "The gateway didn't accept channels.stop. Try Refresh or check the gateway log.",
+            _pendingSaveBanner = (channelId, string.Format(LocalizationHelper.GetString("ChannelsPage_BannerStopFailedTitle"), channelId),
+                LocalizationHelper.GetString("ChannelsPage_BannerStopRejectedMessage"),
                 InfoBarSeverity.Error);
             ApplyPendingSaveBanner();
             return;
         }
 
-        _pendingSaveBanner = (channelId, $"{channelId} stopped",
-            "Channel paused. Press Start to resume: credentials are kept.",
+        _pendingSaveBanner = (channelId, string.Format(LocalizationHelper.GetString("ChannelsPage_BannerStoppedTitle"), channelId),
+            LocalizationHelper.GetString("ChannelsPage_BannerStoppedMessage"),
             InfoBarSeverity.Success);
         ApplyPendingSaveBanner();
         await RefreshAsync(probe: false);
@@ -2297,23 +2303,23 @@ public sealed partial class ChannelsPage : Page
         var client = BoundClient;
         if (client == null)
         {
-            _pendingSaveBanner = (channelId, "Not connected",
-                "Connect to a gateway before starting channels.",
+            _pendingSaveBanner = (channelId, LocalizationHelper.GetString("ChannelsPage_BannerNotConnectedTitle"),
+                LocalizationHelper.GetString("ChannelsPage_StartNotConnectedMessage"),
                 InfoBarSeverity.Error);
             ApplyPendingSaveBanner();
             return;
         }
 
-        _pendingSaveBanner = (channelId, $"Starting {channelId}…",
-            "Asking the gateway to start this channel.",
+        _pendingSaveBanner = (channelId, string.Format(LocalizationHelper.GetString("ChannelsPage_BannerStartingTitle"), channelId),
+            LocalizationHelper.GetString("ChannelsPage_BannerStartingMessage"),
             InfoBarSeverity.Informational);
         ApplyPendingSaveBanner();
 
         var result = await client.StartChannelDetailedAsync(channelId);
         if (result == null || !result.Ok)
         {
-            _pendingSaveBanner = (channelId, $"Couldn't start {channelId}",
-                result?.Error ?? "The gateway didn't respond.",
+            _pendingSaveBanner = (channelId, string.Format(LocalizationHelper.GetString("ChannelsPage_BannerStartFailedTitle"), channelId),
+                result?.Error ?? LocalizationHelper.GetString("ChannelsPage_BannerGatewayNoResponse"),
                 InfoBarSeverity.Error);
             ApplyPendingSaveBanner();
             return;
@@ -2323,8 +2329,8 @@ public sealed partial class ChannelsPage : Page
         {
             // Strong signal the plugin isn't loaded on the gateway host.
             _pendingSaveBanner = (channelId,
-                $"Gateway doesn't have the {channelId} plugin installed",
-                $"Install it on your gateway host: openclaw plugins install @openclaw/{channelId}. See the channel's expander for the copyable command.",
+                string.Format(LocalizationHelper.GetString("ChannelsPage_BannerPluginMissingTitle"), channelId),
+                string.Format(LocalizationHelper.GetString("ChannelsPage_BannerPluginMissingMessageFormat"), channelId),
                 InfoBarSeverity.Warning);
             ApplyPendingSaveBanner();
             return;
@@ -2333,8 +2339,8 @@ public sealed partial class ChannelsPage : Page
         // Re-fetch the snapshot so Render() can upgrade the banner to "running"
         // if the channel transitioned. If it didn't, Render() leaves a
         // "started but not running yet" warning.
-        _pendingSaveBanner = (channelId, $"{channelId} start requested",
-            "Waiting for the gateway to confirm the channel is running…",
+        _pendingSaveBanner = (channelId, string.Format(LocalizationHelper.GetString("ChannelsPage_BannerStartRequestedTitle"), channelId),
+            LocalizationHelper.GetString("ChannelsPage_BannerStartRequestedMessage"),
             InfoBarSeverity.Success);
         ApplyPendingSaveBanner();
         await RefreshAsync(probe: true);
@@ -2401,7 +2407,7 @@ public sealed partial class ChannelsPage : Page
         // without burying it in a comma-separated list.
         var lines = new List<string> { Truncate(lastError, 80) };
         if (raw.TryGetProperty("lastProbeAt", out var ts) && ts.ValueKind == JsonValueKind.Number && ts.TryGetDouble(out var d))
-            lines.Add("Last probe " + FormatRelative(d));
+            lines.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubLastProbeFormat"), FormatRelative(d)));
         return lines;
     }
 
@@ -2415,14 +2421,14 @@ public sealed partial class ChannelsPage : Page
         if (raw.TryGetProperty("self", out var self) && self.ValueKind == JsonValueKind.Object)
         {
             var e164 = GetString(self, "e164") ?? GetString(self, "jid");
-            if (!string.IsNullOrEmpty(e164)) lines.Add("Linked as " + e164);
+            if (!string.IsNullOrEmpty(e164)) lines.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubLinkedAsFormat"), e164));
         }
 
         var activityParts = new List<string>();
         if (raw.TryGetProperty("authAgeMs", out var age) && age.ValueKind == JsonValueKind.Number && age.TryGetDouble(out var ageD))
-            activityParts.Add("Auth age " + FormatAge(ageD));
+            activityParts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubAuthAgeFormat"), FormatAge(ageD)));
         if (raw.TryGetProperty("lastMessageAt", out var lm) && lm.ValueKind == JsonValueKind.Number && lm.TryGetDouble(out var lmd))
-            activityParts.Add("Last message " + FormatRelative(lmd));
+            activityParts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubLastMessageFormat"), FormatRelative(lmd)));
         if (activityParts.Count > 0) lines.Add(string.Join(" · ", activityParts));
 
         return lines;
@@ -2444,27 +2450,29 @@ public sealed partial class ChannelsPage : Page
         if (GetString(raw, "botUsername") is { Length: > 0 } bot) line1Parts.Add("@" + bot);
         else if (GetString(raw, "webhookUrl") is { Length: > 0 } hook) line1Parts.Add(Truncate(hook, 48));
         if (generic?.Mode is { Length: > 0 } mode)
-            line1Parts.Add(char.ToUpperInvariant(mode[0]) + mode[1..] + " mode");
+            line1Parts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubModeFormat"), char.ToUpperInvariant(mode[0]) + mode[1..]));
         if (record.Accounts.Count > 1)
-            line1Parts.Add($"{record.Accounts.Count} accounts");
+            line1Parts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubAccountsFormat"), record.Accounts.Count));
         if (line1Parts.Count > 0) lines.Add(string.Join(" · ", line1Parts));
 
         // Line 2: activity / probe.
         var line2Parts = new List<string>();
         if (generic?.LastEventAt is double lastEvent && lastEvent > 0)
-            line2Parts.Add("Last event " + FormatRelative(lastEvent));
+            line2Parts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubLastEventFormat"), FormatRelative(lastEvent)));
         else if (generic?.LastProbeAt is double lastProbe && lastProbe > 0)
-            line2Parts.Add("Last probe " + FormatRelative(lastProbe));
+            line2Parts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubLastProbeFormat"), FormatRelative(lastProbe)));
         if (generic?.Probe is { Ok: true, ElapsedMs: double el })
-            line2Parts.Add($"{(int)el} ms probe");
+            line2Parts.Add(string.Format(LocalizationHelper.GetString("ChannelsPage_SubProbeMsFormat"), (int)el));
         if (line2Parts.Count > 0) lines.Add(string.Join(" · ", line2Parts));
 
         // Line 3: caution (reconnect attempts).
         if (generic?.ReconnectAttempts is int n && n > 0)
-            lines.Add($"{n} reconnect attempt{(n == 1 ? "" : "s")}");
+            lines.Add(n == 1
+                ? string.Format(LocalizationHelper.GetString("ChannelsPage_SubReconnectAttemptFormat"), n)
+                : string.Format(LocalizationHelper.GetString("ChannelsPage_SubReconnectAttemptsFormat"), n));
 
         if (lines.Count == 0 && record.IsConfigured)
-            lines.Add("Configured");
+            lines.Add(LocalizationHelper.GetString("ChannelsPage_SubConfigured"));
         return lines;
     }
 
@@ -2497,21 +2505,21 @@ public sealed partial class ChannelsPage : Page
     private static string FormatAge(double ms)
     {
         var ts = TimeSpan.FromMilliseconds(ms);
-        if (ts.TotalDays >= 1) return $"{(int)ts.TotalDays} d";
-        if (ts.TotalHours >= 1) return $"{(int)ts.TotalHours} h";
-        if (ts.TotalMinutes >= 1) return $"{(int)ts.TotalMinutes} m";
-        return $"{(int)ts.TotalSeconds} s";
+        if (ts.TotalDays >= 1) return string.Format(LocalizationHelper.GetString("ChannelsPage_AgeDaysFormat"), (int)ts.TotalDays);
+        if (ts.TotalHours >= 1) return string.Format(LocalizationHelper.GetString("ChannelsPage_AgeHoursFormat"), (int)ts.TotalHours);
+        if (ts.TotalMinutes >= 1) return string.Format(LocalizationHelper.GetString("ChannelsPage_AgeMinutesFormat"), (int)ts.TotalMinutes);
+        return string.Format(LocalizationHelper.GetString("ChannelsPage_AgeSecondsFormat"), (int)ts.TotalSeconds);
     }
 
     private static string FormatRelative(double epochMs)
     {
         var when = DateTimeOffset.FromUnixTimeMilliseconds((long)epochMs);
         var diff = DateTimeOffset.UtcNow - when;
-        if (diff.TotalSeconds < 0) return "just now";
-        if (diff.TotalMinutes < 1) return $"{(int)diff.TotalSeconds} s ago";
-        if (diff.TotalHours < 1) return $"{(int)diff.TotalMinutes} m ago";
-        if (diff.TotalDays < 1) return $"{(int)diff.TotalHours} h ago";
-        return $"{(int)diff.TotalDays} d ago";
+        if (diff.TotalSeconds < 0) return LocalizationHelper.GetString("ChannelsPage_TimeJustNow");
+        if (diff.TotalMinutes < 1) return string.Format(LocalizationHelper.GetString("ChannelsPage_TimeSecondsAgoFormat"), (int)diff.TotalSeconds);
+        if (diff.TotalHours < 1) return string.Format(LocalizationHelper.GetString("ChannelsPage_TimeMinutesAgoFormat"), (int)diff.TotalMinutes);
+        if (diff.TotalDays < 1) return string.Format(LocalizationHelper.GetString("ChannelsPage_TimeHoursAgoFormat"), (int)diff.TotalHours);
+        return string.Format(LocalizationHelper.GetString("ChannelsPage_TimeDaysAgoFormat"), (int)diff.TotalDays);
     }
 
     private static string Truncate(string s, int max) =>

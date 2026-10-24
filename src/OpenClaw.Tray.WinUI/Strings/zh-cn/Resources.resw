@@ -5983,6 +5983,321 @@
   <data name="ChannelsPage_BannerConfigSavedMessage" xml:space="preserve">
     <value>正在等待网关确认频道已运行…</value>
   </data>
+  <data name="ChannelsPage_SubLastProbeFormat" xml:space="preserve">
+    <value>最近探测 {0}</value>
+  </data>
+  <data name="ChannelsPage_SubLinkedAsFormat" xml:space="preserve">
+    <value>关联为 {0}</value>
+  </data>
+  <data name="ChannelsPage_SubAuthAgeFormat" xml:space="preserve">
+    <value>已认证 {0}</value>
+  </data>
+  <data name="ChannelsPage_SubLastMessageFormat" xml:space="preserve">
+    <value>最近消息 {0}</value>
+  </data>
+  <data name="ChannelsPage_SubLastEventFormat" xml:space="preserve">
+    <value>最近事件 {0}</value>
+  </data>
+  <data name="ChannelsPage_SubModeFormat" xml:space="preserve">
+    <value>{0} 模式</value>
+  </data>
+  <data name="ChannelsPage_SubAccountsFormat" xml:space="preserve">
+    <value>{0} 个账号</value>
+  </data>
+  <data name="ChannelsPage_SubProbeMsFormat" xml:space="preserve">
+    <value>探测耗时 {0} 毫秒</value>
+  </data>
+  <data name="ChannelsPage_SubReconnectAttemptFormat" xml:space="preserve">
+    <value>{0} 次重连尝试</value>
+  </data>
+  <data name="ChannelsPage_SubReconnectAttemptsFormat" xml:space="preserve">
+    <value>{0} 次重连尝试</value>
+  </data>
+  <data name="ChannelsPage_SubConfigured" xml:space="preserve">
+    <value>已配置</value>
+  </data>
+  <data name="ChannelsPage_TimeJustNow" xml:space="preserve">
+    <value>刚刚</value>
+  </data>
+  <data name="ChannelsPage_TimeSecondsAgoFormat" xml:space="preserve">
+    <value>{0} 秒前</value>
+  </data>
+  <data name="ChannelsPage_TimeMinutesAgoFormat" xml:space="preserve">
+    <value>{0} 分钟前</value>
+  </data>
+  <data name="ChannelsPage_TimeHoursAgoFormat" xml:space="preserve">
+    <value>{0} 小时前</value>
+  </data>
+  <data name="ChannelsPage_TimeDaysAgoFormat" xml:space="preserve">
+    <value>{0} 天前</value>
+  </data>
+  <data name="ChannelsPage_AgeDaysFormat" xml:space="preserve">
+    <value>{0} 天</value>
+  </data>
+  <data name="ChannelsPage_AgeHoursFormat" xml:space="preserve">
+    <value>{0} 小时</value>
+  </data>
+  <data name="ChannelsPage_AgeMinutesFormat" xml:space="preserve">
+    <value>{0} 分钟</value>
+  </data>
+  <data name="ChannelsPage_AgeSecondsFormat" xml:space="preserve">
+    <value>{0} 秒</value>
+  </data>
+  <data name="ChannelsPage_StatusLabel" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="ChannelsPage_LinkedAsLabel" xml:space="preserve">
+    <value>关联为</value>
+  </data>
+  <data name="ChannelsPage_LinkedLabel" xml:space="preserve">
+    <value>已关联</value>
+  </data>
+  <data name="ChannelsPage_Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="ChannelsPage_AuthAgeLabel" xml:space="preserve">
+    <value>认证时长</value>
+  </data>
+  <data name="ChannelsPage_ReconnectAttemptsLabel" xml:space="preserve">
+    <value>重连尝试次数</value>
+  </data>
+  <data name="ChannelsPage_LastProbeLabel" xml:space="preserve">
+    <value>最近探测</value>
+  </data>
+  <data name="ChannelsPage_ProbeOk" xml:space="preserve">
+    <value>正常</value>
+  </data>
+  <data name="ChannelsPage_ProbeElapsedMsFormat" xml:space="preserve">
+    <value>{0} ms</value>
+  </data>
+  <data name="ChannelsPage_ProbeFailedFormat" xml:space="preserve">
+    <value>失败 · {0}</value>
+  </data>
+  <data name="ChannelsPage_ProbeUnknownError" xml:space="preserve">
+    <value>未知错误</value>
+  </data>
+  <data name="ChannelsPage_BotLabel" xml:space="preserve">
+    <value>机器人</value>
+  </data>
+  <data name="ChannelsPage_WebhookLabel" xml:space="preserve">
+    <value>Webhook</value>
+  </data>
+  <data name="ChannelsPage_BaseUrlLabel" xml:space="preserve">
+    <value>基础 URL</value>
+  </data>
+  <data name="ChannelsPage_AccountsLabel" xml:space="preserve">
+    <value>账号</value>
+  </data>
+  <data name="ChannelsPage_LastErrorLabel" xml:space="preserve">
+    <value>最近错误</value>
+  </data>
+  <data name="ChannelsPage_LinkingLabel" xml:space="preserve">
+    <value>关联</value>
+  </data>
+  <data name="ChannelsPage_QrInitialHint" xml:space="preserve">
+    <value>点击“显示 QR 码”开始将你的手机关联到此设备。</value>
+  </data>
+  <data name="ChannelsPage_QrDiagnosticHeader" xml:space="preserve">
+    <value>为什么不起作用？</value>
+  </data>
+  <data name="ChannelsPage_QrShowButton" xml:space="preserve">
+    <value>显示 QR 码</value>
+  </data>
+  <data name="ChannelsPage_QrRelinkButton" xml:space="preserve">
+    <value>重新关联</value>
+  </data>
+  <data name="ChannelsPage_DiagMethodFormat" xml:space="preserve">
+    <value>方法：{0}</value>
+  </data>
+  <data name="ChannelsPage_DiagChannelFormat" xml:space="preserve">
+    <value>频道：{0}</value>
+  </data>
+  <data name="ChannelsPage_DiagParamsFormat" xml:space="preserve">
+    <value>参数：{0}</value>
+  </data>
+  <data name="ChannelsPage_DiagErrorFormat" xml:space="preserve">
+    <value>错误：{0}</value>
+  </data>
+  <data name="ChannelsPage_DiagResponseFormat" xml:space="preserve">
+    <value>响应：{0}</value>
+  </data>
+  <data name="ChannelsPage_QrProviderMissingFormat" xml:space="preserve">
+    <value>网关暂时无法启动 {0} 的 QR 关联：尚未加载该频道的网页登录提供程序。网页/QR 关联运行在承载网关的机器上，因此需要在那台机器上修复，而不是在托盘中。</value>
+  </data>
+  <data name="ChannelsPage_CopyButton" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="ChannelsPage_CopiedButton" xml:space="preserve">
+    <value>已复制</value>
+  </data>
+  <data name="ChannelsPage_CopyFailedButton" xml:space="preserve">
+    <value>复制失败</value>
+  </data>
+  <data name="ChannelsPage_QrProviderInstalledHint" xml:space="preserve">
+    <value>在网关主机上安装提供程序后，回到此处再次点击“显示 QR 码”。</value>
+  </data>
+  <data name="ChannelsPage_QrUnsupportedFormat" xml:space="preserve">
+    <value>此网关版本尚不支持 {0} 的 QR 关联。网页/QR 关联运行在承载网关的机器上：请先将网关升级到支持网页登录的版本，然后回到此处再次点击“显示 QR 码”。</value>
+  </data>
+  <data name="ChannelsPage_QrNotConnectedHint" xml:space="preserve">
+    <value>未连接到网关。请先打开“连接”设置进行连接。</value>
+  </data>
+  <data name="ChannelsPage_QrRequesting" xml:space="preserve">
+    <value>正在向网关请求 QR 码…</value>
+  </data>
+  <data name="ChannelsPage_QrLinkFailedNotConnectedFormat" xml:space="preserve">
+    <value>无法关联 {0}。未连接到网关。</value>
+  </data>
+  <data name="ChannelsPage_QrThisChannel" xml:space="preserve">
+    <value>此频道</value>
+  </data>
+  <data name="ChannelsPage_QrUnavailableFormat" xml:space="preserve">
+    <value>此网关暂不支持 {0} 关联：请查看下方启用方法。</value>
+  </data>
+  <data name="ChannelsPage_QrLinkFailedErrorFormat" xml:space="preserve">
+    <value>无法关联 {0}。网关返回错误：详情见下方。</value>
+  </data>
+  <data name="ChannelsPage_QrAlreadyLinkedFormat" xml:space="preserve">
+    <value>{0} 已关联。</value>
+  </data>
+  <data name="ChannelsPage_QrNoQrFormat" xml:space="preserve">
+    <value>网关未返回 {0} 的 QR 码。其返回内容见下方详情。</value>
+  </data>
+  <data name="ChannelsPage_QrScanInstruction" xml:space="preserve">
+    <value>打开手机应用的“已关联设备”界面并扫描此 QR 码。</value>
+  </data>
+  <data name="ChannelsPage_QrStillWaiting" xml:space="preserve">
+    <value>仍在等待：如果二维码已过期，请再次点击“显示 QR 码”。</value>
+  </data>
+  <data name="ChannelsPage_QrWaitFailedFormat" xml:space="preserve">
+    <value>{0} 的关联等待失败。详情见下方。</value>
+  </data>
+  <data name="ChannelsPage_QrLinkedFormat" xml:space="preserve">
+    <value>{0} 已关联。</value>
+  </data>
+  <data name="ChannelsPage_QrDecodeFailedMalformed" xml:space="preserve">
+    <value>QR 码解码失败：网关返回的数据 URL 格式错误。</value>
+  </data>
+  <data name="ChannelsPage_QrDecodeFailedBase64" xml:space="preserve">
+    <value>QR 码解码失败：网关返回的 base64 无效。</value>
+  </data>
+  <data name="ChannelsPage_QrDecodeFailedFormat" xml:space="preserve">
+    <value>QR 码解码失败：{0}</value>
+  </data>
+  <data name="ChannelsPage_InstallHintFormat" xml:space="preserve">
+    <value>频道插件由网关加载，而不是托盘：因此安装要在承载网关的机器上进行。如果 {0} 在保存后仍未启动，可能是插件尚未安装。</value>
+  </data>
+  <data name="ChannelsPage_InstallRunHint" xml:space="preserve">
+    <value>在承载网关的机器上运行此命令。完成后回到此处点击“刷新”。</value>
+  </data>
+  <data name="ChannelsPage_InstallDocsLink" xml:space="preserve">
+    <value>插件安装文档 →</value>
+  </data>
+  <data name="ChannelsPage_InstallSectionTitle" xml:space="preserve">
+    <value>在网关上安装插件</value>
+  </data>
+  <data name="ChannelsPage_UnlinkNotConnectedMessage" xml:space="preserve">
+    <value>请先连接到网关，然后再取消关联此设备。</value>
+  </data>
+  <data name="ChannelsPage_DisconnectNotConnectedMessage" xml:space="preserve">
+    <value>请先连接到网关，然后再断开此频道。</value>
+  </data>
+  <data name="ChannelsPage_UnlinkConfirmTitleFormat" xml:space="preserve">
+    <value>取消 {0} 与此设备的关联？</value>
+  </data>
+  <data name="ChannelsPage_DisconnectConfirmTitleFormat" xml:space="preserve">
+    <value>断开 {0} 并清除凭据？</value>
+  </data>
+  <data name="ChannelsPage_UnlinkConfirmMessage" xml:space="preserve">
+    <value>这会将此频道与此设备取消关联。你的账号仍会在手机上保持配对：扫描新的 QR 码即可重新连接。</value>
+  </data>
+  <data name="ChannelsPage_DisconnectConfirmMessage" xml:space="preserve">
+    <value>这会将频道注销并清除已存储的凭据。你需要重新输入凭据才能重新连接。</value>
+  </data>
+  <data name="ChannelsPage_UnlinkButton" xml:space="preserve">
+    <value>取消关联</value>
+  </data>
+  <data name="ChannelsPage_DisconnectButton" xml:space="preserve">
+    <value>断开连接</value>
+  </data>
+  <data name="ChannelsPage_UnlinkFailedTitle" xml:space="preserve">
+    <value>取消关联失败</value>
+  </data>
+  <data name="ChannelsPage_DisconnectFailedTitle" xml:space="preserve">
+    <value>断开连接失败</value>
+  </data>
+  <data name="ChannelsPage_UnlinkFailedMessageFormat" xml:space="preserve">
+    <value>无法取消关联 {0}。网关可能不支持此操作。</value>
+  </data>
+  <data name="ChannelsPage_DisconnectFailedMessageFormat" xml:space="preserve">
+    <value>无法断开 {0}。网关可能不支持此操作。</value>
+  </data>
+  <data name="ChannelsPage_StopNotConnectedMessage" xml:space="preserve">
+    <value>请先连接到网关，然后再停止频道。</value>
+  </data>
+  <data name="ChannelsPage_BannerStoppingTitle" xml:space="preserve">
+    <value>正在停止 {0}…</value>
+  </data>
+  <data name="ChannelsPage_BannerStoppingMessage" xml:space="preserve">
+    <value>正在请求网关暂停此频道。凭据会保留，以便你再次启动。</value>
+  </data>
+  <data name="ChannelsPage_BannerStopFailedTitle" xml:space="preserve">
+    <value>无法停止 {0}</value>
+  </data>
+  <data name="ChannelsPage_BannerStopLostConnectionFormat" xml:space="preserve">
+    <value>停止期间与网关失去连接（{0}）。请尝试刷新。</value>
+  </data>
+  <data name="ChannelsPage_BannerStopRejectedMessage" xml:space="preserve">
+    <value>网关未接受 channels.stop。请尝试刷新或查看网关日志。</value>
+  </data>
+  <data name="ChannelsPage_BannerStoppedTitle" xml:space="preserve">
+    <value>{0} 已停止</value>
+  </data>
+  <data name="ChannelsPage_BannerStoppedMessage" xml:space="preserve">
+    <value>频道已暂停。点击“启动”即可恢复：凭据会保留。</value>
+  </data>
+  <data name="ChannelsPage_StartNotConnectedMessage" xml:space="preserve">
+    <value>请先连接到网关，然后再启动频道。</value>
+  </data>
+  <data name="ChannelsPage_BannerStartingTitle" xml:space="preserve">
+    <value>正在启动 {0}…</value>
+  </data>
+  <data name="ChannelsPage_BannerStartingMessage" xml:space="preserve">
+    <value>正在请求网关启动此频道。</value>
+  </data>
+  <data name="ChannelsPage_BannerStartFailedTitle" xml:space="preserve">
+    <value>无法启动 {0}</value>
+  </data>
+  <data name="ChannelsPage_BannerPluginMissingTitle" xml:space="preserve">
+    <value>网关尚未安装 {0} 插件</value>
+  </data>
+  <data name="ChannelsPage_BannerPluginMissingMessageFormat" xml:space="preserve">
+    <value>请在网关主机上安装：openclaw plugins install @openclaw/{0}。可在频道展开卡片中复制该命令。</value>
+  </data>
+  <data name="ChannelsPage_BannerStartRequestedTitle" xml:space="preserve">
+    <value>已请求启动 {0}</value>
+  </data>
+  <data name="ChannelsPage_BannerStartRequestedMessage" xml:space="preserve">
+    <value>正在等待网关确认频道已运行…</value>
+  </data>
+  <data name="ChannelsPage_BannerSavedNotRunningTitle" xml:space="preserve">
+    <value>{0}：配置已保存，但尚未运行</value>
+  </data>
+  <data name="ChannelsPage_BannerSavedNotRunningMessage" xml:space="preserve">
+    <value>网关已接受设置，但未启动频道。展开下方频道：状态部分和诊断详情会显示原因。</value>
+  </data>
+  <data name="ChannelsPage_BannerRunningTitle" xml:space="preserve">
+    <value>{0} 正在运行</value>
+  </data>
+  <data name="ChannelsPage_BannerRunningMessage" xml:space="preserve">
+    <value>配置已保存，频道已启动。</value>
+  </data>
+  <data name="ChannelsPage_ErrorRefreshTitle" xml:space="preserve">
+    <value>无法刷新频道</value>
+  </data>
+  <data name="ChannelsPage_ErrorRefreshMessage" xml:space="preserve">
+    <value>网关未返回 channels.status 响应。请再次尝试刷新。</value>
+  </data>
   <data name="ConnectionPage_GatewayHostControlsTitle.Text" xml:space="preserve">
     <value>WSL 网关</value>
   </data>

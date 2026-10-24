@@ -5987,6 +5987,321 @@ Make sure the gateway is running.</value>
   <data name="ChannelsPage_BannerConfigSavedMessage" xml:space="preserve">
     <value>Waiting for the gateway to confirm the channel is running…</value>
   </data>
+  <data name="ChannelsPage_SubLastProbeFormat" xml:space="preserve">
+    <value>Last probe {0}</value>
+  </data>
+  <data name="ChannelsPage_SubLinkedAsFormat" xml:space="preserve">
+    <value>Linked as {0}</value>
+  </data>
+  <data name="ChannelsPage_SubAuthAgeFormat" xml:space="preserve">
+    <value>Auth age {0}</value>
+  </data>
+  <data name="ChannelsPage_SubLastMessageFormat" xml:space="preserve">
+    <value>Last message {0}</value>
+  </data>
+  <data name="ChannelsPage_SubLastEventFormat" xml:space="preserve">
+    <value>Last event {0}</value>
+  </data>
+  <data name="ChannelsPage_SubModeFormat" xml:space="preserve">
+    <value>{0} mode</value>
+  </data>
+  <data name="ChannelsPage_SubAccountsFormat" xml:space="preserve">
+    <value>{0} accounts</value>
+  </data>
+  <data name="ChannelsPage_SubProbeMsFormat" xml:space="preserve">
+    <value>{0} ms probe</value>
+  </data>
+  <data name="ChannelsPage_SubReconnectAttemptFormat" xml:space="preserve">
+    <value>{0} reconnect attempt</value>
+  </data>
+  <data name="ChannelsPage_SubReconnectAttemptsFormat" xml:space="preserve">
+    <value>{0} reconnect attempts</value>
+  </data>
+  <data name="ChannelsPage_SubConfigured" xml:space="preserve">
+    <value>Configured</value>
+  </data>
+  <data name="ChannelsPage_TimeJustNow" xml:space="preserve">
+    <value>just now</value>
+  </data>
+  <data name="ChannelsPage_TimeSecondsAgoFormat" xml:space="preserve">
+    <value>{0} s ago</value>
+  </data>
+  <data name="ChannelsPage_TimeMinutesAgoFormat" xml:space="preserve">
+    <value>{0} m ago</value>
+  </data>
+  <data name="ChannelsPage_TimeHoursAgoFormat" xml:space="preserve">
+    <value>{0} h ago</value>
+  </data>
+  <data name="ChannelsPage_TimeDaysAgoFormat" xml:space="preserve">
+    <value>{0} d ago</value>
+  </data>
+  <data name="ChannelsPage_AgeDaysFormat" xml:space="preserve">
+    <value>{0} d</value>
+  </data>
+  <data name="ChannelsPage_AgeHoursFormat" xml:space="preserve">
+    <value>{0} h</value>
+  </data>
+  <data name="ChannelsPage_AgeMinutesFormat" xml:space="preserve">
+    <value>{0} m</value>
+  </data>
+  <data name="ChannelsPage_AgeSecondsFormat" xml:space="preserve">
+    <value>{0} s</value>
+  </data>
+  <data name="ChannelsPage_StatusLabel" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ChannelsPage_LinkedAsLabel" xml:space="preserve">
+    <value>Linked as</value>
+  </data>
+  <data name="ChannelsPage_LinkedLabel" xml:space="preserve">
+    <value>Linked</value>
+  </data>
+  <data name="ChannelsPage_Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="ChannelsPage_AuthAgeLabel" xml:space="preserve">
+    <value>Auth age</value>
+  </data>
+  <data name="ChannelsPage_ReconnectAttemptsLabel" xml:space="preserve">
+    <value>Reconnect attempts</value>
+  </data>
+  <data name="ChannelsPage_LastProbeLabel" xml:space="preserve">
+    <value>Last probe</value>
+  </data>
+  <data name="ChannelsPage_ProbeOk" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ChannelsPage_ProbeElapsedMsFormat" xml:space="preserve">
+    <value>{0} ms</value>
+  </data>
+  <data name="ChannelsPage_ProbeFailedFormat" xml:space="preserve">
+    <value>Failed · {0}</value>
+  </data>
+  <data name="ChannelsPage_ProbeUnknownError" xml:space="preserve">
+    <value>unknown error</value>
+  </data>
+  <data name="ChannelsPage_BotLabel" xml:space="preserve">
+    <value>Bot</value>
+  </data>
+  <data name="ChannelsPage_WebhookLabel" xml:space="preserve">
+    <value>Webhook</value>
+  </data>
+  <data name="ChannelsPage_BaseUrlLabel" xml:space="preserve">
+    <value>Base URL</value>
+  </data>
+  <data name="ChannelsPage_AccountsLabel" xml:space="preserve">
+    <value>Accounts</value>
+  </data>
+  <data name="ChannelsPage_LastErrorLabel" xml:space="preserve">
+    <value>Last error</value>
+  </data>
+  <data name="ChannelsPage_LinkingLabel" xml:space="preserve">
+    <value>Linking</value>
+  </data>
+  <data name="ChannelsPage_QrInitialHint" xml:space="preserve">
+    <value>Click "Show QR" to start linking your phone to this device.</value>
+  </data>
+  <data name="ChannelsPage_QrDiagnosticHeader" xml:space="preserve">
+    <value>Why isn’t this working?</value>
+  </data>
+  <data name="ChannelsPage_QrShowButton" xml:space="preserve">
+    <value>Show QR</value>
+  </data>
+  <data name="ChannelsPage_QrRelinkButton" xml:space="preserve">
+    <value>Relink</value>
+  </data>
+  <data name="ChannelsPage_DiagMethodFormat" xml:space="preserve">
+    <value>Method:   {0}</value>
+  </data>
+  <data name="ChannelsPage_DiagChannelFormat" xml:space="preserve">
+    <value>Channel:  {0}</value>
+  </data>
+  <data name="ChannelsPage_DiagParamsFormat" xml:space="preserve">
+    <value>Params:   {0}</value>
+  </data>
+  <data name="ChannelsPage_DiagErrorFormat" xml:space="preserve">
+    <value>Error:    {0}</value>
+  </data>
+  <data name="ChannelsPage_DiagResponseFormat" xml:space="preserve">
+    <value>Response: {0}</value>
+  </data>
+  <data name="ChannelsPage_QrProviderMissingFormat" xml:space="preserve">
+    <value>Your gateway can’t start {0} QR linking yet: it doesn’t have this channel’s web-login provider loaded. Web/QR linking runs on the machine that hosts your gateway, so this is fixed there, not in the tray.</value>
+  </data>
+  <data name="ChannelsPage_CopyButton" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="ChannelsPage_CopiedButton" xml:space="preserve">
+    <value>Copied</value>
+  </data>
+  <data name="ChannelsPage_CopyFailedButton" xml:space="preserve">
+    <value>Copy failed</value>
+  </data>
+  <data name="ChannelsPage_QrProviderInstalledHint" xml:space="preserve">
+    <value>After installing the provider on your gateway host, come back and click Show QR again.</value>
+  </data>
+  <data name="ChannelsPage_QrUnsupportedFormat" xml:space="preserve">
+    <value>This gateway version doesn’t support QR linking for {0} yet. QR/web linking runs on the machine that hosts your gateway: update your gateway to a version that supports web login, then come back and click Show QR again.</value>
+  </data>
+  <data name="ChannelsPage_QrNotConnectedHint" xml:space="preserve">
+    <value>Not connected to a gateway. Open Connection settings to connect first.</value>
+  </data>
+  <data name="ChannelsPage_QrRequesting" xml:space="preserve">
+    <value>Requesting QR code from the gateway…</value>
+  </data>
+  <data name="ChannelsPage_QrLinkFailedNotConnectedFormat" xml:space="preserve">
+    <value>Couldn’t link {0}. Not connected to the gateway.</value>
+  </data>
+  <data name="ChannelsPage_QrThisChannel" xml:space="preserve">
+    <value>This channel</value>
+  </data>
+  <data name="ChannelsPage_QrUnavailableFormat" xml:space="preserve">
+    <value>{0} linking isn’t available on this gateway yet: see how to enable it below.</value>
+  </data>
+  <data name="ChannelsPage_QrLinkFailedErrorFormat" xml:space="preserve">
+    <value>Couldn’t link {0}. The gateway returned an error: see details below.</value>
+  </data>
+  <data name="ChannelsPage_QrAlreadyLinkedFormat" xml:space="preserve">
+    <value>{0} is already linked.</value>
+  </data>
+  <data name="ChannelsPage_QrNoQrFormat" xml:space="preserve">
+    <value>Gateway didn’t return a QR for {0}. See details below for what it returned.</value>
+  </data>
+  <data name="ChannelsPage_QrScanInstruction" xml:space="preserve">
+    <value>Open the mobile app’s linked-devices screen and scan this QR.</value>
+  </data>
+  <data name="ChannelsPage_QrStillWaiting" xml:space="preserve">
+    <value>Still waiting: click Show QR again if the code has expired.</value>
+  </data>
+  <data name="ChannelsPage_QrWaitFailedFormat" xml:space="preserve">
+    <value>Link wait failed for {0}. See details below.</value>
+  </data>
+  <data name="ChannelsPage_QrLinkedFormat" xml:space="preserve">
+    <value>{0} linked.</value>
+  </data>
+  <data name="ChannelsPage_QrDecodeFailedMalformed" xml:space="preserve">
+    <value>QR decode failed: malformed data URL from gateway.</value>
+  </data>
+  <data name="ChannelsPage_QrDecodeFailedBase64" xml:space="preserve">
+    <value>QR decode failed: invalid base64 from gateway.</value>
+  </data>
+  <data name="ChannelsPage_QrDecodeFailedFormat" xml:space="preserve">
+    <value>QR decode failed: {0}</value>
+  </data>
+  <data name="ChannelsPage_InstallHintFormat" xml:space="preserve">
+    <value>Channel plugins are loaded by the gateway, not the tray: so installs happen on the machine that hosts your gateway. If {0} isn’t coming up after Save, the plugin may not be installed yet.</value>
+  </data>
+  <data name="ChannelsPage_InstallRunHint" xml:space="preserve">
+    <value>Run this command on the machine that hosts your gateway. After it finishes, come back and click Refresh.</value>
+  </data>
+  <data name="ChannelsPage_InstallDocsLink" xml:space="preserve">
+    <value>Plugin install docs →</value>
+  </data>
+  <data name="ChannelsPage_InstallSectionTitle" xml:space="preserve">
+    <value>Install plugin on your gateway</value>
+  </data>
+  <data name="ChannelsPage_UnlinkNotConnectedMessage" xml:space="preserve">
+    <value>Connect to a gateway before unlinking this device.</value>
+  </data>
+  <data name="ChannelsPage_DisconnectNotConnectedMessage" xml:space="preserve">
+    <value>Connect to a gateway before disconnecting this channel.</value>
+  </data>
+  <data name="ChannelsPage_UnlinkConfirmTitleFormat" xml:space="preserve">
+    <value>Unlink {0} from this device?</value>
+  </data>
+  <data name="ChannelsPage_DisconnectConfirmTitleFormat" xml:space="preserve">
+    <value>Disconnect {0} and forget credentials?</value>
+  </data>
+  <data name="ChannelsPage_UnlinkConfirmMessage" xml:space="preserve">
+    <value>This unlinks the channel from this device. Your account stays paired on your phone: scan a fresh QR to reconnect.</value>
+  </data>
+  <data name="ChannelsPage_DisconnectConfirmMessage" xml:space="preserve">
+    <value>This signs out the channel and clears the stored credentials. You’ll need to re-enter them to reconnect.</value>
+  </data>
+  <data name="ChannelsPage_UnlinkButton" xml:space="preserve">
+    <value>Unlink</value>
+  </data>
+  <data name="ChannelsPage_DisconnectButton" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="ChannelsPage_UnlinkFailedTitle" xml:space="preserve">
+    <value>Unlink failed</value>
+  </data>
+  <data name="ChannelsPage_DisconnectFailedTitle" xml:space="preserve">
+    <value>Disconnect failed</value>
+  </data>
+  <data name="ChannelsPage_UnlinkFailedMessageFormat" xml:space="preserve">
+    <value>Could not unlink {0}. The gateway may not support this action.</value>
+  </data>
+  <data name="ChannelsPage_DisconnectFailedMessageFormat" xml:space="preserve">
+    <value>Could not disconnect {0}. The gateway may not support this action.</value>
+  </data>
+  <data name="ChannelsPage_StopNotConnectedMessage" xml:space="preserve">
+    <value>Connect to a gateway before stopping channels.</value>
+  </data>
+  <data name="ChannelsPage_BannerStoppingTitle" xml:space="preserve">
+    <value>Stopping {0}…</value>
+  </data>
+  <data name="ChannelsPage_BannerStoppingMessage" xml:space="preserve">
+    <value>Asking the gateway to pause this channel. Credentials are kept so you can start it again.</value>
+  </data>
+  <data name="ChannelsPage_BannerStopFailedTitle" xml:space="preserve">
+    <value>Couldn’t stop {0}</value>
+  </data>
+  <data name="ChannelsPage_BannerStopLostConnectionFormat" xml:space="preserve">
+    <value>Lost connection to the gateway while stopping ({0}). Try Refresh.</value>
+  </data>
+  <data name="ChannelsPage_BannerStopRejectedMessage" xml:space="preserve">
+    <value>The gateway didn’t accept channels.stop. Try Refresh or check the gateway log.</value>
+  </data>
+  <data name="ChannelsPage_BannerStoppedTitle" xml:space="preserve">
+    <value>{0} stopped</value>
+  </data>
+  <data name="ChannelsPage_BannerStoppedMessage" xml:space="preserve">
+    <value>Channel paused. Press Start to resume: credentials are kept.</value>
+  </data>
+  <data name="ChannelsPage_StartNotConnectedMessage" xml:space="preserve">
+    <value>Connect to a gateway before starting channels.</value>
+  </data>
+  <data name="ChannelsPage_BannerStartingTitle" xml:space="preserve">
+    <value>Starting {0}…</value>
+  </data>
+  <data name="ChannelsPage_BannerStartingMessage" xml:space="preserve">
+    <value>Asking the gateway to start this channel.</value>
+  </data>
+  <data name="ChannelsPage_BannerStartFailedTitle" xml:space="preserve">
+    <value>Couldn’t start {0}</value>
+  </data>
+  <data name="ChannelsPage_BannerPluginMissingTitle" xml:space="preserve">
+    <value>Gateway doesn’t have the {0} plugin installed</value>
+  </data>
+  <data name="ChannelsPage_BannerPluginMissingMessageFormat" xml:space="preserve">
+    <value>Install it on your gateway host: openclaw plugins install @openclaw/{0}. See the channel’s expander for the copyable command.</value>
+  </data>
+  <data name="ChannelsPage_BannerStartRequestedTitle" xml:space="preserve">
+    <value>{0} start requested</value>
+  </data>
+  <data name="ChannelsPage_BannerStartRequestedMessage" xml:space="preserve">
+    <value>Waiting for the gateway to confirm the channel is running…</value>
+  </data>
+  <data name="ChannelsPage_BannerSavedNotRunningTitle" xml:space="preserve">
+    <value>{0}: config saved, but not running yet</value>
+  </data>
+  <data name="ChannelsPage_BannerSavedNotRunningMessage" xml:space="preserve">
+    <value>The gateway accepted the settings but didn’t start the channel. Expand the channel below: the Status section and the diagnostic disclosure will show why.</value>
+  </data>
+  <data name="ChannelsPage_BannerRunningTitle" xml:space="preserve">
+    <value>{0} is running</value>
+  </data>
+  <data name="ChannelsPage_BannerRunningMessage" xml:space="preserve">
+    <value>Configuration saved and the channel is up.</value>
+  </data>
+  <data name="ChannelsPage_ErrorRefreshTitle" xml:space="preserve">
+    <value>Couldn’t refresh channels</value>
+  </data>
+  <data name="ChannelsPage_ErrorRefreshMessage" xml:space="preserve">
+    <value>The gateway didn’t return a channels.status response. Try Refresh again.</value>
+  </data>
   <data name="ConnectionPage_GatewayHostControlsTitle.Text" xml:space="preserve">
     <value>WSL gateway</value>
   </data>

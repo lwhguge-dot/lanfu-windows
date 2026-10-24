@@ -49,8 +49,8 @@ public sealed class ChannelsPageWebLoginRecoveryContractTests
 
         // The missing-provider branch must not reuse the generic
         // "returned an error — see details below" headline; it gets its own
-        // "isn't available on this gateway yet" actionable message.
-        Assert.Contains("isn't available on this gateway yet", source, StringComparison.Ordinal);
+        // actionable message (ChannelsPage_QrUnavailableFormat resource).
+        Assert.Contains("ChannelsPage_QrUnavailableFormat", source, StringComparison.Ordinal);
     }
 
     [Fact]
