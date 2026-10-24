@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root xmlns:ns1="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:schema id="root">
     <xs:element name="root" ns1:IsDataSet="true">
@@ -5897,7 +5897,7 @@
     <value>将两者粘贴到下方的配置表单中。</value>
   </data>
   <data name="ChannelsPage_GuideNostrStep4" xml:space="preserve">
-    <value>点击 "Save and start"。</value>
+    <value>点击“保存并启动”。</value>
   </data>
   <data name="ChannelsPage_GuideGenericHeadline" xml:space="preserve">
     <value>连接此频道</value>

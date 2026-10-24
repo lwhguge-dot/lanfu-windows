@@ -5890,7 +5890,7 @@
     <value>將兩者貼到下方的設定表單中。</value>
   </data>
   <data name="ChannelsPage_GuideNostrStep4" xml:space="preserve">
-    <value>點擊 "Save and start"。</value>
+    <value>點擊「儲存並啟動」。</value>
   </data>
   <data name="ChannelsPage_GuideGenericHeadline" xml:space="preserve">
     <value>連接此頻道</value>

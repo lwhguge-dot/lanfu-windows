@@ -5891,7 +5891,7 @@ Controleer of de gateway actief is.</value>
     <value>Plak beide in het configuratieformulier hieronder.</value>
   </data>
   <data name="ChannelsPage_GuideNostrStep4" xml:space="preserve">
-    <value>Klik op "Save and start".</value>
+    <value>Klik op "Opslaan en starten".</value>
   </data>
   <data name="ChannelsPage_GuideGenericHeadline" xml:space="preserve">
     <value>Dit kanaal verbinden</value>

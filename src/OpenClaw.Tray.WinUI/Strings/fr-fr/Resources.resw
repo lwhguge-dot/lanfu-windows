@@ -5890,7 +5890,7 @@ Assurez-vous que la passerelle est en cours d'exécution.</value>
     <value>Collez les deux dans le formulaire de configuration ci-dessous.</value>
   </data>
   <data name="ChannelsPage_GuideNostrStep4" xml:space="preserve">
-    <value>Cliquez sur "Save and start".</value>
+    <value>Cliquez sur « Enregistrer et démarrer ».</value>
   </data>
   <data name="ChannelsPage_GuideGenericHeadline" xml:space="preserve">
     <value>Connecter ce canal</value>
